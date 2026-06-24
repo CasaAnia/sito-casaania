@@ -311,7 +311,7 @@ export default function Prenota() {
           <div className="text-center">
             <div className="text-6xl mb-4">😔</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Nessuna disponibilità</h2>
-            <p className="text-gray-500 text-sm mb-6">Non ci sono camere libere per le date selezionate. Prova con date diverse.</p>
+            <p className="text-gray-500 text-sm mb-6">Tutte le camere sono esaurite per queste date.</p>
             <button onClick={() => setStep('form')}
               className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm">
               ← Modifica le date
