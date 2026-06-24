@@ -2,10 +2,76 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ROOMS } from '@/lib/supabase'
 
 const PHONE = '3427004345'
 const WA_LINK = `https://wa.me/39${PHONE}`
+
+const LENA_ID = '19ae4611-c0a4-42ae-8530-210f9a948e9e'
+
+type RoomOption = {
+  id: string
+  name: string
+  basePrice: number
+  priceLabel: string
+  extraBed: boolean
+  extraBedCount: number
+}
+
+function getRoomOptions(numGuests: number): RoomOption[] {
+  const n = numGuests
+  const rooms: RoomOption[] = []
+
+  // Singola Amelia: max 2 persone
+  if (n <= 2) {
+    rooms.push({
+      id: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1',
+      name: 'Singola Amelia',
+      basePrice: n === 2 ? 75 : 70,
+      priceLabel: n === 2 ? '€70 + €5 letto aggiuntivo' : '€70',
+      extraBed: n === 2,
+      extraBedCount: n === 2 ? 1 : 0,
+    })
+  }
+
+  // Matrimoniale Allegra: max 3 persone
+  if (n <= 3) {
+    const extra = n === 3
+    rooms.push({
+      id: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05',
+      name: 'Matrimoniale Allegra',
+      basePrice: extra ? 90 : 80,
+      priceLabel: extra ? '€80 + €10 letto aggiuntivo' : '€80',
+      extraBed: extra,
+      extraBedCount: extra ? 1 : 0,
+    })
+  }
+
+  // Matrimoniale Ambra: max 3 persone
+  if (n <= 3) {
+    const extra = n === 3
+    rooms.push({
+      id: '6a8870ce-be2b-41d9-971e-5c833a85eb4a',
+      name: 'Matrimoniale Ambra',
+      basePrice: extra ? 90 : 80,
+      priceLabel: extra ? '€80 + €10 letto aggiuntivo' : '€80',
+      extraBed: extra,
+      extraBedCount: extra ? 1 : 0,
+    })
+  }
+
+  // Tripla Lena: tutte le persone
+  const lenaExtra = n === 4
+  rooms.push({
+    id: LENA_ID,
+    name: 'Tripla Lena',
+    basePrice: n === 4 ? 100 : n === 3 ? 90 : 80,
+    priceLabel: n === 4 ? '€90 + €10 letto aggiuntivo' : n === 3 ? '€90' : '€80',
+    extraBed: lenaExtra,
+    extraBedCount: lenaExtra ? 1 : 0,
+  })
+
+  return rooms
+}
 
 function getTodayStr() {
   const t = new Date()
@@ -18,14 +84,14 @@ function getTomorrowStr() {
 }
 
 type Segment = { roomId: string; roomName: string; checkIn: string; checkOut: string }
-type Step = 'form' | 'confirm' | 'done' | 'error'
+type Step = 'form' | 'done' | 'error'
 
 export default function Prenota() {
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
     phone: '',
-    numGuests: '2',
+    numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
     preferredRoomId: '',
@@ -45,12 +111,17 @@ export default function Prenota() {
     setLoading(true)
     setErrorMsg('')
     try {
+      const roomOptions = getRoomOptions(Number(form.numGuests))
+      const selectedRoom = roomOptions.find(r => r.id === form.preferredRoomId)
       const res = await fetch('/api/prenota', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...form,
           numGuests: Number(form.numGuests),
+          pricePerNight: selectedRoom?.basePrice,
+          extraBed: selectedRoom?.extraBed || false,
+          extraBedCount: selectedRoom?.extraBedCount || 0,
         }),
       })
       const data = await res.json()
@@ -75,31 +146,25 @@ export default function Prenota() {
     return `${day}/${m}/${y}`
   }
 
-  const eligibleRooms = ROOMS.filter(r => r.maxGuests >= Number(form.numGuests))
+  const roomOptions = getRoomOptions(Number(form.numGuests))
 
   return (
     <main className="min-h-screen bg-gray-50 text-gray-900">
 
-      {/* HEADER */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold">
-            ← Casa Ania Rozzano
-          </Link>
+          <Link href="/" className="text-green-800 font-bold">← Casa Ania Rozzano</Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="text-green-700 text-sm font-semibold">
-            💬 WhatsApp
-          </a>
+            className="text-green-700 text-sm font-semibold">💬 WhatsApp</a>
         </div>
       </header>
 
       <div className="max-w-2xl mx-auto px-4 py-8">
 
-        {/* FORM */}
         {step === 'form' && (
           <>
-            <h1 className="text-2xl font-bold text-gray-800 mb-1">Prenota una camera</h1>
-            <p className="text-gray-500 text-sm mb-6">Compila il modulo — ti confermiamo in poche ore</p>
+            <h1 className="text-2xl font-bold text-gray-800 mb-1">Prenota la tua camera</h1>
+            <p className="text-gray-500 text-sm mb-6">Compila il modulo — ti confermiamo in pochi minuti</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -137,13 +202,13 @@ export default function Prenota() {
                     <button key={n} type="button"
                       onClick={() => { set('numGuests', n); set('preferredRoomId', '') }}
                       className={`py-3 rounded-xl text-sm font-semibold border-2 transition-colors ${form.numGuests === n ? 'bg-green-700 text-white border-green-700' : 'bg-white text-gray-700 border-gray-200'}`}>
-                      {n} {n === '1' ? 'pers.' : 'pers.'}
+                      {n} pers.
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* CAMERA PREFERITA */}
+              {/* CAMERA */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                 <p className="font-semibold text-gray-700 mb-1">Camera preferita</p>
                 <p className="text-xs text-gray-400 mb-3">Opzionale — faremo del nostro meglio</p>
@@ -153,18 +218,18 @@ export default function Prenota() {
                     className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === '' ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-gray-700'}`}>
                     Nessuna preferenza
                   </button>
-                  {eligibleRooms.map(room => (
+                  {roomOptions.map(room => (
                     <button key={room.id} type="button"
                       onClick={() => set('preferredRoomId', room.id)}
                       className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-gray-700'}`}>
                       <span className="font-medium">{room.name}</span>
-                      <span className="text-gray-400 ml-2">€{room.price}/notte</span>
+                      <span className="text-gray-400 ml-2 text-xs">{room.priceLabel}/notte</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              {/* DATI PERSONALI */}
+              {/* DATI */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                 <p className="font-semibold text-gray-700 mb-3">I tuoi dati</p>
                 <div className="space-y-3">
@@ -193,36 +258,34 @@ export default function Prenota() {
 
               <button type="submit" disabled={loading}
                 className="w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
-                {loading ? 'Verifica disponibilità...' : 'Richiedi prenotazione'}
+                {loading ? 'Verifica disponibilità...' : 'Prenota'}
               </button>
 
               <p className="text-center text-xs text-gray-400">
-                Riceverai conferma via telefono entro poche ore
+                Riceverai conferma via WhatsApp entro pochi minuti
               </p>
             </form>
           </>
         )}
 
-        {/* DONE */}
         {step === 'done' && (
           <div className="text-center">
             <div className="text-6xl mb-4">✅</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Richiesta inviata!</h2>
             <p className="text-gray-500 text-sm mb-6">
-              Ti contatteremo al numero <strong>{form.phone}</strong> per confermare.
+              Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.
             </p>
 
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
               <p className="font-semibold text-gray-700 mb-3">Riepilogo</p>
               <p className="text-sm text-gray-600 mb-1">👤 {form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
               <p className="text-sm text-gray-600 mb-3">📅 Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
-
               {multiRoom ? (
                 <>
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3">
                     <p className="text-amber-800 text-sm font-semibold mb-1">⚠️ Soggiorno con cambio camera</p>
                     <p className="text-amber-700 text-xs">
-                      Per le date richieste il soggiorno è diviso in più camere. Per qualsiasi chiarimento chiama direttamente la proprietaria.
+                      Per le date richieste il soggiorno è diviso in più camere. Per chiarimenti chiama direttamente la proprietaria.
                     </p>
                   </div>
                   {solution.map((seg, i) => (
@@ -240,21 +303,16 @@ export default function Prenota() {
               className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm mb-3">
               💬 Scrivi su WhatsApp
             </a>
-            <Link href="/" className="block text-sm text-gray-500 underline">
-              Torna alla home
-            </Link>
+            <Link href="/" className="block text-sm text-gray-500 underline">Torna alla home</Link>
           </div>
         )}
 
-        {/* ERROR */}
         {step === 'error' && (
           <div className="text-center">
             <div className="text-6xl mb-4">😔</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Nessuna disponibilità</h2>
             <p className="text-gray-500 text-sm mb-6">{errorMsg}</p>
-            <p className="text-sm text-gray-600 mb-6">
-              Contattaci direttamente — possiamo trovare insieme una soluzione.
-            </p>
+            <p className="text-sm text-gray-600 mb-6">Contattaci direttamente — possiamo trovare insieme una soluzione.</p>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm mb-3">
               💬 Scrivi su WhatsApp
