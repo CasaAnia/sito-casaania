@@ -11,7 +11,7 @@ const rooms = [
     desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
     price: 60,
     guests: '1–2 persone',
-    icon: '🛏',
+    img: '/camere/Singola/foto1.jpg',
     href: '/camere/singola',
   },
   {
@@ -19,7 +19,7 @@ const rooms = [
     desc: 'Spaziosa camera matrimoniale con bagno condiviso. Perfetta per coppie o familiari in visita.',
     price: 79,
     guests: '2 persone',
-    icon: '🛏',
+    img: '/camere/Allegra/foto1.jpg',
     href: '/camere/allegra',
   },
   {
@@ -27,7 +27,7 @@ const rooms = [
     desc: 'Camera matrimoniale luminosa con bagno condiviso. Ambiente tranquillo e confortevole.',
     price: 79,
     guests: '2 persone',
-    icon: '🛏',
+    img: '/camere/Ambra/foto1.jpg',
     href: '/camere/ambra',
   },
   {
@@ -35,7 +35,7 @@ const rooms = [
     desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
     price: 99,
     guests: '2–4 persone',
-    icon: '🛏',
+    img: '/camere/Lena/foto1.jpg',
     badge: 'Bagno privato',
     href: '/camere/lena',
   },
@@ -111,9 +111,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
               <div key={i} className="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
-                {/* Placeholder foto */}
-                <div className="bg-green-50 h-40 flex items-center justify-center text-5xl">
-                  {room.icon}
+                <div className="h-40 overflow-hidden">
+                  <img src={room.img} alt={room.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-1">

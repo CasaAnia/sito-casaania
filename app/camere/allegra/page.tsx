@@ -26,16 +26,15 @@ export default function CameraAllegra() {
         <h1 className="text-3xl font-bold text-gray-800 mb-1">Camera Matrimoniale Allegra</h1>
         <p className="text-green-700 font-semibold text-lg mb-6">€79 / notte · 2 persone</p>
 
-        <div className="bg-green-50 rounded-2xl h-64 md:h-96 flex items-center justify-center text-6xl mb-4">
-          🛏
+        <div className="rounded-2xl h-64 md:h-96 overflow-hidden mb-4">
+          <img src="/camere/Allegra/foto1.jpg" alt="Camera Allegra" className="w-full h-full object-cover" />
         </div>
 
+        {/* GALLERIA */}
         <div className="grid grid-cols-3 gap-2 mb-8">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="bg-green-50 rounded-xl h-24 flex items-center justify-center text-3xl">
-              🛏
-            </div>
-          ))}
+          <div className="rounded-xl h-24 overflow-hidden">
+            <img src="/camere/Allegra/foto2.jpg" alt="Camera Allegra 2" className="w-full h-full object-cover" />
+          </div>
         </div>
 
         <div className="mb-8">

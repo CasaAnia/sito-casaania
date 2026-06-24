@@ -29,16 +29,8 @@ export default function CameraLena() {
         </div>
         <p className="text-green-700 font-semibold text-lg mb-6">€99 / notte · 2–4 persone</p>
 
-        <div className="bg-green-50 rounded-2xl h-64 md:h-96 flex items-center justify-center text-6xl mb-4">
-          🛏
-        </div>
-
-        <div className="grid grid-cols-3 gap-2 mb-8">
-          {[1, 2, 3].map(i => (
-            <div key={i} className="bg-green-50 rounded-xl h-24 flex items-center justify-center text-3xl">
-              🛏
-            </div>
-          ))}
+        <div className="rounded-2xl h-64 md:h-96 overflow-hidden mb-4">
+          <img src="/camere/Lena/foto1.jpg" alt="Camera Lena" className="w-full h-full object-cover" />
         </div>
 
         <div className="mb-8">
