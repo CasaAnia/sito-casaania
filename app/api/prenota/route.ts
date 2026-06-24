@@ -1,6 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import webpush from 'web-push'
 import { ROOMS } from '@/lib/supabase'
+
+webpush.setVapidDetails(
+  'mailto:amerigogranata@gmail.com',
+  process.env.VAPID_PUBLIC_KEY!,
+  process.env.VAPID_PRIVATE_KEY!
+)
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -106,12 +113,23 @@ function addDay(dateStr: string): string {
   return d.toISOString().slice(0, 10)
 }
 
-async function sendWhatsApp(message: string) {
-  const phone = process.env.CALLMEBOT_PHONE
-  const apikey = process.env.CALLMEBOT_APIKEY
-  if (!phone || !apikey) return
-  const encoded = encodeURIComponent(message)
-  await fetch(`https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${encoded}&apikey=${apikey}`)
+async function sendPushNotification(title: string, body: string) {
+  const supabasePush = createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
+  const { data: subs } = await supabasePush.from('push_subscriptions').select('subscription')
+  if (!subs || subs.length === 0) return
+  for (const sub of subs) {
+    try {
+      await webpush.sendNotification(
+        JSON.parse(sub.subscription),
+        JSON.stringify({ title, body, url: '/prenotazioni' })
+      )
+    } catch {
+      // subscription scaduta
+    }
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -167,14 +185,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Errore salvataggio prenotazione' }, { status: 500 })
   }
 
-  // WhatsApp notification
+  // Push notification
   const multiRoom = solution.length > 1
-  const roomDesc = solution.map(s => `${s.roomName} (${s.checkIn} → ${s.checkOut})`).join(', poi ')
-  const msg = multiRoom
-    ? `🏠 NUOVA PRENOTAZIONE (cambio camera)\n${firstName} ${lastName}, ${numGuests} pers.\nDal ${checkIn} al ${checkOut}\n📍 ${roomDesc}\n📞 ${phone}\n⚠️ Soggiorno diviso - contatta il cliente`
-    : `🏠 NUOVA PRENOTAZIONE\n${firstName} ${lastName}, ${numGuests} pers.\nDal ${checkIn} al ${checkOut}\n📍 ${solution[0].roomName}\n📞 ${phone}`
+  const roomDesc = multiRoom
+    ? solution.map(s => `${s.roomName} (${s.checkIn}→${s.checkOut})`).join(', poi ')
+    : solution[0].roomName
+  const pushTitle = multiRoom
+    ? `🏠 Nuova prenotazione (cambio camera!)`
+    : `🏠 Nuova prenotazione dal sito`
+  const pushBody = multiRoom
+    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente`
+    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}`
 
-  await sendWhatsApp(msg)
+  await sendPushNotification(pushTitle, pushBody)
 
   return NextResponse.json({ ok: true, solution, multiRoom })
 }
