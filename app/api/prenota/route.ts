@@ -3,11 +3,13 @@ import { createClient } from '@supabase/supabase-js'
 import webpush from 'web-push'
 import { ROOMS } from '@/lib/supabase'
 
-webpush.setVapidDetails(
-  'mailto:amerigogranata@gmail.com',
-  process.env.VAPID_PUBLIC_KEY!,
-  process.env.VAPID_PRIVATE_KEY!
-)
+if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
+  webpush.setVapidDetails(
+    'mailto:amerigogranata@gmail.com',
+    process.env.VAPID_PUBLIC_KEY,
+    process.env.VAPID_PRIVATE_KEY
+  )
+}
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
