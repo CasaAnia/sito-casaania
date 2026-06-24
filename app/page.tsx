@@ -52,10 +52,10 @@ export default function Home() {
             <h1 className="text-lg font-bold text-green-800">Casa Ania Rozzano</h1>
             <p className="text-xs text-gray-500">B&B a 140 metri da Humanitas</p>
           </div>
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+          <Link href="/prenota"
             className="bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full">
             Prenota ora
-          </a>
+          </Link>
         </div>
       </header>
 
@@ -70,13 +70,13 @@ export default function Home() {
             Camere confortevoli e accoglienti a soli 140 metri dall'ospedale Humanitas di Rozzano. Il posto giusto per familiari e pazienti.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+            <Link href="/prenota"
               className="bg-white text-green-800 font-bold px-6 py-3 rounded-full text-sm">
-              💬 Scrivici su WhatsApp
-            </a>
-            <a href={TEL_LINK}
+              🗓 Prenota online
+            </Link>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="border border-white text-white font-bold px-6 py-3 rounded-full text-sm">
-              📞 {PHONE_DISPLAY}
+              💬 WhatsApp
             </a>
           </div>
         </div>
