@@ -12,6 +12,7 @@ const rooms = [
     price: 60,
     guests: '1–2 persone',
     icon: '🛏',
+    href: '/camere/singola',
   },
   {
     name: 'Camera Matrimoniale Allegra',
@@ -19,6 +20,7 @@ const rooms = [
     price: 79,
     guests: '2 persone',
     icon: '🛏',
+    href: '/camere/allegra',
   },
   {
     name: 'Camera Matrimoniale Ambra',
@@ -26,6 +28,7 @@ const rooms = [
     price: 79,
     guests: '2 persone',
     icon: '🛏',
+    href: '/camere/ambra',
   },
   {
     name: 'Camera Lena',
@@ -34,6 +37,7 @@ const rooms = [
     guests: '2–4 persone',
     icon: '🛏',
     badge: 'Bagno privato',
+    href: '/camere/lena',
   },
 ]
 
@@ -123,6 +127,9 @@ export default function Home() {
                     <span className="text-xs text-gray-400">👥 {room.guests}</span>
                     <span className="font-bold text-green-700 text-lg">€{room.price}<span className="text-xs font-normal text-gray-400">/notte</span></span>
                   </div>
+                  <Link href={room.href} className="mt-3 block text-center text-sm text-green-700 font-semibold border border-green-200 rounded-xl py-2 hover:bg-green-50">
+                    Scopri di più →
+                  </Link>
                 </div>
               </div>
             ))}
