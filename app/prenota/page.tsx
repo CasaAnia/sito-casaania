@@ -311,13 +311,9 @@ export default function Prenota() {
           <div className="text-center">
             <div className="text-6xl mb-4">😔</div>
             <h2 className="text-2xl font-bold text-gray-800 mb-2">Nessuna disponibilità</h2>
-            <p className="text-gray-500 text-sm mb-6">{errorMsg}</p>
-            <p className="text-sm text-gray-600 mb-6">Contattaci direttamente — possiamo trovare insieme una soluzione.</p>
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm mb-3">
-              💬 Scrivi su WhatsApp
-            </a>
-            <button onClick={() => setStep('form')} className="block w-full text-sm text-gray-500 underline">
+            <p className="text-gray-500 text-sm mb-6">Non ci sono camere libere per le date selezionate. Prova con date diverse.</p>
+            <button onClick={() => setStep('form')}
+              className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm">
               ← Modifica le date
             </button>
           </div>
