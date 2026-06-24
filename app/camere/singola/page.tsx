@@ -37,7 +37,7 @@ export default function CameraSingola() {
 
         {/* FOTO PRINCIPALE */}
         <div className="rounded-2xl h-64 md:h-96 overflow-hidden mb-4">
-          <img src="/camere/Singola/foto1.jpg" alt="Camera Singola" className="w-full h-full object-cover" />
+          <img src="/camere/singola/foto1.jpg" alt="Camera Singola" className="w-full h-full object-cover" />
         </div>
 
         {/* DESCRIZIONE */}

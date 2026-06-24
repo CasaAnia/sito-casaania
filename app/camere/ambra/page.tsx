@@ -27,7 +27,7 @@ export default function CameraAmbra() {
         <p className="text-green-700 font-semibold text-lg mb-6">€79 / notte · 2 persone</p>
 
         <div className="rounded-2xl h-64 md:h-96 overflow-hidden mb-4">
-          <img src="/camere/Ambra/foto1.jpg" alt="Camera Ambra" className="w-full h-full object-cover" />
+          <img src="/camere/ambra/foto1.jpg" alt="Camera Ambra" className="w-full h-full object-cover" />
         </div>
 
         <div className="mb-8">

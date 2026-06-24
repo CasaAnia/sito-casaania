@@ -27,13 +27,13 @@ export default function CameraAllegra() {
         <p className="text-green-700 font-semibold text-lg mb-6">€79 / notte · 2 persone</p>
 
         <div className="rounded-2xl h-64 md:h-96 overflow-hidden mb-4">
-          <img src="/camere/Allegra/foto1.jpg" alt="Camera Allegra" className="w-full h-full object-cover" />
+          <img src="/camere/allegra/foto1.jpg" alt="Camera Allegra" className="w-full h-full object-cover" />
         </div>
 
         {/* GALLERIA */}
         <div className="grid grid-cols-3 gap-2 mb-8">
           <div className="rounded-xl h-24 overflow-hidden">
-            <img src="/camere/Allegra/foto2.jpg" alt="Camera Allegra 2" className="w-full h-full object-cover" />
+            <img src="/camere/allegra/foto2.jpg" alt="Camera Allegra 2" className="w-full h-full object-cover" />
           </div>
         </div>
 
