@@ -110,8 +110,8 @@ export default function Home() {
           <p className="text-center text-gray-500 text-sm mb-8">Tutte le camere includono lenzuola, asciugamani e Wi-Fi gratuito</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
-              <div key={i} className="border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
-                <div className="h-52 overflow-hidden">
+              <div key={i} className="border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
+                <div className="h-52 rounded-2xl overflow-hidden">
                   <img src={room.img} alt={room.name} className="w-full h-full object-cover" />
                 </div>
                 <div className="p-4">
