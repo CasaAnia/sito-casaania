@@ -111,7 +111,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
               <div key={i} className="border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-                <div className="h-72 rounded-2xl overflow-hidden">
+                <div className={`${room.name === 'Camera Matrimoniale Allegra' ? 'h-80' : 'h-72'} rounded-2xl overflow-hidden`}>
                   <img src={room.img} alt={room.name} className={`w-full h-full object-cover ${room.name === 'Camera Matrimoniale Allegra' ? 'object-[center_30%]' : 'object-center'}`} />
                 </div>
                 <div className="p-4">
