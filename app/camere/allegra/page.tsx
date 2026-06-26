@@ -1,15 +1,35 @@
+'use client'
 import Link from 'next/link'
+import { useState } from 'react'
 
 const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
+const PHOTOS = [1,2,3,4,5,6,7,8,9,10]
 
 export default function CameraAllegra() {
+  const [lightbox, setLightbox] = useState<number | null>(null)
+
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
-      <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
+      {/* LIGHTBOX */}
+      {lightbox !== null && (
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          onClick={() => setLightbox(null)}>
+          <button className="absolute top-4 right-4 text-white text-3xl font-bold">✕</button>
+          <button className="absolute left-4 text-white text-4xl font-bold px-2"
+            onClick={e => { e.stopPropagation(); setLightbox(l => l !== null && l > 1 ? l - 1 : PHOTOS.length) }}>‹</button>
+          <img src={`/camere/allegra/foto${lightbox}.jpg`} alt=""
+            className="max-w-full max-h-full object-contain rounded-xl"
+            onClick={e => e.stopPropagation()} />
+          <button className="absolute right-4 text-white text-4xl font-bold px-2"
+            onClick={e => { e.stopPropagation(); setLightbox(l => l !== null && l < PHOTOS.length ? l + 1 : 1) }}>›</button>
+        </div>
+      )}
+
+      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 text-green-800 font-bold">
             ← Casa Ania Rozzano
@@ -24,16 +44,18 @@ export default function CameraAllegra() {
       <div className="max-w-4xl mx-auto px-4 py-8">
 
         <h1 className="text-3xl font-bold text-gray-800 mb-1">Camera Matrimoniale Allegra</h1>
-        <p className="text-green-700 font-semibold text-lg mb-6">€79 / notte · 2 persone</p>
+        <p className="text-green-700 font-semibold text-lg mb-6">€80 / notte · 2 persone</p>
 
-        <div className="rounded-2xl h-80 md:h-[500px] overflow-hidden mb-4">
+        <div className="rounded-2xl h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer"
+          onClick={() => setLightbox(1)}>
           <img src="/camere/allegra/foto1.jpg" alt="Camera Allegra" className="w-full h-full object-cover" />
         </div>
 
         {/* GALLERIA */}
         <div className="grid grid-cols-3 gap-2 mb-8">
           {[2,3,4,5,6,7,8,9,10].map(n => (
-            <div key={n} className="rounded-xl h-24 overflow-hidden">
+            <div key={n} className="rounded-xl h-24 overflow-hidden cursor-pointer"
+              onClick={() => setLightbox(n)}>
               <img src={`/camere/allegra/foto${n}.jpg`} alt={`Camera Allegra ${n}`} className="w-full h-full object-cover" />
             </div>
           ))}
