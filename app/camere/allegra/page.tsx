@@ -53,7 +53,7 @@ export default function CameraAllegra() {
 
         {/* GALLERIA */}
         <div className="grid grid-cols-3 gap-2 mb-8">
-          {[2,5,4,3,6,7,8,9,10].map(n => (
+          {[2,6,4,3,5,7,8,9,10].map(n => (
             <div key={n} className="rounded-xl h-24 overflow-hidden cursor-pointer"
               onClick={() => setLightbox(n)}>
               <img src={`/camere/allegra/foto${n}.jpg`} alt={`Camera Allegra ${n}`} className="w-full h-full object-cover" />
