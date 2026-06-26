@@ -6,10 +6,11 @@ const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
-const PHOTOS = [1,2,3,4,5,6,7,8,9,10]
+const PHOTOS = [1,2,6,4,3,5,7,8,9,10]
 
 export default function CameraAllegra() {
   const [lightbox, setLightbox] = useState<number | null>(null)
+  const lightboxIdx = lightbox !== null ? PHOTOS.indexOf(lightbox) : -1
 
   return (
     <main className="min-h-screen bg-white text-gray-900">
@@ -20,12 +21,12 @@ export default function CameraAllegra() {
           onClick={() => setLightbox(null)}>
           <button className="absolute top-4 right-4 text-white text-3xl font-bold">✕</button>
           <button className="absolute left-4 text-white text-4xl font-bold px-2"
-            onClick={e => { e.stopPropagation(); setLightbox(l => l !== null && l > 1 ? l - 1 : PHOTOS.length) }}>‹</button>
+            onClick={e => { e.stopPropagation(); setLightbox(PHOTOS[lightboxIdx > 0 ? lightboxIdx - 1 : PHOTOS.length - 1]) }}>‹</button>
           <img src={`/camere/allegra/foto${lightbox}.jpg`} alt=""
             className="max-w-full max-h-full object-contain rounded-xl"
             onClick={e => e.stopPropagation()} />
           <button className="absolute right-4 text-white text-4xl font-bold px-2"
-            onClick={e => { e.stopPropagation(); setLightbox(l => l !== null && l < PHOTOS.length ? l + 1 : 1) }}>›</button>
+            onClick={e => { e.stopPropagation(); setLightbox(PHOTOS[lightboxIdx < PHOTOS.length - 1 ? lightboxIdx + 1 : 0]) }}>›</button>
         </div>
       )}
 
