@@ -6,7 +6,7 @@ const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
-const PHOTOS = [1, 2, 3]
+const PHOTOS = [1, 2, 3, 4, 5, 6, 7]
 
 export default function CameraLena() {
   const [lightbox, setLightbox] = useState<number | null>(null)
