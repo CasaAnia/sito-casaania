@@ -52,7 +52,7 @@ export default function CameraLena() {
 
         <div className="rounded-2xl h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer"
           onClick={() => setLightbox(1)}>
-          <img src="/camere/lena/foto1.jpg" alt="Camera Lena" className="w-full h-full object-cover" />
+          <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-cover" />
         </div>
 
         <div className="grid grid-cols-3 gap-2 mb-8">

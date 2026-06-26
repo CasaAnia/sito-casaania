@@ -35,7 +35,7 @@ const rooms = [
     desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
     price: 90,
     guests: '2–4 persone',
-    img: '/camere/lena/foto1.jpg',
+    img: '/camere/lena/foto1b.jpg',
     badge: 'Bagno privato',
     href: '/camere/lena',
   },
