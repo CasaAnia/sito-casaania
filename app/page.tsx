@@ -112,7 +112,7 @@ export default function Home() {
             {rooms.map((room, i) => (
               <div key={i} className="border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
                 <div className="h-80 rounded-2xl overflow-hidden">
-                  <img src={room.img} alt={room.name} className={`w-full h-full object-cover ${room.name === 'Camera Matrimoniale Allegra' ? 'scale-125' : room.name === 'Camera Singola' ? 'scale-[1.03]' : room.name === 'Camera Matrimoniale Ambra' ? '' : ''}`} style={room.name === 'Camera Matrimoniale Allegra' ? {transformOrigin: '65% center'} : {}} />
+                  <img src={room.img} alt={room.name} className={`w-full h-full object-cover ${room.name === 'Camera Matrimoniale Allegra' ? 'scale-125' : room.name === 'Camera Singola' ? 'scale-[1.03]' : room.name === 'Camera Matrimoniale Ambra' ? '' : room.name === 'Camera Lena' ? 'scale-75' : ''}`} style={room.name === 'Camera Matrimoniale Allegra' ? {transformOrigin: '65% center'} : {}} />
                 </div>
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-1">
