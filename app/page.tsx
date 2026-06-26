@@ -9,7 +9,7 @@ const rooms = [
   {
     name: 'Camera Singola',
     desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
-    price: 60,
+    price: 70,
     guests: '1–2 persone',
     img: '/camere/singola/foto1.jpg',
     href: '/camere/singola',
@@ -17,7 +17,7 @@ const rooms = [
   {
     name: 'Camera Matrimoniale Allegra',
     desc: 'Spaziosa camera matrimoniale con bagno condiviso. Perfetta per coppie o familiari in visita.',
-    price: 79,
+    price: 80,
     guests: '2 persone',
     img: '/camere/allegra/foto1.jpg',
     href: '/camere/allegra',
@@ -25,7 +25,7 @@ const rooms = [
   {
     name: 'Camera Matrimoniale Ambra',
     desc: 'Camera matrimoniale luminosa con bagno condiviso. Ambiente tranquillo e confortevole.',
-    price: 79,
+    price: 80,
     guests: '2 persone',
     img: '/camere/ambra/foto1.jpg',
     href: '/camere/ambra',
@@ -33,7 +33,7 @@ const rooms = [
   {
     name: 'Camera Lena',
     desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
-    price: 99,
+    price: 90,
     guests: '2–4 persone',
     img: '/camere/lena/foto1.jpg',
     badge: 'Bagno privato',
