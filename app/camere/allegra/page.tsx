@@ -32,9 +32,11 @@ export default function CameraAllegra() {
 
         {/* GALLERIA */}
         <div className="grid grid-cols-3 gap-2 mb-8">
-          <div className="rounded-xl h-24 overflow-hidden">
-            <img src="/camere/allegra/foto2.jpg" alt="Camera Allegra 2" className="w-full h-full object-cover" />
-          </div>
+          {[2,3,4,5,6,7,8,9,10].map(n => (
+            <div key={n} className="rounded-xl h-24 overflow-hidden">
+              <img src={`/camere/allegra/foto${n}.jpg`} alt={`Camera Allegra ${n}`} className="w-full h-full object-cover" />
+            </div>
+          ))}
         </div>
 
         <div className="mb-8">
