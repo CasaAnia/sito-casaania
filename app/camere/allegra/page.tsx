@@ -6,7 +6,7 @@ const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
-const PHOTOS = [1,2,6,4,3,5,7,8,9,10]
+const PHOTOS = [1,2,4,3,5,7,8,9,10]
 
 export default function CameraAllegra() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -54,7 +54,7 @@ export default function CameraAllegra() {
 
         {/* GALLERIA */}
         <div className="grid grid-cols-3 gap-2 mb-8">
-          {[2,6,4,3,5,7,8,9,10].map(n => (
+          {[2,4,3,5,7,8,9,10].map(n => (
             <div key={n} className="rounded-xl h-24 overflow-hidden cursor-pointer"
               onClick={() => setLightbox(n)}>
               <img src={`/camere/allegra/foto${n}.jpg`} alt={`Camera Allegra ${n}`} className="w-full h-full object-cover" />
