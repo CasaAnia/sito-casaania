@@ -34,8 +34,8 @@ export default function CameraSingola() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-green-800 font-bold">
-            ← Casa Ania Rozzano
+          <Link href="/" className="flex items-center text-gray-400 hover:text-gray-600 text-2xl">
+            ←
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full">
