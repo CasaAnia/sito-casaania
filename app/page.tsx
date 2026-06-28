@@ -142,7 +142,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <Link href={room.href} className="mt-3 block text-center text-sm text-green-700 font-semibold py-2">
+                  <Link href={room.href} className="mt-3 block text-center text-base text-green-700 font-semibold py-2">
                     Scopri di più →
                   </Link>
                 </div>
