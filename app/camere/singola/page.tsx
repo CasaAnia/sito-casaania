@@ -78,9 +78,18 @@ export default function CameraSingola() {
         </div>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-3 text-gray-800">Cosa è incluso</h2>
+          <h2 className="text-xl font-bold mb-3 text-gray-800">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-            {['✅ Lenzuola e asciugamani', '✅ Wi-Fi gratuito', '✅ Bagno condiviso', '✅ Riscaldamento', '✅ Finestra con vista giardino', '✅ Letto supplementare disponibile'].map(s => (
+            {[
+              '✅ Bagno privato',
+              '✅ Aria condizionata e riscaldamento',
+              '✅ Piccolo frigorifero',
+              '✅ TV',
+              '✅ Wi-Fi gratuito',
+              '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
+              '✅ Cambio biancheria ogni 4 notti',
+              '✅ Letto supplementare su richiesta',
+            ].map(s => (
               <li key={s}>{s}</li>
             ))}
           </ul>
