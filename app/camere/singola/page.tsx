@@ -109,7 +109,7 @@ export default function CameraSingola() {
         </div>
 
         <div className="bg-green-800 rounded-2xl p-6 text-white text-center">
-          <p className="font-bold text-lg mb-1">Prenota questa camera</p>
+          <p className="font-bold text-lg mb-1">Verifica la disponibilità</p>
           <p className="text-green-200 text-sm mb-4">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
