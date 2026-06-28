@@ -1,5 +1,7 @@
 import Link from 'next/link'
 
+const loraStyle = { fontFamily: "'Lora', serif" }
+
 const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -44,12 +46,13 @@ const rooms = [
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');`}</style>
 
       {/* HEADER */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold text-green-800">Casa Ania Rozzano</h1>
+            <h1 style={loraStyle} className="text-lg font-semibold text-green-800">Casa Ania Rozzano</h1>
             <p className="text-xs text-gray-500">B&B a 140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
@@ -63,7 +66,7 @@ export default function Home() {
       <section className="bg-green-800 text-white py-16 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="text-green-300 text-sm font-semibold uppercase tracking-widest mb-3">B&B a Rozzano</p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+          <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             A pochi passi<br />da Humanitas
           </h2>
           <p className="text-green-100 text-lg mb-8 max-w-xl mx-auto">
@@ -85,7 +88,7 @@ export default function Home() {
       {/* PERCHÉ NOI */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Perché scegliere Casa Ania</h2>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-8 text-gray-800">Perché scegliere Casa Ania</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
               { icon: '📍', title: '140 metri', desc: "dall'ospedale Humanitas" },
@@ -106,7 +109,7 @@ export default function Home() {
       {/* CAMERE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-2 text-gray-800">Le nostre camere</h2>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-2 text-gray-800">Le nostre camere</h2>
           <p className="text-center text-gray-500 text-sm mb-8">Tutte le camere includono lenzuola, asciugamani e Wi-Fi gratuito</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
@@ -116,7 +119,7 @@ export default function Home() {
                 </Link>
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-1">
-                    <h3 className="font-bold text-gray-800">{room.name}</h3>
+                    <h3 style={loraStyle} className="font-semibold text-gray-800">{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
@@ -139,7 +142,7 @@ export default function Home() {
       {/* DOVE SIAMO */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl font-bold text-center mb-8 text-gray-800">Dove siamo</h2>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-8 text-gray-800">Dove siamo</h2>
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
@@ -164,7 +167,7 @@ export default function Home() {
       {/* CONTATTI / PRENOTAZIONE */}
       <section className="py-12 px-4 bg-green-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl font-bold mb-2">Prenota il tuo soggiorno</h2>
+          <h2 style={loraStyle} className="text-2xl font-semibold mb-2">Prenota il tuo soggiorno</h2>
           <p className="text-green-200 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
