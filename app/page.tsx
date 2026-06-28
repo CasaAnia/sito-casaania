@@ -62,7 +62,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 style={loraStyle} className="text-lg font-semibold text-green-800">Casa Ania Rozzano</h1>
-            <p className="text-xs text-gray-500">B&B a 140 metri da Humanitas</p>
+            <p className="text-xs text-gray-500">A 140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
             className="bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full">
