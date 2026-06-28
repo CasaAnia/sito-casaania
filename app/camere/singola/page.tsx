@@ -92,7 +92,6 @@ export default function CameraSingola() {
               '✅ Wi-Fi gratuito e veloce',
               '✅ TV',
               '✅ Piccolo frigorifero',
-              '✅ Telefono in camera',
               '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✅ Cambio biancheria ogni 4 notti',
               '✅ Letto supplementare su richiesta',
