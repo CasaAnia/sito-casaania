@@ -79,21 +79,23 @@ export default function Home() {
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-          <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+          <p className="text-white/80 text-lg max-w-xl mx-auto">
             Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.
           </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="bg-white text-green-800 font-bold px-6 py-3 rounded-full text-sm">
-              💬 WhatsApp
-            </a>
-            <a href={TEL_LINK}
-              className="border border-white text-white font-bold px-6 py-3 rounded-full text-sm">
-              📞 {PHONE_DISPLAY}
-            </a>
-          </div>
         </div>
       </section>
+
+      {/* CONTATTI RAPIDI */}
+      <div className="bg-white px-4 py-5 flex flex-col sm:flex-row gap-3 justify-center border-b border-gray-100">
+        <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+          className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm text-center">
+          💬 WhatsApp
+        </a>
+        <a href={TEL_LINK}
+          className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm text-center">
+          📞 {PHONE_DISPLAY}
+        </a>
+      </div>
 
       {/* PERCHÉ NOI */}
       <section className="py-12 px-4 bg-gray-50">
