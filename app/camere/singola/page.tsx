@@ -63,9 +63,17 @@ export default function CameraSingola() {
 
         <div className="mb-8">
           <h2 className="text-xl font-bold mb-3 text-gray-800">Descrizione</h2>
+          <p className="text-gray-600 leading-relaxed mb-3">
+            Amelia è la camera più piccola di Casa Ania — compatta, raccolta, ma curatissima in ogni dettaglio.
+            Letto singolo con lenzuola stiratissime e profumate, bagno privato, e tutto il calore di una casa dove ci si sente subito a proprio agio.
+          </p>
+          <p className="text-gray-600 leading-relaxed mb-3">
+            Amelia e Lena condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
+            dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
+            Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
+          </p>
           <p className="text-gray-600 leading-relaxed">
-            Camera accogliente con letto singolo, ideale per soggiorni brevi o prolungati vicino all'ospedale Humanitas.
-            Ambiente tranquillo e curato, con possibilità di aggiungere un letto supplementare per una seconda persona.
+            Si può aggiungere un secondo letto — la camera è intima, ma accogliente come tutto il resto della casa.
           </p>
         </div>
 
