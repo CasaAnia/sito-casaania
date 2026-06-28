@@ -64,23 +64,13 @@ export default function CameraSingola() {
           <img src="/camere/singola/foto1.jpg" alt="Camera Singola" className="w-full h-full object-cover" />
         </div>
 
-        <div className="mb-8">
-          <div className="grid grid-cols-2 gap-2 mb-2">
-            {[2, 5].map(n => (
-              <div key={n} className="rounded-xl overflow-hidden cursor-pointer" style={{ aspectRatio: '4/3' }}
-                onClick={() => setLightbox(n)}>
-                <img src={`/camere/singola/foto${n}.jpg`} alt={`Camera Singola ${n}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
-          <div className="grid grid-cols-3 gap-2">
-            {[3, 4, 6, 8, 7, 10, 11, 12].map(n => (
-              <div key={n} className="rounded-xl overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
-                onClick={() => setLightbox(n)}>
-                <img src={`/camere/singola/foto${n}.jpg`} alt={`Camera Singola ${n}`} className="w-full h-full object-cover" />
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-3 gap-2 mb-8">
+          {[2, 5, 3, 4, 6, 8, 7, 10, 11, 12].map(n => (
+            <div key={n} className="rounded-xl overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
+              onClick={() => setLightbox(n)}>
+              <img src={`/camere/singola/foto${n}.jpg`} alt={`Camera Singola ${n}`} className="w-full h-full object-cover" />
+            </div>
+          ))}
         </div>
 
         <div className="mb-8">
