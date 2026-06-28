@@ -93,7 +93,7 @@ export default function CameraSingola() {
               '✅ TV',
               '✅ Piccolo frigorifero',
               '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
-              '✅ Cambio biancheria ogni 4 notti',
+              '✅ Cambio lenzuola e asciugamani ogni 4 notti',
               '✅ Letto supplementare su richiesta',
             ].map(s => (
               <li key={s}>{s}</li>
