@@ -15,6 +15,8 @@ export default function CameraSingola() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');`}</style>
+
       {/* LIGHTBOX */}
       {lightbox !== null && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
@@ -44,8 +46,11 @@ export default function CameraSingola() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 className="text-3xl font-bold text-gray-800 mb-1">Camera Singola Amelia</h1>
-        <p className="text-green-700 font-semibold text-lg mb-6">€70 / notte · 1–2 persone</p>
+        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2">Camera Singola Amelia</h1>
+        <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 mb-6">
+          <p className="text-green-700 font-semibold text-lg">€70 / notte · 1 persona</p>
+          <p className="text-green-700 font-semibold text-lg">€75 / notte · 2 persone (letto aggiuntivo)</p>
+        </div>
 
         <div className="rounded-2xl h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer"
           onClick={() => setLightbox(1)}>
@@ -62,23 +67,23 @@ export default function CameraSingola() {
         </div>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-3 text-gray-800">Descrizione</h2>
-          <p className="text-gray-600 leading-relaxed mb-3">
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-800">Descrizione</h2>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
             Amelia è la camera più piccola di Casa Ania — compatta, raccolta, ma curatissima in ogni dettaglio.
             Letto singolo con lenzuola stiratissime e profumate, bagno privato, e tutto il calore di una casa dove ci si sente subito a proprio agio.
           </p>
-          <p className="text-gray-600 leading-relaxed mb-3">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
             Amelia e Lena condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
             dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
             Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
           </p>
-          <p className="text-gray-600 leading-relaxed">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed">
             Si può aggiungere un secondo letto — la camera è intima, ma accogliente come tutto il resto della casa.
           </p>
         </div>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-3 text-gray-800">Ogni soggiorno include</h2>
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-800">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
             {[
               '✅ Bagno privato',
