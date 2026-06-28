@@ -72,11 +72,11 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative text-white px-4 overflow-hidden flex flex-col justify-center" style={{ minHeight: '420px', maxHeight: '560px' }}>
+      <section className="relative text-white px-4 overflow-hidden flex flex-col justify-end" style={{ minHeight: '420px', maxHeight: '560px' }}>
         <img src="/hero-mobile.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover md:hidden" style={{ objectPosition: 'center 45%' }} />
         <img src="/hero-desktop.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover hidden md:block" style={{ objectPosition: 'center 40%' }} />
         <div className="absolute inset-0 bg-black/10" />
-        <div className="relative max-w-4xl mx-auto text-center w-full">
+        <div className="relative max-w-4xl mx-auto text-center w-full pb-8">
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
