@@ -47,9 +47,9 @@ export default function CameraSingola() {
       <div className="max-w-4xl mx-auto px-4 py-8">
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2">Camera Singola Amelia</h1>
-        <div className="flex flex-col sm:flex-row gap-1 sm:gap-4 mb-6">
-          <p className="text-green-700 font-semibold text-lg">€70 / notte · 1 persona</p>
-          <p className="text-green-700 font-semibold text-lg">€75 / notte · 2 persone (letto aggiuntivo)</p>
+        <div className="flex flex-col gap-1 mb-6">
+          <p className="text-green-700 text-base">€70 a notte · per una persona</p>
+          <p className="text-green-700 text-base">€75 a notte · per due persone, con letto aggiuntivo</p>
         </div>
 
         <div className="rounded-2xl h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer"
