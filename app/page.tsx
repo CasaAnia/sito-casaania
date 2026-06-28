@@ -72,7 +72,7 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative text-white py-20 px-4 overflow-hidden" style={{ minHeight: '420px' }}>
+      <section className="relative text-white pt-40 pb-12 px-4 overflow-hidden" style={{ minHeight: '420px' }}>
         <img src="/hero-humanitas.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative max-w-4xl mx-auto text-center">
