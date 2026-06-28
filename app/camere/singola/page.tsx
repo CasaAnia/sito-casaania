@@ -88,12 +88,12 @@ export default function CameraSingola() {
             {[
               '✅ Bagno privato',
               '✅ Aria condizionata e riscaldamento',
-              '✅ Piccolo frigorifero',
-              '✅ TV',
               '✅ Wi-Fi gratuito e veloce',
+              '✅ TV',
+              '✅ Piccolo frigorifero',
+              '✅ Telefono in camera',
               '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✅ Cambio biancheria ogni 4 notti',
-              '✅ Telefono in camera',
               '✅ Letto supplementare su richiesta',
             ].map(s => (
               <li key={s}>{s}</li>
