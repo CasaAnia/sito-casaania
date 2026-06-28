@@ -20,7 +20,7 @@ const rooms = [
   },
   {
     name: 'Camera Matrimoniale Allegra',
-    desc: 'Spaziosa camera matrimoniale con bagno condiviso. Perfetta per coppie o familiari in visita.',
+    desc: 'Camera matrimoniale con bagno in camera e balconcino tutto per sé. Comoda, luminosa, con quel tocco di spazio in più che fa la differenza.',
     prices: [
       { label: '1–2 persone', amount: 80 },
       { label: '3 persone (letto aggiuntivo)', amount: 90 },
