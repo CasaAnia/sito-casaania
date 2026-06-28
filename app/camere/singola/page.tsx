@@ -6,7 +6,7 @@ const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
-const PHOTOS = [1, 2, 5, 3, 4, 6, 8, 7, 10, 11, 12]
+const PHOTOS = [1, 2, 5, 3, 6, 8, 7, 10, 11, 12]
 
 export default function CameraSingola() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -65,7 +65,7 @@ export default function CameraSingola() {
         </div>
 
         <div className="grid grid-cols-3 gap-2 mb-8">
-          {[2, 5, 3, 4, 6, 8, 7, 10, 11, 12].map(n => (
+          {[2, 5, 3, 6, 8, 7, 10, 11, 12].map(n => (
             <div key={n} className="rounded-xl overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
               <img src={`/camere/singola/foto${n}.jpg`} alt={`Camera Singola ${n}`} className="w-full h-full object-cover" />
@@ -98,6 +98,7 @@ export default function CameraSingola() {
               '✅ Wi-Fi gratuito e veloce',
               '✅ TV',
               '✅ Piccolo frigorifero',
+              '✅ Phon',
               '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✅ Cambio lenzuola e asciugamani ogni 4 notti',
               '✅ Letto supplementare su richiesta',
