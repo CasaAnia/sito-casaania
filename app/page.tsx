@@ -76,7 +76,7 @@ export default function Home() {
         <img src="/hero-mobile.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover md:hidden" style={{ objectPosition: 'center 45%' }} />
         <img src="/hero-desktop.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover hidden md:block" style={{ objectPosition: 'center 40%' }} />
         <div className="absolute inset-0 bg-black/10" />
-        <div className="relative max-w-4xl mx-auto text-center w-full pb-16">
+        <div className="relative max-w-4xl mx-auto text-center w-full pb-24">
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
