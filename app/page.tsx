@@ -76,7 +76,6 @@ export default function Home() {
         <img src="/hero-humanitas.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative max-w-4xl mx-auto text-center">
-          <p className="text-green-300 text-sm font-semibold uppercase tracking-widest mb-4">140 metri da Humanitas</p>
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
