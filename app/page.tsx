@@ -72,8 +72,8 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative text-white pt-56 pb-12 px-4 overflow-hidden" style={{ minHeight: '420px', maxHeight: '560px' }}>
-        <img src="/hero-humanitas.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: 'center 60%' }} />
+      <section className="relative text-white pt-40 pb-12 px-4 overflow-hidden" style={{ minHeight: '420px', maxHeight: '560px' }}>
+        <img src="/hero-humanitas.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: 'center 40%' }} />
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative max-w-4xl mx-auto text-center">
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
