@@ -80,14 +80,14 @@ export default function Home() {
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-          <p className="text-white/80 text-lg max-w-xl mx-auto">
-            Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.
-          </p>
         </div>
       </section>
 
       {/* CONTATTI RAPIDI */}
-      <div className="bg-white px-4 py-5 flex flex-col sm:flex-row gap-3 justify-center border-b border-gray-100">
+      <div className="bg-white px-4 pt-4 pb-2 text-center">
+        <p className="text-sm text-gray-500">Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.</p>
+      </div>
+      <div className="bg-white px-4 py-4 flex flex-col sm:flex-row gap-3 justify-center border-b border-gray-100">
         <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
           className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm text-center">
           💬 WhatsApp
