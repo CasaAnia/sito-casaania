@@ -72,23 +72,25 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="bg-green-800 text-white py-16 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="text-green-300 text-sm font-semibold uppercase tracking-widest mb-3">B&B a Rozzano</p>
+      <section className="relative text-white py-20 px-4 overflow-hidden" style={{ minHeight: '420px' }}>
+        <img src="/hero-humanitas.jpg" alt="Vista Humanitas dal balcone" className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative max-w-4xl mx-auto text-center">
+          <p className="text-green-300 text-sm font-semibold uppercase tracking-widest mb-4">B&B a Rozzano · 140 metri da Humanitas</p>
           <h2 style={loraStyle} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
-            A pochi passi<br />da Humanitas
+            Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-          <p className="text-green-100 text-lg mb-8 max-w-xl mx-auto">
-            Camere confortevoli e accoglienti a soli 140 metri dall'ospedale Humanitas di Rozzano. Il posto giusto per familiari e pazienti.
+          <p className="text-white/80 text-lg mb-8 max-w-xl mx-auto">
+            Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/prenota"
-              className="bg-white text-green-800 font-bold px-6 py-3 rounded-full text-sm">
-              🗓 Prenota online
-            </Link>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="border border-white text-white font-bold px-6 py-3 rounded-full text-sm">
+              className="bg-white text-green-800 font-bold px-6 py-3 rounded-full text-sm">
               💬 WhatsApp
+            </a>
+            <a href={TEL_LINK}
+              className="border border-white text-white font-bold px-6 py-3 rounded-full text-sm">
+              📞 {PHONE_DISPLAY}
             </a>
           </div>
         </div>
