@@ -93,6 +93,7 @@ export default function CameraSingola() {
               '✅ Wi-Fi gratuito',
               '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✅ Cambio biancheria ogni 4 notti',
+              '✅ Telefono in camera',
               '✅ Letto supplementare su richiesta',
             ].map(s => (
               <li key={s}>{s}</li>
