@@ -9,9 +9,10 @@ const TEL_LINK = `tel:+39${PHONE}`
 
 const rooms = [
   {
-    name: 'Camera Singola',
+    name: 'Camera Singola Amelia',
     desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
     price: 70,
+    price2: 75,
     guests: '1–2 persone',
     img: '/camere/singola/foto1.jpg',
     href: '/camere/singola',
@@ -125,10 +126,23 @@ export default function Home() {
                     )}
                   </div>
                   <p className="text-xs text-gray-500 mb-3">{room.desc}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs text-gray-400">👥 {room.guests}</span>
-                    <span className="font-bold text-green-700 text-lg">€{room.price}<span className="text-xs font-normal text-gray-400">/notte</span></span>
-                  </div>
+                  {room.price2 ? (
+                    <div className="border-t border-gray-100 pt-3 flex gap-4">
+                      <div>
+                        <p className="text-xs text-gray-400 mb-0.5">1 persona</p>
+                        <p style={loraStyle} className="text-lg font-semibold text-gray-800">€{room.price} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
+                      </div>
+                      <div className="border-l border-gray-100 pl-4">
+                        <p className="text-xs text-gray-400 mb-0.5">2 persone</p>
+                        <p style={loraStyle} className="text-lg font-semibold text-gray-800">€{room.price2} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs text-gray-400">👥 {room.guests}</span>
+                      <span className="font-bold text-green-700 text-lg">€{room.price}<span className="text-xs font-normal text-gray-400">/notte</span></span>
+                    </div>
+                  )}
                   <Link href={room.href} className="mt-3 block text-center text-sm text-green-700 font-semibold border border-green-200 rounded-xl py-2 hover:bg-green-50">
                     Scopri di più →
                   </Link>
