@@ -9,7 +9,7 @@ const TEL_LINK = `tel:+39${PHONE}`
 
 const rooms = [
   {
-    name: 'Camera Singola Amelia',
+    name: 'Amelia',
     desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
     prices: [
       { label: '1 persona', amount: 70 },
