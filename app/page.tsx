@@ -11,33 +11,41 @@ const rooms = [
   {
     name: 'Camera Singola Amelia',
     desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
-    price: 70,
-    price2: 75,
-    guests: '1–2 persone',
+    prices: [
+      { label: '1 persona', amount: 70 },
+      { label: '2 persone (letto aggiuntivo)', amount: 75 },
+    ],
     img: '/camere/singola/foto1.jpg',
     href: '/camere/singola',
   },
   {
     name: 'Camera Matrimoniale Allegra',
     desc: 'Spaziosa camera matrimoniale con bagno condiviso. Perfetta per coppie o familiari in visita.',
-    price: 80,
-    guests: '2 persone',
+    prices: [
+      { label: '1–2 persone', amount: 80 },
+      { label: '3 persone (letto aggiuntivo)', amount: 90 },
+    ],
     img: '/camere/allegra/foto1.jpg',
     href: '/camere/allegra',
   },
   {
     name: 'Camera Matrimoniale Ambra',
     desc: 'Camera matrimoniale luminosa con bagno condiviso. Ambiente tranquillo e confortevole.',
-    price: 80,
-    guests: '2 persone',
+    prices: [
+      { label: '1–2 persone', amount: 80 },
+      { label: '3 persone (letto aggiuntivo)', amount: 90 },
+    ],
     img: '/camere/ambra/foto1.jpg',
     href: '/camere/ambra',
   },
   {
     name: 'Camera Lena',
     desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
-    price: 90,
-    guests: '2–4 persone',
+    prices: [
+      { label: '1–2 persone', amount: 80 },
+      { label: '3 persone (letto aggiuntivo)', amount: 90 },
+      { label: '4 persone (quadrupla)', amount: 100 },
+    ],
     img: '/camere/lena/foto1b.jpg',
     badge: 'Bagno privato',
     href: '/camere/lena',
@@ -126,23 +134,14 @@ export default function Home() {
                     )}
                   </div>
                   <p className="text-xs text-gray-500 mb-3">{room.desc}</p>
-                  {room.price2 ? (
-                    <div className="border-t border-gray-100 pt-3 flex gap-4">
-                      <div>
-                        <p className="text-xs text-gray-400 mb-0.5">1 persona</p>
-                        <p style={loraStyle} className="text-lg font-semibold text-gray-800">€{room.price} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
+                  <div className="border-t border-gray-100 pt-3 flex flex-wrap gap-3">
+                    {room.prices.map((p, j) => (
+                      <div key={j} className={j > 0 ? 'border-l border-gray-100 pl-3' : ''}>
+                        <p className="text-xs text-gray-400 mb-0.5">{p.label}</p>
+                        <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
                       </div>
-                      <div className="border-l border-gray-100 pl-4">
-                        <p className="text-xs text-gray-400 mb-0.5">2 persone</p>
-                        <p style={loraStyle} className="text-lg font-semibold text-gray-800">€{room.price2} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-gray-400">👥 {room.guests}</span>
-                      <span className="font-bold text-green-700 text-lg">€{room.price}<span className="text-xs font-normal text-gray-400">/notte</span></span>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                   <Link href={room.href} className="mt-3 block text-center text-sm text-green-700 font-semibold border border-green-200 rounded-xl py-2 hover:bg-green-50">
                     Scopri di più →
                   </Link>
