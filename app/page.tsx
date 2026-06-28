@@ -47,7 +47,7 @@ const rooms = [
       { label: '4 persone (quadrupla)', amount: 100 },
     ],
     img: '/camere/lena/foto1b.jpg',
-    badge: 'Bagno privato',
+    badge: 'Bagno privato esterno',
     href: '/camere/lena',
   },
 ]
