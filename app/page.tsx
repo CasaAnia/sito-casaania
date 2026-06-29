@@ -78,7 +78,7 @@ export default function Home() {
         <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: 'center 50%' }} />
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-4xl mx-auto text-center w-full pb-28">
-          <h2 style={{fontFamily: "'Playfair Display', serif", color: '#f5f0e8'}} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
+          <h2 style={{fontFamily: "'Playfair Display', serif", color: '#ffffff', textShadow: '0 2px 12px rgba(0,0,0,0.7)'}} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
         </div>
