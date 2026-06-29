@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 const loraStyle = { fontFamily: "'Lora', serif" }
 
@@ -53,6 +55,14 @@ const rooms = [
 ]
 
 export default function Home() {
+  const [isWide, setIsWide] = useState(false)
+  useEffect(() => {
+    const check = () => setIsWide(window.innerWidth >= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   return (
     <main className="min-h-screen text-gray-900" style={{backgroundColor: '#f9f6f1'}}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600&display=swap');`}</style>
@@ -77,7 +87,7 @@ export default function Home() {
       <section className="relative text-white px-4 overflow-hidden" style={{ minHeight: '420px', maxHeight: '560px' }}>
         <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: 'center 50%' }} />
         <div className="absolute inset-0 bg-black/10" />
-        <div className="absolute w-full text-center px-4" style={{ left: 0, top: '22%' }}>
+        <div className="absolute w-full text-center px-4" style={{ left: 0, top: isWide ? '45%' : '22%' }}>
           <h2 style={{fontFamily: "'Playfair Display', serif", color: '#ffffff', textShadow: '0 2px 12px rgba(0,0,0,0.7)'}} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
