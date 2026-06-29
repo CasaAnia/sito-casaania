@@ -22,7 +22,7 @@ const rooms = [
   },
   {
     name: 'Ambra',
-    desc: 'Camera matrimoniale luminosa con bagno condiviso. Ambiente tranquillo e confortevole.',
+    desc: 'Camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.',
     prices: [
       { label: '1–2 persone', amount: 80 },
       { label: '3 persone (letto aggiuntivo)', amount: 90 },
