@@ -55,7 +55,7 @@ const rooms = [
 export default function Home() {
   return (
     <main className="min-h-screen text-gray-900" style={{backgroundColor: '#f9f6f1'}}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');`}</style>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:wght@400;600&display=swap');`}</style>
 
       {/* HEADER */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
@@ -78,7 +78,7 @@ export default function Home() {
         <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover" style={{ objectPosition: 'center 50%' }} />
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-4xl mx-auto text-center w-full pb-28">
-          <h2 style={{...loraStyle, color: '#f5f0e8'}} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
+          <h2 style={{fontFamily: "'Playfair Display', serif", color: '#f5f0e8'}} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
         </div>
