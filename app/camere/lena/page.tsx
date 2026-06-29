@@ -62,7 +62,7 @@ export default function CameraLena() {
           <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-cover" />
         </div>
 
-        <div className="grid grid-cols-3 gap-2 mb-8 -mx-4">
+        <div className="grid grid-cols-3 mb-8 -mx-4">
           {[2, 3, 4, 5, 6, 7].map(n => (
             <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>

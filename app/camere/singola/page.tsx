@@ -60,7 +60,7 @@ export default function CameraSingola() {
           <img src="/camere/singola/foto1.jpg" alt="Camera Singola" className="w-full h-full object-cover" />
         </div>
 
-        <div className="grid grid-cols-3 gap-2 mb-8 -mx-4">
+        <div className="grid grid-cols-3 mb-8 -mx-4">
           {[2, 5, 3, 6, 8, 7, 10, 11, 12].map(n => (
             <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>

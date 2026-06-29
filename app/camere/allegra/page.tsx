@@ -60,7 +60,7 @@ export default function CameraAllegra() {
           <img src="/camere/allegra/foto1.jpg" alt="Camera Allegra" className="w-full h-full object-cover" />
         </div>
 
-        <div className="grid grid-cols-3 gap-2 mb-8 -mx-4">
+        <div className="grid grid-cols-3 mb-8 -mx-4">
           {[2, 4, 3, 5, 7, 8, 9].map(n => (
             <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
