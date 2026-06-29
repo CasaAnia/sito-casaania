@@ -148,9 +148,9 @@ export default function Home() {
               <p className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
               <p className="text-gray-500 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
               <ul className="text-sm text-gray-600 space-y-2">
-                <li>✅ 140 metri dall'ospedale Humanitas (palazzina 8)</li>
-                <li>✅ Zona tranquilla e residenziale</li>
-                <li>✅ Parcheggio disponibile nelle vicinanze</li>
+                <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
+                <li>Zona tranquilla e residenziale</li>
+                <li>Parcheggio disponibile nelle vicinanze</li>
               </ul>
               <a href="https://maps.google.com/?q=Via+Liguria+26+Pieve+Emanuele+Milano" target="_blank" rel="noopener noreferrer"
                 className="inline-block mt-4 text-sm text-green-700 font-semibold underline">
