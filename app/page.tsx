@@ -109,8 +109,8 @@ export default function Home() {
           <p style={loraStyle} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-6">Le nostre camere</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
-              <div key={i} className="border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
-                <Link href={room.href} className="block h-80 rounded-2xl overflow-hidden">
+              <div key={i} className="overflow-hidden">
+                <Link href={room.href} className="block h-80 overflow-hidden">
                   <img src={room.img} alt={room.name} className={`w-full h-full object-cover ${room.name === 'Camera Matrimoniale Allegra' ? 'scale-125' : room.name === 'Camera Singola' ? 'scale-[1.03]' : room.name === 'Camera Matrimoniale Ambra' ? '' : ''}`} style={room.name === 'Camera Matrimoniale Allegra' ? {transformOrigin: '65% center'} : {}} />
                 </Link>
                 <div className="p-4">
