@@ -106,7 +106,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <p style={loraStyle} className="text-center text-gray-400 text-sm uppercase tracking-widest mb-3">Le nostre camere</p>
           <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-2 text-gray-800">Quando desideri stare vicino a chi ami.</h2>
-          <div className="mb-8"></div>
+          <div className="mb-12"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
               <div key={i} className="border border-gray-100 rounded-2xl shadow-sm overflow-hidden">
