@@ -61,7 +61,9 @@ export default function Home() {
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 style={loraStyle} className="text-lg font-semibold text-green-800">Casa Ania Rozzano</h1>
+            <h1 style={loraStyle} className="text-lg font-semibold tracking-widest uppercase">
+              <span className="text-green-800">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-800">Rozzano</span>
+            </h1>
             <p className="text-xs text-gray-500">A 140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
