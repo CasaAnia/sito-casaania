@@ -100,17 +100,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CONTATTI RAPIDI */}
-      <div className="bg-white px-4 py-4 flex flex-col sm:flex-row gap-3 justify-center border-b border-gray-100">
-        <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-          className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm text-center">
-          💬 WhatsApp
-        </a>
-        <a href={TEL_LINK}
-          className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm text-center">
-          📞 {PHONE_DISPLAY}
-        </a>
-      </div>
 
       {/* CAMERE */}
       <section className="py-12 px-4">
