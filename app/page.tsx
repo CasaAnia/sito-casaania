@@ -102,7 +102,7 @@ export default function Home() {
 
 
       {/* CAMERE */}
-      <section className="py-12 px-4">
+      <section className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <p style={loraStyle} className="text-center text-gray-400 text-sm uppercase tracking-widest mb-3">Le nostre camere</p>
           <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-2 text-gray-800">Quando desideri stare vicino a chi ami.</h2>
