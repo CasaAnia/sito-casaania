@@ -103,17 +103,17 @@ export default function Home() {
 
 
       {/* CAMERE */}
-      <section className="pt-16 pb-8 px-4">
+      <section className="pt-16 pb-8">
         <div className="max-w-4xl mx-auto">
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-12 text-gray-800">Quando desideri stare vicino a chi ami.</h2>
-          <p style={loraStyle} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-6">Le nostre camere</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami.</h2>
+          <p style={loraStyle} className="text-center text-gray-500 text-sm uppercase tracking-widest mb-6 px-4">Le nostre camere</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden">
                 <Link href={room.href} className="block h-80 overflow-hidden">
-                  <img src={room.img} alt={room.name} className={`w-full h-full object-cover ${room.name === 'Camera Matrimoniale Allegra' ? 'scale-125' : room.name === 'Camera Singola' ? 'scale-[1.03]' : room.name === 'Camera Matrimoniale Ambra' ? '' : ''}`} style={room.name === 'Camera Matrimoniale Allegra' ? {transformOrigin: '65% center'} : {}} />
+                  <img src={room.img} alt={room.name} className="w-full h-full object-cover" />
                 </Link>
-                <div className="p-4">
+                <div className="px-4 pt-4 pb-2">
                   <div className="flex items-start justify-between mb-1">
                     <h3 style={loraStyle} className="font-semibold text-gray-800">{room.name}</h3>
                     {room.badge && (
