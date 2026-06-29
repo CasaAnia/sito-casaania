@@ -95,6 +95,7 @@ export default function CameraAllegra() {
               '✓ Phon',
               '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✓ Cambio lenzuola e asciugamani ogni 4 notti',
+              '✓ Bagno schiuma, sapone e carta igienica',
               '✓ Letto supplementare su richiesta',
             ].map(s => (
               <li key={s}>{s}</li>
