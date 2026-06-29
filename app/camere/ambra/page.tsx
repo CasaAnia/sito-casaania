@@ -85,7 +85,7 @@ export default function CameraAmbra() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
             {[
               '✓ Aria condizionata e riscaldamento',
-              '✓ Wi-Fi gratuito e veloce',
+              '✓ Wi-Fi veloce e gratuito',
               '✓ TV',
               '✓ Piccolo frigorifero',
               '✓ Phon',

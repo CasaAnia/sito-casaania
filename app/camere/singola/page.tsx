@@ -95,7 +95,7 @@ export default function CameraSingola() {
             {[
               '✓ Bagno privato',
               '✓ Aria condizionata e riscaldamento',
-              '✓ Wi-Fi gratuito e veloce',
+              '✓ Wi-Fi veloce e gratuito',
               '✓ TV',
               '✓ Piccolo frigorifero',
               '✓ Phon',

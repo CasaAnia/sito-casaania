@@ -96,7 +96,7 @@ export default function CameraLena() {
               '✓ Bagno privato esterno (esclusivo)',
               '✓ Balcone con vista su Humanitas',
               '✓ Aria condizionata e riscaldamento',
-              '✓ Wi-Fi gratuito e veloce',
+              '✓ Wi-Fi veloce e gratuito',
               '✓ TV',
               '✓ Piccolo frigorifero',
               '✓ Phon',
