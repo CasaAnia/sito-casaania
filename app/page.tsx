@@ -11,16 +11,6 @@ const TEL_LINK = `tel:+39${PHONE}`
 
 const rooms = [
   {
-    name: 'Amelia',
-    desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
-    prices: [
-      { label: '1 persona', amount: 70 },
-      { label: '2 persone (letto aggiuntivo)', amount: 75 },
-    ],
-    img: '/camere/singola/foto1.jpg',
-    href: '/camere/singola',
-  },
-  {
     name: 'Camera Matrimoniale Allegra',
     desc: 'Camera matrimoniale con bagno in camera e balconcino tutto per sé. Comoda, luminosa, con quel tocco di spazio in più che fa la differenza.',
     prices: [
@@ -51,6 +41,16 @@ const rooms = [
     img: '/camere/lena/foto1b.jpg',
     badge: 'Bagno privato esterno',
     href: '/camere/lena',
+  },
+  {
+    name: 'Amelia',
+    desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
+    prices: [
+      { label: '1 persona', amount: 70 },
+      { label: '2 persone (letto aggiuntivo)', amount: 75 },
+    ],
+    img: '/camere/singola/foto1.jpg',
+    href: '/camere/singola',
   },
 ]
 
