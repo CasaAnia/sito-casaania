@@ -84,16 +84,16 @@ export default function CameraAllegra() {
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-800">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
             {[
-              '✅ Bagno privato in camera',
-              '✅ Balconcino privato',
-              '✅ Aria condizionata e riscaldamento',
-              '✅ Wi-Fi gratuito e veloce',
-              '✅ TV',
-              '✅ Piccolo frigorifero',
-              '✅ Phon',
-              '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
-              '✅ Cambio lenzuola e asciugamani ogni 4 notti',
-              '✅ Letto supplementare su richiesta',
+              '✓ Bagno privato in camera',
+              '✓ Balconcino privato',
+              '✓ Aria condizionata e riscaldamento',
+              '✓ Wi-Fi gratuito e veloce',
+              '✓ TV',
+              '✓ Piccolo frigorifero',
+              '✓ Phon',
+              '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
+              '✓ Cambio lenzuola e asciugamani ogni 4 notti',
+              '✓ Letto supplementare su richiesta',
             ].map(s => (
               <li key={s}>{s}</li>
             ))}
