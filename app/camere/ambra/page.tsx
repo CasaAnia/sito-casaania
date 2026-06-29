@@ -84,7 +84,6 @@ export default function CameraAmbra() {
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-800">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
             {[
-              '✓ Bagno condiviso (pulitissimo)',
               '✓ Aria condizionata e riscaldamento',
               '✓ Wi-Fi gratuito e veloce',
               '✓ TV',
