@@ -48,19 +48,13 @@ export default function CameraLena() {
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2">Camera Lena</h1>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
-        <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-3 gap-4">
-          <div>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">1–2 persone</p>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          </div>
-          <div>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">3 persone (letto aggiuntivo)</p>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          </div>
-          <div>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">4 persone (quadrupla)</p>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€100 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          </div>
+        <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-3 gap-x-4">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1–2 persone</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">3 persone (letto aggiuntivo)</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">4 persone (quadrupla)</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€100 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
         </div>
 
         <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"

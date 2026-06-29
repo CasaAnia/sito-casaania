@@ -48,15 +48,11 @@ export default function CameraSingola() {
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2">Camera Singola Amelia</h1>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">Piccola, curata, silenziosa — nel cuore di Casa Ania, con vista sulla clinica Humanitas.</p>
-        <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-4">
-          <div>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">1 persona</p>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€70 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          </div>
-          <div>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">2 persone (letto aggiuntivo)</p>
-            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€75 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          </div>
+        <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1 persona</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">2 persone (letto aggiuntivo)</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€70 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€75 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
         </div>
 
         <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
