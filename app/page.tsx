@@ -54,7 +54,7 @@ const rooms = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen text-gray-900" style={{backgroundColor: '#f9f6f1'}}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');`}</style>
 
       {/* HEADER */}
