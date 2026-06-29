@@ -74,7 +74,7 @@ export default function Home() {
             <h1 style={{...loraStyle, textShadow: '0 1px 3px rgba(0,0,0,0.12)'}} className="text-lg font-semibold tracking-widest uppercase whitespace-nowrap">
               <span className="text-green-700">Casa </span><span style={{color: '#007f5b'}}>Ania </span><span className="text-green-700">Rozzano</span>
             </h1>
-            <p style={loraStyle} className="text-xs text-gray-500">140 metri da Humanitas</p>
+            <p style={loraStyle} className="text-sm text-gray-500">140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
             style={{...loraStyle, fontSize: '0.65rem', letterSpacing: '0.05em'}}
