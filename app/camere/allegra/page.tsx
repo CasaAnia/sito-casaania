@@ -48,7 +48,7 @@ export default function CameraAllegra() {
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2 uppercase tracking-widest">Camera Matrimoniale Allegra</h1>
         <div className="flex gap-2 mb-3">
-          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🛁 Bagno in camera</span>
+          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
           <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balconcino</span>
         </div>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">Luminosa, con bagno in camera e balconcino tutto per sé.</p>

@@ -48,7 +48,7 @@ export default function CameraAmbra() {
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2 uppercase tracking-widest">Camera Matrimoniale Ambra</h1>
         <div className="flex gap-2 mb-3">
-          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno condiviso</span>
+          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
         </div>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">Luminosa, tranquilla, dai toni caldi.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">

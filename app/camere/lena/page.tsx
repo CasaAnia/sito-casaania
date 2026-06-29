@@ -48,8 +48,8 @@ export default function CameraLena() {
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2 uppercase tracking-widest">Camera Lena</h1>
         <div className="flex gap-2 mb-3">
-          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🛁 Bagno esterno</span>
-          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone</span>
+          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno esterno</span>
+          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
         </div>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-3 gap-x-4">
