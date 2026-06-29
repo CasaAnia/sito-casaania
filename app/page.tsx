@@ -11,7 +11,7 @@ const TEL_LINK = `tel:+39${PHONE}`
 
 const rooms = [
   {
-    name: 'Camera Matrimoniale Allegra',
+    name: 'Allegra',
     desc: 'Camera matrimoniale con bagno in camera e balconcino tutto per sé. Comoda, luminosa, con quel tocco di spazio in più che fa la differenza.',
     prices: [
       { label: '1–2 persone', amount: 80 },
@@ -21,7 +21,7 @@ const rooms = [
     href: '/camere/allegra',
   },
   {
-    name: 'Camera Matrimoniale Ambra',
+    name: 'Ambra',
     desc: 'Camera matrimoniale luminosa con bagno condiviso. Ambiente tranquillo e confortevole.',
     prices: [
       { label: '1–2 persone', amount: 80 },
@@ -31,7 +31,7 @@ const rooms = [
     href: '/camere/ambra',
   },
   {
-    name: 'Camera Lena',
+    name: 'Lena',
     desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
     prices: [
       { label: '1–2 persone', amount: 80 },
