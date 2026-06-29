@@ -72,13 +72,13 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 style={{...loraStyle, textShadow: '0 1px 3px rgba(0,0,0,0.12)'}} className="text-lg font-semibold tracking-widest uppercase whitespace-nowrap">
-              <span className="text-green-700">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-700">Rozzano</span>
+              <span className="text-green-700">Casa </span><span style={{color: '#007f5b'}}>Ania </span><span className="text-green-700">Rozzano</span>
             </h1>
             <p style={loraStyle} className="text-xs text-gray-500">140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
             style={loraStyle}
-            className="bg-green-700 text-white font-semibold px-3 py-1.5 rounded-full tracking-widest uppercase" style={{fontSize: '0.65rem'}}>
+            className="bg-green-700 text-white font-semibold px-3 py-1.5 rounded-full uppercase whitespace-nowrap" style={{fontSize: '0.65rem', letterSpacing: '0.05em'}}>
             Prenota ora
           </Link>
         </div>
