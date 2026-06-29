@@ -104,7 +104,8 @@ export default function Home() {
       {/* CAMERE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-2 text-gray-800">Le nostre camere</h2>
+          <p style={loraStyle} className="text-center text-gray-400 text-sm uppercase tracking-widest mb-3">Le nostre camere</p>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-2 text-gray-800">Quando desideri stare vicino a quelli che ami.</h2>
           <p className="text-center text-gray-500 text-sm mb-8">Tutte le camere includono lenzuola, asciugamani e Wi-Fi gratuito</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {rooms.map((room, i) => (
