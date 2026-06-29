@@ -72,13 +72,13 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 style={{...loraStyle, textShadow: '0 2px 6px rgba(0,0,0,0.25)'}} className="text-base font-semibold tracking-widest uppercase whitespace-nowrap">
-              <span className="text-green-600">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-600">Rozzano</span>
+              <span className="text-green-700">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-700">Rozzano</span>
             </h1>
             <p style={loraStyle} className="text-xs text-gray-500">140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
             style={loraStyle}
-            className="bg-green-600 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
+            className="bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
             Prenota ora
           </Link>
         </div>
@@ -129,7 +129,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <Link href={room.href} className="mt-3 block text-center text-base text-green-600 font-semibold py-2">
+                  <Link href={room.href} className="mt-3 block text-center text-base text-green-700 font-semibold py-2">
                     Scopri di più →
                   </Link>
                 </div>

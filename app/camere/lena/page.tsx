@@ -38,7 +38,7 @@ export default function CameraLena() {
             ← Indietro
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            style={{fontFamily: "'Lora', serif"}} className="bg-green-600 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
+            style={{fontFamily: "'Lora', serif"}} className="bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
             Prenota ora
           </a>
         </div>
