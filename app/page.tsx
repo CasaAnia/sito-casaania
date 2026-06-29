@@ -74,9 +74,10 @@ export default function Home() {
             <h1 style={loraStyle} className="text-base font-semibold tracking-widest uppercase whitespace-nowrap">
               <span className="text-green-800">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-800">Rozzano</span>
             </h1>
-            <p className="text-xs text-gray-500">140 metri da Humanitas</p>
+            <p style={loraStyle} className="text-xs text-gray-500">140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
+            style={loraStyle}
             className="bg-green-800 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
             Prenota ora
           </Link>
