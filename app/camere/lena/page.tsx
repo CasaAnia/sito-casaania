@@ -15,6 +15,8 @@ export default function CameraLena() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');`}</style>
+
       {/* LIGHTBOX */}
       {lightbox !== null && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
@@ -44,20 +46,31 @@ export default function CameraLena() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <div className="flex items-center gap-3 mb-1">
-          <h1 className="text-3xl font-bold text-gray-800">Camera Lena</h1>
-          <span className="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full font-semibold">Bagno privato</span>
+        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2">Camera Lena</h1>
+        <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
+        <div className="border-t border-gray-200 pt-4 flex flex-wrap gap-8 mb-8">
+          <div>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">1–2 persone</p>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          </div>
+          <div className="border-l border-gray-200 pl-8">
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">3 persone (letto aggiuntivo)</p>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          </div>
+          <div className="border-l border-gray-200 pl-8">
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">4 persone (quadrupla)</p>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€100 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          </div>
         </div>
-        <p className="text-green-700 font-semibold text-lg mb-6">€90 / notte · 2–4 persone</p>
 
-        <div className="rounded-2xl h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer"
+        <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
           onClick={() => setLightbox(1)}>
           <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-cover" />
         </div>
 
-        <div className="grid grid-cols-3 gap-2 mb-8">
-          {[2, 3].map(n => (
-            <div key={n} className="rounded-xl h-24 overflow-hidden cursor-pointer"
+        <div className="grid grid-cols-3 gap-2 mb-8 -mx-4">
+          {[2, 3, 4, 5, 6, 7].map(n => (
+            <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
               <img src={`/camere/lena/foto${n}.jpg`} alt={`Camera Lena ${n}`} className="w-full h-full object-cover" />
             </div>
@@ -65,33 +78,49 @@ export default function CameraLena() {
         </div>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-3 text-gray-800">Descrizione</h2>
-          <p className="text-gray-600 leading-relaxed">
-            La nostra camera più spaziosa, con bagno privato esterno dedicato. Ideale per famiglie o gruppi
-            fino a 4 persone. Ampia, confortevole e dotata di tutto il necessario per un soggiorno piacevole
-            vicino all'ospedale Humanitas.
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-800">Descrizione</h2>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
+            Lena è la camera più grande di Casa Ania — spaziosa, luminosa, con tutto lo spazio che serve anche quando si è in più persone.
+            Letto matrimoniale con lenzuola stiratissime e profumate, e tutto il calore di una casa dove ci si sente subito a proprio agio.
+          </p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
+            Ha un bagno privato esterno — a un metro dalla stanza, chiuso a chiave, riservato esclusivamente a chi soggiorna in Lena.
+          </p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed">
+            Lena e Amelia condividono il balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale, dove spesso nascono chiacchiere spontanee tra ospiti.
           </p>
         </div>
 
         <div className="mb-8">
-          <h2 className="text-xl font-bold mb-3 text-gray-800">Cosa è incluso</h2>
-          <ul className="grid grid-cols-2 gap-2 text-sm text-gray-600">
-            {['✅ Lenzuola e asciugamani', '✅ Wi-Fi gratuito', '✅ Bagno privato esterno', '✅ Riscaldamento', '✅ Letto matrimoniale', '✅ Letti supplementari disponibili', '✅ Armadio grande', '✅ Ideale per famiglie'].map(s => (
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-800">Ogni soggiorno include</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
+            {[
+              '✅ Bagno privato esterno (esclusivo)',
+              '✅ Balcone con vista su Humanitas',
+              '✅ Aria condizionata e riscaldamento',
+              '✅ Wi-Fi gratuito e veloce',
+              '✅ TV',
+              '✅ Piccolo frigorifero',
+              '✅ Phon',
+              '✅ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
+              '✅ Cambio lenzuola e asciugamani ogni 4 notti',
+              '✅ Letti supplementari su richiesta (fino a 4 persone)',
+            ].map(s => (
               <li key={s}>{s}</li>
             ))}
           </ul>
         </div>
 
-        <div className="bg-green-800 rounded-2xl p-6 text-white text-center">
-          <p className="font-bold text-lg mb-1">Prenota questa camera</p>
-          <p className="text-green-200 text-sm mb-4">Contattaci su WhatsApp o per telefono</p>
+        <div className="bg-gray-50 rounded-2xl p-6 text-center">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold text-gray-800 mb-2">Verifica la disponibilità</p>
+          <p className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="bg-white text-green-800 font-bold px-6 py-3 rounded-full text-sm">
+              className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="border-2 border-white text-white font-bold px-6 py-3 rounded-full text-sm">
+              className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm">
               📞 {PHONE_DISPLAY}
             </a>
           </div>
