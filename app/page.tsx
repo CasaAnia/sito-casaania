@@ -72,7 +72,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 style={loraStyle} className="text-base font-semibold tracking-widest uppercase whitespace-nowrap">
-              <span className="text-green-800">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-800">Rozzano</span>
+              <span className="text-green-600">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-600">Rozzano</span>
             </h1>
             <p style={loraStyle} className="text-xs text-gray-500">140 metri da Humanitas</p>
           </div>
