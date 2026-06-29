@@ -73,7 +73,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="relative text-white px-4 overflow-hidden flex flex-col justify-end" style={{ minHeight: '420px', maxHeight: '560px' }}>
-        <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover md:hidden" style={{ objectPosition: 'center 50%', transform: 'scale(1.15)', transformOrigin: 'center center' }} />
+        <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover md:hidden" style={{ objectPosition: 'center 50%' }} />
         <img src="/hero-desktop.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover hidden md:block" style={{ objectPosition: 'center 50%' }} />
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative max-w-4xl mx-auto text-center w-full pb-28">
