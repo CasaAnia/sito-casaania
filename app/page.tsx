@@ -67,7 +67,7 @@ export default function Home() {
             <p className="text-xs text-gray-500">A 140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
-            className="bg-green-600 text-white text-sm font-semibold px-4 py-2 rounded-full">
+            className="bg-green-800 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
             Prenota ora
           </Link>
         </div>
