@@ -71,7 +71,7 @@ export default function Home() {
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 style={{...loraStyle, textShadow: '0 2px 6px rgba(0,0,0,0.25)'}} className="text-base font-semibold tracking-widest uppercase whitespace-nowrap">
+            <h1 style={{...loraStyle, textShadow: '0 1px 3px rgba(0,0,0,0.12)'}} className="text-base font-semibold tracking-widest uppercase whitespace-nowrap">
               <span className="text-green-700">Casa </span><span style={{color: '#b8934a'}}>Ania </span><span className="text-green-700">Rozzano</span>
             </h1>
             <p style={loraStyle} className="text-xs text-gray-500">140 metri da Humanitas</p>
