@@ -78,7 +78,7 @@ export default function Home() {
           </div>
           <Link href="/prenota"
             style={loraStyle}
-            className="bg-green-800 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
+            className="bg-green-600 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
             Prenota ora
           </Link>
         </div>
