@@ -112,27 +112,6 @@ export default function Home() {
         </a>
       </div>
 
-      {/* PERCHÉ NOI */}
-      <section className="py-12 px-4 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-8 text-gray-800">Perché scegliere Casa Ania</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              { icon: '📍', title: '140 metri', desc: "dall'ospedale Humanitas" },
-              { icon: '🏠', title: '4 camere', desc: 'tranquille e pulite' },
-              { icon: '🔑', title: 'Check-in', desc: 'flessibile 15:00–20:00' },
-              { icon: '❌', title: 'Cancellazione', desc: 'gratuita fino a 3 giorni prima' },
-            ].map((item, i) => (
-              <div key={i} className="bg-white rounded-xl p-4 text-center shadow-sm border border-gray-100">
-                <div className="text-3xl mb-2">{item.icon}</div>
-                <p className="font-bold text-gray-800 text-sm">{item.title}</p>
-                <p className="text-xs text-gray-500 mt-1">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CAMERE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
