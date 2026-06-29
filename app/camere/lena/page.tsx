@@ -85,7 +85,9 @@ export default function CameraLena() {
             Ha un bagno privato esterno — a un metro dalla stanza, chiuso a chiave, riservato esclusivamente a chi soggiorna in Lena.
           </p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed">
-            Lena e Amelia condividono il balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale, dove spesso nascono chiacchiere spontanee tra ospiti.
+            Lena e Amelia condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
+            dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
+            Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
           </p>
         </div>
 
