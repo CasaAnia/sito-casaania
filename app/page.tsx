@@ -93,12 +93,14 @@ export default function Home() {
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
         </div>
+        <div className="absolute w-full text-center px-4" style={{ left: 0, bottom: '8%' }}>
+          <p style={{ color: 'rgba(255,255,255,0.85)', textShadow: '0 1px 6px rgba(0,0,0,0.6)', fontSize: '0.9rem', letterSpacing: '0.03em' }}>
+            Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.
+          </p>
+        </div>
       </section>
 
       {/* CONTATTI RAPIDI */}
-      <div className="bg-white px-4 pt-4 pb-2 text-center">
-        <p className="text-sm text-gray-500">Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.</p>
-      </div>
       <div className="bg-white px-4 py-4 flex flex-col sm:flex-row gap-3 justify-center border-b border-gray-100">
         <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
           className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm text-center">
