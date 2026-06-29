@@ -48,7 +48,7 @@ export default function CameraLena() {
 
         <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-800 mb-2">Camera Lena</h1>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
-        <div className="border-t border-gray-200 pt-4 flex flex-wrap gap-8 mb-8">
+        <div className="border-t border-gray-200 pt-4 flex flex-wrap gap-8 mb-8 items-end">
           <div>
             <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-1">1–2 persone</p>
             <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
