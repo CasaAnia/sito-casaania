@@ -165,21 +165,21 @@ export default function Home() {
       </section>
 
       {/* CONTATTI / PRENOTAZIONE */}
-      <section className="py-12 px-4 bg-green-800 text-white">
+      <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 style={loraStyle} className="text-2xl font-semibold mb-2">Prenota il tuo soggiorno</h2>
-          <p className="text-green-200 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
+          <h2 style={loraStyle} className="text-2xl font-semibold mb-2 text-gray-800">Prenota il tuo soggiorno</h2>
+          <p className="text-gray-500 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="flex-1 bg-white text-green-800 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
+              className="flex-1 bg-green-700 text-white font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="flex-1 border-2 border-white text-white font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
+              className="flex-1 border border-gray-300 text-gray-700 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
               📞 Chiama
             </a>
           </div>
-          <p className="text-green-300 text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+          <p className="text-gray-400 text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
         </div>
       </section>
 
