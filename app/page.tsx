@@ -115,7 +115,7 @@ export default function Home() {
                 </Link>
                 <div className="px-4 pt-4 pb-2">
                   <div className="flex items-start justify-between mb-1">
-                    <h3 style={loraStyle} className="font-semibold text-gray-500 uppercase tracking-widest">{room.name}</h3>
+                    <h3 style={loraStyle} className="text-xl font-semibold text-gray-500 uppercase tracking-widest">{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
