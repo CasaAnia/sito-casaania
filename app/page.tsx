@@ -36,7 +36,7 @@ const rooms = [
     prices: [
       { label: '1–2 persone', amount: 80 },
       { label: '3 persone (letto aggiuntivo)', amount: 90 },
-      { label: '4 persone (quadrupla)', amount: 100 },
+      { label: '4 persone (due letti aggiuntivi)', amount: 100 },
     ],
     img: '/camere/lena/foto1b.jpg',
     badge: 'Bagno privato esterno',
@@ -121,9 +121,9 @@ export default function Home() {
                     )}
                   </div>
                   <p style={loraStyle} className="text-sm text-gray-500 mb-3">{room.desc}</p>
-                  <div className="border-t border-gray-100 pt-3 flex flex-wrap gap-3">
+                  <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
                     {room.prices.map((p, j) => (
-                      <div key={j} className={j > 0 ? 'border-l border-gray-100 pl-3' : ''}>
+                      <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
                         <p className="text-xs text-gray-400 mb-0.5">{p.label}</p>
                         <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
                       </div>
