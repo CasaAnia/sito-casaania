@@ -106,7 +106,7 @@ export default function Home() {
       <section className="pt-16 pb-8">
         <div className="max-w-4xl mx-auto">
           <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
-          <p style={loraStyle} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-6 px-4">Le nostre camere</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-6 px-4 underline">Le nostre camere</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden">
@@ -142,7 +142,7 @@ export default function Home() {
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-4">Check-in flessibile</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-500 text-lg uppercase tracking-widest mb-4 underline">Check-in flessibile</p>
           <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Il check-in ufficiale va dalle 15:00 alle 20:00, ma facciamo sempre il possibile per accoglierti prima.
             Non appena la camera è pronta — spesso già di mattina — ti scriviamo subito, così puoi sistemarti con calma.
@@ -154,7 +154,7 @@ export default function Home() {
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-4">Servizio navetta</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-500 text-lg uppercase tracking-widest mb-4 underline">Servizio navetta</p>
           <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
             Ti aiutiamo volentieri anche con gli spostamenti da e per l'aeroporto (Malpensa, Linate, Orio al Serio),
             dalla stazione di Milano Centrale o Rogoredo, e dalle stazioni bus di San Donato e Lampugnano.
@@ -168,7 +168,7 @@ export default function Home() {
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={loraStyle} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-8">Dove siamo</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-8 underline">Dove siamo</p>
           <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
