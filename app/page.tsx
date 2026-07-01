@@ -105,7 +105,7 @@ export default function Home() {
       {/* CAMERE */}
       <section className="pt-16 pb-8">
         <div className="max-w-4xl mx-auto">
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami.</h2>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
           <p style={loraStyle} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-6 px-4">Le nostre camere</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
