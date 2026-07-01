@@ -152,7 +152,7 @@ export default function Home() {
       </section>
 
       {/* DOVE SIAMO */}
-      <section className="py-12 px-4 bg-gray-50">
+      <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           <p style={loraStyle} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-8">Dove siamo</p>
           <div className="md:flex md:gap-8 md:items-center">
@@ -183,7 +183,7 @@ export default function Home() {
       </section>
 
       {/* CONTATTI / PRENOTAZIONE */}
-      <section className="py-12 px-4 bg-gray-50">
+      <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-2">Prenota il tuo soggiorno</p>
           <p style={loraStyle} className="text-gray-500 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
@@ -203,8 +203,9 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="text-gray-200 py-6 px-4 text-center text-xs" style={{backgroundColor: '#007f5b'}}>
-        <p style={loraStyle} className="font-semibold text-white mb-1">Casa Ania Rozzano</p>
-        <p style={loraStyle}>Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI) · {PHONE_DISPLAY}</p>
+        <p style={loraStyle} className="font-semibold text-white mb-1 uppercase tracking-widest">Casa Ania Rozzano</p>
+        <p style={loraStyle}>Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI)</p>
+        <p style={loraStyle}>{PHONE_DISPLAY}</p>
         <p style={loraStyle} className="mt-2">© {new Date().getFullYear()} Casa Ania Rozzano</p>
       </footer>
 
