@@ -77,7 +77,7 @@ export default function CameraAllegra() {
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Descrizione</h2>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
             Allegra è una camera matrimoniale comoda e luminosa, con bagno privato all'interno della stanza.
-            Letto matrimoniale con lenzuola stiratissime e profumate, tutto il calore di una casa dove ci si sente subito a proprio agio.
+            Letto matrimoniale con biancheria di bucato fresca e accurata, per quel senso di casa che si sente appena si entra.
           </p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed">
             Ha un balconcino privato — tutto per sé, senza condivisione. Un angolo tranquillo dove prendere un po' d'aria dopo una giornata in ospedale.
