@@ -6,7 +6,7 @@ const PHONE = '3427004345'
 const PHONE_DISPLAY = '342 700 4345'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
-const PHOTOS = [1, 2, 3, 4, 5, 6, 7]
+const PHOTOS = [1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 export default function CameraLena() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -72,8 +72,8 @@ export default function CameraLena() {
           <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-contain" />
         </div>
 
-        <div className="grid grid-cols-3 mb-8 -mx-4">
-          {[2, 3, 4, 5, 6, 7].map(n => (
+        <div className="grid grid-cols-2 mb-8 -mx-4">
+          {[2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(n => (
             <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
               <img src={`/camere/lena/foto${n}.jpg`} alt={`Camera Lena ${n}`} className="w-full h-full object-cover" />
@@ -110,6 +110,7 @@ export default function CameraLena() {
               '✓ Phon',
               '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✓ Cambio lenzuola e asciugamani ogni 4 notti con pulizia completa della camera',
+              '✓ Bagno schiuma, sapone e carta igienica',
               '✓ Letti supplementari su richiesta (fino a 4 persone)',
             ].map(s => (
               <li key={s}>{s}</li>
