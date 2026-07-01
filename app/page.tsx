@@ -157,8 +157,14 @@ export default function Home() {
                 Apri in Google Maps →
               </a>
             </div>
-            <div className="md:flex-1 bg-green-50 rounded-xl h-48 flex items-center justify-center text-gray-400 text-sm">
-              📍 Mappa
+            <div className="md:flex-1 rounded-xl overflow-hidden h-48">
+              <iframe
+                src="https://www.google.com/maps?q=Via+Liguria+26+Pieve+Emanuele+Milano&output=embed"
+                className="w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Mappa Casa Ania Rozzano"
+              />
             </div>
           </div>
         </div>
