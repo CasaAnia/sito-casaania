@@ -52,18 +52,24 @@ export default function CameraLena() {
           <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
         </div>
         <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
-        <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-3 gap-x-4">
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1–2 persone</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">3 persone (letto aggiuntivo)</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">4 persone (due letti aggiuntivi)</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€100 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+        <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-4">
+          <div>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1–2 persone</p>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          </div>
+          <div>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">3 persone (letto aggiuntivo)</p>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          </div>
+          <div>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">4 persone (due letti aggiuntivi)</p>
+            <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€100 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          </div>
         </div>
 
-        <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
+        <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4 bg-gray-100"
           onClick={() => setLightbox(1)}>
-          <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-cover" />
+          <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-contain" />
         </div>
 
         <div className="grid grid-cols-3 mb-8 -mx-4">
@@ -93,7 +99,7 @@ export default function CameraLena() {
 
         <div className="mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Ogni soggiorno include</h2>
-          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
+          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-600">
             {[
               '✓ Bagno privato esterno (esclusivo)',
               '✓ Balcone con vista su Humanitas',
