@@ -162,7 +162,8 @@ export default function Home() {
               <ul style={loraStyle} className="text-sm text-gray-600 space-y-2">
                 <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
                 <li>Zona tranquilla e residenziale</li>
-                <li>Parcheggio disponibile nelle vicinanze</li>
+                <li>Due piazzole di sosta gratuite a circa 150 metri da Casa Ania, poco prima di arrivare, su entrambi i lati della strada</li>
+                <li>In alternativa, il parcheggio di Humanitas (a pagamento), custodito 24 ore su 24</li>
               </ul>
               <a href="https://maps.google.com/?q=Via+Liguria+26+Pieve+Emanuele+Milano" target="_blank" rel="noopener noreferrer"
                 style={loraStyle} className="inline-block mt-4 text-sm text-green-700 font-semibold underline">
