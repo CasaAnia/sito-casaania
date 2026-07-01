@@ -95,8 +95,8 @@ export default function Home() {
           </h2>
         </div>
         <div className="absolute w-full text-center px-4" style={{ left: 0, bottom: '8%' }}>
-          <p style={{ fontFamily: "'Lora', serif", color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,0.7)', fontSize: '0.9rem', letterSpacing: '0.03em', fontWeight: '700' }}>
-            Camere confortevoli, pulite e accoglienti a soli 140 metri dall'ospedale.
+          <p style={{ fontFamily: "'Lora', serif", color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,0.7)', fontSize: '1.05rem', letterSpacing: '0.03em', fontWeight: '700' }}>
+            Camere confortevoli, pulite e accoglienti a soli <span style={{ textDecoration: 'underline' }}>140 metri dall&apos;ospedale.</span>
           </p>
         </div>
       </section>
