@@ -93,7 +93,7 @@ export default function CameraLena() {
 
         <div className="mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Ogni soggiorno include</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
+          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm text-gray-600">
             {[
               '✓ Bagno privato esterno (esclusivo)',
               '✓ Balcone con vista su Humanitas',
@@ -113,14 +113,14 @@ export default function CameraLena() {
 
         <div className="bg-gray-50 rounded-2xl p-6 text-center">
           <p style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold text-gray-800 mb-2">Verifica la disponibilità</p>
-          <p className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm">
+              style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm">
+              style={{ fontFamily: "'Lora', serif" }} className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm">
               📞 {PHONE_DISPLAY}
             </a>
           </div>
