@@ -141,15 +141,13 @@ export default function Home() {
 
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
-            <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-4">Check-in flessibile</p>
-            <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
-              Il check-in ufficiale va dalle 15:00 alle 20:00, ma facciamo sempre il possibile per accoglierti prima.
-              Non appena la camera è pronta — spesso già di mattina — ti scriviamo subito, così puoi sistemarti con calma.
-              Se arrivi dopo le 20:00, ci basta saperlo in anticipo per organizzarci insieme.
-            </p>
-          </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-4">Check-in flessibile</p>
+          <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Il check-in ufficiale va dalle 15:00 alle 20:00, ma facciamo sempre il possibile per accoglierti prima.
+            Non appena la camera è pronta — spesso già di mattina — ti scriviamo subito, così puoi sistemarti con calma.
+            Se arrivi dopo le 20:00, ci basta saperlo in anticipo per organizzarci insieme.
+          </p>
         </div>
       </section>
 
@@ -157,7 +155,7 @@ export default function Home() {
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <p style={loraStyle} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-8">Dove siamo</p>
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:flex md:gap-8 md:items-center">
+          <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
               <p style={loraStyle} className="text-gray-500 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
