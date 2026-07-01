@@ -73,6 +73,13 @@ export default function CameraAllegra() {
           ))}
         </div>
 
+        <div className="text-center mb-8">
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm">
+            💬 Scrivici su WhatsApp
+          </a>
+        </div>
+
         <div className="mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Descrizione</h2>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
@@ -119,6 +126,11 @@ export default function CameraAllegra() {
         </div>
 
       </div>
+
+      <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg">
+        💬
+      </a>
     </main>
   )
 }

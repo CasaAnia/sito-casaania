@@ -165,6 +165,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTA INTERMEDIA */}
+      <section className="pb-12 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+            style={loraStyle} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm">
+            💬 Scrivici su WhatsApp
+          </a>
+        </div>
+      </section>
+
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
@@ -223,6 +233,12 @@ export default function Home() {
         <p style={loraStyle}>{PHONE_DISPLAY}</p>
         <p style={loraStyle} className="mt-2">© {new Date().getFullYear()} Casa Ania Rozzano</p>
       </footer>
+
+      {/* WHATSAPP FLOTTANTE */}
+      <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg">
+        💬
+      </a>
 
     </main>
   )
