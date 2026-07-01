@@ -110,8 +110,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden">
-                <Link href={room.href} className="block h-80 overflow-hidden">
-                  <img src={room.img} alt={room.name} className="w-full h-full object-cover" />
+                <Link href={room.href} className="block h-80 overflow-hidden bg-gray-100">
+                  <img src={room.img} alt={room.name} className={room.name === 'Lena' ? 'w-full h-full object-contain' : 'w-full h-full object-cover'} />
                 </Link>
                 <div className="px-4 pt-4 pb-2">
                   <div className="flex items-start justify-between mb-1">
