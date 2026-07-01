@@ -19,6 +19,7 @@ const rooms = [
     ],
     img: '/camere/allegra/foto1.jpg',
     href: '/camere/allegra',
+    roomId: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05',
   },
   {
     name: 'Ambra',
@@ -29,6 +30,7 @@ const rooms = [
     ],
     img: '/camere/ambra/foto1.jpg',
     href: '/camere/ambra',
+    roomId: '6a8870ce-be2b-41d9-971e-5c833a85eb4a',
   },
   {
     name: 'Lena',
@@ -41,6 +43,7 @@ const rooms = [
     img: '/camere/lena/foto1b.jpg',
     badge: 'Bagno privato esterno',
     href: '/camere/lena',
+    roomId: '19ae4611-c0a4-42ae-8530-210f9a948e9e',
   },
   {
     name: 'Amelia',
@@ -51,6 +54,7 @@ const rooms = [
     ],
     img: '/camere/singola/foto1.jpg',
     href: '/camere/singola',
+    roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1',
   },
 ]
 
@@ -129,9 +133,14 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <Link href={room.href} style={loraStyle} className="mt-3 block text-center text-base text-green-700 font-semibold py-2">
-                    Scopri di più →
-                  </Link>
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    <Link href={room.href} style={loraStyle} className="text-base text-green-700 font-semibold py-2">
+                      Scopri di più →
+                    </Link>
+                    <Link href={`/prenota?room=${room.roomId}`} style={loraStyle} className="bg-green-700 text-white font-bold px-5 py-2 rounded-full text-sm whitespace-nowrap">
+                      Prenota ora
+                    </Link>
+                  </div>
                 </div>
               </div>
             ))}
