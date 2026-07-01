@@ -120,7 +120,7 @@ export default function Home() {
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
                   </div>
-                  <p className="text-sm text-gray-500 mb-3">{room.desc}</p>
+                  <p style={loraStyle} className="text-sm text-gray-500 mb-3">{room.desc}</p>
                   <div className="border-t border-gray-100 pt-3 flex flex-wrap gap-3">
                     {room.prices.map((p, j) => (
                       <div key={j} className={j > 0 ? 'border-l border-gray-100 pl-3' : ''}>
