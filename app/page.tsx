@@ -145,15 +145,15 @@ export default function Home() {
           <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-8 text-gray-800">Dove siamo</h2>
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
-              <p className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
-              <p className="text-gray-500 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
-              <ul className="text-sm text-gray-600 space-y-2">
+              <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
+              <p style={loraStyle} className="text-gray-500 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
+              <ul style={loraStyle} className="text-sm text-gray-600 space-y-2">
                 <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
                 <li>Zona tranquilla e residenziale</li>
                 <li>Parcheggio disponibile nelle vicinanze</li>
               </ul>
               <a href="https://maps.google.com/?q=Via+Liguria+26+Pieve+Emanuele+Milano" target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-4 text-sm text-green-700 font-semibold underline">
+                style={loraStyle} className="inline-block mt-4 text-sm text-green-700 font-semibold underline">
                 Apri in Google Maps →
               </a>
             </div>
