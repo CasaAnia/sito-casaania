@@ -139,10 +139,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CHECK-IN FLESSIBILE */}
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 text-center">
+            <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-4">Check-in flessibile</p>
+            <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+              Il check-in ufficiale va dalle 15:00 alle 20:00, ma facciamo sempre il possibile per accoglierti prima.
+              Non appena la camera è pronta — spesso già di mattina — ti scriviamo subito, così puoi sistemarti con calma.
+              Se arrivi dopo le 20:00, ci basta saperlo in anticipo per organizzarci insieme.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* DOVE SIAMO */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto">
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-8 text-gray-800">Dove siamo</h2>
+          <p style={loraStyle} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-8">Dove siamo</p>
           <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
@@ -173,8 +187,8 @@ export default function Home() {
       {/* CONTATTI / PRENOTAZIONE */}
       <section className="py-12 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 style={loraStyle} className="text-2xl font-semibold mb-2 text-gray-800">Prenota il tuo soggiorno</h2>
-          <p className="text-gray-500 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
+          <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-2">Prenota il tuo soggiorno</p>
+          <p style={loraStyle} className="text-gray-500 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="flex-1 bg-green-700 text-white font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
@@ -185,7 +199,7 @@ export default function Home() {
               📞 Chiama
             </a>
           </div>
-          <p className="text-gray-400 text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+          <p style={loraStyle} className="text-gray-400 text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
         </div>
       </section>
 
