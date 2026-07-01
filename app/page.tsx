@@ -151,6 +151,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SERVIZIO NAVETTA */}
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-4">Servizio navetta</p>
+          <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+            Ti aiutiamo volentieri anche con gli spostamenti da e per l'aeroporto (Malpensa, Linate, Orio al Serio),
+            dalla stazione di Milano Centrale o Rogoredo, e dalle stazioni bus di San Donato e Lampugnano.
+            Ci appoggiamo ad autisti di fiducia, quindi il servizio ha un costo che varia in base alla tratta.
+            Scrivici su WhatsApp dove devi arrivare, con data e orario, e ti diciamo subito prezzo e disponibilità.
+            Ti consigliamo di chiedercelo con qualche giorno di anticipo, per avere più possibilità di garantirti la disponibilità.
+          </p>
+        </div>
+      </section>
+
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
