@@ -185,7 +185,7 @@ export default function Home() {
       {/* CONTATTI / PRENOTAZIONE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={loraStyle} className="text-gray-500 text-lg uppercase tracking-widest mb-2">Prenota il tuo soggiorno</p>
+          <p style={{...loraStyle, color: '#007f5b'}} className="text-lg font-semibold uppercase tracking-widest mb-2">Prenota il tuo soggiorno</p>
           <p style={loraStyle} className="text-gray-500 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"

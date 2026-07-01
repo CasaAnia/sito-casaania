@@ -100,7 +100,7 @@ export default function CameraAmbra() {
         </div>
 
         <div className="rounded-2xl p-6 text-center">
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 text-lg uppercase tracking-widest mb-2">Verifica la disponibilità</p>
+          <p style={{ fontFamily: "'Lora', serif", color: '#007f5b' }} className="text-lg font-semibold uppercase tracking-widest mb-2">Verifica la disponibilità</p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
