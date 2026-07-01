@@ -55,7 +55,7 @@ export default function CameraLena() {
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-3 gap-x-4">
           <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1–2 persone</p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">3 persone (letto aggiuntivo)</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">4 persone (quadrupla)</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">4 persone (due letti aggiuntivi)</p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€100 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
