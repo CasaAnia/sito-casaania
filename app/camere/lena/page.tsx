@@ -24,7 +24,7 @@ export default function CameraLena() {
           <button className="absolute top-4 right-4 text-white text-3xl font-bold">✕</button>
           <button className="absolute left-4 text-white text-4xl font-bold px-2"
             onClick={e => { e.stopPropagation(); setLightbox(PHOTOS[lightboxIdx > 0 ? lightboxIdx - 1 : PHOTOS.length - 1]) }}>‹</button>
-          <img src={`/camere/lena/foto${lightbox}.jpg`} alt=""
+          <img src={`/camere/lena/foto${lightbox === 1 ? '1b' : lightbox}.jpg`} alt=""
             className="max-w-full max-h-full object-contain"
             onClick={e => e.stopPropagation()} />
           <button className="absolute right-4 text-white text-4xl font-bold px-2"
