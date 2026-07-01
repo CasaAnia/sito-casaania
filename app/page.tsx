@@ -117,19 +117,19 @@ export default function Home() {
                   <div className="flex items-start justify-between mb-1">
                     <h3 style={loraStyle} className="text-xl font-semibold text-gray-500 uppercase tracking-widest">{room.name}</h3>
                     {room.badge && (
-                      <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
+                      <span style={loraStyle} className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
                   </div>
                   <p style={loraStyle} className="text-sm text-gray-500 mb-3">{room.desc}</p>
                   <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
                     {room.prices.map((p, j) => (
                       <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
-                        <p className="text-xs text-gray-400 mb-0.5">{p.label}</p>
+                        <p style={loraStyle} className="text-xs text-gray-400 mb-0.5">{p.label}</p>
                         <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
                       </div>
                     ))}
                   </div>
-                  <Link href={room.href} className="mt-3 block text-center text-base text-green-700 font-semibold py-2">
+                  <Link href={room.href} style={loraStyle} className="mt-3 block text-center text-base text-green-700 font-semibold py-2">
                     Scopri di più →
                   </Link>
                 </div>
