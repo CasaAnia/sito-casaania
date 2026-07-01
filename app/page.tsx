@@ -191,9 +191,9 @@ export default function Home() {
 
       {/* FOOTER */}
       <footer className="bg-gray-900 text-gray-400 py-6 px-4 text-center text-xs">
-        <p className="font-semibold text-white mb-1">Casa Ania Rozzano</p>
-        <p>Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI) · {PHONE_DISPLAY}</p>
-        <p className="mt-2">© {new Date().getFullYear()} Casa Ania Rozzano</p>
+        <p style={loraStyle} className="font-semibold text-white mb-1">Casa Ania Rozzano</p>
+        <p style={loraStyle}>Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI) · {PHONE_DISPLAY}</p>
+        <p style={loraStyle} className="mt-2">© {new Date().getFullYear()} Casa Ania Rozzano</p>
       </footer>
 
     </main>
