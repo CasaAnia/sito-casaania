@@ -118,8 +118,8 @@ export default function CameraLena() {
           </ul>
         </div>
 
-        <div className="bg-gray-50 rounded-2xl p-6 text-center">
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold text-gray-800 mb-2">Verifica la disponibilità</p>
+        <div className="rounded-2xl p-6 text-center">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 text-lg uppercase tracking-widest mb-2">Verifica la disponibilità</p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
