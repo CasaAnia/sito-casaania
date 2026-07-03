@@ -153,11 +153,12 @@ export default function PrenotaClient() {
   const roomOptions = getRoomOptions(Number(form.numGuests))
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900">
+    <main className="min-h-screen bg-gray-50 text-gray-900" style={{ fontFamily: "'Lora', serif" }}>
+      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');`}</style>
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold">← Casa Ania Rozzano</Link>
+          <Link href="/" className="text-green-800 font-bold">← Indietro</Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="text-green-700 text-sm font-semibold">💬 WhatsApp</a>
         </div>
