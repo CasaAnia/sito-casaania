@@ -113,11 +113,11 @@ export default function Home() {
           <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-6 px-4 underline">Le nostre camere</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
-              <div key={i} className="overflow-hidden">
+              <div key={i} className="overflow-hidden flex flex-col h-full">
                 <Link href={room.href} className="block h-80 overflow-hidden bg-gray-100">
                   <img src={room.img} alt={room.name} className={room.name === 'Lena' ? 'w-full h-full object-contain' : 'w-full h-full object-cover'} />
                 </Link>
-                <div className="px-4 pt-4 pb-2">
+                <div className="px-4 pt-4 pb-2 flex flex-col flex-1">
                   <div className="flex items-start justify-between mb-1">
                     <h3 style={loraStyle} className="text-xl font-semibold text-gray-500 uppercase tracking-widest">{room.name}</h3>
                     {room.badge && (
@@ -125,7 +125,7 @@ export default function Home() {
                     )}
                   </div>
                   <p style={loraStyle} className="text-sm text-gray-500 mb-3">{room.desc}</p>
-                  <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
+                  <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3 mt-auto">
                     {room.prices.map((p, j) => (
                       <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
                         <p style={loraStyle} className="text-xs text-gray-400 mb-0.5">{p.label}</p>
