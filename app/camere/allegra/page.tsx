@@ -34,7 +34,7 @@ export default function CameraAllegra() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-1 text-gray-400 hover:text-gray-600 text-sm" style={{fontFamily: "'Lora', serif"}}>
+          <Link href="/" className="flex items-center gap-1 text-gray-600 hover:text-gray-700 text-sm" style={{fontFamily: "'Lora', serif"}}>
             ← Indietro
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
@@ -46,17 +46,17 @@ export default function CameraAllegra() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-500 mb-2 uppercase tracking-widest">Allegra</h1>
+        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-700 mb-2 uppercase tracking-widest">Allegra</h1>
         <div className="flex gap-2 mb-3">
           <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
           <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balconcino</span>
         </div>
-        <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">Luminosa, con bagno in camera e balconcino tutto per sé.</p>
+        <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 italic text-lg mb-5">Luminosa, con bagno in camera e balconcino tutto per sé.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1–2 persone</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">3 persone (letto aggiuntivo)</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700">1–2 persone</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
         </div>
 
         <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
@@ -81,19 +81,19 @@ export default function CameraAllegra() {
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Descrizione</h2>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Descrizione</h2>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
             Allegra è una camera matrimoniale comoda e luminosa, con bagno privato all'interno della stanza.
             Letto matrimoniale con biancheria di bucato fresca e accurata, per quel senso di casa che si sente appena si entra.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed">
             Ha un balconcino privato — tutto per sé, senza condivisione. Un angolo tranquillo dove prendere un po' d'aria dopo una giornata in ospedale.
           </p>
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Ogni soggiorno include</h2>
-          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-600">
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Ogni soggiorno include</h2>
+          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
             {[
               '✓ Aria condizionata e riscaldamento',
               '✓ WiFi veloce gratuito',
@@ -112,7 +112,7 @@ export default function CameraAllegra() {
 
         <div className="rounded-2xl p-6 text-center">
           <p style={{ fontFamily: "'Lora', serif", color: '#007f5b' }} className="text-lg font-semibold uppercase tracking-widest mb-2">Verifica la disponibilità</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm">

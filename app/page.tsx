@@ -136,12 +136,12 @@ export default function Home() {
             {testimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-2.5 shadow-sm">
                 <p style={{color: '#007f5b'}} className="text-xs mb-0.5">{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</p>
-                <p style={loraStyle} className="text-gray-600 text-sm italic leading-tight mb-1 line-clamp-2">"{t.text}"</p>
+                <p style={loraStyle} className="text-gray-700 text-sm italic leading-tight mb-1 line-clamp-2">"{t.text}"</p>
                 <p style={loraStyle} className="text-xs font-semibold text-gray-800">{t.name}</p>
               </div>
             ))}
           </div>
-          <p style={loraStyle} className="text-center text-gray-400 text-xs mt-2">Recensioni raccolte su TripAdvisor</p>
+          <p style={loraStyle} className="text-center text-gray-600 text-xs mt-2">Recensioni raccolte su TripAdvisor</p>
         </div>
       </section>
 
@@ -162,12 +162,12 @@ export default function Home() {
                       <span style={loraStyle} className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
                   </div>
-                  <p style={loraStyle} className="text-sm text-gray-500 mb-3">{room.desc}</p>
+                  <p style={loraStyle} className="text-sm text-gray-700 mb-3">{room.desc}</p>
                   <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3 mt-auto">
                     {room.prices.map((p, j) => (
                       <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
-                        <p style={loraStyle} className="text-xs text-gray-400 mb-0.5 leading-tight min-h-[2rem] flex items-end">{p.label}</p>
-                        <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
+                        <p style={loraStyle} className="text-xs text-gray-600 mb-0.5 leading-tight min-h-[2rem] flex items-end">{p.label}</p>
+                        <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-600">/ notte</span></p>
                       </div>
                     ))}
                   </div>
@@ -190,8 +190,8 @@ export default function Home() {
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-500 text-lg uppercase tracking-widest mb-4 underline">Check-in flessibile</p>
-          <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-widest mb-4 underline">Check-in flessibile</p>
+          <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
             Il check-in ufficiale va dalle 15:00 alle 20:00, ma facciamo sempre il possibile per accoglierti prima.
             Non appena la camera è pronta — spesso già di mattina — ti scriviamo subito, così puoi sistemarti con calma.
             Se arrivi dopo le 20:00, ci basta saperlo in anticipo per organizzarci insieme.
@@ -202,8 +202,8 @@ export default function Home() {
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-500 text-lg uppercase tracking-widest mb-4 underline">Servizio navetta</p>
-          <p style={loraStyle} className="text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-widest mb-4 underline">Servizio navetta</p>
+          <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
             Ti aiutiamo volentieri anche con gli spostamenti da e per l'aeroporto (Malpensa, Linate, Orio al Serio),
             dalla stazione di Milano Centrale o Rogoredo, e dalle stazioni bus di San Donato e Lampugnano.
             Ci appoggiamo ad autisti di fiducia, quindi il servizio ha un costo che varia in base alla tratta.
@@ -226,12 +226,12 @@ export default function Home() {
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-8 underline">Dove siamo</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-widest mb-8 underline">Dove siamo</p>
           <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
-              <p style={loraStyle} className="text-gray-500 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
-              <ul style={loraStyle} className="text-sm text-gray-600 space-y-2">
+              <p style={loraStyle} className="text-gray-700 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
+              <ul style={loraStyle} className="text-sm text-gray-700 space-y-2">
                 <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
                 <li>Zona tranquilla e residenziale</li>
                 <li>Due piazzole di sosta gratuite a circa 150 metri da Casa Ania, poco prima di arrivare, su entrambi i lati della strada</li>
@@ -259,7 +259,7 @@ export default function Home() {
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p style={{...loraStyle, color: '#007f5b'}} className="text-lg font-semibold uppercase tracking-widest mb-2">Prenota il tuo soggiorno</p>
-          <p style={loraStyle} className="text-gray-500 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
+          <p style={loraStyle} className="text-gray-700 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="flex-1 bg-green-700 text-white font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
@@ -270,7 +270,7 @@ export default function Home() {
               📞 Chiama
             </a>
           </div>
-          <p style={loraStyle} className="text-gray-400 text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+          <p style={loraStyle} className="text-gray-600 text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
         </div>
       </section>
 

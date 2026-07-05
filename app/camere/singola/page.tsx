@@ -34,7 +34,7 @@ export default function CameraSingola() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-1 text-gray-400 hover:text-gray-600 text-sm" style={{fontFamily: "'Lora', serif"}}>
+          <Link href="/" className="flex items-center gap-1 text-gray-600 hover:text-gray-700 text-sm" style={{fontFamily: "'Lora', serif"}}>
             ← Indietro
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
@@ -46,17 +46,17 @@ export default function CameraSingola() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-500 mb-2 uppercase tracking-widest">Amelia</h1>
+        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-700 mb-2 uppercase tracking-widest">Amelia</h1>
         <div className="flex gap-2 mb-3">
           <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
           <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
         </div>
-        <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-500 italic text-lg mb-5">Piccola, curata, silenziosa — nel cuore di Casa Ania, con vista sulla clinica Humanitas.</p>
+        <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 italic text-lg mb-5">Piccola, curata, silenziosa — nel cuore di Casa Ania, con vista sulla clinica Humanitas.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">1 persona</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500">2 persone (letto aggiuntivo)</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€70 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€75 <span className="text-sm font-normal text-gray-500">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700">1 persona</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700">2 persone (letto aggiuntivo)</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€70 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€75 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
         </div>
 
         <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
@@ -81,24 +81,24 @@ export default function CameraSingola() {
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Descrizione</h2>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Descrizione</h2>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
             Amelia è la camera più piccola di Casa Ania — compatta, raccolta, ma curatissima in ogni dettaglio.
             Letto singolo con lenzuola candide, bagno in camera, in un ambiente semplice ma ben curato, con quella sensazione di ordine e pulizia che si nota fin da subito.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed mb-3">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
             Amelia e Lena condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
             dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
             Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-600 leading-relaxed">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed">
             Si può aggiungere un secondo letto — la camera è intima, ma accogliente come tutto il resto della casa.
           </p>
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-500 uppercase tracking-widest">Ogni soggiorno include</h2>
-          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-600">
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Ogni soggiorno include</h2>
+          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
             {[
               '✓ Bagno privato',
               '✓ Aria condizionata e riscaldamento',
@@ -118,7 +118,7 @@ export default function CameraSingola() {
 
         <div className="rounded-2xl p-6 text-center">
           <p style={{ fontFamily: "'Lora', serif", color: '#007f5b' }} className="text-lg font-semibold uppercase tracking-widest mb-2">Verifica la disponibilità</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-500 mb-5">Contattaci su WhatsApp o per telefono</p>
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm">
