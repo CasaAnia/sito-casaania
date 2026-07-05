@@ -90,14 +90,14 @@ export default function CameraLena() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Descrizione</h2>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic mb-3">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic text-lg mb-3">
             Lena è la camera più grande di Casa Ania — spaziosa, luminosa, con tutto lo spazio che serve anche quando si è in più persone.
             Letto matrimoniale con lenzuola curate nei minimi dettagli, morbide e profumate di fresco, e tutto il calore di una casa che accoglie.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic mb-3">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic text-lg mb-3">
             Ha un bagno privato esterno — a un metro dalla stanza, chiuso a chiave, riservato esclusivamente a chi soggiorna in Lena.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic text-lg">
             Lena e Amelia condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
             dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
             Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
