@@ -80,23 +80,23 @@ export default function CameraSingola() {
           </Link>
         </div>
 
-        <div className="mb-8">
+        <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Descrizione</h2>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic mb-3">
             Amelia è la camera più piccola di Casa Ania — compatta, raccolta, ma curatissima in ogni dettaglio.
             Letto singolo con lenzuola candide, bagno in camera, in un ambiente semplice ma ben curato, con quella sensazione di ordine e pulizia che si nota fin da subito.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic mb-3">
             Amelia e Lena condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
             dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
             Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
           </p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed">
+          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic">
             Si può aggiungere un secondo letto — la camera è intima, ma accogliente come tutto il resto della casa.
           </p>
         </div>
 
-        <div className="mb-8">
+        <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Ogni soggiorno include</h2>
           <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
             {[
