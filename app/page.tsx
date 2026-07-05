@@ -171,7 +171,7 @@ export default function Home() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 flex items-center justify-between gap-3">
+                  <div className="mt-5 flex items-center justify-between gap-3">
                     <Link href={room.href} style={loraStyle} className="text-base text-green-700 font-semibold py-2">
                       Scopri di più →
                     </Link>
