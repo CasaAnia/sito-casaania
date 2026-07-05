@@ -148,7 +148,7 @@ export default function Home() {
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-6 px-4 underline">Scegli la tua camera</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-10 px-4 underline">Scegli la tua camera</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full">
@@ -265,7 +265,7 @@ export default function Home() {
       {/* CONTATTI / PRENOTAZIONE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{...loraStyle, color: '#007f5b'}} className="text-lg font-semibold uppercase tracking-wider mb-6">Prenota il tuo soggiorno</p>
+          <p style={{...loraStyle, color: '#007f5b'}} className="text-xl font-semibold uppercase tracking-wider mb-6">Prenota il tuo soggiorno</p>
           <p style={loraStyle} className="text-gray-700 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
