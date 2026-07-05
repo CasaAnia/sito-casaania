@@ -120,11 +120,11 @@ export default function CameraSingola() {
           <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-base">
+              style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-lg">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              style={{ fontFamily: "'Lora', serif" }} className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-base">
+              style={{ fontFamily: "'Lora', serif" }} className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-lg">
               📞 {PHONE_DISPLAY}
             </a>
           </div>
