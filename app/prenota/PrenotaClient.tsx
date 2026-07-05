@@ -153,7 +153,7 @@ export default function PrenotaClient() {
   const roomOptions = getRoomOptions(Number(form.numGuests))
 
   return (
-    <main className="min-h-screen bg-gray-50 text-gray-900" style={{ fontFamily: "'Lora', serif" }}>
+    <main className="min-h-screen text-gray-900" style={{ fontFamily: "'Lora', serif", backgroundColor: '#f9f6f1' }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');`}</style>
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
