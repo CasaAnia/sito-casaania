@@ -89,7 +89,7 @@ export default function CameraAmbra() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Ogni soggiorno include</h2>
-          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic">
+          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
             {[
               '✓ Aria condizionata e riscaldamento',
               '✓ WiFi veloce gratuito',
