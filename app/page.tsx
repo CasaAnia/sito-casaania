@@ -78,7 +78,7 @@ export default function Home() {
             <h1 style={{...loraStyle, textShadow: '0 1px 3px rgba(0,0,0,0.12)'}} className="text-lg font-semibold tracking-widest uppercase whitespace-nowrap">
               <span className="text-green-700">Casa </span><span style={{color: '#007f5b'}}>Ania </span><span className="text-green-700">Rozzano</span>
             </h1>
-            <p style={loraStyle} className="text-sm text-gray-500">140 metri da Humanitas</p>
+            <p style={loraStyle} className="text-sm text-gray-700">140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
             style={{...loraStyle, fontSize: '0.65rem', letterSpacing: '0.05em'}}
@@ -109,7 +109,7 @@ export default function Home() {
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-6 px-4 underline">Le nostre camere</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-widest mb-6 px-4 underline">Le nostre camere</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full">
@@ -118,7 +118,7 @@ export default function Home() {
                 </Link>
                 <div className="px-4 pt-4 pb-2 flex flex-col flex-1">
                   <div className="flex items-start justify-between mb-1">
-                    <h3 style={loraStyle} className="text-xl font-semibold text-gray-500 uppercase tracking-widest">{room.name}</h3>
+                    <h3 style={loraStyle} className="text-xl font-semibold text-gray-700 uppercase tracking-widest">{room.name}</h3>
                     {room.badge && (
                       <span style={loraStyle} className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
