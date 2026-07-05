@@ -237,8 +237,8 @@ export default function Home() {
           <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
-              <p style={loraStyle} className="text-gray-700 text-sm mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
-              <ul style={loraStyle} className="text-sm text-gray-700 space-y-2">
+              <p style={loraStyle} className="text-gray-700 mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
+              <ul style={loraStyle} className="text-gray-700 leading-relaxed space-y-2">
                 <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
                 <li>Zona tranquilla e residenziale</li>
                 <li>Due piazzole di sosta gratuite a circa 150 metri da Casa Ania, poco prima di arrivare, su entrambi i lati della strada</li>
