@@ -82,10 +82,10 @@ export default function CameraLena() {
         </div>
 
         <div className="text-center mb-8">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm">
-            💬 Scrivici su WhatsApp
-          </a>
+          <Link href="/prenota?room=19ae4611-c0a4-42ae-8530-210f9a948e9e"
+            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
+            Prenota ora
+          </Link>
         </div>
 
         <div className="mb-8">

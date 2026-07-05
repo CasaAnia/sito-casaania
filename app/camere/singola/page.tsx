@@ -74,10 +74,10 @@ export default function CameraSingola() {
         </div>
 
         <div className="text-center mb-8">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm">
-            💬 Scrivici su WhatsApp
-          </a>
+          <Link href="/prenota?room=fed43a69-5e19-4cf9-b1b3-64affa46f9b1"
+            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
+            Prenota ora
+          </Link>
         </div>
 
         <div className="mb-8">

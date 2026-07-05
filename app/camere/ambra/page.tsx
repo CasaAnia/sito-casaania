@@ -73,10 +73,10 @@ export default function CameraAmbra() {
         </div>
 
         <div className="text-center mb-8">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm">
-            💬 Scrivici su WhatsApp
-          </a>
+          <Link href="/prenota?room=6a8870ce-be2b-41d9-971e-5c833a85eb4a"
+            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
+            Prenota ora
+          </Link>
         </div>
 
         <div className="mb-8">

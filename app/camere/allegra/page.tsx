@@ -74,10 +74,10 @@ export default function CameraAllegra() {
         </div>
 
         <div className="text-center mb-8">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm">
-            💬 Scrivici su WhatsApp
-          </a>
+          <Link href="/prenota?room=bfe8414c-97de-4aae-96c0-c6b0225d1a05"
+            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
+            Prenota ora
+          </Link>
         </div>
 
         <div className="mb-8">
