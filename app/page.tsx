@@ -175,7 +175,7 @@ export default function Home() {
                     <Link href={room.href} style={loraStyle} className="text-base text-green-700 font-semibold py-2">
                       Scopri di più →
                     </Link>
-                    <Link href={`/prenota?room=${room.roomId}`} style={loraStyle} className="bg-green-700 text-white font-bold px-5 py-2 rounded-full text-sm whitespace-nowrap">
+                    <Link href={`/prenota?room=${room.roomId}`} style={loraStyle} className="bg-green-700 text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
                       Prenota ora
                     </Link>
                   </div>
