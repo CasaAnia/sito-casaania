@@ -89,16 +89,16 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative text-white px-4 overflow-hidden" style={{ minHeight: '420px', maxHeight: '560px' }}>
+      <section className="relative text-white px-4 overflow-hidden" style={{ minHeight: '340px', maxHeight: '460px' }}>
         <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover md:hidden" style={{ objectPosition: 'center 50%' }} />
         <img src="/hero-desktop.jpg" alt="Vista Humanitas" className="absolute inset-0 w-full h-full object-cover hidden md:block" style={{ objectPosition: 'center 45%' }} />
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.05) 65%, rgba(0,0,0,0.4) 100%)' }} />
         <div className="absolute w-full text-center px-4" style={{ left: 0, top: isWide ? '58%' : '22%' }}>
           <h2 style={{fontFamily: "'Raleway', sans-serif", color: '#ffffff', textShadow: '0 2px 12px rgba(0,0,0,0.7)'}} className="text-3xl md:text-5xl font-semibold mb-4 leading-tight uppercase tracking-widest">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
         </div>
-        <div className="absolute w-full text-center px-4" style={{ left: 0, bottom: '8%' }}>
+        <div className="absolute w-full text-center px-4" style={{ left: 0, bottom: '3%' }}>
           <p style={{ fontFamily: "'Lora', serif", color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,0.7)', fontSize: '0.9rem', letterSpacing: '0.03em', fontWeight: '700' }}>
             Camere confortevoli, pulite e accoglienti a soli <span style={{ textDecoration: 'underline', fontSize: '1.15rem' }}>140 metri dall&apos;ospedale.</span>
           </p>
@@ -107,9 +107,8 @@ export default function Home() {
 
 
       {/* CAMERE */}
-      <section className="pt-16 pb-8">
+      <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mb-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
           <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-500 text-lg uppercase tracking-widest mb-6 px-4 underline">Le nostre camere</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
@@ -128,7 +127,7 @@ export default function Home() {
                   <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3 mt-auto">
                     {room.prices.map((p, j) => (
                       <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
-                        <p style={loraStyle} className="text-xs text-gray-400 mb-0.5">{p.label}</p>
+                        <p style={loraStyle} className="text-xs text-gray-400 mb-0.5 leading-tight min-h-[2rem] flex items-end">{p.label}</p>
                         <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-400">/ notte</span></p>
                       </div>
                     ))}
@@ -145,6 +144,7 @@ export default function Home() {
               </div>
             ))}
           </div>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mt-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
         </div>
       </section>
 
