@@ -116,8 +116,8 @@ export default function CameraLena() {
               '✓ Piccolo frigorifero',
               '✓ Phon',
               '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
-              '✓ Cambio lenzuola e asciugamani ogni 4 notti con pulizia completa della camera',
               '✓ Bagno schiuma, sapone mani e carta igienica',
+              '✓ Cambio lenzuola e asciugamani ogni 4 notti con pulizia completa della camera',
             ].map(s => (
               <li key={s}>{s}</li>
             ))}
