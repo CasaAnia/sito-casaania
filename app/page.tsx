@@ -166,7 +166,7 @@ export default function Home() {
                   <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3 mt-auto">
                     {room.prices.map((p, j) => (
                       <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
-                        <p style={loraStyle} className="text-xs text-gray-600 mb-0.5 leading-tight min-h-[2rem] flex items-end">{p.label}</p>
+                        <p style={loraStyle} className="text-xs text-gray-600 mb-0.5 leading-tight min-h-[2rem] flex items-start">{p.label}</p>
                         <p style={loraStyle} className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-gray-600">/ notte</span></p>
                       </div>
                     ))}
