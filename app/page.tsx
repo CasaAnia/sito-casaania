@@ -58,6 +58,29 @@ const rooms = [
   },
 ]
 
+const testimonials = [
+  {
+    name: 'Antonella P.',
+    rating: 5,
+    text: 'Ottima struttura, ottima esperienza, qualità prezzo il top. La signora Ania una splendida persona.',
+  },
+  {
+    name: 'Rosanna C.',
+    rating: 5,
+    text: 'Ottima la nostra esperienza in Casa Granata. La signora Ania è stata accogliente e disponibile e molto empatica.',
+  },
+  {
+    name: 'Lulu R.',
+    rating: 5,
+    text: 'Ottima struttura, ottima posizione, molto pulita e proprietario molto disponibile e attento alle esigenze dei clienti.',
+  },
+  {
+    name: 'Martina M.',
+    rating: 4,
+    text: "Camera pulita e dotata di un terrazzino. Personale cordiale e disponibile... a pochi minuti dall'Humanitas.",
+  },
+]
+
 export default function Home() {
   const [isWide, setIsWide] = useState(false)
   useEffect(() => {
@@ -105,11 +128,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* RECENSIONI */}
+      <section className="py-5 px-4" style={{backgroundColor: '#f2ede4'}}>
+        <div className="max-w-4xl mx-auto">
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-3 underline">Cosa dicono di noi</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-white rounded-xl p-2.5 shadow-sm">
+                <p style={{color: '#007f5b'}} className="text-xs mb-0.5">{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</p>
+                <p style={loraStyle} className="text-gray-600 text-sm italic leading-tight mb-1 line-clamp-2">"{t.text}"</p>
+                <p style={loraStyle} className="text-xs font-semibold text-gray-800">{t.name}</p>
+              </div>
+            ))}
+          </div>
+          <p style={loraStyle} className="text-center text-gray-400 text-xs mt-2">Recensioni raccolte su TripAdvisor</p>
+        </div>
+      </section>
 
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 px-4 underline">Scegli la tua camera</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-6 px-4 underline">Scegli la tua camera</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full">
