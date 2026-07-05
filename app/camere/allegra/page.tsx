@@ -102,7 +102,7 @@ export default function CameraAllegra() {
               '✓ Phon',
               '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✓ Cambio lenzuola e asciugamani ogni 4 notti con pulizia completa della camera',
-              '✓ Bagno schiuma, sapone e carta igienica',
+              '✓ Bagno schiuma, sapone mani e carta igienica',
             ].map(s => (
               <li key={s}>{s}</li>
             ))}
@@ -110,15 +110,15 @@ export default function CameraAllegra() {
         </div>
 
         <div className="rounded-2xl p-6 text-center">
-          <p style={{ fontFamily: "'Lora', serif", color: '#007f5b' }} className="text-lg font-semibold uppercase tracking-widest mb-2">Verifica la disponibilità</p>
+          <p style={{ fontFamily: "'Lora', serif", color: '#007f5b' }} className="text-lg font-semibold uppercase tracking-wider mb-2">Verifica la disponibilità</p>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-sm">
+              style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-base">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              style={{ fontFamily: "'Lora', serif" }} className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm">
+              style={{ fontFamily: "'Lora', serif" }} className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-base">
               📞 {PHONE_DISPLAY}
             </a>
           </div>
