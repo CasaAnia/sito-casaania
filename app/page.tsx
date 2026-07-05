@@ -129,9 +129,9 @@ export default function Home() {
       </section>
 
       {/* RECENSIONI */}
-      <section className="py-5 px-4" style={{backgroundColor: '#f2ede4'}}>
+      <section className="py-8 px-4" style={{backgroundColor: '#f2ede4'}}>
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-3 underline">Cosa dicono di noi</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg font-semibold uppercase tracking-wider mb-6 underline">Cosa dicono di noi</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {testimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-2.5 shadow-sm">
@@ -183,18 +183,25 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <h2 style={loraStyle} className="text-2xl font-semibold text-center mt-12 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
+          <h2 style={loraStyle} className="text-2xl font-semibold text-center mt-20 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
         </div>
       </section>
 
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-widest mb-4 underline">Check-in flessibile</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</p>
+          <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-4">
+            Il check-in ufficiale è dalle 15:00 alle 20:00.
+          </p>
+          <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-4">
+            Qualora la camera fosse pronta in anticipo (cosa che accade spesso già nelle prime ore del mattino), ti invieremo un messaggio per informarti che potrai accedere alla struttura anche prima dell'orario previsto.
+          </p>
+          <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-4">
+            Se desideri lasciare i bagagli prima del check-in, ti chiediamo semplicemente di avvisarci il giorno precedente, così da organizzare al meglio la tua accoglienza.
+          </p>
           <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
-            Il check-in ufficiale va dalle 15:00 alle 20:00, ma facciamo sempre il possibile per accoglierti prima.
-            Non appena la camera è pronta — spesso già di mattina — ti scriviamo subito, così puoi sistemarti con calma.
-            Se arrivi dopo le 20:00, ci basta saperlo in anticipo per organizzarci insieme.
+            Se invece prevedi di arrivare dopo le 20:00, è sufficiente comunicarcelo il giorno prima e faremo il possibile per rendere il tuo arrivo semplice e agevole.
           </p>
         </div>
       </section>
@@ -202,7 +209,7 @@ export default function Home() {
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-widest mb-4 underline">Servizio navetta</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</p>
           <p style={loraStyle} className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
             Ti aiutiamo volentieri anche con gli spostamenti da e per l'aeroporto (Malpensa, Linate, Orio al Serio),
             dalla stazione di Milano Centrale o Rogoredo, e dalle stazioni bus di San Donato e Lampugnano.
@@ -226,7 +233,7 @@ export default function Home() {
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-widest mb-8 underline">Dove siamo</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Dove siamo</p>
           <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0">
               <p style={loraStyle} className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
@@ -258,7 +265,7 @@ export default function Home() {
       {/* CONTATTI / PRENOTAZIONE */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{...loraStyle, color: '#007f5b'}} className="text-lg font-semibold uppercase tracking-widest mb-2">Prenota il tuo soggiorno</p>
+          <p style={{...loraStyle, color: '#007f5b'}} className="text-lg font-semibold uppercase tracking-wider mb-6">Prenota il tuo soggiorno</p>
           <p style={loraStyle} className="text-gray-700 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
