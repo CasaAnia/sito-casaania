@@ -34,7 +34,7 @@ export default function CameraLena() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold" style={{fontFamily: "'Lora', serif"}}>
+          <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors" style={{fontFamily: "'Lora', serif"}}>
             ← Indietro
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"

@@ -158,7 +158,7 @@ export default function PrenotaClient() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold">← Indietro</Link>
+          <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors">← Indietro</Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="text-green-700 text-sm font-semibold">💬 WhatsApp</a>
         </div>
