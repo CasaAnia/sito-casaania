@@ -91,7 +91,7 @@ export default function Home() {
   }, [])
 
   return (
-    <main className="min-h-screen text-gray-900" style={{backgroundColor: '#f9f6f1'}}>
+    <main className="min-h-screen text-gray-900" style={{backgroundColor: '#faf9f6'}}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Raleway:wght@300;400&display=swap');`}</style>
 
       {/* HEADER */}
@@ -129,7 +129,7 @@ export default function Home() {
       </section>
 
       {/* RECENSIONI */}
-      <section className="py-8 px-4" style={{backgroundColor: '#f2ede4'}}>
+      <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg font-semibold uppercase tracking-wider mb-6 underline">Cosa dicono di noi</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -155,7 +155,7 @@ export default function Home() {
                 <Link href={room.href} className="block h-80 overflow-hidden bg-gray-100">
                   <img src={room.img} alt={room.name} className={room.name === 'Lena' ? 'w-full h-full object-contain' : 'w-full h-full object-cover'} />
                 </Link>
-                <div className="px-4 pt-4 pb-2 flex flex-col flex-1">
+                <div className={`px-4 pb-2 flex flex-col flex-1 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
                   <div className="flex items-start justify-between mb-1">
                     <h3 style={loraStyle} className="text-xl font-semibold text-gray-700 uppercase tracking-wider">{room.name}</h3>
                     {room.badge && (
