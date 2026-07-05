@@ -158,7 +158,7 @@ export default function PrenotaClient() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold">← Indietro</Link>
+          <Link href="/" className="flex items-center gap-1 text-gray-600 hover:text-gray-700 text-sm">← Indietro</Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="text-green-700 text-sm font-semibold">💬 WhatsApp</a>
         </div>
@@ -176,8 +176,8 @@ export default function PrenotaClient() {
               {/* DATE */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                 <p className="font-semibold text-gray-700 mb-3">Date del soggiorno</p>
-                <div className="grid grid-cols-2 gap-3">
-                  <div>
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="min-w-0">
                     <label className="text-xs text-gray-500 mb-1 block">Check-in</label>
                     <input type="date" value={form.checkIn} min={getTodayStr()}
                       onChange={e => {
@@ -188,13 +188,13 @@ export default function PrenotaClient() {
                           set('checkOut', d.toISOString().slice(0, 10))
                         }
                       }}
-                      className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" required />
+                      className="w-full min-w-0 border border-gray-200 rounded-xl px-2 py-1.5 text-xs" required />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <label className="text-xs text-gray-500 mb-1 block">Check-out</label>
                     <input type="date" value={form.checkOut} min={form.checkIn}
                       onChange={e => set('checkOut', e.target.value)}
-                      className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" required />
+                      className="w-full min-w-0 border border-gray-200 rounded-xl px-2 py-1.5 text-xs" required />
                   </div>
                 </div>
               </div>
