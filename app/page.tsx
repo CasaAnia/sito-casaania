@@ -98,7 +98,7 @@ export default function Home() {
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
           <div>
-            <h1 style={{...loraStyle, textShadow: '0 1px 3px rgba(0,0,0,0.12)'}} className="text-lg font-semibold tracking-wider uppercase whitespace-nowrap">
+            <h1 style={{...loraStyle, textShadow: '0 2px 4px rgba(0,0,0,0.25)'}} className="text-lg font-bold tracking-wider uppercase whitespace-nowrap">
               <span className="text-green-700">Casa </span><span style={{color: '#007f5b'}}>Ania </span><span className="text-green-700">Rozzano</span>
             </h1>
             <p style={loraStyle} className="text-sm text-gray-700">140 metri da Humanitas</p>
@@ -131,7 +131,7 @@ export default function Home() {
       {/* RECENSIONI */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg font-semibold uppercase tracking-wider mb-6 underline">Cosa dicono di noi</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-6 underline">Cosa dicono di noi</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {testimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-2.5 shadow-sm">
