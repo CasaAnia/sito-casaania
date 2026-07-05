@@ -80,7 +80,7 @@ export default function CameraAmbra() {
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Descrizione</h2>
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Descrizione</h2>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
             Ambra è una camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.
             Letto matrimoniale con biancheria sempre impeccabile, lenzuola morbide e un buon profumo di pulito, per sentirsi a casa fin dal primo momento.
@@ -88,7 +88,7 @@ export default function CameraAmbra() {
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Ogni soggiorno include</h2>
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Ogni soggiorno include</h2>
           <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
             {[
               '✓ Aria condizionata e riscaldamento',
@@ -99,7 +99,6 @@ export default function CameraAmbra() {
               '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✓ Cambio lenzuola e asciugamani ogni 4 notti con pulizia completa della camera',
               '✓ Bagno schiuma, sapone e carta igienica',
-              '✓ Letto supplementare su richiesta',
             ].map(s => (
               <li key={s}>{s}</li>
             ))}

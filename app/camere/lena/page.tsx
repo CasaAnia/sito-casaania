@@ -89,7 +89,7 @@ export default function CameraLena() {
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Descrizione</h2>
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Descrizione</h2>
           <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed mb-3">
             Lena è la camera più grande di Casa Ania — spaziosa, luminosa, con tutto lo spazio che serve anche quando si è in più persone.
             Letto matrimoniale con lenzuola curate nei minimi dettagli, morbide e profumate di fresco, e tutto il calore di una casa che accoglie.
@@ -105,7 +105,7 @@ export default function CameraLena() {
         </div>
 
         <div className="mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-widest">Ogni soggiorno include</h2>
+          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Ogni soggiorno include</h2>
           <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700">
             {[
               '✓ Bagno privato esterno (esclusivo)',
@@ -118,7 +118,6 @@ export default function CameraLena() {
               '✓ Lenzuola e 3 asciugamani (telo doccia, viso e mani)',
               '✓ Cambio lenzuola e asciugamani ogni 4 notti con pulizia completa della camera',
               '✓ Bagno schiuma, sapone e carta igienica',
-              '✓ Letti supplementari su richiesta (fino a 4 persone)',
             ].map(s => (
               <li key={s}>{s}</li>
             ))}
