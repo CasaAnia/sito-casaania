@@ -81,8 +81,8 @@ export default function Home() {
             <p style={loraStyle} className="text-sm text-gray-700">140 metri da Humanitas</p>
           </div>
           <Link href="/prenota"
-            style={{...loraStyle, fontSize: '0.65rem', letterSpacing: '0.05em'}}
-            className="bg-green-700 text-white font-semibold px-3 py-2.5 rounded-full uppercase whitespace-nowrap">
+            style={{...loraStyle, fontSize: '0.75rem', letterSpacing: '0.05em'}}
+            className="bg-green-700 text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap">
             Prenota ora
           </Link>
         </div>
