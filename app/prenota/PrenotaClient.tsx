@@ -176,7 +176,7 @@ export default function PrenotaClient() {
               {/* DATE */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                 <p className="font-semibold text-gray-700 mb-3">Date del soggiorno</p>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div className="min-w-0">
                     <label className="text-xs text-gray-500 mb-1 block">Check-in</label>
                     <input type="date" value={form.checkIn} min={getTodayStr()}
