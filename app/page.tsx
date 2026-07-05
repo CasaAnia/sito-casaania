@@ -131,7 +131,7 @@ export default function Home() {
       {/* RECENSIONI */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-6 underline">Cosa dicono di noi</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-10 underline">Cosa dicono di noi</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
             {testimonials.map((t, i) => (
               <div key={i} className="bg-white rounded-xl p-2.5 shadow-sm">
@@ -148,7 +148,7 @@ export default function Home() {
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-10 px-4 underline">Scegli la tua camera</p>
+          <p style={{...loraStyle, textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-14 px-4 underline">Scegli la tua camera</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full">
