@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 
-const PHONE = '3427004345'
+const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
 
 const LENA_ID = '19ae4611-c0a4-42ae-8530-210f9a948e9e'

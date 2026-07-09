@@ -25,7 +25,7 @@ const lodgingJsonLd = {
   description:
     "Affittacamere a conduzione familiare a 140 metri dall'ospedale Humanitas di Rozzano. Camere con bagno privato, check-in flessibile e servizio navetta da aeroporti e stazioni.",
   url: "https://www.casaaniarozzano.it/",
-  telephone: "+393427004345",
+  telephone: "+393427004354",
   priceRange: "€70-€100",
   address: {
     "@type": "PostalAddress",

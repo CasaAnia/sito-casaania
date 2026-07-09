@@ -2,8 +2,8 @@
 import Link from 'next/link'
 import { useState } from 'react'
 
-const PHONE = '3427004345'
-const PHONE_DISPLAY = '342 700 4345'
+const PHONE = '3427004354'
+const PHONE_DISPLAY = '342 700 4354'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
 const PHOTOS = [1, 2, 5, 3, 6, 8, 7, 10, 11, 12]

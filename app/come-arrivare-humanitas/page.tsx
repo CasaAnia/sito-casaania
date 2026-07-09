@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     "Casa Ania è a 140 metri dall'ospedale Humanitas di Rozzano: 2 minuti a piedi. Indicazioni da aeroporti, stazioni e autostrade, con servizio navetta su richiesta.",
 }
 
-const PHONE = '3427004345'
-const PHONE_DISPLAY = '342 700 4345'
+const PHONE = '3427004354'
+const PHONE_DISPLAY = '342 700 4354'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
 
