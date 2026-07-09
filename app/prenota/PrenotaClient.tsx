@@ -268,6 +268,17 @@ export default function PrenotaClient() {
                 Riceverai conferma via WhatsApp entro pochi minuti
               </p>
             </form>
+
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-4 text-center">
+              <p className="font-display font-semibold text-gray-800 mb-2">Ti serve un passaggio?</p>
+              <p className="text-sm text-[#3a3a35] mb-3">
+                Arrivi in aereo o in treno? Veniamo a prenderti. Con i nostri autisti di fiducia organizziamo il trasferimento da Malpensa, Linate, Orio al Serio, dalle stazioni di Milano Centrale e Rogoredo e dai terminal bus di San Donato e Lampugnano. Scrivici su WhatsApp con data, orario e punto di arrivo: ti diciamo subito il prezzo. Meglio qualche giorno prima, così ti garantiamo il posto.
+              </p>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+                className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-6 py-3 rounded-full text-sm">
+                💬 WhatsApp
+              </a>
+            </div>
           </>
         )}
 

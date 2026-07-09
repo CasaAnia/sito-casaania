@@ -245,11 +245,8 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <p style={{textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</p>
           <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
-            Ti aiutiamo volentieri anche con gli spostamenti da e per l'aeroporto (Malpensa, Linate, Orio al Serio),
-            dalla stazione di Milano Centrale o Rogoredo, e dalle stazioni bus di San Donato e Lampugnano.
-            Ci appoggiamo ad autisti di fiducia, quindi il servizio ha un costo che varia in base alla tratta.
-            Scrivici su WhatsApp dove devi arrivare, con data e orario, e ti diciamo subito prezzo e disponibilità.
-            Ti consigliamo di chiedercelo con qualche giorno di anticipo, per avere più possibilità di garantirti la disponibilità.
+            Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
+            Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
           </p>
         </div>
       </section>
@@ -311,7 +308,7 @@ export default function Home() {
           <ul className="text-gray-700 leading-relaxed space-y-4 max-w-2xl mx-auto">
             <li><strong>🚶 A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</li>
             <li><strong>🚗 In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</li>
-            <li><strong>✈️ In aereo:</strong> serviamo Malpensa, Linate (il più vicino, circa 25 minuti) e Orio al Serio con una navetta su richiesta. Scrivici su WhatsApp con data, orario e aeroporto: ti rispondiamo subito con prezzo e disponibilità.</li>
+            <li><strong>✈️ In aereo:</strong> Viaggiare per una visita medica è già abbastanza faticoso. Al trasferimento pensiamo noi: i nostri autisti di fiducia ti aspettano a Malpensa, Linate, Orio al Serio o alla stazione, e ti portano direttamente da noi. Scrivici su WhatsApp con data e orario di arrivo e ti confermiamo subito prezzo e posto. Meglio con qualche giorno di anticipo.</li>
             <li><strong>🚆 In treno:</strong> Milano Rogoredo è la stazione più comoda, collegata a Milano Centrale in pochi minuti (metropolitana M3). Da lì puoi richiedere la nostra navetta o proseguire in taxi (15–20 minuti).</li>
             <li><strong>🚌 In autobus:</strong> le autostazioni di San Donato e Lampugnano sono collegate a Casa Ania con il nostro servizio navetta su richiesta.</li>
             <li><strong>🚇 Con i mezzi pubblici:</strong> bus 230 da M2 Abbiategrasso fino a Via Manzoni (Ospedale); fermano anche le linee 220 e 328. Il tram 15 arriva in centro, ma richiede circa 20 minuti a piedi.</li>
