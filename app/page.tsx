@@ -79,6 +79,39 @@ const testimonials = [
   },
 ]
 
+const faqs = [
+  {
+    q: "Quanto dista Casa Ania dall'ospedale Humanitas?",
+    a: "Casa Ania si trova a 140 metri dall'ingresso della palazzina 8 dell'ospedale Humanitas di Rozzano: circa 2 minuti a piedi.",
+  },
+  {
+    q: "C'è un parcheggio vicino a Casa Ania?",
+    a: "Sì. A circa 150 metri ci sono due piazzole di sosta gratuite, su entrambi i lati della strada. In alternativa c'è il parcheggio a pagamento di Humanitas, custodito 24 ore su 24.",
+  },
+  {
+    q: "Come arrivo a Casa Ania dall'aeroporto?",
+    a: "Offriamo un servizio navetta su richiesta da Malpensa, Linate e Orio al Serio, oltre che dalle stazioni di Milano Centrale e Rogoredo e dalle autostazioni di San Donato e Lampugnano. Scrivici su WhatsApp con data e orario e ti confermiamo subito prezzo e disponibilità.",
+  },
+  {
+    q: 'Posso tornare in camera a riposare tra una visita e l’altra?',
+    a: "Certo. Con l'ospedale a 2 minuti a piedi, molti nostri ospiti tornano in camera durante la giornata: è uno dei motivi per cui le famiglie ci scelgono.",
+  },
+  {
+    q: 'Casa Ania è a Rozzano o a Pieve Emanuele?',
+    a: "L'indirizzo è Via Liguria 26, Fizzonasco di Pieve Emanuele, esattamente al confine con Rozzano: l'ospedale Humanitas, che si trova a Rozzano, è a soli 140 metri.",
+  },
+]
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+}
+
 export default function Home() {
   const [isWide, setIsWide] = useState(false)
   useEffect(() => {
@@ -90,6 +123,11 @@ export default function Home() {
 
   return (
     <main className="min-h-screen text-gray-900" style={{backgroundColor: '#faf9f6'}}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       {/* HEADER */}
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -245,10 +283,10 @@ export default function Home() {
                 Apri in Google Maps →
               </a>
               <br />
-              <Link href="/come-arrivare-humanitas"
+              <a href="#come-arrivare"
                 className="inline-block mt-2 text-sm text-green-700 font-semibold underline">
                 Come arrivare a Humanitas: tutte le indicazioni →
-              </Link>
+              </a>
             </div>
             <div className="md:flex-1 rounded-xl overflow-hidden h-48">
               <iframe
@@ -259,6 +297,45 @@ export default function Home() {
                 title="Mappa Casa Ania Rozzano"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* COME ARRIVARE */}
+      <section id="come-arrivare" className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Come arrivare</p>
+          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-6 text-center">
+            Casa Ania è a soli 140 metri dalla palazzina 8 di Humanitas: due minuti a piedi, senza bisogno di auto, taxi o mezzi pubblici.
+          </p>
+          <ul className="text-gray-700 leading-relaxed space-y-4 max-w-2xl mx-auto">
+            <li><strong>🚶 A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</li>
+            <li><strong>🚗 In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</li>
+            <li><strong>✈️ In aereo:</strong> serviamo Malpensa, Linate (il più vicino, circa 25 minuti) e Orio al Serio con una navetta su richiesta. Scrivici su WhatsApp con data, orario e aeroporto: ti rispondiamo subito con prezzo e disponibilità.</li>
+            <li><strong>🚆 In treno:</strong> Milano Rogoredo è la stazione più comoda, collegata a Milano Centrale in pochi minuti (metropolitana M3). Da lì puoi richiedere la nostra navetta o proseguire in taxi (15–20 minuti).</li>
+            <li><strong>🚌 In autobus:</strong> le autostazioni di San Donato e Lampugnano sono collegate a Casa Ania con il nostro servizio navetta su richiesta.</li>
+            <li><strong>🚇 Con i mezzi pubblici:</strong> bus 230 da M2 Abbiategrasso fino a Via Manzoni (Ospedale); fermano anche le linee 220 e 328. Il tram 15 arriva in centro, ma richiede circa 20 minuti a piedi.</li>
+          </ul>
+          <div className="text-center mt-6">
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+              className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-6 py-3 rounded-full text-sm">
+              💬 Richiedi la navetta su WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="py-12 px-4">
+        <div className="max-w-4xl mx-auto">
+          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</p>
+          <div className="space-y-5 max-w-2xl mx-auto">
+            {faqs.map(({ q, a }) => (
+              <div key={q}>
+                <h3 className="font-display font-semibold text-gray-800 mb-1">{q}</h3>
+                <p className="text-gray-700 leading-relaxed">{a}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
