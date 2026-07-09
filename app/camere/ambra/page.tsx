@@ -15,8 +15,6 @@ export default function CameraAmbra() {
   return (
     <main className="min-h-screen bg-white text-gray-900">
 
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600&display=swap');`}</style>
-
       {/* LIGHTBOX */}
       {lightbox !== null && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
@@ -34,11 +32,11 @@ export default function CameraAmbra() {
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors" style={{fontFamily: "'Lora', serif"}}>
+          <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors">
             ← Indietro
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            style={{fontFamily: "'Lora', serif"}} className="bg-green-700 text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
+            className="bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
             Prenota ora
           </a>
         </div>
@@ -46,16 +44,16 @@ export default function CameraAmbra() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 style={{ fontFamily: "'Lora', serif" }} className="text-3xl font-semibold text-gray-700 mb-2 uppercase tracking-widest">Ambra</h1>
+        <h1 className="font-display text-3xl font-semibold text-gray-700 mb-2 tracking-wide">Ambra</h1>
         <div className="flex gap-2 mb-3">
-          <span style={{ fontFamily: "'Lora', serif" }} className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
+          <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
         </div>
-        <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 italic text-lg mb-5">Luminosa, tranquilla, dai toni caldi.</p>
+        <p className="text-gray-700 italic text-lg mb-5">Luminosa, tranquilla, dai toni caldi.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700">1–2 persone</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+          <p className="text-sm text-gray-700">1–2 persone</p>
+          <p className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
+          <p className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+          <p className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
         </div>
 
         <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
@@ -74,22 +72,22 @@ export default function CameraAmbra() {
 
         <div className="text-center mb-8">
           <Link href="/prenota?room=6a8870ce-be2b-41d9-971e-5c833a85eb4a"
-            style={{ fontFamily: "'Lora', serif" }} className="inline-block bg-green-700 text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
+            className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
             Prenota ora
           </Link>
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Descrizione</h2>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
+          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
             Ambra è una camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.
             Letto matrimoniale con biancheria sempre impeccabile, lenzuola morbide e un buon profumo di pulito, per sentirsi a casa fin dal primo momento.
           </p>
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 style={{ fontFamily: "'Lora', serif" }} className="text-xl font-semibold mb-3 text-gray-700 uppercase tracking-wider">Ogni soggiorno include</h2>
-          <ul style={{ fontFamily: "'Lora', serif" }} className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
+          <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
             {[
               '✓ Aria condizionata e riscaldamento',
               '✓ WiFi veloce gratuito',
@@ -106,15 +104,15 @@ export default function CameraAmbra() {
         </div>
 
         <div className="rounded-2xl p-6 text-center">
-          <p style={{ fontFamily: "'Lora', serif", color: '#007f5b' }} className="text-lg font-semibold uppercase tracking-wider mb-2">Verifica la disponibilità</p>
-          <p style={{ fontFamily: "'Lora', serif" }} className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
+          <p style={{ color: '#2d6a4f' }} className="text-lg font-semibold uppercase tracking-wider mb-2">Verifica la disponibilità</p>
+          <p className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'Lora', serif" }} className="bg-green-700 text-white font-bold px-6 py-3 rounded-full text-lg">
+              className="bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-6 py-3 rounded-full text-lg">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              style={{ fontFamily: "'Lora', serif" }} className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-lg">
+              className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-lg">
               📞 {PHONE_DISPLAY}
             </a>
           </div>
@@ -123,7 +121,7 @@ export default function CameraAmbra() {
       </div>
 
       <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg">
+        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition-colors text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg">
         💬
       </a>
     </main>

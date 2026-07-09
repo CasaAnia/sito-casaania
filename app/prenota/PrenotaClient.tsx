@@ -153,9 +153,7 @@ export default function PrenotaClient() {
   const roomOptions = getRoomOptions(Number(form.numGuests))
 
   return (
-    <main className="min-h-screen text-gray-900" style={{ fontFamily: "'Lora', serif", backgroundColor: '#f9f6f1' }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap');`}</style>
-
+    <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
           <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors">← Indietro</Link>
@@ -168,8 +166,8 @@ export default function PrenotaClient() {
 
         {step === 'form' && (
           <>
-            <h1 className="text-2xl font-bold text-gray-800 mb-1">Prenota la tua camera</h1>
-            <p className="text-gray-500 text-sm mb-6">Compila il modulo — ti confermiamo in pochi minuti</p>
+            <h1 className="font-display text-2xl font-semibold text-gray-800 mb-1">Prenota la tua camera</h1>
+            <p className="text-[#6f6a5e] text-sm mb-6">Compila il modulo — ti confermiamo in pochi minuti</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -178,7 +176,7 @@ export default function PrenotaClient() {
                 <p className="font-semibold text-gray-700 mb-3">Date del soggiorno</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div className="min-w-0">
-                    <label className="text-xs text-gray-500 mb-1 block">Check-in</label>
+                    <label className="text-xs text-[#6f6a5e] mb-1 block">Check-in</label>
                     <input type="date" value={form.checkIn} min={getTodayStr()}
                       onChange={e => {
                         set('checkIn', e.target.value)
@@ -191,7 +189,7 @@ export default function PrenotaClient() {
                       className="w-full min-w-0 border border-gray-200 rounded-xl px-2 py-1.5 text-xs" required />
                   </div>
                   <div className="min-w-0">
-                    <label className="text-xs text-gray-500 mb-1 block">Check-out</label>
+                    <label className="text-xs text-[#6f6a5e] mb-1 block">Check-out</label>
                     <input type="date" value={form.checkOut} min={form.checkIn}
                       onChange={e => set('checkOut', e.target.value)}
                       className="w-full min-w-0 border border-gray-200 rounded-xl px-2 py-1.5 text-xs" required />
@@ -216,7 +214,7 @@ export default function PrenotaClient() {
               {/* CAMERA */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
                 <p className="font-semibold text-gray-700 mb-1">Camera preferita</p>
-                <p className="text-xs text-gray-400 mb-3">Opzionale — faremo del nostro meglio</p>
+                <p className="text-xs text-[#6f6a5e] mb-3">Opzionale — faremo del nostro meglio</p>
                 <div className="space-y-2">
                   <button type="button"
                     onClick={() => set('preferredRoomId', '')}
@@ -228,7 +226,7 @@ export default function PrenotaClient() {
                       onClick={() => set('preferredRoomId', room.id)}
                       className={`w-full text-left px-4 py-3 rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-gray-700'}`}>
                       <span className="font-medium">{room.name}</span>
-                      <span className="text-gray-400 ml-2 text-xs">{room.priceLabel}/notte</span>
+                      <span className="text-[#6f6a5e] ml-2 text-xs">{room.priceLabel}/notte</span>
                     </button>
                   ))}
                 </div>
@@ -240,20 +238,20 @@ export default function PrenotaClient() {
                 <div className="space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <label className="text-xs text-gray-500 mb-1 block">Nome</label>
+                      <label className="text-xs text-[#6f6a5e] mb-1 block">Nome</label>
                       <input type="text" value={form.firstName} onChange={e => set('firstName', e.target.value)}
                         placeholder="Mario" required
                         className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" />
                     </div>
                     <div>
-                      <label className="text-xs text-gray-500 mb-1 block">Cognome</label>
+                      <label className="text-xs text-[#6f6a5e] mb-1 block">Cognome</label>
                       <input type="text" value={form.lastName} onChange={e => set('lastName', e.target.value)}
                         placeholder="Rossi" required
                         className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" />
                     </div>
                   </div>
                   <div>
-                    <label className="text-xs text-gray-500 mb-1 block">Numero di telefono</label>
+                    <label className="text-xs text-[#6f6a5e] mb-1 block">Numero di telefono</label>
                     <input type="tel" value={form.phone} onChange={e => set('phone', e.target.value)}
                       placeholder="333 123 4567" required
                       className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm" />
@@ -262,11 +260,11 @@ export default function PrenotaClient() {
               </div>
 
               <button type="submit" disabled={loading}
-                className="w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
+                className="w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
                 {loading ? 'Verifica disponibilità...' : 'Prenota'}
               </button>
 
-              <p className="text-center text-xs text-gray-400">
+              <p className="text-center text-xs text-[#6f6a5e]">
                 Riceverai conferma via WhatsApp entro pochi minuti
               </p>
             </form>
@@ -276,15 +274,15 @@ export default function PrenotaClient() {
         {step === 'done' && (
           <div className="text-center">
             <div className="text-6xl mb-4">✅</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">Richiesta inviata!</h2>
-            <p className="text-gray-500 text-sm mb-6">
+            <h2 className="font-display text-2xl font-semibold text-gray-800 mb-2">Richiesta inviata!</h2>
+            <p className="text-[#6f6a5e] text-sm mb-6">
               Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.
             </p>
 
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
               <p className="font-semibold text-gray-700 mb-3">Riepilogo</p>
-              <p className="text-sm text-gray-600 mb-1">👤 {form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
-              <p className="text-sm text-gray-600 mb-3">📅 Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
+              <p className="text-sm text-[#3a3a35] mb-1">👤 {form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
+              <p className="text-sm text-[#3a3a35] mb-3">📅 Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
               {multiRoom ? (
                 <>
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3">
@@ -305,20 +303,20 @@ export default function PrenotaClient() {
             </div>
 
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm mb-3">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
               💬 Scrivi su WhatsApp
             </a>
-            <Link href="/" className="block text-sm text-gray-500 underline">Torna alla home</Link>
+            <Link href="/" className="block text-sm text-[#6f6a5e] underline">Torna alla home</Link>
           </div>
         )}
 
         {step === 'error' && (
           <div className="text-center">
             <div className="text-6xl mb-4">😔</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">Nessuna disponibilità</h2>
-            <p className="text-gray-500 text-sm mb-6">Tutte le camere sono esaurite per queste date.</p>
+            <h2 className="font-display text-2xl font-semibold text-gray-800 mb-2">Nessuna disponibilità</h2>
+            <p className="text-[#6f6a5e] text-sm mb-6">Tutte le camere sono esaurite per queste date.</p>
             <button onClick={() => setStep('form')}
-              className="block w-full bg-green-700 text-white font-bold py-4 rounded-2xl text-sm">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm">
               ← Modifica le date
             </button>
           </div>
