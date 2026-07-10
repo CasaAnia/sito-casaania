@@ -358,21 +358,23 @@ export default function Home() {
       </section>
 
       {/* CONTATTI / PRENOTAZIONE */}
-      <section className="py-12 px-4">
+      <section style={{ backgroundColor: '#1f3d2f' }} className="py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p style={{color: '#2d6a4f'}} className="text-xl font-semibold uppercase tracking-wider mb-6">Prenota il tuo soggiorno</p>
-          <p className="text-gray-700 text-sm mb-8">Contattaci direttamente — rispondiamo sempre in giornata</p>
+          <p className="font-display font-semibold text-2xl mb-2" style={{ color: '#f5efe4' }}>Prenota il tuo soggiorno</p>
+          <p className="text-sm mb-8" style={{ color: '#c9d6cc' }}>Contattaci direttamente — ti risponde Ania.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="flex-1 bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
+              className="flex-1 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors"
+              style={{ backgroundColor: '#f5efe4', color: '#1f3d2f' }}>
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="flex-1 border border-gray-300 text-gray-700 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2">
+              className="flex-1 border font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors"
+              style={{ borderColor: '#c9d6cc', color: '#f5efe4' }}>
               📞 Chiama
             </a>
           </div>
-          <p className="text-[#3a3a35] text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+          <p className="text-xs mt-6" style={{ color: '#a8bfae' }}>Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
         </div>
       </section>
 

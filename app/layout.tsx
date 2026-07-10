@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces, Nunito_Sans } from "next/font/google";
-import Link from "next/link";
-import Logo from "./components/Logo";
+import Footer from "./components/Footer";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -77,19 +76,7 @@ export default function RootLayout({
         />
         {children}
 
-        <footer className="text-gray-200 py-6 px-4 text-center text-xs" style={{ backgroundColor: "#2d6a4f" }}>
-          <div className="mb-3">
-            <Logo variant="dark" />
-          </div>
-          <p>Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI)</p>
-          <p>342 700 4354</p>
-          <p className="mt-2 space-x-3">
-            <Link href="/privacy" className="underline hover:text-white transition-colors">Privacy</Link>
-            <span>·</span>
-            <Link href="/cookie" className="underline hover:text-white transition-colors">Cookie</Link>
-          </p>
-          <p className="mt-2">© {new Date().getFullYear()} Casa Ania Rozzano</p>
-        </footer>
+        <Footer />
       </body>
     </html>
   );
