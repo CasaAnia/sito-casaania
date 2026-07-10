@@ -112,7 +112,7 @@ const faqJsonLd = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-gray-900" style={{backgroundColor: '#faf9f6'}}>
+    <main className="min-h-screen text-gray-900" style={{backgroundColor: '#f9f6f1'}}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -157,7 +157,7 @@ export default function Home() {
           <img src="/hero-camera.jpg" alt="Camera di Casa Ania" className="w-full h-full object-cover" />
         </div>
         <div className="h-40 md:h-80">
-          <img src="/hero-dettaglio.jpg" alt="Dettaglio letto e biancheria di Casa Ania" className="w-full h-full object-cover" />
+          <img src="/hero-dettaglio.jpg" alt="Dettaglio letto e biancheria di Casa Ania" className="w-full h-full object-cover" style={{ objectPosition: '78% 50%' }} />
         </div>
         <div className="h-40 md:h-80">
           <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="w-full h-full object-cover" style={{ objectPosition: 'center 50%' }} />

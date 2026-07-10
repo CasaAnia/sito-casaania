@@ -13,7 +13,7 @@ export default function CameraLena() {
   const lightboxIdx = lightbox !== null ? PHOTOS.indexOf(lightbox) : -1
 
   return (
-    <main className="min-h-screen bg-white text-gray-900">
+    <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
 
       {/* LIGHTBOX */}
       {lightbox !== null && (
