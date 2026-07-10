@@ -358,7 +358,7 @@ export default function Home() {
       </section>
 
       {/* CONTATTI / PRENOTAZIONE */}
-      <section style={{ backgroundColor: '#1f3d2f' }} className="py-14 px-4">
+      <section style={{ backgroundColor: '#2d6a4f' }} className="py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <p className="font-display font-semibold text-2xl mb-2" style={{ color: '#f5efe4' }}>Prenota il tuo soggiorno</p>
           <p className="text-sm mb-8" style={{ color: '#c9d6cc' }}>Contattaci direttamente — ti risponde Ania.</p>
@@ -374,7 +374,7 @@ export default function Home() {
               📞 Chiama
             </a>
           </div>
-          <p className="text-xs mt-6" style={{ color: '#a8bfae' }}>Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+          <p className="text-xs mt-6" style={{ color: '#e0ddd0' }}>Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
         </div>
       </section>
 
