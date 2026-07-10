@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 const PHONE = '3427004354'
-const PHONE_DISPLAY = '342 700 4354'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
 
@@ -357,14 +356,6 @@ export default function Home() {
           <p className="text-[#3a3a35] text-xs mt-6">Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
         </div>
       </section>
-
-      {/* FOOTER */}
-      <footer className="text-gray-200 py-6 px-4 text-center text-xs" style={{backgroundColor: '#2d6a4f'}}>
-        <p className="font-semibold text-white mb-1 uppercase tracking-widest">Casa Ania Rozzano</p>
-        <p>Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI)</p>
-        <p>{PHONE_DISPLAY}</p>
-        <p className="mt-2">© {new Date().getFullYear()} Casa Ania Rozzano</p>
-      </footer>
 
       {/* WHATSAPP FLOTTANTE */}
       <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
