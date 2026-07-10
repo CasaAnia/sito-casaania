@@ -176,6 +176,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* DIVISORE */}
+      <section className="py-12 px-4">
+        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+          Non un albergo. Una casa.
+        </p>
+      </section>
+
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
@@ -214,7 +221,9 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <h2 className="font-display text-2xl font-semibold text-center mt-20 text-gray-800 px-4">Quando desideri stare vicino a chi ami nei momenti difficili.</h2>
+          <p className="font-display italic text-center mt-20 px-4" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+            Quando desideri stare vicino a chi ami nei momenti difficili.
+          </p>
         </div>
       </section>
 
@@ -246,6 +255,13 @@ export default function Home() {
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
           </p>
         </div>
+      </section>
+
+      {/* DIVISORE */}
+      <section className="py-12 px-4">
+        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+          L&apos;ospedale a 2 minuti. Al resto pensiamo noi.
+        </p>
       </section>
 
       {/* CTA INTERMEDIA */}
@@ -332,6 +348,13 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
+
+      {/* DIVISORE */}
+      <section className="py-12 px-4">
+        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+          A 140 passi da chi ami.
+        </p>
       </section>
 
       {/* CONTATTI / PRENOTAZIONE */}
