@@ -29,7 +29,7 @@ const nunitoSans = Nunito_Sans({
 export const metadata: Metadata = {
   title: "Casa Ania – Affittacamere a 140 m da Humanitas Rozzano",
   description:
-    "Camere con bagno privato a 140 metri dall'ospedale Humanitas di Rozzano. Check-in flessibile, navetta aeroporti, da €70/notte. Prenota su WhatsApp senza commissioni.",
+    "Camere con bagno privato a 140 metri dall'ospedale Humanitas di Rozzano. Check-in flessibile, navetta aeroporti, da €70/notte. Prenota su WhatsApp.",
 };
 
 const lodgingJsonLd = {
