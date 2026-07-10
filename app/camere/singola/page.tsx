@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Logo from '../../components/Logo'
 import { useState } from 'react'
 
 const PHONE = '3427004354'
@@ -31,12 +32,15 @@ export default function CameraSingola() {
       )}
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors">
+        <div className="max-w-4xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+          <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">
             ← Indietro
           </Link>
+          <Link href="/" className="justify-self-center">
+            <Logo compactOnMobile />
+          </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
+            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
             Prenota ora
           </a>
         </div>

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
+import Logo from '../components/Logo'
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -155,10 +156,13 @@ export default function PrenotaClient() {
   return (
     <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
-        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/" className="text-green-800 font-bold hover:text-green-600 transition-colors">← Indietro</Link>
+        <div className="max-w-2xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+          <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">← Indietro</Link>
+          <Link href="/" className="justify-self-center">
+            <Logo compactOnMobile />
+          </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="text-green-700 text-sm font-semibold">💬 WhatsApp</a>
+            className="justify-self-end text-green-700 text-sm font-semibold whitespace-nowrap">💬 WhatsApp</a>
         </div>
       </header>
 
