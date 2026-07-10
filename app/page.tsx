@@ -1,6 +1,4 @@
-'use client'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
 
 const PHONE = '3427004354'
 const PHONE_DISPLAY = '342 700 4354'
@@ -113,14 +111,6 @@ const faqJsonLd = {
 }
 
 export default function Home() {
-  const [isWide, setIsWide] = useState(false)
-  useEffect(() => {
-    const check = () => setIsWide(window.innerWidth >= 768)
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener('resize', check)
-  }, [])
-
   return (
     <main className="min-h-screen text-gray-900" style={{backgroundColor: '#faf9f6'}}>
       <script
@@ -146,19 +136,31 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="relative text-white px-4 overflow-hidden" style={{ minHeight: '340px', maxHeight: '460px' }}>
-        <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="absolute inset-0 w-full h-full object-cover md:hidden" style={{ objectPosition: 'center 50%' }} />
-        <img src="/hero-desktop.jpg" alt="Vista Humanitas" className="absolute inset-0 w-full h-full object-cover hidden md:block" style={{ objectPosition: 'center 45%' }} />
-        <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.05) 65%, rgba(0,0,0,0.4) 100%)' }} />
-        <div className="absolute w-full text-center px-4" style={{ left: 0, top: isWide ? '58%' : '22%' }}>
-          <h2 style={{color: '#ffffff', textShadow: '0 2px 12px rgba(0,0,0,0.7)'}} className="font-display text-3xl md:text-5xl font-semibold mb-4 leading-tight tracking-wide">
+      <section className="px-4 pt-10 pb-8 text-center" style={{ backgroundColor: '#f9f6f1' }}>
+        <div className="max-w-2xl mx-auto">
+          <h2 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-5xl font-semibold mb-4 leading-tight tracking-wide">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-        </div>
-        <div className="absolute w-full text-center px-4" style={{ left: 0, bottom: '3%' }}>
-          <p style={{ color: '#ffffff', textShadow: '0 2px 8px rgba(0,0,0,0.7)', fontSize: '1rem', letterSpacing: '0.03em', fontWeight: '700' }}>
-            Camere confortevoli, pulite e accoglienti a soli <span style={{ textDecoration: 'underline', fontSize: '1.15rem' }}>140 metri dall&apos;ospedale.</span>
+          <p className="text-gray-700 text-lg mb-6">
+            Camere confortevoli a 140 metri dall&apos;ospedale
           </p>
+          <Link href="/prenota"
+            className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold px-8 py-3 rounded-full uppercase whitespace-nowrap">
+            Prenota ora
+          </Link>
+        </div>
+      </section>
+
+      {/* STRISCIA FOTO */}
+      <section className="grid grid-cols-2 md:grid-cols-3 gap-1">
+        <div className="col-span-2 md:col-span-1 h-64 md:h-80">
+          <img src="/hero-camera.jpg" alt="Camera di Casa Ania" className="w-full h-full object-cover" />
+        </div>
+        <div className="h-40 md:h-80">
+          <img src="/hero-dettaglio.jpg" alt="Dettaglio letto e biancheria di Casa Ania" className="w-full h-full object-cover" />
+        </div>
+        <div className="h-40 md:h-80">
+          <img src="/hero-mobile.jpg" alt="Vista dal balcone di Casa Ania" className="w-full h-full object-cover" style={{ objectPosition: 'center 50%' }} />
         </div>
       </section>
 
