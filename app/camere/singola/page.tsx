@@ -49,7 +49,7 @@ export default function CameraSingola() {
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
         </div>
-        <p className="text-gray-700 italic text-lg mb-5">Piccola, curata, silenziosa — nel cuore di Casa Ania, con vista sulla clinica Humanitas.</p>
+        <p className="text-[#3a3a35] text-lg mb-5">Piccola, curata, silenziosa — nel cuore di Casa Ania, con vista sulla clinica Humanitas.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
           <p className="text-sm text-gray-700">1 persona</p>
           <p className="text-sm text-gray-700">2 persone (letto aggiuntivo)</p>
@@ -80,23 +80,23 @@ export default function CameraSingola() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
-          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Amelia è la camera più piccola di Casa Ania — compatta, raccolta, ma curatissima in ogni dettaglio.
             Letto singolo con lenzuola candide, bagno in camera, in un ambiente semplice ma ben curato, con quella sensazione di ordine e pulizia che si nota fin da subito.
           </p>
-          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Amelia e Lena condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
             dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
             Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
           </p>
-          <p className="text-gray-700 leading-relaxed italic text-lg">
+          <p className="text-[#3a3a35] leading-relaxed text-lg">
             Si può aggiungere un secondo letto — la camera è intima, ma accogliente come tutto il resto della casa.
           </p>
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Bagno privato',
               '✓ Aria condizionata e riscaldamento',

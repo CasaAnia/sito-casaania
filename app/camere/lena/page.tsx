@@ -49,7 +49,7 @@ export default function CameraLena() {
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno esterno</span>
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
         </div>
-        <p className="text-gray-700 italic text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
+        <p className="text-[#3a3a35] text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-4">
           <div>
             <p className="text-sm text-gray-700">1–2 persone</p>
@@ -88,14 +88,14 @@ export default function CameraLena() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
-          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Lena è la camera più grande di Casa Ania — spaziosa, luminosa, con tutto lo spazio che serve anche quando si è in più persone.
             Letto matrimoniale con lenzuola curate nei minimi dettagli, morbide e profumate di fresco, e tutto il calore di una casa che accoglie.
           </p>
-          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Ha un bagno privato esterno — a un metro dalla stanza, chiuso a chiave, riservato esclusivamente a chi soggiorna in Lena.
           </p>
-          <p className="text-gray-700 leading-relaxed italic text-lg">
+          <p className="text-[#3a3a35] leading-relaxed text-lg">
             Lena e Amelia condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
             dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
             Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
@@ -104,7 +104,7 @@ export default function CameraLena() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Bagno privato esterno (esclusivo)',
               '✓ Balcone con vista su Humanitas',

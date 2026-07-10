@@ -48,7 +48,7 @@ export default function CameraAmbra() {
         <div className="flex gap-2 mb-3">
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
         </div>
-        <p className="text-gray-700 italic text-lg mb-5">Luminosa, tranquilla, dai toni caldi.</p>
+        <p className="text-[#3a3a35] text-lg mb-5">Luminosa, tranquilla, dai toni caldi.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
           <p className="text-sm text-gray-700">1–2 persone</p>
           <p className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
@@ -79,7 +79,7 @@ export default function CameraAmbra() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
-          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Ambra è una camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.
             Letto matrimoniale con biancheria sempre impeccabile, lenzuola morbide e un buon profumo di pulito, per sentirsi a casa fin dal primo momento.
           </p>
@@ -87,7 +87,7 @@ export default function CameraAmbra() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Aria condizionata e riscaldamento',
               '✓ WiFi veloce gratuito',

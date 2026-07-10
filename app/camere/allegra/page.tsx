@@ -49,7 +49,7 @@ export default function CameraAllegra() {
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balconcino</span>
         </div>
-        <p className="text-gray-700 italic text-lg mb-5">Luminosa, con bagno in camera e balconcino tutto per sé.</p>
+        <p className="text-[#3a3a35] text-lg mb-5">Luminosa, con bagno in camera e balconcino tutto per sé.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
           <p className="text-sm text-gray-700">1–2 persone</p>
           <p className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
@@ -80,18 +80,18 @@ export default function CameraAllegra() {
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
-          <p className="text-gray-700 leading-relaxed italic text-lg mb-3">
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Allegra è una camera matrimoniale comoda e luminosa, con bagno privato all'interno della stanza.
             Letto matrimoniale con biancheria di bucato fresca e accurata, per quel senso di casa che si sente appena si entra.
           </p>
-          <p className="text-gray-700 leading-relaxed italic text-lg">
+          <p className="text-[#3a3a35] leading-relaxed text-lg">
             Ha un balconcino privato — tutto per sé, senza condivisione. Un angolo tranquillo dove prendere un po' d'aria dopo una giornata in ospedale.
           </p>
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-gray-700 italic text-lg">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Aria condizionata e riscaldamento',
               '✓ WiFi veloce gratuito',
