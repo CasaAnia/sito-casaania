@@ -53,15 +53,15 @@ export default function CameraLena() {
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-4">
           <div>
             <p className="text-sm text-gray-700">1–2 persone</p>
-            <p className="text-2xl font-semibold text-gray-800 mt-1">€80 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+            <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€80 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           </div>
           <div>
             <p className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
-            <p className="text-2xl font-semibold text-gray-800 mt-1">€90 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+            <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€90 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           </div>
           <div>
             <p className="text-sm text-gray-700">4 persone (due letti aggiuntivi)</p>
-            <p className="text-2xl font-semibold text-gray-800 mt-1">€100 <span className="text-sm font-normal text-gray-700">/ notte</span></p>
+            <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€100 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           </div>
         </div>
 

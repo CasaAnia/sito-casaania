@@ -203,7 +203,7 @@ export default function Home() {
                     {room.prices.map((p, j) => (
                       <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
                         <p className="text-xs text-[#3a3a35] mb-0.5 leading-tight min-h-[2rem] flex items-start">{p.label}</p>
-                        <p className="text-base font-semibold text-gray-800">€{p.amount} <span className="text-xs font-normal text-[#3a3a35]">/ notte</span></p>
+                        <p className="text-xl font-semibold text-[#1f3d2f]">€{p.amount} <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
                       </div>
                     ))}
                   </div>
