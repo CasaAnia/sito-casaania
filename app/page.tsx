@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Logo from './components/Logo'
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -120,12 +121,7 @@ export default function Home() {
       {/* HEADER */}
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div>
-            <h1 style={{textShadow: '0 2px 4px rgba(0,0,0,0.25)'}} className="font-display text-lg font-semibold tracking-wide whitespace-nowrap">
-              <span className="text-green-700">Casa </span><span style={{color: '#2d6a4f'}}>Ania </span><span className="text-green-700">Rozzano</span>
-            </h1>
-            <p className="text-sm text-gray-700">140 metri da Humanitas</p>
-          </div>
+          <Logo as="h1" />
           <Link href="/prenota"
             style={{fontSize: '0.75rem', letterSpacing: '0.05em'}}
             className="bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap">
