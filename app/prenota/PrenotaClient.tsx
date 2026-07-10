@@ -273,6 +273,14 @@ export default function PrenotaClient() {
               </p>
             </form>
 
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+              className="mt-4 flex items-center justify-center gap-2 bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base">
+              💬 Scrivici su WhatsApp
+            </a>
+            <p className="text-center mt-2" style={{ fontSize: '13px', color: '#6f6a5e' }}>
+              Scrivici su WhatsApp: è il modo più veloce.
+            </p>
+
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-4 text-center">
               <p className="font-display font-semibold text-gray-800 mb-2">Ti serve un passaggio?</p>
               <p className="text-sm text-[#3a3a35] mb-3">
