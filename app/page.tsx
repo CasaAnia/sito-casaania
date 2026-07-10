@@ -225,18 +225,18 @@ export default function Home() {
 
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p style={{textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</p>
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-4">
+        <div className="max-w-2xl mx-auto">
+          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</p>
+          <p className="text-left text-gray-700 leading-relaxed mb-4">
             Il check-in ufficiale è dalle 15:00 alle 20:00.
           </p>
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-4">
+          <p className="text-left text-gray-700 leading-relaxed mb-4">
             Qualora la camera fosse pronta in anticipo (cosa che accade spesso già nelle prime ore del mattino), ti invieremo un messaggio per informarti che potrai accedere alla struttura anche prima dell'orario previsto.
           </p>
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-4">
+          <p className="text-left text-gray-700 leading-relaxed mb-4">
             Se desideri lasciare i bagagli prima del check-in, ti chiediamo semplicemente di avvisarci il giorno precedente, così da organizzare al meglio la tua accoglienza.
           </p>
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-left text-gray-700 leading-relaxed">
             Se invece prevedi di arrivare dopo le 20:00, è sufficiente comunicarcelo il giorno prima e faremo il possibile per rendere il tuo arrivo semplice e agevole.
           </p>
         </div>
@@ -244,9 +244,9 @@ export default function Home() {
 
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p style={{textUnderlineOffset: '6px'}} className="text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</p>
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto">
+          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</p>
+          <p className="text-left text-gray-700 leading-relaxed">
             Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
           </p>
@@ -268,7 +268,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto">
           <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Dove siamo</p>
           <div className="md:flex md:gap-8 md:items-center">
-            <div className="md:flex-1 mb-6 md:mb-0">
+            <div className="md:flex-1 mb-6 md:mb-0 text-left">
               <p className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
               <p className="text-gray-700 mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
               <ul className="text-gray-700 leading-relaxed space-y-2">
@@ -302,12 +302,12 @@ export default function Home() {
 
       {/* COME ARRIVARE */}
       <section id="come-arrivare" className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Come arrivare</p>
-          <p className="text-gray-700 leading-relaxed max-w-2xl mx-auto mb-6 text-center">
+          <p className="text-left text-gray-700 leading-relaxed mb-6">
             Casa Ania è a soli 140 metri dalla palazzina 8 di Humanitas: due minuti a piedi, senza bisogno di auto, taxi o mezzi pubblici.
           </p>
-          <ul className="text-gray-700 leading-relaxed space-y-4 max-w-2xl mx-auto">
+          <ul className="text-left text-gray-700 leading-relaxed space-y-4">
             <li><strong>🚶 A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</li>
             <li><strong>🚗 In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</li>
             <li><strong>✈️ In aereo:</strong> Viaggiare per una visita medica è già abbastanza faticoso. Al trasferimento pensiamo noi: i nostri autisti di fiducia ti aspettano a Malpensa, Linate, Orio al Serio o alla stazione, e ti portano direttamente da noi. Scrivici su WhatsApp con data e orario di arrivo e ti confermiamo subito prezzo e posto. Meglio con qualche giorno di anticipo.</li>
@@ -326,9 +326,9 @@ export default function Home() {
 
       {/* FAQ */}
       <section id="faq" className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-2xl mx-auto">
           <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</p>
-          <div className="space-y-5 max-w-2xl mx-auto">
+          <div className="text-left space-y-5">
             {faqs.map(({ q, a }) => (
               <div key={q}>
                 <h3 className="font-display font-semibold text-gray-800 mb-1">{q}</h3>
