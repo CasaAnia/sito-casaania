@@ -7,7 +7,7 @@ const PHONE = '3427004354'
 const PHONE_DISPLAY = '342 700 4354'
 const WA_LINK = `https://wa.me/39${PHONE}`
 const TEL_LINK = `tel:+39${PHONE}`
-const PHOTOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+const PHOTOS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default function CameraAmbra() {
   const [lightbox, setLightbox] = useState<number | null>(null)
@@ -66,7 +66,7 @@ export default function CameraAmbra() {
         </div>
 
         <div className="grid grid-cols-3 mb-8 -mx-4">
-          {[2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map(n => (
+          {[2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
             <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
               <img src={`/camere/ambra/foto${n}.jpg`} alt={`Camera Ambra ${n}`} className="w-full h-full object-cover" />
