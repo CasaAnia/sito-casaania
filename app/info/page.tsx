@@ -1,10 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Logo from '../components/Logo'
 
-const TITLE = 'Casa Ania · Informazioni per il tuo soggiorno'
+const TITLE = 'Informazioni per il tuo soggiorno · a 140 metri da Humanitas'
 const DESCRIPTION =
-  'Tutte le informazioni utili per il tuo soggiorno a Casa Ania: come arrivare, orari di check-in e check-out, contatto WhatsApp.'
+  'Tutte le informazioni utili per il tuo soggiorno: come arrivare, orari di check-in e check-out, contatto WhatsApp.'
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -37,9 +36,9 @@ export default function Info() {
           <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">
             ← Home
           </Link>
-          <Link href="/" className="justify-self-center">
-            <Logo compactOnMobile />
-          </Link>
+          <p className="justify-self-center font-display text-xl font-semibold text-gray-800">
+            Benvenuti
+          </p>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
             WhatsApp
@@ -56,7 +55,7 @@ export default function Info() {
         <section className="mb-8">
           <h2 className="font-display text-xl font-semibold text-gray-800 mb-2">Come arrivare</h2>
           <p className="text-gray-700 leading-relaxed mb-3">
-            Casa Ania è a soli 140 metri dalla palazzina 8 di Humanitas: indicazioni per auto, treno, aereo,
+            Siamo a soli 140 metri dalla palazzina 8 di Humanitas: indicazioni per auto, treno, aereo,
             autobus e mezzi pubblici, oltre alle info sul parcheggio.
           </p>
           <Link href="/#come-arrivare" className="inline-block text-sm text-green-700 font-semibold underline">

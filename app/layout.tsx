@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces, Nunito_Sans } from "next/font/google";
-import Footer from "./components/Footer";
+import ConditionalFooter from "./components/ConditionalFooter";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -99,7 +99,7 @@ export default function RootLayout({
         />
         {children}
 
-        <Footer />
+        <ConditionalFooter />
       </body>
     </html>
   );
