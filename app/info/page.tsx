@@ -67,8 +67,8 @@ export default function Info() {
         <section className="mb-8">
           <h2 className="font-display text-xl font-semibold text-gray-800 mb-2">Check-in e check-out</h2>
           <p className="text-gray-700 leading-relaxed">
-            Il check-in è dalle 15:00 alle 20:00, il check-out entro le 10:00. Se arrivi prima o dopo questi
-            orari, scrivici su WhatsApp il giorno precedente: troviamo sempre una soluzione.
+            Il check-in è dalle 15:00 alle 20:00 ed è flessibile: se arrivi prima o dopo questi orari, scrivici
+            su WhatsApp il giorno precedente e troviamo sempre una soluzione. Il check-out è entro le 10:00.
           </p>
         </section>
 
