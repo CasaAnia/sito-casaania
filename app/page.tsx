@@ -173,6 +173,22 @@ export default function Home() {
             ))}
           </div>
           <p className="text-center text-[#3a3a35] text-xs mt-2">Recensioni raccolte su TripAdvisor</p>
+
+          <div className="text-center mt-10">
+            <p className="font-display text-xl font-semibold text-gray-700 mb-2">Sei già stato nostro ospite?</p>
+            <p className="text-[#3a3a35] text-sm max-w-md mx-auto mb-4">
+              Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
+            </p>
+            <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
+              style={{ backgroundColor: '#2d6a4f' }}
+              className="inline-block hover:opacity-90 transition-opacity text-white font-semibold px-6 py-2.5 rounded-full text-sm">
+              Lascia una recensione su Google
+            </a>
+            <div className="hidden md:flex flex-col items-center mt-4">
+              <img src="/qr-recensioni.png" alt="QR code per recensione Google" width={110} height={110} />
+              <p className="text-gray-500 text-xs mt-1">oppure inquadra col telefono</p>
+            </div>
+          </div>
         </div>
       </section>
 
