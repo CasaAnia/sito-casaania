@@ -135,16 +135,16 @@ export default function Recensioni() {
   return (
     <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
       {/* HEADER */}
-      <header className="bg-white sticky top-0 z-50" style={{ boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }}>
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Link href="/">
-            <Logo />
+      <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
+        <div className="max-w-4xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
+          <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">
+            ← Indietro
           </Link>
-          <Link
-            href="/prenota"
-            style={{ fontSize: '0.75rem', letterSpacing: '0.05em' }}
-            className="bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap"
-          >
+          <Link href="/" className="justify-self-center">
+            <Logo compactOnMobile />
+          </Link>
+          <Link href="/prenota"
+            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
             Prenota ora
           </Link>
         </div>
