@@ -56,24 +56,24 @@ const rooms = [
 
 const testimonials = [
   {
-    name: 'Antonella P.',
+    name: 'Francesca F.',
     rating: 5,
-    text: 'Ottima struttura, ottima esperienza, qualità prezzo il top. La signora Ania una splendida persona.',
+    text: "Ottima struttura, vicino all'ospedale Humanitas. Struttura pulitissima, accogliente e proprietaria gentilissima e disponibile. Consigliatissimo.",
   },
   {
-    name: 'Rosanna C.',
+    name: 'Antonio C.',
     rating: 5,
-    text: 'Ottima la nostra esperienza in Casa Granata. La signora Ania è stata accogliente e disponibile e molto empatica.',
+    text: 'Ottima posizione, ho alloggiato per un lungo periodo e sono stato benissimo. Stanza pulita e confortevole. La signora Ania gentilissima.',
   },
   {
-    name: 'Lulu R.',
+    name: 'Giovanna R.',
     rating: 5,
-    text: 'Ottima struttura, ottima posizione, molto pulita e proprietario molto disponibile e attento alle esigenze dei clienti.',
+    text: 'Stanze perfette, pulitissime, ottimo rapporto qualità prezzo. La signora Ania gentilissima e disponibile.',
   },
   {
-    name: 'Martina M.',
-    rating: 4,
-    text: "Camera pulita e dotata di un terrazzino. Personale cordiale e disponibile... a pochi minuti dall'Humanitas.",
+    name: 'Lina L.',
+    rating: 5,
+    text: 'Ho soggiornato diverse volte e mi son trovata sempre bene. Le camere sono spaziose, pulite, comode e confortevoli... il terrazzo è grazioso, con vista panoramica.',
   },
 ]
 
@@ -172,7 +172,12 @@ export default function Home() {
               </div>
             ))}
           </div>
-          <p className="text-center text-[#3a3a35] text-xs mt-2">Recensioni raccolte su TripAdvisor</p>
+          <p className="text-center text-[#3a3a35] text-xs mt-2">
+            Recensioni raccolte su Google ·{' '}
+            <Link href="/recensioni" className="underline font-semibold" style={{ color: '#2d6a4f' }}>
+              Leggi altre recensioni →
+            </Link>
+          </p>
 
           <div className="text-center mt-10">
             <p className="font-display text-xl font-semibold text-gray-700 mb-2">Sei già stato nostro ospite?</p>
