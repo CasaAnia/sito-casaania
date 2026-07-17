@@ -235,13 +235,13 @@ export default function Home() {
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
           <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-14 px-4 underline">Scegli la tua camera</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
-              <div key={i} className="overflow-hidden flex flex-col h-full">
+              <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
                 <Link href={room.href} className="block h-80 overflow-hidden bg-gray-100">
                   <img src={room.img} alt={room.name} className={room.name === 'Lena' ? 'w-full h-full object-contain' : 'w-full h-full object-cover'} />
                 </Link>
-                <div className={`px-4 pb-2 flex flex-col flex-1 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
+                <div className={`px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
                   <div className="flex items-start justify-between mb-1">
                     <h3 className="font-display text-xl font-semibold text-gray-700 tracking-wide">{room.name}</h3>
                     {room.badge && (
@@ -249,27 +249,27 @@ export default function Home() {
                     )}
                   </div>
                   <p className="text-base text-gray-700 mb-3">{room.desc}</p>
-                  <div className="border-t border-gray-100 pt-3 grid grid-cols-2 gap-3 mt-auto">
-                    {room.prices.map((p, j) => (
-                      <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
-                        <p className="text-xs text-[#3a3a35] mb-0.5 leading-tight min-h-[2rem] flex items-start">{p.label}</p>
-                        <p className="text-xl font-semibold text-[#1f3d2f]">€{p.amount} <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-5 flex items-center justify-between gap-3">
-                    <Link href={room.href} className="text-base text-green-700 font-semibold py-2">
-                      Scopri di più →
-                    </Link>
-                    <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
-                      Prenota ora
-                    </Link>
-                  </div>
+                </div>
+                <div className="mx-4 border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
+                  {room.prices.map((p, j) => (
+                    <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
+                      <p className="text-xs text-[#3a3a35] mb-0.5 leading-tight min-h-[2rem] flex items-start">{p.label}</p>
+                      <p className="text-xl font-semibold text-[#1f3d2f]">€{p.amount} <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mx-4 mt-5 pb-2 flex items-center justify-between gap-3">
+                  <Link href={room.href} className="text-base text-green-700 font-semibold py-2">
+                    Scopri di più →
+                  </Link>
+                  <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
+                    Prenota ora
+                  </Link>
                 </div>
               </div>
             ))}
           </div>
-          <p className="font-display italic text-center mt-20 px-4" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+          <p className="font-display italic text-center mt-20 md:mt-12 px-4" style={{ fontSize: '22px', color: '#2d6a4f' }}>
             Quando desideri stare vicino a chi ami nei momenti difficili.
           </p>
         </div>
