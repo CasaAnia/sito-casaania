@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import Logo from './components/Logo'
+import Reveal from './components/Reveal'
+import { MapPin, Phone, MessageCircle, Footprints, Car, Plane, TrainFront, TrainFrontTunnel, Bus } from 'lucide-react'
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -104,19 +106,19 @@ const accessItems = [
   {
     label: 'Ingresso del palazzo',
     text: "I gradini all'ingresso si superano con una rampa mobile. Non è motorizzata: serve una persona che spinga la carrozzina. Comunicaci l'orario di arrivo e troverai qualcuno ad accoglierti alla rampa.",
-    iconColor: '#2D6A4F',
+    iconColor: '#2d6a4f',
     icon: <><path d="M4 20h16" /><path d="M4 20v-4h4v-4h4v-4h4V4h4" /></>,
   },
   {
     label: 'Ascensore',
     text: "L'appartamento è al quarto piano ed è servito dall'ascensore.",
-    iconColor: '#2D6A4F',
+    iconColor: '#2d6a4f',
     icon: <><rect x="4" y="3" width="16" height="18" rx="1.5" /><path d="M12 3v18" /><path d="M8 10l-1.5 2L8 14" transform="rotate(90 7.5 12)" /><path d="M16 14l1.5-2L16 10" transform="rotate(90 16.5 12)" /></>,
   },
   {
     label: "All'interno",
     text: 'La carrozzina si muove liberamente nel corridoio, negli spazi comuni e nelle camere.',
-    iconColor: '#2D6A4F',
+    iconColor: '#2d6a4f',
     icon: <><circle cx="12" cy="12" r="3" /><path d="M12 5V2M12 22v-3M5 12H2M22 12h-3" /><path d="M10.5 3.5L12 2l1.5 1.5M10.5 20.5L12 22l1.5-1.5M3.5 10.5L2 12l1.5 1.5M20.5 10.5L22 12l-1.5 1.5" /></>,
   },
   {
@@ -151,7 +153,7 @@ export default function Home() {
           <Logo as="h1" />
           <Link href="/prenota"
             style={{fontSize: '0.75rem', letterSpacing: '0.05em'}}
-            className="bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap">
+            className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap">
             Prenota ora
           </Link>
         </div>
@@ -159,7 +161,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className="px-4 pt-10 pb-8 text-center" style={{ backgroundColor: '#f9f6f1' }}>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto hero-in">
           <h2 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-5xl font-semibold mb-4 leading-tight tracking-wide">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
@@ -167,7 +169,7 @@ export default function Home() {
             Camere confortevoli a 140 metri dall&apos;ospedale
           </p>
           <Link href="/prenota"
-            className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold px-8 py-3 rounded-full uppercase whitespace-nowrap">
+            className="inline-block bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-8 py-3 rounded-full uppercase whitespace-nowrap">
             Prenota ora
           </Link>
         </div>
@@ -189,17 +191,19 @@ export default function Home() {
       {/* RECENSIONI */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-10 underline">Cosa dicono di noi</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-10 underline">Cosa dicono di noi</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {testimonials.map((t, i) => (
-              <div key={i} className="bg-white rounded-xl p-2.5 shadow-sm">
-                <p style={{color: '#2d6a4f'}} className="text-xs mb-0.5">{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</p>
-                <p className="text-gray-700 text-sm italic leading-tight mb-1 line-clamp-2">"{t.text}"</p>
-                <p className="text-xs font-semibold text-gray-800">{t.name}</p>
-              </div>
+              <Reveal key={i} delay={i * 80}>
+                <div className="bg-white rounded-2xl p-5 shadow-sm h-full">
+                  <p style={{color: '#2d6a4f'}} className="text-base tracking-[0.15em] mb-2">{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</p>
+                  <p className="text-gray-700 text-[15px] italic leading-relaxed mb-3">"{t.text}"</p>
+                  <p className="text-sm font-semibold text-gray-800">— {t.name}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
-          <p className="text-center text-[#3a3a35] text-xs mt-2">
+          <p className="text-center text-ink text-xs mt-2">
             Recensioni raccolte su Google ·{' '}
             <Link href="/recensioni" className="underline font-semibold" style={{ color: '#2d6a4f' }}>
               Leggi altre recensioni →
@@ -208,7 +212,7 @@ export default function Home() {
 
           <div className="text-center mt-10">
             <p className="font-display text-xl font-semibold text-gray-700 mb-2">Sei già stato nostro ospite?</p>
-            <p className="text-[#3a3a35] text-sm max-w-md mx-auto mb-4">
+            <p className="text-ink text-sm max-w-md mx-auto mb-4">
               Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
             </p>
             <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
@@ -234,7 +238,8 @@ export default function Home() {
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-14 px-4 underline">Scegli la tua camera</p>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-14 px-4 underline">Scegli la tua camera</h2>
+          <Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
@@ -253,8 +258,8 @@ export default function Home() {
                 <div className="mx-4 border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
                   {room.prices.map((p, j) => (
                     <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
-                      <p className="text-xs text-[#3a3a35] mb-0.5 leading-tight min-h-[2rem] flex items-start">{p.label}</p>
-                      <p className="text-xl font-semibold text-[#1f3d2f]">€{p.amount} <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
+                      <p className="text-xs text-ink mb-0.5 leading-tight min-h-[2rem] flex items-start">{p.label}</p>
+                      <p className="text-xl font-semibold text-forest">€{p.amount} <span className="text-xs font-normal text-clay">/ notte</span></p>
                     </div>
                   ))}
                 </div>
@@ -262,13 +267,14 @@ export default function Home() {
                   <Link href={room.href} className="text-base text-green-700 font-semibold py-2">
                     Scopri di più →
                   </Link>
-                  <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
+                  <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
                     Prenota ora
                   </Link>
                 </div>
               </div>
             ))}
           </div>
+          </Reveal>
           <p className="font-display italic text-center mt-20 md:mt-12 px-4" style={{ fontSize: '22px', color: '#2d6a4f' }}>
             Quando desideri stare vicino a chi ami nei momenti difficili.
           </p>
@@ -278,7 +284,7 @@ export default function Home() {
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</p>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</h2>
           <p className="text-left text-gray-700 leading-relaxed mb-4">
             Il check-in ufficiale è dalle 15:00 alle 20:00.
           </p>
@@ -297,8 +303,8 @@ export default function Home() {
       {/* ACCESSIBILITÀ */}
       <section id="accessibilita" className="py-12 px-4" style={{ backgroundColor: '#FBF9F4' }}>
         <div className="max-w-2xl mx-auto">
-          <h2 style={{ textUnderlineOffset: '6px', color: '#1F3D2F' }} className="font-display font-normal text-center text-lg uppercase tracking-wider mb-6 underline">Accessibilità</h2>
-          <p className="text-left leading-relaxed mb-6" style={{ color: '#2D6A4F' }}>
+          <h2 style={{ textUnderlineOffset: '6px', color: '#1f3d2f' }} className="font-display font-normal text-center text-lg uppercase tracking-wider mb-6 underline">Accessibilità</h2>
+          <p className="text-left leading-relaxed mb-6" style={{ color: '#2d6a4f' }}>
             Ogni esigenza è diversa. Per questo ti descriviamo la casa nel dettaglio, e sei tu a giudicare se è adatta.
           </p>
           <dl className="space-y-5">
@@ -307,14 +313,14 @@ export default function Home() {
                 <svg className="shrink-0 mt-0.5" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={item.iconColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   {item.icon}
                 </svg>
-                <div className="text-left leading-relaxed" style={{ color: '#1F3D2F' }}>
+                <div className="text-left leading-relaxed" style={{ color: '#1f3d2f' }}>
                   <dt className="font-bold inline">{item.label}</dt>
                   <dd className="inline"> — {item.text}</dd>
                 </div>
               </div>
             ))}
           </dl>
-          <p className="text-left leading-relaxed mt-6" style={{ color: '#1F3D2F' }}>
+          <p className="text-left leading-relaxed mt-6" style={{ color: '#1f3d2f' }}>
             Ti servono le misure esatte di porte, ascensore o bagno? <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-green-700 font-semibold underline">Scrivici</a> o <a href={TEL_LINK} className="text-green-700 font-semibold underline">chiamaci</a>: te le forniamo volentieri.
           </p>
         </div>
@@ -323,7 +329,7 @@ export default function Home() {
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</p>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</h2>
           <p className="text-left text-gray-700 leading-relaxed">
             Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
@@ -342,8 +348,8 @@ export default function Home() {
       <section className="pb-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-8 py-3 rounded-full text-sm">
-            💬 Scrivici su WhatsApp
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
+            <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Scrivici su WhatsApp
           </a>
         </div>
       </section>
@@ -351,10 +357,10 @@ export default function Home() {
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Dove siamo</p>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Dove siamo</h2>
           <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0 text-left">
-              <p className="font-semibold text-gray-800 mb-1">📍 Via Liguria 26</p>
+              <p className="font-semibold text-gray-800 mb-1 flex items-center gap-1.5"><MapPin size={17} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> Via Liguria 26</p>
               <p className="text-gray-700 mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
               <ul className="text-gray-700 leading-relaxed space-y-2">
                 <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
@@ -388,22 +394,22 @@ export default function Home() {
       {/* COME ARRIVARE */}
       <section id="come-arrivare" className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Come arrivare</p>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Come arrivare</h2>
           <p className="text-left text-gray-700 leading-relaxed mb-6">
             Casa Ania è a soli 140 metri dalla palazzina 8 di Humanitas: due minuti a piedi, senza bisogno di auto, taxi o mezzi pubblici.
           </p>
           <ul className="text-left text-gray-700 leading-relaxed space-y-4">
-            <li><strong>🚶 A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</li>
-            <li><strong>🚗 In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</li>
-            <li><strong>✈️ In aereo:</strong> Viaggiare per una visita medica è già abbastanza faticoso. Al trasferimento pensiamo noi: i nostri autisti di fiducia ti aspettano a Malpensa, Linate, Orio al Serio o alla stazione, e ti portano direttamente da noi. Scrivici su WhatsApp con data e orario di arrivo e ti confermiamo subito prezzo e posto. Meglio con qualche giorno di anticipo.</li>
-            <li><strong>🚆 In treno:</strong> Milano Rogoredo è la stazione più comoda, collegata a Milano Centrale in pochi minuti (metropolitana M3). Da lì puoi richiedere la nostra navetta o proseguire in taxi (15–20 minuti).</li>
-            <li><strong>🚌 In autobus:</strong> le autostazioni di San Donato e Lampugnano sono collegate a Casa Ania con il nostro servizio navetta su richiesta.</li>
-            <li><strong>🚇 Con i mezzi pubblici:</strong> bus 230 da M2 Abbiategrasso fino a Via Manzoni (Ospedale); fermano anche le linee 220 e 328. Il tram 15 arriva in centro, ma richiede circa 20 minuti a piedi.</li>
+            <li className="flex gap-3"><Footprints size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</span></li>
+            <li className="flex gap-3"><Car size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</span></li>
+            <li className="flex gap-3"><Plane size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In aereo:</strong> Viaggiare per una visita medica è già abbastanza faticoso. Al trasferimento pensiamo noi: i nostri autisti di fiducia ti aspettano a Malpensa, Linate, Orio al Serio o alla stazione, e ti portano direttamente da noi. Scrivici su WhatsApp con data e orario di arrivo e ti confermiamo subito prezzo e posto. Meglio con qualche giorno di anticipo.</span></li>
+            <li className="flex gap-3"><TrainFront size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In treno:</strong> Milano Rogoredo è la stazione più comoda, collegata a Milano Centrale in pochi minuti (metropolitana M3). Da lì puoi richiedere la nostra navetta o proseguire in taxi (15–20 minuti).</span></li>
+            <li className="flex gap-3"><Bus size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In autobus:</strong> le autostazioni di San Donato e Lampugnano sono collegate a Casa Ania con il nostro servizio navetta su richiesta.</span></li>
+            <li className="flex gap-3"><TrainFrontTunnel size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>Con i mezzi pubblici:</strong> bus 230 da M2 Abbiategrasso fino a Via Manzoni (Ospedale); fermano anche le linee 220 e 328. Il tram 15 arriva in centro, ma richiede circa 20 minuti a piedi.</span></li>
           </ul>
           <div className="text-center mt-6">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-6 py-3 rounded-full text-sm">
-              💬 Richiedi la navetta su WhatsApp
+              className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-6 py-3 rounded-full text-sm">
+              <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Richiedi la navetta su WhatsApp
             </a>
           </div>
         </div>
@@ -412,7 +418,7 @@ export default function Home() {
       {/* FAQ */}
       <section id="faq" className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <p style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</p>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</h2>
           <div className="text-left space-y-5">
             {faqs.map(({ q, a }) => (
               <div key={q}>
@@ -434,18 +440,18 @@ export default function Home() {
       {/* CONTATTI / PRENOTAZIONE */}
       <section style={{ backgroundColor: '#2d6a4f' }} className="py-14 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-display font-semibold text-2xl mb-2" style={{ color: '#f5efe4' }}>Prenota il tuo soggiorno</p>
+          <h2 className="font-display font-semibold text-2xl mb-2" style={{ color: '#f5efe4' }}>Prenota il tuo soggiorno</h2>
           <p className="text-sm mb-8" style={{ color: '#c9d6cc' }}>Contattaci direttamente — ti risponde Ania.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="flex-1 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors"
+              className="flex-1 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition active:scale-[0.97]"
               style={{ backgroundColor: '#f5efe4', color: '#1f3d2f' }}>
-              💬 WhatsApp
+              <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="flex-1 border font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition-colors"
+              className="flex-1 border font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition active:scale-[0.97]"
               style={{ borderColor: '#c9d6cc', color: '#f5efe4' }}>
-              📞 Chiama
+              <Phone size={18} strokeWidth={2} aria-hidden="true" /> Chiama
             </a>
           </div>
           <p className="text-xs mt-6" style={{ color: '#e0ddd0' }}>Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
@@ -453,9 +459,9 @@ export default function Home() {
       </section>
 
       {/* WHATSAPP FLOTTANTE */}
-      <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition-colors text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg">
-        💬
+      <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Scrivici su WhatsApp"
+        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg">
+        <MessageCircle size={26} strokeWidth={2} aria-hidden="true" />
       </a>
 
     </main>
