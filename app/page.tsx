@@ -9,17 +9,6 @@ const TEL_LINK = `tel:+39${PHONE}`
 
 const rooms = [
   {
-    name: 'Allegra',
-    desc: 'Camera matrimoniale con bagno in camera e balconcino tutto per sé. Comoda, luminosa, con quel tocco di spazio in più che fa la differenza.',
-    prices: [
-      { label: '1–2 persone', amount: 80 },
-      { label: '3 persone (letto aggiuntivo)', amount: 90 },
-    ],
-    img: '/camere/allegra/foto1.jpg',
-    href: '/camere/allegra',
-    roomId: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05',
-  },
-  {
     name: 'Ambra',
     desc: 'Camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.',
     prices: [
@@ -29,6 +18,17 @@ const rooms = [
     img: '/camere/ambra/foto1.jpg',
     href: '/camere/ambra',
     roomId: '6a8870ce-be2b-41d9-971e-5c833a85eb4a',
+  },
+  {
+    name: 'Allegra',
+    desc: 'Camera matrimoniale con bagno in camera e balconcino tutto per sé. Comoda, luminosa, con quel tocco di spazio in più che fa la differenza.',
+    prices: [
+      { label: '1–2 persone', amount: 80 },
+      { label: '3 persone (letto aggiuntivo)', amount: 90 },
+    ],
+    img: '/camere/allegra/foto1.jpg',
+    href: '/camere/allegra',
+    roomId: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05',
   },
   {
     name: 'Lena',
