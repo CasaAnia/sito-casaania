@@ -162,24 +162,20 @@ export default function Home() {
         </div>
       </header>
 
+      {/* BANNER CAROSELLO */}
+      <BannerCarosello />
+
       {/* HERO */}
       <section className="px-4 pt-5 pb-4 text-center" style={{ backgroundColor: '#f9f6f1' }}>
         <div className="max-w-2xl mx-auto hero-in">
           <h2 style={{ color: '#1f3d2f' }} className="font-display text-2xl md:text-5xl font-semibold mb-2.5 leading-tight tracking-wide">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-          <p className="text-gray-700 text-base mb-4">
+          <p className="text-gray-700 text-base">
             Camere confortevoli a 140 metri dall&apos;ospedale
           </p>
-          <Link href="/prenota"
-            className="inline-block bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-8 py-3 rounded-full uppercase whitespace-nowrap">
-            Prenota ora
-          </Link>
         </div>
       </section>
-
-      {/* BANNER CAROSELLO */}
-      <BannerCarosello />
 
       {/* RECENSIONI */}
       <section className="py-8 px-4">
