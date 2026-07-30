@@ -72,6 +72,11 @@ body {
 }
 .wa-pulse { animation: waPulse 5s ease-in-out infinite; }
 
+/* Barra di avanzamento del banner (opzione D): si riempie fino alla foto dopo.
+   La durata deve combaciare con l'intervallo del carosello (4500ms). */
+@keyframes progressFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.banner-progress-fill { transform-origin: left center; animation: progressFill 4500ms linear forwards; }
+
 @media (prefers-reduced-motion: reduce) {
   .parallax-wrap { height: 100%; transform: none; }
   .wa-pulse { animation: none; }
