@@ -180,7 +180,6 @@ export default function Home() {
       {/* RECENSIONI */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-10 underline">Cosa dicono di noi</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {testimonials.map((t, i) => (
               <Reveal key={i} delay={i * 80}>
@@ -227,7 +226,6 @@ export default function Home() {
       {/* CAMERE */}
       <section className="pt-6 pb-8">
         <div className="max-w-4xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-xl font-semibold uppercase tracking-wider mb-14 px-4 underline">Scegli la tua camera</h2>
           <Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
