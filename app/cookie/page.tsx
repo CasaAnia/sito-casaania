@@ -81,7 +81,7 @@ export default function Cookie() {
       </div>
 
       <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition-colors text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg">
+        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition-colors text-white rounded-full w-14 h-14 flex items-center justify-center text-2xl shadow-lg wa-pulse">
         💬
       </a>
     </main>
