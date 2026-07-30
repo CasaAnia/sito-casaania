@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Logo from './components/Logo'
 import Reveal from './components/Reveal'
 import BannerCarosello from './components/BannerCarosello'
+import ParallaxController from './components/ParallaxController'
 import { MapPin, Phone, MessageCircle, Footprints, Car, Plane, TrainFront, TrainFrontTunnel, Bus } from 'lucide-react'
 
 const PHONE = '3427004354'
@@ -147,6 +148,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
+      <ParallaxController />
 
       {/* HEADER */}
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
@@ -234,8 +236,14 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
-                <Link href={room.href} className="block h-80 overflow-hidden bg-gray-100">
-                  <img src={room.img} alt={room.name} className={room.name === 'Lena' ? 'w-full h-full object-contain' : 'w-full h-full object-cover'} />
+                <Link href={room.href} className="group block h-80 overflow-hidden bg-gray-100">
+                  {room.name === 'Lena' ? (
+                    <img src={room.img} alt={room.name} className="w-full h-full object-contain motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
+                  ) : (
+                    <div className="parallax-wrap" data-parallax>
+                      <img src={room.img} alt={room.name} className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
+                    </div>
+                  )}
                 </Link>
                 <div className={`px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
                   <div className="flex items-start justify-between mb-1">
@@ -255,8 +263,8 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="mx-4 mt-5 pb-2 flex items-center justify-between gap-3">
-                  <Link href={room.href} className="text-base text-green-700 font-semibold py-2">
-                    Scopri di più →
+                  <Link href={room.href} className="group text-base text-green-700 font-semibold py-2 inline-flex items-center gap-1">
+                    Scopri di più <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
                   </Link>
                   <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
                     Prenota ora
@@ -451,7 +459,7 @@ export default function Home() {
 
       {/* WHATSAPP FLOTTANTE */}
       <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Scrivici su WhatsApp"
-        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg">
+        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition-colors text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg wa-pulse">
         <MessageCircle size={26} strokeWidth={2} aria-hidden="true" />
       </a>
 

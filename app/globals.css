@@ -60,6 +60,23 @@ body {
 }
 .kenburns { animation: kenburns 9s ease-in-out infinite alternate; }
 
+/* Parallax leggero sulle foto camere: l'immagine (più alta del riquadro) scorre
+   un filo più lenta della pagina, dando profondità. Il JS aggiorna translateY. */
+.parallax-wrap { height: 128%; transform: translateY(-45px); will-change: transform; }
+
+/* Lieve "battito" del pulsante WhatsApp flottante per farsi notare ogni tanto */
+@keyframes waPulse {
+  0%, 88%, 100% { transform: scale(1); }
+  92% { transform: scale(1.09); }
+  96% { transform: scale(1.04); }
+}
+.wa-pulse { animation: waPulse 5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-wrap { height: 100%; transform: none; }
+  .wa-pulse { animation: none; }
+}
+
 /* Entrata dell'eroe al caricamento (finisce sempre visibile) */
 @keyframes heroIn {
   from { opacity: 0; transform: translateY(12px); }
