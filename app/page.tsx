@@ -245,15 +245,15 @@ export default function Home() {
                     </div>
                   )}
                 </Link>
-                <div className={`px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
+                <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
                   <div className="flex items-start justify-between mb-1">
-                    <h3 className="font-display text-xl font-semibold text-gray-700 tracking-wide">{room.name}</h3>
+                    <h3 className="font-display text-xl font-semibold text-gray-700 tracking-wide transition-colors group-hover/desc:text-green-700">{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
                   </div>
                   <p className="text-base text-gray-700 mb-3">{room.desc}</p>
-                </div>
+                </Link>
                 <div className="mx-4 border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
                   {room.prices.map((p, j) => (
                     <div key={j} className={j % 2 === 1 ? 'border-l border-gray-100 pl-3' : ''}>
