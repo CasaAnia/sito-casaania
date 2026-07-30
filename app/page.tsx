@@ -163,12 +163,12 @@ export default function Home() {
       </header>
 
       {/* HERO */}
-      <section className="px-4 pt-10 pb-8 text-center" style={{ backgroundColor: '#f9f6f1' }}>
+      <section className="px-4 pt-5 pb-4 text-center" style={{ backgroundColor: '#f9f6f1' }}>
         <div className="max-w-2xl mx-auto hero-in">
-          <h2 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-5xl font-semibold mb-4 leading-tight tracking-wide">
+          <h2 style={{ color: '#1f3d2f' }} className="font-display text-2xl md:text-5xl font-semibold mb-2.5 leading-tight tracking-wide">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-          <p className="text-gray-700 text-lg mb-6">
+          <p className="text-gray-700 text-base mb-4">
             Camere confortevoli a 140 metri dall&apos;ospedale
           </p>
           <Link href="/prenota"
