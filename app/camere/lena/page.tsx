@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
 import Logo from '../../components/Logo'
+import Lightbox from '../../components/Lightbox'
 import { useState } from 'react'
 
 const PHONE = '3427004354'
@@ -11,25 +12,13 @@ const PHOTOS = [1, 2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 
 export default function CameraLena() {
   const [lightbox, setLightbox] = useState<number | null>(null)
-  const lightboxIdx = lightbox !== null ? PHOTOS.indexOf(lightbox) : -1
 
   return (
     <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
 
       {/* LIGHTBOX */}
-      {lightbox !== null && (
-        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-          onClick={() => setLightbox(null)}>
-          <button className="absolute top-4 right-4 text-white text-3xl font-bold">✕</button>
-          <button className="absolute left-4 text-white text-4xl font-bold px-2"
-            onClick={e => { e.stopPropagation(); setLightbox(PHOTOS[lightboxIdx > 0 ? lightboxIdx - 1 : PHOTOS.length - 1]) }}>‹</button>
-          <img src={`/camere/lena/foto${lightbox === 1 ? '1b' : lightbox}.jpg`} alt=""
-            className="max-w-full max-h-full object-contain"
-            onClick={e => e.stopPropagation()} />
-          <button className="absolute right-4 text-white text-4xl font-bold px-2"
-            onClick={e => { e.stopPropagation(); setLightbox(PHOTOS[lightboxIdx < PHOTOS.length - 1 ? lightboxIdx + 1 : 0]) }}>›</button>
-        </div>
-      )}
+      <Lightbox photos={PHOTOS} current={lightbox} src={n => `/camere/lena/foto${n === 1 ? '1b' : n}.jpg`}
+        onClose={() => setLightbox(null)} onChange={setLightbox} />
 
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
