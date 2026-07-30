@@ -37,16 +37,24 @@ export default function BannerCarosello() {
         />
       ))}
       {!reduce && (
-        <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-1.5">
           {fotos.map((_, idx) => (
             <button
               key={idx}
               type="button"
               aria-label={`Mostra foto ${idx + 1}`}
               onClick={() => setI(idx)}
-              className="w-2.5 h-2.5 rounded-full transition-colors"
-              style={{ background: idx === i ? '#ffffff' : 'rgba(255,255,255,0.55)' }}
-            />
+              className="p-1.5"
+            >
+              <span
+                className="block h-1 rounded-full transition-all duration-300 ease-out"
+                style={{
+                  width: idx === i ? '18px' : '5px',
+                  background: idx === i ? '#ffffff' : 'rgba(255,255,255,0.55)',
+                  boxShadow: '0 1px 2px rgba(0,0,0,0.35)',
+                }}
+              />
+            </button>
           ))}
         </div>
       )}
