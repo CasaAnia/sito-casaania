@@ -248,7 +248,7 @@ export default function Home() {
                   )}
                 </Link>
                 <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
-                  <div className="flex items-start justify-between mb-1">
+                  <div className="flex items-start justify-between mb-8">
                     <h3 className="font-display text-xl font-semibold text-[#3a3a35] tracking-wide transition-colors group-hover/desc:text-green-700">{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
