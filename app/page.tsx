@@ -181,13 +181,11 @@ export default function Home() {
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="font-display text-gray-700 text-xl font-semibold uppercase tracking-wider mb-2">Cosa dicono di noi</h2>
-            <p className="flex items-center justify-center gap-2 mb-1">
-              <span style={{ color: '#2d6a4f' }} className="text-lg tracking-[0.15em] leading-none">★★★★★</span>
-              <span className="font-semibold text-gray-800">5.0 su Google</span>
+            <p className="text-gray-800 mb-3">
+              <span style={{ color: '#2d6a4f' }}>★★★★★</span> <strong>5,0 su Google</strong>
             </p>
             <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
-              className="text-sm underline font-semibold" style={{ color: '#2d6a4f' }}>
+              style={{ textUnderlineOffset: '6px' }} className="inline-block text-gray-700 text-lg font-semibold uppercase tracking-wider underline">
               Recensioni raccolte su Google
             </a>
           </div>
