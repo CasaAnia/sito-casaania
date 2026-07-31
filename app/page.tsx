@@ -143,7 +143,7 @@ const faqJsonLd = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-gray-900" style={{backgroundColor: '#f9f6f1'}}>
+    <main className="min-h-screen text-[#3a3a35]" style={{backgroundColor: '#f9f6f1'}}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -171,7 +171,7 @@ export default function Home() {
           <h2 style={{ color: '#1f3d2f' }} className="font-display text-2xl md:text-5xl font-semibold mb-2.5 leading-tight tracking-wide">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
           </h2>
-          <p className="text-gray-700 text-base">
+          <p className="text-[#3a3a35] text-base">
             Camere confortevoli a 140 metri dall&apos;ospedale
           </p>
         </div>
@@ -181,11 +181,11 @@ export default function Home() {
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <p className="text-gray-800 mb-3">
+            <p className="text-[#1f3d2f] mb-3">
               <span style={{ color: '#2d6a4f' }}>★★★★★</span> <strong>5,0 su Google</strong>
             </p>
             <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
-              style={{ textUnderlineOffset: '6px' }} className="inline-block text-gray-700 text-lg font-semibold uppercase tracking-wider underline">
+              style={{ textUnderlineOffset: '6px' }} className="inline-block text-[#3a3a35] text-lg font-semibold uppercase tracking-wider underline">
               Recensioni raccolte su Google
             </a>
           </div>
@@ -194,8 +194,8 @@ export default function Home() {
               <Reveal key={i} delay={i * 80}>
                 <div className="bg-white rounded-2xl p-5 shadow-sm h-full">
                   <p style={{color: '#2d6a4f'}} className="text-base tracking-[0.15em] mb-2">{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</p>
-                  <p className="text-gray-700 text-[15px] italic leading-relaxed mb-3">"{t.text}"</p>
-                  <p className="text-sm font-semibold text-gray-800">— {t.name}</p>
+                  <p className="text-[#3a3a35] text-[15px] italic leading-relaxed mb-3">"{t.text}"</p>
+                  <p className="text-sm font-semibold text-[#1f3d2f]">— {t.name}</p>
                 </div>
               </Reveal>
             ))}
@@ -207,7 +207,7 @@ export default function Home() {
           </p>
 
           <div className="text-center mt-10">
-            <p className="font-display text-xl font-semibold text-gray-700 mb-2">Sei già stato nostro ospite?</p>
+            <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
             <p className="text-ink text-sm max-w-md mx-auto mb-4">
               Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
             </p>
@@ -218,7 +218,7 @@ export default function Home() {
             </a>
             <div className="hidden md:flex flex-col items-center mt-4">
               <img src="/qr-recensioni.png" alt="QR code per recensione Google" width={110} height={110} />
-              <p className="text-gray-500 text-xs mt-1">oppure inquadra col telefono</p>
+              <p className="text-[#6f6a5e] text-xs mt-1">oppure inquadra col telefono</p>
             </div>
           </div>
         </div>
@@ -249,12 +249,12 @@ export default function Home() {
                 </Link>
                 <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
                   <div className="flex items-start justify-between mb-1">
-                    <h3 className="font-display text-xl font-semibold text-gray-700 tracking-wide transition-colors group-hover/desc:text-green-700">{room.name}</h3>
+                    <h3 className="font-display text-xl font-semibold text-[#3a3a35] tracking-wide transition-colors group-hover/desc:text-green-700">{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
                   </div>
-                  <p className="text-base text-gray-700 mb-3">{room.desc}</p>
+                  <p className="text-base text-[#3a3a35] mb-3">{room.desc}</p>
                 </Link>
                 <div className="mx-4 border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
                   {room.prices.map((p, j) => (
@@ -285,17 +285,17 @@ export default function Home() {
       {/* CHECK-IN FLESSIBILE */}
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</h2>
-          <p className="text-left text-gray-700 leading-relaxed mb-4">
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</h2>
+          <p className="text-left text-[#3a3a35] leading-relaxed mb-4">
             Il check-in ufficiale è dalle 15:00 alle 20:00.
           </p>
-          <p className="text-left text-gray-700 leading-relaxed mb-4">
+          <p className="text-left text-[#3a3a35] leading-relaxed mb-4">
             Qualora la camera fosse pronta in anticipo (cosa che accade spesso già nelle prime ore del mattino), ti invieremo un messaggio per informarti che potrai accedere alla struttura anche prima dell'orario previsto.
           </p>
-          <p className="text-left text-gray-700 leading-relaxed mb-4">
+          <p className="text-left text-[#3a3a35] leading-relaxed mb-4">
             Se desideri lasciare i bagagli prima del check-in, ti chiediamo semplicemente di avvisarci il giorno precedente, così da organizzare al meglio la tua accoglienza.
           </p>
-          <p className="text-left text-gray-700 leading-relaxed">
+          <p className="text-left text-[#3a3a35] leading-relaxed">
             Se invece prevedi di arrivare dopo le 20:00, è sufficiente comunicarcelo il giorno prima e faremo il possibile per rendere il tuo arrivo semplice e agevole.
           </p>
         </div>
@@ -330,8 +330,8 @@ export default function Home() {
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</h2>
-          <p className="text-left text-gray-700 leading-relaxed">
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</h2>
+          <p className="text-left text-[#3a3a35] leading-relaxed">
             Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
           </p>
@@ -358,12 +358,12 @@ export default function Home() {
       {/* DOVE SIAMO */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Dove siamo</h2>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-8 underline">Dove siamo</h2>
           <div className="md:flex md:gap-8 md:items-center">
             <div className="md:flex-1 mb-6 md:mb-0 text-left">
-              <p className="font-semibold text-gray-800 mb-1 flex items-center gap-1.5"><MapPin size={17} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> Via Liguria 26</p>
-              <p className="text-gray-700 mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
-              <ul className="text-gray-700 leading-relaxed space-y-2">
+              <p className="font-semibold text-[#1f3d2f] mb-1 flex items-center gap-1.5"><MapPin size={17} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> Via Liguria 26</p>
+              <p className="text-[#3a3a35] mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
+              <ul className="text-[#3a3a35] leading-relaxed space-y-2">
                 <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
                 <li>Zona tranquilla e residenziale</li>
                 <li>Due piazzole di sosta gratuite a circa 150 metri da Casa Ania, poco prima di arrivare, su entrambi i lati della strada</li>
@@ -395,11 +395,11 @@ export default function Home() {
       {/* COME ARRIVARE */}
       <section id="come-arrivare" className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Come arrivare</h2>
-          <p className="text-left text-gray-700 leading-relaxed mb-6">
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-8 underline">Come arrivare</h2>
+          <p className="text-left text-[#3a3a35] leading-relaxed mb-6">
             Casa Ania è a soli 140 metri dalla palazzina 8 di Humanitas: due minuti a piedi, senza bisogno di auto, taxi o mezzi pubblici.
           </p>
-          <ul className="text-left text-gray-700 leading-relaxed space-y-4">
+          <ul className="text-left text-[#3a3a35] leading-relaxed space-y-4">
             <li className="flex gap-3"><Footprints size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</span></li>
             <li className="flex gap-3"><Car size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</span></li>
             <li className="flex gap-3"><Plane size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In aereo:</strong> Viaggiare per una visita medica è già abbastanza faticoso. Al trasferimento pensiamo noi: i nostri autisti di fiducia ti aspettano a Malpensa, Linate, Orio al Serio o alla stazione, e ti portano direttamente da noi. Scrivici su WhatsApp con data e orario di arrivo e ti confermiamo subito prezzo e posto. Meglio con qualche giorno di anticipo.</span></li>
@@ -419,12 +419,12 @@ export default function Home() {
       {/* FAQ */}
       <section id="faq" className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-gray-700 text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</h2>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</h2>
           <div className="text-left space-y-5">
             {faqs.map(({ q, a }) => (
               <div key={q}>
-                <h3 className="font-display font-semibold text-gray-800 mb-1">{q}</h3>
-                <p className="text-gray-700 leading-relaxed">{a}</p>
+                <h3 className="font-display font-semibold text-[#1f3d2f] mb-1">{q}</h3>
+                <p className="text-[#3a3a35] leading-relaxed">{a}</p>
               </div>
             ))}
           </div>

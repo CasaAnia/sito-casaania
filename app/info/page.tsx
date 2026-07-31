@@ -30,13 +30,13 @@ const TEL_LINK = `tel:+39${PHONE}`
 
 export default function Info() {
   return (
-    <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
+    <main className="min-h-screen text-[#3a3a35]" style={{ backgroundColor: '#f9f6f1' }}>
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-2xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
           <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">
             ← Home
           </Link>
-          <p className="justify-self-center font-display text-xl font-semibold text-gray-800">
+          <p className="justify-self-center font-display text-xl font-semibold text-[#1f3d2f]">
             Benvenuti
           </p>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
@@ -47,14 +47,14 @@ export default function Info() {
       </header>
 
       <div className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="font-display text-3xl font-semibold text-gray-800 mb-2">Informazioni per il tuo soggiorno</h1>
+        <h1 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-2">Informazioni per il tuo soggiorno</h1>
         <p className="text-[#6f6a5e] text-sm mb-10">
           Tutto quello che ti serve sapere, in una pagina sola.
         </p>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-gray-800 mb-2">Come arrivare</h2>
-          <p className="text-gray-700 leading-relaxed mb-3">
+          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Come arrivare</h2>
+          <p className="text-[#3a3a35] leading-relaxed mb-3">
             Siamo a soli 140 metri dalla palazzina 8 di Humanitas: indicazioni per auto, treno, aereo,
             autobus e mezzi pubblici, oltre alle info sul parcheggio.
           </p>
@@ -64,16 +64,16 @@ export default function Info() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-gray-800 mb-2">Check-in e check-out</h2>
-          <p className="text-gray-700 leading-relaxed">
+          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Check-in e check-out</h2>
+          <p className="text-[#3a3a35] leading-relaxed">
             Il check-in è dalle 15:00 alle 20:00 ed è flessibile: se arrivi prima o dopo questi orari, scrivici
             su WhatsApp il giorno precedente e troviamo sempre una soluzione. Il check-out è entro le 10:00.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-gray-800 mb-2">Contattaci</h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Contattaci</h2>
+          <p className="text-[#3a3a35] leading-relaxed mb-4">
             Per qualsiasi necessità durante il soggiorno — bagagli, navetta, richieste particolari — siamo
             raggiungibili su WhatsApp o per telefono.
           </p>
@@ -83,7 +83,7 @@ export default function Info() {
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-sm text-center">
+              className="border border-gray-300 text-[#1f3d2f] font-bold px-6 py-3 rounded-full text-sm text-center">
               📞 {PHONE_DISPLAY}
             </a>
           </div>

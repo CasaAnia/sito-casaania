@@ -14,7 +14,7 @@ export default function CameraLena() {
   const [lightbox, setLightbox] = useState<number | null>(null)
 
   return (
-    <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
+    <main className="min-h-screen text-[#3a3a35]" style={{ backgroundColor: '#f9f6f1' }}>
 
       {/* LIGHTBOX */}
       <Lightbox photos={PHOTOS} current={lightbox} src={n => `/camere/lena/foto${n === 1 ? '1b' : n}.jpg`}
@@ -37,7 +37,7 @@ export default function CameraLena() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 className="font-display text-3xl font-semibold text-gray-700 mb-2 tracking-wide">Lena</h1>
+        <h1 className="font-display text-3xl font-semibold text-[#3a3a35] mb-2 tracking-wide">Lena</h1>
         <div className="flex gap-2 mb-3">
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno esterno</span>
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
@@ -45,15 +45,15 @@ export default function CameraLena() {
         <p className="text-[#3a3a35] text-lg mb-5">La più spaziosa di Casa Ania — con bagno privato esterno e balcone con vista su Humanitas.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-4">
           <div>
-            <p className="text-sm text-gray-700">1–2 persone</p>
+            <p className="text-sm text-[#3a3a35]">1–2 persone</p>
             <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€80 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           </div>
           <div>
-            <p className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
+            <p className="text-sm text-[#3a3a35]">3 persone (letto aggiuntivo)</p>
             <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€90 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           </div>
           <div>
-            <p className="text-sm text-gray-700">4 persone (due letti aggiuntivi)</p>
+            <p className="text-sm text-[#3a3a35]">4 persone (due letti aggiuntivi)</p>
             <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€100 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           </div>
         </div>
@@ -80,7 +80,7 @@ export default function CameraLena() {
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
+          <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Descrizione</h2>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Lena è la camera più grande di Casa Ania — spaziosa, luminosa, con tutto lo spazio che serve anche quando si è in più persone.
             Letto matrimoniale con lenzuola curate nei minimi dettagli, morbide e profumate di fresco, e tutto il calore di una casa che accoglie.
@@ -96,7 +96,7 @@ export default function CameraLena() {
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
+          <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Bagno privato esterno (esclusivo)',
@@ -117,14 +117,14 @@ export default function CameraLena() {
 
         <div className="rounded-2xl p-6 text-center">
           <p style={{ color: '#2d6a4f' }} className="text-lg font-semibold uppercase tracking-wider mb-2">Verifica la disponibilità</p>
-          <p className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
+          <p className="text-sm text-[#3a3a35] mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-6 py-3 rounded-full text-lg">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-lg">
+              className="border border-gray-300 text-[#1f3d2f] font-bold px-6 py-3 rounded-full text-lg">
               📞 {PHONE_DISPLAY}
             </a>
           </div>

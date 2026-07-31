@@ -128,15 +128,15 @@ function ReviewCard({ name, rating, text }: { name: string; rating: number; text
         {'★'.repeat(rating)}
         {'☆'.repeat(5 - rating)}
       </p>
-      <p className="text-gray-700 text-sm italic leading-relaxed mb-2">"{text}"</p>
-      <p className="text-xs font-semibold text-gray-800">{name}</p>
+      <p className="text-[#3a3a35] text-sm italic leading-relaxed mb-2">"{text}"</p>
+      <p className="text-xs font-semibold text-[#1f3d2f]">{name}</p>
     </div>
   )
 }
 
 export default function Recensioni() {
   return (
-    <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
+    <main className="min-h-screen text-[#3a3a35]" style={{ backgroundColor: '#f9f6f1' }}>
       {/* HEADER */}
       <header className="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div className="max-w-4xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
@@ -159,7 +159,7 @@ export default function Recensioni() {
           <h2 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-4xl font-semibold mb-3 leading-tight tracking-wide">
             Cosa dicono di noi
           </h2>
-          <p className="text-gray-700">
+          <p className="text-[#3a3a35]">
             <span style={{ color: '#2d6a4f' }}>★★★★★</span> <strong>5,0 su Google</strong>
           </p>
         </div>
@@ -168,7 +168,7 @@ export default function Recensioni() {
       {/* RECENSIONI GOOGLE */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{ textUnderlineOffset: '6px' }} className="text-center text-gray-700 text-lg font-semibold uppercase tracking-wider mb-8 underline">
+          <p style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg font-semibold uppercase tracking-wider mb-8 underline">
             Recensioni raccolte su Google
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -192,7 +192,7 @@ export default function Recensioni() {
       {/* RECENSIONI TRIPADVISOR */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{ textUnderlineOffset: '6px' }} className="text-center text-gray-700 text-lg font-semibold uppercase tracking-wider mb-8 underline">
+          <p style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg font-semibold uppercase tracking-wider mb-8 underline">
             Recensioni raccolte su TripAdvisor
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -206,7 +206,7 @@ export default function Recensioni() {
       {/* CTA LASCIA RECENSIONE */}
       <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-display text-xl font-semibold text-gray-700 mb-2">Sei già stato nostro ospite?</p>
+          <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
           <p className="text-[#3a3a35] text-sm max-w-md mx-auto mb-4">
             Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
           </p>

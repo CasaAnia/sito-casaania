@@ -14,7 +14,7 @@ export default function CameraAllegra() {
   const [lightbox, setLightbox] = useState<number | null>(null)
 
   return (
-    <main className="min-h-screen text-gray-900" style={{ backgroundColor: '#f9f6f1' }}>
+    <main className="min-h-screen text-[#3a3a35]" style={{ backgroundColor: '#f9f6f1' }}>
 
       {/* LIGHTBOX */}
       <Lightbox photos={PHOTOS} current={lightbox} src={n => `/camere/allegra/foto${n}.jpg`}
@@ -37,15 +37,15 @@ export default function CameraAllegra() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 className="font-display text-3xl font-semibold text-gray-700 mb-2 tracking-wide">Allegra</h1>
+        <h1 className="font-display text-3xl font-semibold text-[#3a3a35] mb-2 tracking-wide">Allegra</h1>
         <div className="flex gap-2 mb-3">
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno in camera</span>
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balconcino</span>
         </div>
         <p className="text-[#3a3a35] text-lg mb-5">Luminosa, con bagno in camera e balconcino tutto per sé.</p>
         <div className="border-t border-gray-200 pt-4 mb-8 grid grid-cols-2 gap-x-4">
-          <p className="text-sm text-gray-700">1–2 persone</p>
-          <p className="text-sm text-gray-700">3 persone (letto aggiuntivo)</p>
+          <p className="text-sm text-[#3a3a35]">1–2 persone</p>
+          <p className="text-sm text-[#3a3a35]">3 persone (letto aggiuntivo)</p>
           <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€80 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
           <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€90 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
         </div>
@@ -72,7 +72,7 @@ export default function CameraAllegra() {
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Descrizione</h2>
+          <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Descrizione</h2>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Allegra è una camera matrimoniale comoda e luminosa, con bagno privato all'interno della stanza.
             Letto matrimoniale con biancheria di bucato fresca e accurata, per quel senso di casa che si sente appena si entra.
@@ -83,7 +83,7 @@ export default function CameraAllegra() {
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 className="font-display text-xl font-semibold mb-3 text-gray-700 tracking-wide">Ogni soggiorno include</h2>
+          <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Aria condizionata e riscaldamento',
@@ -102,14 +102,14 @@ export default function CameraAllegra() {
 
         <div className="rounded-2xl p-6 text-center">
           <p style={{ color: '#2d6a4f' }} className="text-lg font-semibold uppercase tracking-wider mb-2">Verifica la disponibilità</p>
-          <p className="text-sm text-gray-700 mb-5">Contattaci su WhatsApp o per telefono</p>
+          <p className="text-sm text-[#3a3a35] mb-5">Contattaci su WhatsApp o per telefono</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
               className="bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-6 py-3 rounded-full text-lg">
               💬 WhatsApp
             </a>
             <a href={TEL_LINK}
-              className="border border-gray-300 text-gray-800 font-bold px-6 py-3 rounded-full text-lg">
+              className="border border-gray-300 text-[#1f3d2f] font-bold px-6 py-3 rounded-full text-lg">
               📞 {PHONE_DISPLAY}
             </a>
           </div>
