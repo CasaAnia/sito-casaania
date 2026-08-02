@@ -27,7 +27,7 @@ export default function Privacy() {
 
       <div className="max-w-2xl mx-auto px-4 py-10">
         <h1 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-2">Privacy Policy</h1>
-        <p className="text-[#6f6a5e] text-sm mb-8">Ultimo aggiornamento: luglio 2026</p>
+        <p className="text-[#6f6a5e] text-sm mb-8">Ultimo aggiornamento: agosto 2026</p>
 
         <section className="mb-8">
           <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Titolare del trattamento</h2>
@@ -47,9 +47,15 @@ export default function Privacy() {
             Questi dati sono necessari per verificare la disponibilità delle camere e gestire la richiesta di
             prenotazione.
           </p>
-          <p className="text-[#3a3a35] leading-relaxed">
+          <p className="text-[#3a3a35] leading-relaxed mb-3">
             Non è richiesto alcun indirizzo email: le comunicazioni relative alla prenotazione avvengono tramite
             WhatsApp o telefono, ai recapiti forniti dall&apos;ospite.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed">
+            Al di fuori del modulo di prenotazione, il sito registra un conteggio anonimo delle visite alle pagine
+            e dei clic sui pulsanti di contatto, limitato a tipo di evento, pagina e data. Non si tratta di dati
+            personali, poiché non contengono alcun elemento che permetta di identificare l&apos;utente: i dettagli
+            sono descritti nella <Link href="/cookie" className="text-green-700 font-semibold underline">Cookie Policy</Link>.
           </p>
         </section>
 

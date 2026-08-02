@@ -27,7 +27,7 @@ export default function Cookie() {
 
       <div className="max-w-2xl mx-auto px-4 py-10">
         <h1 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-2">Cookie Policy</h1>
-        <p className="text-[#6f6a5e] text-sm mb-8">Ultimo aggiornamento: luglio 2026</p>
+        <p className="text-[#6f6a5e] text-sm mb-8">Ultimo aggiornamento: agosto 2026</p>
 
         <section className="mb-8">
           <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Cosa sono i cookie</h2>
@@ -44,6 +44,19 @@ export default function Cookie() {
             (analytics) né cookie pubblicitari di terze parti. Non sono presenti strumenti di tracciamento come
             Google Analytics, Meta Pixel o simili, e il sito non installa alcun cookie proprio (tecnico o di
             altro tipo) sul dispositivo dell&apos;utente.
+          </p>
+        </section>
+
+        <section className="mb-8">
+          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Conteggio anonimo delle visite</h2>
+          <p className="text-[#3a3a35] leading-relaxed">
+            Per capire quante persone consultano il sito e quali pagine sono più utili, il sito registra un
+            conteggio del tutto anonimo su un proprio archivio. Di ogni evento vengono salvati soltanto tre dati:
+            il <strong>tipo</strong> (visita di una pagina, oppure clic sul pulsante WhatsApp o sul numero di
+            telefono), la <strong>pagina</strong> in cui è avvenuto e la <strong>data e ora</strong>.
+            Non vengono raccolti né conservati indirizzi IP, identificativi del dispositivo o qualsiasi altro dato
+            che permetta di risalire a una persona, e non viene installato alcun cookie. I dati non sono condivisi
+            con terze parti e non consentono in alcun modo di ricostruire il percorso di un singolo visitatore.
           </p>
         </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Fraunces, Nunito_Sans } from "next/font/google";
 import ConditionalFooter from "./components/ConditionalFooter";
+import Conteggio from "./components/Conteggio";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -116,6 +117,7 @@ export default function RootLayout({
         {children}
 
         <ConditionalFooter />
+        <Conteggio />
       </body>
     </html>
   );
