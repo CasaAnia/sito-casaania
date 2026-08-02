@@ -53,7 +53,9 @@ export default function Cookie() {
             Per capire quante persone consultano il sito e quali pagine sono più utili, il sito registra un
             conteggio del tutto anonimo su un proprio archivio. Di ogni evento vengono salvati soltanto tre dati:
             il <strong>tipo</strong> (visita di una pagina, oppure clic sul pulsante WhatsApp o sul numero di
-            telefono), la <strong>pagina</strong> in cui è avvenuto e la <strong>data e ora</strong>.
+            telefono), la <strong>pagina</strong> in cui è avvenuto, la <strong>data e ora</strong> e la
+            <strong> provenienza</strong>, cioè il nome del sito da cui si è arrivati (ad esempio google.com)
+            o l&apos;etichetta della campagna pubblicitaria indicata nel link.
             Non vengono raccolti né conservati indirizzi IP, identificativi del dispositivo o qualsiasi altro dato
             che permetta di risalire a una persona, e non viene installato alcun cookie. I dati non sono condivisi
             con terze parti e non consentono in alcun modo di ricostruire il percorso di un singolo visitatore.

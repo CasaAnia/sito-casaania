@@ -20,10 +20,14 @@ export async function POST(req: NextRequest) {
 
   let tipo = ''
   let pagina = ''
+  let fonte: string | null = null
+  let campagna: string | null = null
   try {
     const body = await req.json()
     tipo = String(body?.tipo ?? '')
     pagina = String(body?.pagina ?? '').slice(0, 200)
+    fonte = body?.fonte ? String(body.fonte).slice(0, 80) : null
+    campagna = body?.campagna ? String(body.campagna).slice(0, 80) : null
   } catch {
     return NextResponse.json({ ok: true })
   }
@@ -34,7 +38,14 @@ export async function POST(req: NextRequest) {
 
   // Finché la tabella non è stata creata a mano su Supabase, il sito
   // deve continuare a funzionare come se niente fosse.
-  const { error } = await supabase.from('site_events').insert({ tipo, pagina })
+  let { error } = await supabase.from('site_events').insert({ tipo, pagina, fonte, campagna })
+
+  // Le colonne fonte e campagna sono state aggiunte dopo: se su Supabase non
+  // ci sono ancora, si registra almeno l'evento invece di perderlo.
+  if (error && /column|schema cache/i.test(error.message)) {
+    ;({ error } = await supabase.from('site_events').insert({ tipo, pagina }))
+  }
+
   if (error) {
     console.warn('site_events non disponibile:', error.message)
   }
