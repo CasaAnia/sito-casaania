@@ -34,6 +34,9 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.casaaniarozzano.it"),
   title,
   description,
+  verification: {
+    google: "YvneWjnzh3O0HJUhCxm1yVo1xLe9T9120vGDZgip7Fk",
+  },
   openGraph: {
     title,
     description,
