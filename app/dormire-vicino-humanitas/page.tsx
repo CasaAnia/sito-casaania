@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: 'Quanto costa dormire vicino a Humanitas?',
-    a: "Nella zona intorno all'ospedale una camera doppia costa in genere fra i 70 e i 100 euro a notte. Da Casa Ania si va da 70 euro per la camera singola a 80 euro per una matrimoniale, fino a 100 euro per quattro persone nella camera più grande.",
+    a: "Nella zona intorno all'ospedale una camera doppia costa in genere fra i 90 e i 120 euro a notte, e negli alberghi lì davanti si superano abitualmente i 100. Da Casa Ania una matrimoniale costa 80 euro, la singola 70, e si arriva a 100 euro solo per quattro persone nella camera più grande.",
   },
   {
     q: 'Conviene dormire a Rozzano o a Milano?',
@@ -111,8 +111,8 @@ export default function DormireVicinoHumanitas() {
         <section className="mb-10">
           <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-3">Quanto costa dormire in zona</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
-            Intorno all&apos;ospedale i prezzi vanno in genere dai 70 ai 100 euro a notte, a seconda della camera e
-            del numero di persone. Da noi:
+            Intorno all&apos;ospedale una camera doppia costa in genere fra i 90 e i 120 euro a notte, e negli
+            alberghi che stanno lì davanti si superano abitualmente i 100. Da noi:
           </p>
           <ul className="text-[#3a3a35] leading-relaxed space-y-1 mb-3">
             <li>• camera singola: <strong>70 €</strong> a notte</li>
@@ -120,6 +120,10 @@ export default function DormireVicinoHumanitas() {
             <li>• tre persone: <strong>90 €</strong> a notte</li>
             <li>• quattro persone, nella camera più grande: <strong>100 €</strong> a notte</li>
           </ul>
+          <p className="text-[#3a3a35] leading-relaxed mb-3">
+            Sono prezzi da casa di famiglia, non da albergo: nessuna commissione a nessuno, perché si prenota
+            direttamente con noi.
+          </p>
           <p className="text-[#3a3a35] leading-relaxed">
             Per un soggiorno di una settimana o dieci giorni il prezzo resta questo. Per chi invece si ferma un mese
             o più — capita spesso a chi accompagna un familiare in una terapia lunga — riusciamo a scendere di
