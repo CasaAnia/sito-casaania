@@ -8,6 +8,7 @@ export const metadata = {
   title: 'Recensioni – Casa Ania | Affittacamere a 140 m da Humanitas Rozzano',
   description:
     "Cosa dicono i nostri ospiti: recensioni raccolte su Google e su TripAdvisor. Camere pulite e accoglienti a 140 metri dall'ospedale Humanitas di Rozzano.",
+  alternates: { canonical: '/recensioni' },
 }
 
 const googleReviews = [

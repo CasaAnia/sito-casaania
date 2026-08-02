@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | Casa Ania Rozzano',
   description:
     "Informativa sulla privacy di Casa Ania Rozzano: dati raccolti tramite il modulo di prenotazione, finalità del trattamento e diritti dell'interessato.",
+  alternates: { canonical: '/privacy' },
 }
 
 const WA_LINK = 'https://wa.me/393427004354'

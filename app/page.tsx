@@ -131,6 +131,10 @@ const accessItems = [
   },
 ]
 
+export const metadata = {
+  alternates: { canonical: '/' },
+}
+
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -153,7 +157,7 @@ export default function Home() {
       {/* HEADER */}
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
         <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Logo as="h1" />
+          <Logo />
           <Link href="/prenota"
             style={{fontSize: '0.75rem', letterSpacing: '0.05em'}}
             className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap">
@@ -168,11 +172,11 @@ export default function Home() {
       {/* HERO */}
       <section className="px-4 pt-5 pb-4 text-center" style={{ backgroundColor: '#f9f6f1' }}>
         <div className="max-w-2xl mx-auto hero-in">
-          <h2 style={{ color: '#1f3d2f' }} className="font-display text-2xl md:text-5xl font-semibold mb-2.5 leading-tight tracking-wide">
+          <h1 style={{ color: '#1f3d2f' }} className="font-display text-2xl md:text-5xl font-semibold mb-2.5 leading-tight tracking-wide">
             Tu sei qui per Humanitas.<br />Noi siamo qui per te.
-          </h2>
+          </h1>
           <p className="text-[#3a3a35] text-base">
-            Camere confortevoli a 140 metri dall&apos;ospedale
+            Affittacamere a 140 metri dall&apos;ospedale Humanitas di Rozzano
           </p>
         </div>
       </section>

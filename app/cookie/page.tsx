@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Cookie Policy | Casa Ania Rozzano',
   description:
     'Cookie Policy di Casa Ania Rozzano: il sito non utilizza cookie di profilazione né analytics di terze parti, ad eccezione della mappa Google Maps incorporata.',
+  alternates: { canonical: '/cookie' },
 }
 
 const WA_LINK = 'https://wa.me/393427004354'

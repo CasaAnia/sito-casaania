@@ -55,15 +55,28 @@ export const metadata: Metadata = {
   },
 };
 
+const GOOGLE_MAPS_URL = "https://maps.google.com/?cid=12687762198889638693";
+
 const lodgingJsonLd = {
   "@context": "https://schema.org",
   "@type": "LodgingBusiness",
+  "@id": "https://www.casaaniarozzano.it/#struttura",
   name: "Casa Ania Rozzano",
   description:
     "Affittacamere a conduzione familiare a 140 metri dall'ospedale Humanitas di Rozzano. Camere con bagno privato, check-in flessibile e servizio navetta da aeroporti e stazioni.",
   url: "https://www.casaaniarozzano.it/",
   telephone: "+393427004354",
   priceRange: "€70-€100",
+  currenciesAccepted: "EUR",
+  numberOfRooms: 4,
+  image: [
+    "https://www.casaaniarozzano.it/og-image.jpg",
+    "https://www.casaaniarozzano.it/camere/ambra/foto1.jpg",
+    "https://www.casaaniarozzano.it/camere/allegra/foto1.jpg",
+    "https://www.casaaniarozzano.it/camere/lena/foto1b.jpg",
+  ],
+  hasMap: GOOGLE_MAPS_URL,
+  sameAs: [GOOGLE_MAPS_URL],
   address: {
     "@type": "PostalAddress",
     streetAddress: "Via Liguria 26",
