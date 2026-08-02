@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
 import webpush from 'web-push'
 import { ROOMS } from '@/lib/supabase'
+import { createAdminClient } from '@/lib/supabaseAdmin'
 
 if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
   webpush.setVapidDetails(
@@ -10,11 +10,6 @@ if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
     process.env.VAPID_PRIVATE_KEY
   )
 }
-
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-)
 
 function getDatesInRange(checkIn: string, checkOut: string): string[] {
   const dates: string[] = []
@@ -27,14 +22,23 @@ function getDatesInRange(checkIn: string, checkOut: string): string[] {
   return dates
 }
 
+type AdminClient = ReturnType<typeof createAdminClient>
+
 // Returns which rooms are free for each date
-async function getAvailabilityMap(checkIn: string, checkOut: string): Promise<Map<string, Set<string>>> {
-  const { data: bookings } = await supabase
+async function getAvailabilityMap(supabase: AdminClient, checkIn: string, checkOut: string): Promise<Map<string, Set<string>>> {
+  const { data: bookings, error } = await supabase
     .from('bookings')
     .select('room_id, check_in, check_out')
     .in('status', ['confermata', 'in_attesa'])
     .lt('check_in', checkOut)
     .gt('check_out', checkIn)
+
+  // Se la lettura fallisce non si può proseguire: una lista vuota qui
+  // significherebbe "tutte le camere libere" e si accetterebbero
+  // prenotazioni su camere già occupate.
+  if (error) {
+    throw new Error(`lettura disponibilità fallita: ${error.message}`)
+  }
 
   const nights = getDatesInRange(checkIn, checkOut)
   // date -> set of occupied room_ids
@@ -115,12 +119,8 @@ function addDay(dateStr: string): string {
   return d.toISOString().slice(0, 10)
 }
 
-async function sendPushNotification(title: string, body: string) {
-  const supabasePush = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
-  const { data: subs } = await supabasePush.from('push_subscriptions').select('subscription')
+async function sendPushNotification(supabase: AdminClient, title: string, body: string) {
+  const { data: subs } = await supabase.from('push_subscriptions').select('subscription')
   if (!subs || subs.length === 0) return
   for (const sub of subs) {
     try {
@@ -147,7 +147,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Date non valide' }, { status: 400 })
   }
 
-  const occupiedByDate = await getAvailabilityMap(checkIn, checkOut)
+  const supabase = createAdminClient()
+
+  let occupiedByDate: Map<string, Set<string>>
+  try {
+    occupiedByDate = await getAvailabilityMap(supabase, checkIn, checkOut)
+  } catch (e) {
+    console.error('prenota:', e)
+    return NextResponse.json(
+      { error: 'Non riesco a verificare le disponibilità. Riprova tra poco o scrivici su WhatsApp.' },
+      { status: 503 }
+    )
+  }
+
   const solution = findSolution(nights, occupiedByDate, Number(numGuests), preferredRoomId)
 
   if (!solution) {
@@ -199,7 +211,7 @@ export async function POST(req: NextRequest) {
     ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente`
     : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}`
 
-  await sendPushNotification(pushTitle, pushBody)
+  await sendPushNotification(supabase, pushTitle, pushBody)
 
   return NextResponse.json({ ok: true, solution, multiRoom })
 }
