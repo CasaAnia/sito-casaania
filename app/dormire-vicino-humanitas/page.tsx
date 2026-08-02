@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: 'Quanto costa dormire vicino a Humanitas?',
-    a: "Nella zona intorno all'ospedale una camera doppia costa in genere fra i 90 e i 120 euro a notte, e negli alberghi lì davanti si superano abitualmente i 100. Da Casa Ania una matrimoniale costa 80 euro, la singola 70, e si arriva a 100 euro solo per quattro persone nella camera più grande.",
+    a: "Nella zona intorno all'ospedale una camera doppia costa in genere fra i 90 e i 120 euro a notte, e negli alberghi della zona si superano abitualmente i 100. Da Casa Ania una matrimoniale costa 80 euro, la singola 70, e si arriva a 100 euro solo per quattro persone nella camera più grande.",
   },
   {
     q: 'Conviene dormire a Rozzano o a Milano?',
@@ -112,7 +112,7 @@ export default function DormireVicinoHumanitas() {
           <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-3">Quanto costa dormire in zona</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Intorno all&apos;ospedale una camera doppia costa in genere fra i 90 e i 120 euro a notte, e negli
-            alberghi che stanno lì davanti si superano abitualmente i 100. Da noi:
+            alberghi della zona si superano abitualmente i 100. Da noi:
           </p>
           <ul className="text-[#3a3a35] leading-relaxed space-y-1 mb-3">
             <li>• camera singola: <strong>70 €</strong> a notte</li>
