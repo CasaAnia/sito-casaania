@@ -8,6 +8,7 @@ const LAST_UPDATE = new Date('2026-08-02')
 
 const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] }[] = [
   { path: '/', priority: 1, changeFrequency: 'weekly' },
+  { path: '/dormire-vicino-humanitas', priority: 0.9, changeFrequency: 'monthly' },
   { path: '/camere/ambra', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/camere/allegra', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/camere/lena', priority: 0.8, changeFrequency: 'monthly' },

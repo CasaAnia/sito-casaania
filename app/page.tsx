@@ -417,6 +417,12 @@ export default function Home() {
               <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Richiedi la navetta su WhatsApp
             </a>
           </div>
+          <p className="text-center mt-6">
+            <Link href="/dormire-vicino-humanitas" style={{ textUnderlineOffset: '4px' }}
+              className="text-sm text-green-700 font-semibold underline">
+              Dormire vicino a Humanitas: la guida per chi arriva da fuori →
+            </Link>
+          </p>
         </div>
       </section>
 

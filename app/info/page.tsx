@@ -62,6 +62,10 @@ export default function Info() {
           <Link href="/#come-arrivare" className="inline-block text-sm text-green-700 font-semibold underline">
             Vedi tutte le indicazioni →
           </Link>
+          <br />
+          <Link href="/dormire-vicino-humanitas" className="inline-block mt-2 text-sm text-green-700 font-semibold underline">
+            Dormire vicino a Humanitas: la guida completa →
+          </Link>
         </section>
 
         <section className="mb-8">
