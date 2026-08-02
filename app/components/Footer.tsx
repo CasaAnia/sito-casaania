@@ -9,7 +9,12 @@ export default function Footer() {
       <p style={{ color: '#e0ddd0' }} className="text-xs mt-4">
         Via Liguria 26 – Fizzonasco, Pieve Emanuele (MI) · 342 700 4354
       </p>
-      <p style={{ color: '#c9d6cc' }} className="text-xs mt-2 space-x-3">
+      <p style={{ color: '#f5efe4' }} className="text-xs mt-4">
+        <Link href="/dormire-vicino-humanitas" className="underline hover:opacity-80 transition-opacity">
+          Guida: dormire vicino a Humanitas
+        </Link>
+      </p>
+      <p style={{ color: '#c9d6cc' }} className="text-xs mt-3 space-x-3">
         <Link href="/privacy" className="underline hover:text-[#f5efe4] transition-colors">Privacy</Link>
         <span>·</span>
         <Link href="/cookie" className="underline hover:text-[#f5efe4] transition-colors">Cookie</Link>
