@@ -153,7 +153,14 @@ export async function POST(req: NextRequest) {
   try {
     occupiedByDate = await getAvailabilityMap(supabase, checkIn, checkOut)
   } catch (e) {
-    console.error('prenota:', e)
+    // Diagnostica: prefisso e lunghezza bastano a capire se la variabile
+    // contiene la chiave giusta, e non rivelano nulla di segreto.
+    const k = process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+    console.error(
+      'prenota:', e,
+      `| SUPABASE_SERVICE_ROLE_KEY prefisso="${k.slice(0, 10)}" lunghezza=${k.length}`,
+      `| URL="${(process.env.NEXT_PUBLIC_SUPABASE_URL || '').slice(0, 40)}"`
+    )
     return NextResponse.json(
       { error: 'Non riesco a verificare le disponibilità. Riprova tra poco o scrivici su WhatsApp.' },
       { status: 503 }
