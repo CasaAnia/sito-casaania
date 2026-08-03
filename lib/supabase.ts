@@ -1,7 +1,10 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// trim(): una chiave incollata nel pannello di Vercel può portarsi dietro uno
+// spazio o un a capo, e finendo in un'intestazione HTTP fa fallire ogni
+// richiesta con un errore che non fa capire la causa.
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!.trim()
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!.trim()
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
