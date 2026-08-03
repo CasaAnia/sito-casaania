@@ -9,19 +9,25 @@ import { createClient } from '@supabase/supabase-js'
 //
 // Non va mai importato da un componente che finisce nel browser: niente
 // prefisso NEXT_PUBLIC_, si usa solo dentro app/api/.
+// Toglie ogni spazio, tabulazione e a capo, non solo alle estremità.
+// Incollando una chiave nel pannello di Vercel può finirci dentro un a capo
+// anche in mezzo (successo davvero: era alla posizione 15). La chiave viene
+// poi messa in un'intestazione HTTP, che non ammette quei caratteri, e la
+// richiesta fallisce con un errore che non lascia capire la causa.
+// Le chiavi Supabase non contengono spazi, quindi rimuoverli è sicuro.
+export function pulisciChiave(v: string | undefined): string {
+  return (v ?? '').replace(/\s+/g, '')
+}
+
 export function createAdminClient() {
-  // trim() non è pedanteria: incollando una chiave nel pannello di Vercel è
-  // facilissimo portarsi dietro uno spazio o un a capo, e la chiave finisce
-  // in un'intestazione HTTP, che non può contenerli. Senza trim l'errore che
-  // ne esce ("invalid header value") non fa capire la causa.
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()
+  const key = pulisciChiave(process.env.SUPABASE_SERVICE_ROLE_KEY)
   if (!key) {
     throw new Error(
       'SUPABASE_SERVICE_ROLE_KEY mancante: aggiungila alle variabili ambiente su Vercel e in .env.local'
     )
   }
 
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL?.trim()
+  const url = pulisciChiave(process.env.NEXT_PUBLIC_SUPABASE_URL)
   if (!url) {
     throw new Error('NEXT_PUBLIC_SUPABASE_URL mancante')
   }

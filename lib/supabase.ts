@@ -1,10 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 
-// trim(): una chiave incollata nel pannello di Vercel può portarsi dietro uno
-// spazio o un a capo, e finendo in un'intestazione HTTP fa fallire ogni
-// richiesta con un errore che non fa capire la causa.
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!.trim()
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!.trim()
+// Vedi pulisciChiave in lib/supabaseAdmin.ts: un a capo incollato per sbaglio
+// dentro la chiave fa fallire ogni richiesta.
+const pulisci = (v: string | undefined) => (v ?? '').replace(/\s+/g, '')
+
+const supabaseUrl = pulisci(process.env.NEXT_PUBLIC_SUPABASE_URL)
+const supabaseAnonKey = pulisci(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY)
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
