@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 // Foto del carosello (una per camera + il terrazzo con vista Humanitas).
 // Facile da cambiare: basta modificare questa lista.
@@ -28,11 +29,14 @@ export default function BannerCarosello() {
   return (
     <section className="relative h-72 md:h-[26rem] overflow-hidden bg-gray-100">
       {fotos.map((f, idx) => (
-        <img
+        <Image
           key={idx}
           src={f.src}
           alt={f.alt}
-          className={`absolute inset-0 w-full h-full object-cover ${reduce ? '' : 'kenburns'}`}
+          fill
+          sizes="100vw"
+          preload={idx === 0}
+          className={`object-cover ${reduce ? '' : 'kenburns'}`}
           style={{ opacity: idx === i ? 1 : 0, transition: 'opacity 900ms ease-in-out' }}
         />
       ))}

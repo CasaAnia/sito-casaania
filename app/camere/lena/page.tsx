@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import Logo from '../../components/Logo'
 import Lightbox from '../../components/Lightbox'
 import { useState } from 'react'
@@ -29,7 +30,7 @@ export default function CameraLena() {
             <Logo compactOnMobile />
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
+            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-3 rounded-full tracking-widest uppercase whitespace-nowrap">
             Prenota ora
           </a>
         </div>
@@ -58,16 +59,16 @@ export default function CameraLena() {
           </div>
         </div>
 
-        <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4 bg-gray-100"
+        <div className="relative h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4 bg-gray-100"
           onClick={() => setLightbox(1)}>
-          <img src="/camere/lena/foto1b.jpg" alt="Camera Lena" className="w-full h-full object-contain" />
+          <Image src="/camere/lena/foto1b.jpg" alt="Camera Lena" fill preload sizes="(min-width: 896px) 896px, 100vw" className="object-contain" />
         </div>
 
         <div className="grid grid-cols-2 mb-8 -mx-4">
           {[2, 3, 4, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(n => (
-            <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
+            <div key={n} className="relative overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
-              <img src={`/camere/lena/foto${n}.jpg`} alt={`Camera Lena ${n}`} className="w-full h-full object-cover" />
+              <Image src={`/camere/lena/foto${n}.jpg`} alt={`Camera Lena ${n}`} fill sizes="(min-width: 896px) 448px, 50vw" className="object-cover" />
             </div>
           ))}
         </div>

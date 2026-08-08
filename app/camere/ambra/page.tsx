@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link'
+import Image from 'next/image'
 import Logo from '../../components/Logo'
 import Lightbox from '../../components/Lightbox'
 import { useState } from 'react'
@@ -29,7 +30,7 @@ export default function CameraAmbra() {
             <Logo compactOnMobile />
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
+            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-3 rounded-full tracking-widest uppercase whitespace-nowrap">
             Prenota ora
           </a>
         </div>
@@ -49,16 +50,16 @@ export default function CameraAmbra() {
           <p className="text-2xl font-semibold text-[#1f3d2f] mt-1">€90 <span className="text-xs font-normal text-[#6f6a5e]">/ notte</span></p>
         </div>
 
-        <div className="h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
+        <div className="relative h-80 md:h-[500px] overflow-hidden mb-4 cursor-pointer -mx-4"
           onClick={() => setLightbox(1)}>
-          <img src="/camere/ambra/foto1.jpg" alt="Camera Ambra" className="w-full h-full object-cover" />
+          <Image src="/camere/ambra/foto1.jpg" alt="Camera Ambra" fill preload sizes="(min-width: 896px) 896px, 100vw" className="object-cover" />
         </div>
 
         <div className="grid grid-cols-3 mb-8 -mx-4">
           {[2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
-            <div key={n} className="overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
+            <div key={n} className="relative overflow-hidden cursor-pointer" style={{ aspectRatio: '1/1' }}
               onClick={() => setLightbox(n)}>
-              <img src={`/camere/ambra/foto${n}.jpg`} alt={`Camera Ambra ${n}`} className="w-full h-full object-cover" />
+              <Image src={`/camere/ambra/foto${n}.jpg`} alt={`Camera Ambra ${n}`} fill sizes="(min-width: 896px) 300px, 33vw" className="object-cover" />
             </div>
           ))}
         </div>

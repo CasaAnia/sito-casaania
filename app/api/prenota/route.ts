@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import webpush from 'web-push'
-import { ROOMS } from '@/lib/supabase'
+import { ROOMS, roomPricing } from '@/lib/rooms'
 import { createAdminClient } from '@/lib/supabaseAdmin'
 
 if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
@@ -9,6 +9,26 @@ if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
     process.env.VAPID_PUBLIC_KEY,
     process.env.VAPID_PRIVATE_KEY
   )
+}
+
+// Rate limit in memoria, per IP. Vive per la durata dell'istanza serverless:
+// non è una difesa assoluta, ma ferma i submit a raffica e i bot più rozzi.
+const RATE_WINDOW_MS = 10 * 60 * 1000
+const RATE_MAX = 5
+const rateHits = new Map<string, number[]>()
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const hits = (rateHits.get(ip) || []).filter(t => now - t < RATE_WINDOW_MS)
+  hits.push(now)
+  rateHits.set(ip, hits)
+  return hits.length > RATE_MAX
+}
+
+// "Oggi" nel fuso di casa: coi metodi UTC, tra mezzanotte e le 2 il sito
+// rifiuterebbe (o accetterebbe) le date sbagliate.
+function todayRome(): string {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Rome' }).format(new Date())
 }
 
 function getDatesInRange(checkIn: string, checkOut: string): string[] {
@@ -20,6 +40,40 @@ function getDatesInRange(checkIn: string, checkOut: string): string[] {
     d.setDate(d.getDate() + 1)
   }
   return dates
+}
+
+const DATE_RE = /^\d{4}-\d{2}-\d{2}$/
+
+function validate(body: Record<string, unknown>): { error: string } | null {
+  const { firstName, lastName, phone, numGuests, checkIn, checkOut } = body
+  if (typeof firstName !== 'string' || !/\p{L}/u.test(firstName.trim()) || firstName.trim().length > 80) {
+    return { error: 'Controlla il nome: sembra incompleto.' }
+  }
+  if (typeof lastName !== 'string' || !/\p{L}/u.test(lastName.trim()) || lastName.trim().length > 80) {
+    return { error: 'Controlla il cognome: sembra incompleto.' }
+  }
+  const digits = typeof phone === 'string' ? phone.replace(/\D/g, '') : ''
+  if (digits.length < 8 || digits.length > 15) {
+    return { error: 'Controlla il numero di telefono: servono almeno 8 cifre per poterti richiamare.' }
+  }
+  const n = Number(numGuests)
+  if (!Number.isInteger(n) || n < 1 || n > 4) {
+    return { error: 'Numero di persone non valido.' }
+  }
+  if (typeof checkIn !== 'string' || typeof checkOut !== 'string' || !DATE_RE.test(checkIn) || !DATE_RE.test(checkOut)) {
+    return { error: 'Date non valide.' }
+  }
+  if (checkIn < todayRome()) {
+    return { error: 'La data di arrivo è già passata: controlla il check-in.' }
+  }
+  const nights = getDatesInRange(checkIn, checkOut)
+  if (nights.length === 0) {
+    return { error: 'Il check-out deve essere dopo il check-in.' }
+  }
+  if (nights.length > 30) {
+    return { error: 'Per soggiorni oltre 30 notti scrivici direttamente su WhatsApp: troviamo la soluzione migliore insieme.' }
+  }
+  return null
 }
 
 type AdminClient = ReturnType<typeof createAdminClient>
@@ -119,6 +173,41 @@ function addDay(dateStr: string): string {
   return d.toISOString().slice(0, 10)
 }
 
+// Se lo stesso telefono ha già una richiesta attiva che si sovrappone alle
+// stesse date, non creare un doppione: il back button + reinvio è il caso
+// tipico. Se la query fallisce (es. relazione non disponibile) si prosegue
+// senza dedupe: meglio un doppione che una prenotazione persa.
+async function findExistingRequest(
+  supabase: AdminClient,
+  phoneDigits: string,
+  checkIn: string,
+  checkOut: string
+): Promise<Segment[] | null> {
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('room_id, check_in, check_out, guests!inner(phone)')
+      .in('status', ['confermata', 'in_attesa'])
+      .lt('check_in', checkOut)
+      .gt('check_out', checkIn)
+    if (error || !data) return null
+    const mine = data.filter(b => {
+      const guest = Array.isArray(b.guests) ? b.guests[0] : b.guests
+      const p = String((guest as { phone?: string } | null)?.phone || '').replace(/\D/g, '')
+      return p.length > 0 && p === phoneDigits
+    })
+    if (mine.length === 0) return null
+    return mine.map(b => ({
+      roomId: b.room_id,
+      roomName: ROOMS.find(r => r.id === b.room_id)?.name || 'Camera',
+      checkIn: b.check_in,
+      checkOut: b.check_out,
+    }))
+  } catch {
+    return null
+  }
+}
+
 async function sendPushNotification(supabase: AdminClient, title: string, body: string) {
   const { data: subs } = await supabase.from('push_subscriptions').select('subscription')
   if (!subs || subs.length === 0) return
@@ -135,19 +224,48 @@ async function sendPushNotification(supabase: AdminClient, title: string, body: 
 }
 
 export async function POST(req: NextRequest) {
-  const body = await req.json()
-  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId } = body
+  const body = await req.json().catch(() => null)
+  if (!body || typeof body !== 'object') {
+    return NextResponse.json({ error: 'Dati mancanti' }, { status: 400 })
+  }
+  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, website } = body
+
+  // Honeypot: il campo "website" è invisibile agli umani. Se è pieno è un bot:
+  // rispondiamo ok senza salvare nulla.
+  if (typeof website === 'string' && website.trim() !== '') {
+    return NextResponse.json({
+      ok: true,
+      solution: [{ roomId: '', roomName: 'Camera', checkIn, checkOut }],
+      multiRoom: false,
+    })
+  }
+
+  const ip = (req.headers.get('x-forwarded-for') || 'unknown').split(',')[0].trim()
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: 'Hai fatto troppi tentativi di seguito. Aspetta qualche minuto o scrivici su WhatsApp.' },
+      { status: 429 }
+    )
+  }
 
   if (!firstName || !lastName || !phone || !numGuests || !checkIn || !checkOut) {
     return NextResponse.json({ error: 'Dati mancanti' }, { status: 400 })
   }
-
-  const nights = getDatesInRange(checkIn, checkOut)
-  if (nights.length === 0) {
-    return NextResponse.json({ error: 'Date non valide' }, { status: 400 })
+  const invalid = validate(body)
+  if (invalid) {
+    return NextResponse.json(invalid, { status: 400 })
   }
 
+  const guests = Number(numGuests)
+  const nights = getDatesInRange(checkIn, checkOut)
   const supabase = createAdminClient()
+  const phoneDigits = String(phone).replace(/\D/g, '')
+
+  // Richiesta già ricevuta per queste date? Niente doppioni.
+  const existing = await findExistingRequest(supabase, phoneDigits, checkIn, checkOut)
+  if (existing) {
+    return NextResponse.json({ ok: true, duplicate: true, solution: existing, multiRoom: existing.length > 1 })
+  }
 
   let occupiedByDate: Map<string, Set<string>>
   try {
@@ -163,7 +281,7 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  const solution = findSolution(nights, occupiedByDate, Number(numGuests), preferredRoomId)
+  const solution = findSolution(nights, occupiedByDate, guests, preferredRoomId)
 
   if (!solution) {
     return NextResponse.json({ error: 'Nessuna disponibilità per queste date' }, { status: 409 })
@@ -172,7 +290,7 @@ export async function POST(req: NextRequest) {
   // Create guest
   const { data: guest, error: guestErr } = await supabase
     .from('guests')
-    .insert({ full_name: `${firstName} ${lastName}`, phone })
+    .insert({ full_name: `${String(firstName).trim()} ${String(lastName).trim()}`, phone: String(phone).trim() })
     .select('id')
     .single()
 
@@ -180,22 +298,29 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Errore creazione ospite' }, { status: 500 })
   }
 
-  // Create booking(s)
-  const bookingsToInsert = solution.map(seg => ({
-    guest_id: guest.id,
-    room_id: seg.roomId,
-    check_in: seg.checkIn,
-    check_out: seg.checkOut,
-    num_guests: Number(numGuests),
-    status: 'in_attesa',
-    source: 'sito_web',
-    price_per_night: ROOMS.find(r => r.id === seg.roomId)?.price || 0,
-    total_amount: ROOMS.find(r => r.id === seg.roomId)?.price! * getDatesInRange(seg.checkIn, seg.checkOut).length,
-    extra_bed: false,
-    extra_bed_total: 0,
-    bonifico: false,
-    pagato: false,
-  }))
+  // Create booking(s) — prezzi calcolati dal server (lib/rooms.ts), letto
+  // aggiuntivo incluso: il client non decide mai gli importi.
+  const bookingsToInsert = solution.map(seg => {
+    const segNights = getDatesInRange(seg.checkIn, seg.checkOut).length
+    const pricing = roomPricing(seg.roomId, guests)
+    const basePerNight = pricing?.basePerNight ?? 0
+    const extraPerNight = pricing?.extraPerNight ?? 0
+    return {
+      guest_id: guest.id,
+      room_id: seg.roomId,
+      check_in: seg.checkIn,
+      check_out: seg.checkOut,
+      num_guests: guests,
+      status: 'in_attesa',
+      source: 'sito_web',
+      price_per_night: basePerNight,
+      total_amount: (basePerNight + extraPerNight) * segNights,
+      extra_bed: extraPerNight > 0,
+      extra_bed_total: extraPerNight * segNights,
+      bonifico: false,
+      pagato: false,
+    }
+  })
 
   const { error: bookErr } = await supabase.from('bookings').insert(bookingsToInsert)
   if (bookErr) {

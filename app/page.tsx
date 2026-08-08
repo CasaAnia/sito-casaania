@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import Logo from './components/Logo'
 import Reveal from './components/Reveal'
 import BannerCarosello from './components/BannerCarosello'
@@ -204,8 +205,8 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <p className="text-center text-xs mt-4">
-            <Link href="/recensioni" className="underline font-semibold" style={{ color: '#2d6a4f' }}>
+          <p className="text-center text-sm mt-4">
+            <Link href="/recensioni" className="inline-block underline font-semibold py-2.5" style={{ color: '#2d6a4f' }}>
               Leggi altre recensioni →
             </Link>
           </p>
@@ -221,7 +222,7 @@ export default function Home() {
               Lascia una recensione su Google
             </a>
             <div className="hidden md:flex flex-col items-center mt-4">
-              <img src="/qr-recensioni.png" alt="QR code per recensione Google" width={110} height={110} />
+              <Image src="/qr-recensioni.png" alt="QR code per recensione Google" width={110} height={110} />
               <p className="text-[#6f6a5e] text-xs mt-1">oppure inquadra col telefono</p>
             </div>
           </div>
@@ -242,12 +243,12 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
-                <Link href={room.href} className="group block h-80 overflow-hidden bg-gray-100">
+                <Link href={room.href} className="group relative block h-80 overflow-hidden bg-gray-100">
                   {room.name === 'Lena' ? (
-                    <img src={room.img} alt={room.name} className="w-full h-full object-contain motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
+                    <Image src={room.img} alt={room.name} fill sizes="(min-width: 768px) 448px, 100vw" className="object-contain motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
                   ) : (
-                    <div className="parallax-wrap" data-parallax>
-                      <img src={room.img} alt={room.name} className="w-full h-full object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
+                    <div className="parallax-wrap relative" data-parallax>
+                      <Image src={room.img} alt={room.name} fill sizes="(min-width: 768px) 448px, 100vw" className="object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
                     </div>
                   )}
                 </Link>
@@ -269,10 +270,10 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="mx-4 mt-5 pb-2 flex items-center justify-between gap-3">
-                  <Link href={room.href} className="group text-base text-green-700 font-semibold py-2 inline-flex items-center gap-1">
+                  <Link href={room.href} className="group text-base text-green-700 font-semibold py-2.5 inline-flex items-center gap-1">
                     Scopri di più <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
                   </Link>
-                  <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-5 py-2 rounded-full text-sm uppercase whitespace-nowrap">
+                  <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-5 py-3 rounded-full text-sm uppercase whitespace-nowrap">
                     Prenota ora
                   </Link>
                 </div>
@@ -374,12 +375,12 @@ export default function Home() {
                 <li>In alternativa, il parcheggio di Humanitas (a pagamento), custodito 24 ore su 24</li>
               </ul>
               <a href="https://maps.google.com/?q=Via+Liguria+26+Pieve+Emanuele+Milano" target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-4 text-sm text-green-700 font-semibold underline">
+                className="inline-block mt-2 py-2 text-sm text-green-700 font-semibold underline">
                 Apri in Google Maps →
               </a>
               <br />
               <a href="#come-arrivare"
-                className="inline-block mt-2 text-sm text-green-700 font-semibold underline">
+                className="inline-block py-2 text-sm text-green-700 font-semibold underline">
                 Come arrivare a Humanitas: tutte le indicazioni →
               </a>
             </div>

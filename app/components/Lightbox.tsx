@@ -1,5 +1,7 @@
 'use client'
 
+import Image from 'next/image'
+
 /**
  * Visore foto a schermo intero. Si naviga toccando la metà sinistra (indietro)
  * o la metà destra (avanti) — non solo le freccine. La ✕ in alto a destra chiude.
@@ -26,7 +28,7 @@ export default function Lightbox({
 
   return (
     <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center" onClick={onClose}>
-      <img src={src(current)} alt="" className="max-w-full max-h-full object-contain pointer-events-none select-none" />
+      <Image src={src(current)} alt="" fill sizes="100vw" className="object-contain pointer-events-none select-none" />
 
       {/* Metà sinistra: foto precedente */}
       <button type="button" aria-label="Foto precedente"
