@@ -100,9 +100,17 @@ export default function PrenotaClient() {
       : []
   )
   const [proposalMultiRoom, setProposalMultiRoom] = useState(false)
-  // Quante camere sono davvero libere per tutte le notti: se è 1 il testo
-  // può dire "è rimasta libera solo la..." senza mentire
-  const [proposalAlternatives, setProposalAlternatives] = useState(demoConfirm ? 1 : 0)
+  // Tutte le camere libere per le date chieste: se sono più di una il
+  // cliente le vede tutte e sceglie lui, non gliene proponiamo una d'ufficio
+  const [proposalFreeRooms, setProposalFreeRooms] = useState<{ id: string; name: string }[]>(
+    demoConfirm
+      ? [
+          { id: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', name: 'Singola Amelia' },
+          { id: '19ae4611-c0a4-42ae-8530-210f9a948e9e', name: 'Tripla Lena' },
+        ]
+      : []
+  )
+  const [confirmRoomId, setConfirmRoomId] = useState(demoConfirm ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : '')
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   // 'full' = davvero nessuna disponibilità (409); 'tech' = qualsiasi altro
@@ -161,7 +169,8 @@ export default function PrenotaClient() {
       if (needsConfirm) {
         setProposal(sol)
         setProposalMultiRoom(check.data.multiRoom)
-        setProposalAlternatives(Number(check.data.alternatives) || 0)
+        setProposalFreeRooms(Array.isArray(check.data.freeRooms) ? check.data.freeRooms : [])
+        setConfirmRoomId(sol[0]?.roomId || '')
         setStep('confirm')
         return
       }
@@ -178,12 +187,12 @@ export default function PrenotaClient() {
     }
   }
 
-  // Fase 2 dopo il "sì" dell'ospite sulla camera alternativa
+  // Fase 2 dopo il "sì" dell'ospite sulla camera scelta tra quelle libere
   async function handleConfirm() {
     setLoading(true)
     try {
       const book = await callApi({
-        preferredRoomId: proposal.length === 1 ? proposal[0].roomId : form.preferredRoomId,
+        preferredRoomId: confirmRoomId || (proposal.length === 1 ? proposal[0].roomId : form.preferredRoomId),
       })
       if (!book.res.ok) { showError(book.res, book.data) } else { showDone(book.data) }
     } catch {
@@ -387,26 +396,49 @@ export default function PrenotaClient() {
                   </div>
                   <p className="text-[#6f6a5e] text-xs mb-6">Al cambio pensiamo noi: ti aiutiamo a spostare le tue cose.</p>
                 </>
-              ) : (
+              ) : proposalFreeRooms.length > 1 ? (
                 <>
                   <p className="text-[#3a3a35] text-base mb-4">
                     Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
-                    {proposalAlternatives <= 1 ? <>Al momento è rimasta libera solo la camera <strong>{shortName(proposal[0]?.roomName)}</strong></> : <>Al momento possiamo proporti la camera <strong>{shortName(proposal[0]?.roomName)}</strong></>}
-                    {p && <>, a €{p.totalPerNight} a notte</>}.
+                    Queste camere sono libere — scegli quella che preferisci:
                   </p>
-                  {p && nights > 0 && (
-                    <p className="font-display text-3xl font-semibold text-[#1f3d2f] mb-6">
-                      {nights} {nights === 1 ? 'notte' : 'notti'} = €{p.totalPerNight * nights}
-                    </p>
-                  )}
+                  <div className="space-y-2 mb-5 text-left">
+                    {proposalFreeRooms.map(room => {
+                      const rp = roomPricing(room.id, Number(form.numGuests))
+                      if (!rp) return null
+                      return (
+                        <button key={room.id} type="button"
+                          onClick={() => setConfirmRoomId(room.id)}
+                          className={`w-full text-left px-4 py-3 min-h-[44px] rounded-xl border-2 text-sm transition-colors bg-white ${confirmRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
+                          <span className="font-medium">{room.name}</span>
+                          <span className="text-[#6f6a5e] ml-2 text-xs">€{rp.totalPerNight}/notte</span>
+                        </button>
+                      )
+                    })}
+                  </div>
                 </>
+              ) : (
+                <p className="text-[#3a3a35] text-base mb-4">
+                  Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
+                  Al momento è rimasta libera solo la camera <strong>{shortName(proposal[0]?.roomName)}</strong>
+                  {p && <>, a €{p.totalPerNight} a notte</>}.
+                </p>
               )}
+              {!proposalMultiRoom && (() => {
+                const chosenId = confirmRoomId || proposal[0]?.roomId
+                const cp = chosenId ? roomPricing(chosenId, Number(form.numGuests)) : null
+                return cp && nights > 0 ? (
+                  <p className="font-display text-3xl font-semibold text-[#1f3d2f] mb-6">
+                    {nights} {nights === 1 ? 'notte' : 'notti'} = €{cp.totalPerNight * nights}
+                  </p>
+                ) : null
+              })()}
               <p className="text-[#3a3a35] text-base font-semibold mb-4">
-                Vuoi inviare la richiesta per la camera proposta, o preferisci cambiare le date?
+                Vuoi inviare la richiesta per la camera {proposalFreeRooms.length > 1 ? 'scelta' : 'proposta'}, o preferisci cambiare le date?
               </p>
               <button onClick={handleConfirm} disabled={loading}
                 className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60 mb-3">
-                {loading ? 'Invio...' : proposalMultiRoom ? 'Invia la richiesta' : `Invia la richiesta per la camera ${shortName(proposal[0]?.roomName)}`}
+                {loading ? 'Invio...' : proposalMultiRoom ? 'Invia la richiesta' : `Invia la richiesta per la camera ${shortName(proposalFreeRooms.find(r => r.id === confirmRoomId)?.name || proposal[0]?.roomName)}`}
               </button>
               <button onClick={() => setStep('form')} disabled={loading}
                 className="block w-full border-2 border-gray-300 text-[#3a3a35] font-semibold py-3.5 rounded-2xl text-sm bg-white">

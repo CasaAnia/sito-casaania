@@ -306,6 +306,9 @@ export async function POST(req: NextRequest) {
       solution,
       multiRoom: solution.length > 1,
       alternatives: freeRooms.length,
+      // Lista completa delle camere libere: il client la mostra al cliente
+      // e lascia scegliere, invece di proporne una sola d'ufficio.
+      freeRooms: freeRooms.map(r => ({ id: r.id, name: r.name })),
     })
   }
 
