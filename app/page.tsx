@@ -38,8 +38,8 @@ const rooms = [
     desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
     prices: [
       { label: '1–2 persone', amount: 80 },
-      { label: '3 persone (letto aggiuntivo)', amount: 90 },
-      { label: '4 persone (due letti aggiuntivi)', amount: 100 },
+      { label: '3 persone', amount: 90 },
+      { label: '4 persone (letto aggiuntivo)', amount: 100 },
     ],
     img: '/camere/lena/foto1b.jpg',
     badge: 'Bagno privato esterno',

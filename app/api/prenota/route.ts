@@ -305,6 +305,8 @@ export async function POST(req: NextRequest) {
     const pricing = roomPricing(seg.roomId, guests)
     const basePerNight = pricing?.basePerNight ?? 0
     const extraPerNight = pricing?.extraPerNight ?? 0
+    // extra_bed segue i letti FISICI in uso (es. Lena in 3: letto montato ma
+    // gratis e invisibile al cliente), extra_bed_total solo quelli fatturati.
     return {
       guest_id: guest.id,
       room_id: seg.roomId,
@@ -315,7 +317,7 @@ export async function POST(req: NextRequest) {
       source: 'sito_web',
       price_per_night: basePerNight,
       total_amount: (basePerNight + extraPerNight) * segNights,
-      extra_bed: extraPerNight > 0,
+      extra_bed: (pricing?.bedsUsed ?? 0) > 0,
       extra_bed_total: extraPerNight * segNights,
       bonifico: false,
       pagato: false,
@@ -335,9 +337,15 @@ export async function POST(req: NextRequest) {
   const pushTitle = multiRoom
     ? `🏠 Nuova prenotazione (cambio camera!)`
     : `🏠 Nuova prenotazione dal sito`
+  // Ania ha solo 2 letti aggiuntivi in tutta la casa: la notifica le dice
+  // subito quanti ne blocca questa prenotazione (il cliente non lo vede mai).
+  const maxBedsUsed = Math.max(...solution.map(s => roomPricing(s.roomId, guests)?.bedsUsed ?? 0))
+  const bedsNote = maxBedsUsed > 0
+    ? `\n🛏 ${maxBedsUsed === 1 ? '1 letto aggiuntivo in uso' : `${maxBedsUsed} letti aggiuntivi in uso`}`
+    : ''
   const pushBody = multiRoom
-    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente`
-    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}`
+    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}`
+    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}`
 
   await sendPushNotification(supabase, pushTitle, pushBody)
 

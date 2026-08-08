@@ -9,7 +9,7 @@ const room: RoomSeo = {
     "Lena è la camera più spaziosa di Casa Ania: bagno privato esterno, balcone con vista su Humanitas e posto fino a 4 persone. A 140 metri dall'ospedale, da 80 € a notte.",
   image: '/camere/lena/foto1b.jpg',
   maxGuests: 4,
-  bed: 'Letto matrimoniale con possibilità di due letti aggiuntivi',
+  bed: 'Tre posti letto, con possibilità di letto aggiuntivo per la quarta persona',
   bathroom: 'Bagno privato esterno',
 }
 
