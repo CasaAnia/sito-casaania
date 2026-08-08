@@ -418,28 +418,34 @@ export default function PrenotaClient() {
 
         {step === 'done' && (
           <div className="text-center">
-            <div className="text-6xl mb-4">✅</div>
-            <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-2">
-              {duplicate ? 'Richiesta già ricevuta!' : 'Richiesta inviata!'}
-            </h2>
-            <p className="text-[#6f6a5e] text-sm mb-6">
-              {duplicate
-                ? 'Avevamo già ricevuto la tua richiesta per queste date: è in buone mani, non serve reinviarla.'
-                : <>Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.</>}
-            </p>
+            {duplicate ? (
+              <>
+                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Richiesta già ricevuta</h2>
+                <p className="text-[#3a3a35] text-base mb-6">
+                  È già arrivata sul telefono di Ania: a breve ti risponderà direttamente lei su WhatsApp.
+                </p>
+              </>
+            ) : (
+              <>
+                <div className="text-6xl mb-4">✅</div>
+                <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-2">Richiesta inviata!</h2>
+                <p className="text-[#6f6a5e] text-sm mb-6">
+                  Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.
+                </p>
+              </>
+            )}
 
             {duplicate ? (
               /* Richiesta precedente ancora in lavorazione: si mostra SOLO
                  quella, senza mescolarla coi dati appena digitati (che
                  potrebbero chiedere un'altra camera e confondere) */
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-                <p className="font-semibold text-[#3a3a35] mb-3">La tua richiesta in lavorazione</p>
+                <p className="font-semibold text-[#3a3a35] mb-3">In lavorazione</p>
                 {solution.map((seg, i) => (
                   <p key={i} className="text-sm text-[#3a3a35] mb-1">
-                    🛏 <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                    <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
                   </p>
                 ))}
-                <p className="text-xs text-[#6f6a5e] mt-3">Vuoi cambiare date o camera? Scrivici su WhatsApp e sistemiamo tutto noi.</p>
               </div>
             ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
@@ -466,10 +472,17 @@ export default function PrenotaClient() {
             </div>
             )}
 
-            <a href={waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito: ${form.firstName} ${form.lastName}, ${requestSummary}.`)}
+            {duplicate && (
+              <p className="text-sm text-[#3a3a35] mb-4">
+                Vuoi cambiare date o camera? Scrivilo ad Ania con il bottone qui sotto: farà la modifica in un attimo.
+              </p>
+            )}
+            <a href={duplicate
+              ? waLink('Ciao Ania! Ti ho già inviato una richiesta dal sito, ma vorrei cambiare qualcosa.')
+              : waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito: ${form.firstName} ${form.lastName}, ${requestSummary}.`)}
               target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
-              💬 Scrivi su WhatsApp
+              {duplicate ? 'Scrivi ad Ania su WhatsApp' : '💬 Scrivi su WhatsApp'}
             </a>
             <Link href="/" className="inline-block text-sm text-[#6f6a5e] underline py-2">Torna alla home</Link>
           </div>
