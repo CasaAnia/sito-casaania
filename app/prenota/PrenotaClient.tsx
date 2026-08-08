@@ -61,7 +61,7 @@ function countNights(checkIn: string, checkOut: string): number {
 }
 
 type Segment = { roomId: string; roomName: string; checkIn: string; checkOut: string }
-type Step = 'form' | 'done' | 'error'
+type Step = 'form' | 'confirm' | 'done' | 'error'
 
 const inputClass =
   'w-full min-w-0 border border-gray-200 rounded-xl px-3 py-2.5 text-base min-h-[44px] bg-white'
@@ -70,6 +70,11 @@ export default function PrenotaClient() {
   const searchParams = useSearchParams()
   const preselectedRoomId = searchParams.get('room') || ''
 
+  // Anteprima locale della schermata di conferma (?demo=confirm): solo in
+  // sviluppo, il build di produzione la elimina.
+  const demoConfirm =
+    process.env.NODE_ENV === 'development' && searchParams.get('demo') === 'confirm'
+
   const [form, setForm] = useState({
     firstName: '',
     lastName: '',
@@ -77,17 +82,27 @@ export default function PrenotaClient() {
     numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
-    preferredRoomId: preselectedRoomId,
+    preferredRoomId: demoConfirm ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : preselectedRoomId,
     // Honeypot: resta vuoto per gli umani. Il nome del campo NON deve
     // somigliare a niente di autocompilabile (website/url/azienda...):
     // l'autofill di Chrome riempie anche i campi nascosti e trasformerebbe
     // ogni cliente in un "bot" (successo davvero al primo test di Ania).
     hp_check: '',
   })
-  const [step, setStep] = useState<Step>('form')
+  const [step, setStep] = useState<Step>(demoConfirm ? 'confirm' : 'form')
   const [solution, setSolution] = useState<Segment[]>([])
   const [multiRoom, setMultiRoom] = useState(false)
   const [duplicate, setDuplicate] = useState(false)
+  // Sistemazione proposta dalla verifica, in attesa del "sì" dell'ospite
+  const [proposal, setProposal] = useState<Segment[]>(
+    demoConfirm
+      ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
+      : []
+  )
+  const [proposalMultiRoom, setProposalMultiRoom] = useState(false)
+  // Quante camere sono davvero libere per tutte le notti: se è 1 il testo
+  // può dire "è rimasta libera solo la..." senza mentire
+  const [proposalAlternatives, setProposalAlternatives] = useState(demoConfirm ? 1 : 0)
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   // 'full' = davvero nessuna disponibilità (409); 'tech' = qualsiasi altro
@@ -99,27 +114,72 @@ export default function PrenotaClient() {
     setForm(f => ({ ...f, [field]: value }))
   }
 
+  async function callApi(extra: Record<string, unknown>) {
+    const res = await fetch('/api/prenota', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...form, numGuests: Number(form.numGuests), ...extra }),
+    })
+    const data = await res.json()
+    return { res, data }
+  }
+
+  function showError(res: Response, data: { error?: string }) {
+    setErrorMsg(data.error || 'Errore durante la prenotazione')
+    setErrorKind(res.status === 409 ? 'full' : 'tech')
+    setStep('error')
+  }
+
+  function showDone(data: { solution: Segment[]; multiRoom: boolean; duplicate?: boolean }) {
+    setSolution(data.solution)
+    setMultiRoom(data.multiRoom)
+    setDuplicate(Boolean(data.duplicate))
+    setStep('done')
+  }
+
+  // Fase 1: verifica senza salvare. Se la sistemazione proposta non è quella
+  // scelta dall'ospite (o comporta un cambio camera), si chiede conferma
+  // PRIMA di inviare: niente più camere assegnate a sorpresa nel riepilogo.
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setLoading(true)
     setErrorMsg('')
     try {
-      const res = await fetch('/api/prenota', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, numGuests: Number(form.numGuests) }),
-      })
-      const data = await res.json()
-      if (!res.ok) {
-        setErrorMsg(data.error || 'Errore durante la prenotazione')
-        setErrorKind(res.status === 409 ? 'full' : 'tech')
-        setStep('error')
-      } else {
-        setSolution(data.solution)
-        setMultiRoom(data.multiRoom)
-        setDuplicate(Boolean(data.duplicate))
-        setStep('done')
+      const check = await callApi({ checkOnly: true })
+      if (!check.res.ok) { showError(check.res, check.data); return }
+      if (check.data.duplicate) { showDone(check.data); return }
+
+      const sol: Segment[] = check.data.solution
+      const needsConfirm =
+        check.data.multiRoom || (form.preferredRoomId !== '' && sol[0]?.roomId !== form.preferredRoomId)
+      if (needsConfirm) {
+        setProposal(sol)
+        setProposalMultiRoom(check.data.multiRoom)
+        setProposalAlternatives(Number(check.data.alternatives) || 0)
+        setStep('confirm')
+        return
       }
+
+      // Fase 2 diretta: la camera è quella chiesta (o nessuna preferenza)
+      const book = await callApi({})
+      if (!book.res.ok) { showError(book.res, book.data) } else { showDone(book.data) }
+    } catch {
+      setErrorMsg('Errore di connessione. Riprova.')
+      setErrorKind('tech')
+      setStep('error')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  // Fase 2 dopo il "sì" dell'ospite sulla camera alternativa
+  async function handleConfirm() {
+    setLoading(true)
+    try {
+      const book = await callApi({
+        preferredRoomId: proposal.length === 1 ? proposal[0].roomId : form.preferredRoomId,
+      })
+      if (!book.res.ok) { showError(book.res, book.data) } else { showDone(book.data) }
     } catch {
       setErrorMsg('Errore di connessione. Riprova.')
       setErrorKind('tech')
@@ -297,6 +357,55 @@ export default function PrenotaClient() {
             </div>
           </>
         )}
+
+        {step === 'confirm' && (() => {
+          // "Matrimoniale Allegra" → "Allegra": nella conversazione si dice
+          // "la camera Allegra", il tipo è già noto dal form
+          const shortName = (n?: string) => (n || '').split(' ').pop()
+          const preferred = shortName(ROOMS.find(r => r.id === form.preferredRoomId)?.name)
+          const p = proposal.length === 1 ? roomPricing(proposal[0].roomId, Number(form.numGuests)) : null
+          return (
+            <div className="text-center">
+              <div className="text-6xl mb-4">🛏</div>
+              <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-4">Abbiamo controllato la disponibilità</h2>
+              {proposalMultiRoom ? (
+                <>
+                  <p className="text-[#3a3a35] text-sm mb-4">
+                    {preferred ? <>Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile per l&apos;intero soggiorno.</> : <>Per le date che hai scelto nessuna camera è libera per l&apos;intero soggiorno.</>}{' '}
+                    Possiamo ospitarti con un <strong>cambio camera</strong>:
+                  </p>
+                  <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 text-left mb-4">
+                    {proposal.map((seg, i) => (
+                      <p key={i} className="text-sm text-[#3a3a35] mb-1">
+                        🛏 <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="text-[#6f6a5e] text-xs mb-6">Al cambio pensiamo noi: ti aiutiamo a spostare le tue cose.</p>
+                </>
+              ) : (
+                <p className="text-[#3a3a35] text-sm mb-6">
+                  Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
+                  {proposalAlternatives <= 1 ? <>Al momento è rimasta libera solo la camera <strong>{shortName(proposal[0]?.roomName)}</strong></> : <>Al momento possiamo proporti la camera <strong>{shortName(proposal[0]?.roomName)}</strong></>}
+                  {p && nights > 0 && (
+                    <>, a <strong>€{p.totalPerNight}</strong> a notte{nights > 1 && <> · {nights} notti = <strong>€{p.totalPerNight * nights}</strong></>}</>
+                  )}.
+                </p>
+              )}
+              <p className="text-[#3a3a35] text-sm font-semibold mb-4">
+                Vuoi inviare la richiesta per la camera proposta, o preferisci cambiare le date?
+              </p>
+              <button onClick={handleConfirm} disabled={loading}
+                className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60 mb-3">
+                {loading ? 'Invio...' : proposalMultiRoom ? 'Invia la richiesta' : `Invia la richiesta per la camera ${shortName(proposal[0]?.roomName)}`}
+              </button>
+              <button onClick={() => setStep('form')} disabled={loading}
+                className="block w-full border-2 border-gray-300 text-[#3a3a35] font-semibold py-3.5 rounded-2xl text-sm bg-white">
+                ← Cambia le date del soggiorno
+              </button>
+            </div>
+          )
+        })()}
 
         {step === 'done' && (
           <div className="text-center">

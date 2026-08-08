@@ -13,8 +13,10 @@ if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
 
 // Rate limit in memoria, per IP. Vive per la durata dell'istanza serverless:
 // non è una difesa assoluta, ma ferma i submit a raffica e i bot più rozzi.
+// Ogni prenotazione ora fa due chiamate (verifica + conferma), quindi il
+// tetto è più alto di prima.
 const RATE_WINDOW_MS = 10 * 60 * 1000
-const RATE_MAX = 5
+const RATE_MAX = 10
 const rateHits = new Map<string, number[]>()
 
 function isRateLimited(ip: string): boolean {
@@ -228,7 +230,7 @@ export async function POST(req: NextRequest) {
   if (!body || typeof body !== 'object') {
     return NextResponse.json({ error: 'Dati mancanti' }, { status: 400 })
   }
-  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, hp_check } = body
+  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, hp_check, checkOnly } = body
 
   // Honeypot: il campo "hp_check" è invisibile agli umani. Se è pieno è un
   // bot: rispondiamo ok senza salvare nulla. Il vecchio campo "website" NON
@@ -287,6 +289,24 @@ export async function POST(req: NextRequest) {
 
   if (!solution) {
     return NextResponse.json({ error: 'Nessuna disponibilità per queste date' }, { status: 409 })
+  }
+
+  // Fase di sola verifica: dice al client quale sistemazione uscirebbe,
+  // senza salvare nulla. Serve a chiedere conferma all'ospite quando la
+  // camera assegnata non è quella che aveva scelto. "alternatives" conta le
+  // camere libere per TUTTE le notti: così il client può dire "è rimasta
+  // libera solo la..." soltanto quando è davvero l'unica.
+  if (checkOnly) {
+    const freeRooms = ROOMS
+      .filter(r => r.maxGuests >= guests)
+      .filter(r => nights.every(n => !occupiedByDate.get(n)?.has(r.id)))
+    return NextResponse.json({
+      ok: true,
+      checkOnly: true,
+      solution,
+      multiRoom: solution.length > 1,
+      alternatives: freeRooms.length,
+    })
   }
 
   // Ospite: guests.phone ha un vincolo UNIQUE (guests_phone_key), quindi un
