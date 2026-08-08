@@ -419,6 +419,20 @@ export default function PrenotaClient() {
                 : <>Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.</>}
             </p>
 
+            {duplicate ? (
+              /* Richiesta precedente ancora in lavorazione: si mostra SOLO
+                 quella, senza mescolarla coi dati appena digitati (che
+                 potrebbero chiedere un'altra camera e confondere) */
+              <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
+                <p className="font-semibold text-[#3a3a35] mb-3">La tua richiesta in lavorazione</p>
+                {solution.map((seg, i) => (
+                  <p key={i} className="text-sm text-[#3a3a35] mb-1">
+                    🛏 <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                  </p>
+                ))}
+                <p className="text-xs text-[#6f6a5e] mt-3">Vuoi cambiare date o camera? Scrivici su WhatsApp e sistemiamo tutto noi.</p>
+              </div>
+            ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
               <p className="font-semibold text-[#3a3a35] mb-3">Riepilogo</p>
               <p className="text-sm text-[#3a3a35] mb-1">👤 {form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
@@ -441,6 +455,7 @@ export default function PrenotaClient() {
                 <p className="text-sm text-[#3a3a35]">🛏 <strong>{solution[0]?.roomName}</strong></p>
               )}
             </div>
+            )}
 
             <a href={waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito: ${form.firstName} ${form.lastName}, ${requestSummary}.`)}
               target="_blank" rel="noopener noreferrer"
