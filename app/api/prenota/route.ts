@@ -289,15 +289,43 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Nessuna disponibilità per queste date' }, { status: 409 })
   }
 
-  // Create guest
-  const { data: guest, error: guestErr } = await supabase
-    .from('guests')
-    .insert({ full_name: `${String(firstName).trim()} ${String(lastName).trim()}`, phone: String(phone).trim() })
-    .select('id')
-    .single()
+  // Ospite: guests.phone ha un vincolo UNIQUE (guests_phone_key), quindi un
+  // cliente che ha già soggiornato NON va reinserito: si riusa la sua scheda,
+  // altrimenti l'insert fallisce e il cliente di ritorno non può prenotare
+  // (successo davvero: "Errore creazione ospite" al test di Ania).
+  // La scheda esistente non viene rinominata: se il nome nel form è diverso,
+  // fa fede comunque la notifica push, che riporta il nome digitato.
+  const phoneTrimmed = String(phone).trim()
+  let guestId: string | null = null
 
-  if (guestErr || !guest) {
-    return NextResponse.json({ error: 'Errore creazione ospite' }, { status: 500 })
+  const { data: existingGuest } = await supabase
+    .from('guests')
+    .select('id')
+    .eq('phone', phoneTrimmed)
+    .maybeSingle()
+
+  if (existingGuest) {
+    guestId = existingGuest.id
+  } else {
+    const { data: newGuest, error: guestErr } = await supabase
+      .from('guests')
+      .insert({ full_name: `${String(firstName).trim()} ${String(lastName).trim()}`, phone: phoneTrimmed })
+      .select('id')
+      .single()
+    if (newGuest) {
+      guestId = newGuest.id
+    } else if (guestErr?.code === '23505') {
+      // due richieste simultanee con lo stesso numero: riprova la lettura
+      const { data: raced } = await supabase.from('guests').select('id').eq('phone', phoneTrimmed).maybeSingle()
+      guestId = raced?.id ?? null
+    }
+  }
+
+  if (!guestId) {
+    return NextResponse.json(
+      { error: 'Non riesco a salvare i tuoi dati. Riprova o scrivici su WhatsApp.' },
+      { status: 500 }
+    )
   }
 
   // Create booking(s) — prezzi calcolati dal server (lib/rooms.ts), letto
@@ -310,7 +338,7 @@ export async function POST(req: NextRequest) {
     // extra_bed segue i letti FISICI in uso (es. Lena in 3: letto montato ma
     // gratis e invisibile al cliente), extra_bed_total solo quelli fatturati.
     return {
-      guest_id: guest.id,
+      guest_id: guestId,
       room_id: seg.roomId,
       check_in: seg.checkIn,
       check_out: seg.checkOut,
