@@ -78,7 +78,11 @@ export default function PrenotaClient() {
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
     preferredRoomId: preselectedRoomId,
-    website: '', // honeypot: resta vuoto per gli umani
+    // Honeypot: resta vuoto per gli umani. Il nome del campo NON deve
+    // somigliare a niente di autocompilabile (website/url/azienda...):
+    // l'autofill di Chrome riempie anche i campi nascosti e trasformerebbe
+    // ogni cliente in un "bot" (successo davvero al primo test di Ania).
+    hp_check: '',
   })
   const [step, setStep] = useState<Step>('form')
   const [solution, setSolution] = useState<Segment[]>([])
@@ -160,9 +164,9 @@ export default function PrenotaClient() {
 
               {/* Honeypot anti-bot: invisibile e fuori dal tab order */}
               <div style={{ display: 'none' }} aria-hidden="true">
-                <label htmlFor="website">Non compilare questo campo</label>
-                <input id="website" type="text" name="website" tabIndex={-1} autoComplete="off"
-                  value={form.website} onChange={e => set('website', e.target.value)} />
+                <label htmlFor="hp-check">Lascia vuoto</label>
+                <input id="hp-check" type="text" name="hp_check" tabIndex={-1} autoComplete="off"
+                  value={form.hp_check} onChange={e => set('hp_check', e.target.value)} />
               </div>
 
               {/* DATE */}

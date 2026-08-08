@@ -228,11 +228,13 @@ export async function POST(req: NextRequest) {
   if (!body || typeof body !== 'object') {
     return NextResponse.json({ error: 'Dati mancanti' }, { status: 400 })
   }
-  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, website } = body
+  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, hp_check } = body
 
-  // Honeypot: il campo "website" è invisibile agli umani. Se è pieno è un bot:
-  // rispondiamo ok senza salvare nulla.
-  if (typeof website === 'string' && website.trim() !== '') {
+  // Honeypot: il campo "hp_check" è invisibile agli umani. Se è pieno è un
+  // bot: rispondiamo ok senza salvare nulla. Il vecchio campo "website" NON
+  // va più controllato: l'autofill di Chrome lo riempiva di nascosto e i
+  // clienti veri venivano scartati come bot (successo al primo test).
+  if (typeof hp_check === 'string' && hp_check.trim() !== '') {
     return NextResponse.json({
       ok: true,
       solution: [{ roomId: '', roomName: 'Camera', checkIn, checkOut }],
