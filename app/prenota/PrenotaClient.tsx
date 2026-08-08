@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Logo from '../components/Logo'
@@ -113,6 +113,12 @@ export default function PrenotaClient() {
   function set(field: string, value: string) {
     setForm(f => ({ ...f, [field]: value }))
   }
+
+  // Ogni cambio di schermata riparte dall'alto: senza questo si atterra a
+  // metà pagina, dove si era rimasti col form.
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [step])
 
   async function callApi(extra: Record<string, unknown>) {
     const res = await fetch('/api/prenota', {
@@ -370,7 +376,7 @@ export default function PrenotaClient() {
               <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-4">Abbiamo controllato la disponibilità</h2>
               {proposalMultiRoom ? (
                 <>
-                  <p className="text-[#3a3a35] text-sm mb-4">
+                  <p className="text-[#3a3a35] text-base mb-4">
                     {preferred ? <>Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile per l&apos;intero soggiorno.</> : <>Per le date che hai scelto nessuna camera è libera per l&apos;intero soggiorno.</>}{' '}
                     Possiamo ospitarti con un <strong>cambio camera</strong>:
                   </p>
@@ -384,15 +390,20 @@ export default function PrenotaClient() {
                   <p className="text-[#6f6a5e] text-xs mb-6">Al cambio pensiamo noi: ti aiutiamo a spostare le tue cose.</p>
                 </>
               ) : (
-                <p className="text-[#3a3a35] text-sm mb-6">
-                  Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
-                  {proposalAlternatives <= 1 ? <>Al momento è rimasta libera solo la camera <strong>{shortName(proposal[0]?.roomName)}</strong></> : <>Al momento possiamo proporti la camera <strong>{shortName(proposal[0]?.roomName)}</strong></>}
+                <>
+                  <p className="text-[#3a3a35] text-base mb-4">
+                    Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
+                    {proposalAlternatives <= 1 ? <>Al momento è rimasta libera solo la camera <strong>{shortName(proposal[0]?.roomName)}</strong></> : <>Al momento possiamo proporti la camera <strong>{shortName(proposal[0]?.roomName)}</strong></>}
+                    {p && <>, a €{p.totalPerNight} a notte</>}.
+                  </p>
                   {p && nights > 0 && (
-                    <>, a <strong>€{p.totalPerNight}</strong> a notte{nights > 1 && <> · {nights} notti = <strong>€{p.totalPerNight * nights}</strong></>}</>
-                  )}.
-                </p>
+                    <p className="font-display text-3xl font-semibold text-[#1f3d2f] mb-6">
+                      {nights} {nights === 1 ? 'notte' : 'notti'} = €{p.totalPerNight * nights}
+                    </p>
+                  )}
+                </>
               )}
-              <p className="text-[#3a3a35] text-sm font-semibold mb-4">
+              <p className="text-[#3a3a35] text-base font-semibold mb-4">
                 Vuoi inviare la richiesta per la camera proposta, o preferisci cambiare le date?
               </p>
               <button onClick={handleConfirm} disabled={loading}
