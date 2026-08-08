@@ -54,6 +54,16 @@ body {
 }
 
 /* Zoom lento "Ken Burns" per le foto del carosello: sembrano vive anche da ferme */
+/* Su iOS i campi data hanno una larghezza intrinseca che sfonda il
+   contenitore (visto sul form di /prenota): azzerare l'aspetto nativo
+   li fa obbedire al layout. */
+input[type='date'] {
+  -webkit-appearance: none;
+  appearance: none;
+  min-width: 0;
+  max-width: 100%;
+}
+
 @keyframes kenburns {
   from { transform: scale(1); }
   to   { transform: scale(1.1); }

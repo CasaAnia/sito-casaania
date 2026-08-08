@@ -277,8 +277,7 @@ export default function PrenotaClient() {
 
               {/* CAMERA */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                <p className="font-semibold text-[#3a3a35] mb-1">Camera preferita</p>
-                <p className="text-xs text-[#6f6a5e] mb-3">Opzionale — faremo del nostro meglio</p>
+                <p className="font-semibold text-[#3a3a35] mb-3">Camera preferita</p>
                 <div className="space-y-2">
                   <button type="button"
                     onClick={() => set('preferredRoomId', '')}
