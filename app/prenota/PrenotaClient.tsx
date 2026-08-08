@@ -372,8 +372,7 @@ export default function PrenotaClient() {
           const p = proposal.length === 1 ? roomPricing(proposal[0].roomId, Number(form.numGuests)) : null
           return (
             <div className="text-center">
-              <div className="text-6xl mb-4">🛏</div>
-              <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-4">Abbiamo controllato la disponibilità</h2>
+              <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Abbiamo controllato la disponibilità</h2>
               {proposalMultiRoom ? (
                 <>
                   <p className="text-[#3a3a35] text-base mb-4">
