@@ -210,6 +210,23 @@ async function findExistingRequest(
   }
 }
 
+// Avviso WhatsApp ad Ania via CallMeBot (gratuito, per avvisi personali).
+// Se le variabili non sono configurate o il servizio non risponde, si va
+// avanti senza: la prenotazione è già salvata e c'è comunque la push.
+async function sendWhatsAppAlert(text: string) {
+  const phone = process.env.CALLMEBOT_PHONE
+  const apikey = process.env.CALLMEBOT_APIKEY
+  if (!phone || !apikey) return
+  try {
+    await fetch(
+      `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(phone)}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(apikey)}`,
+      { signal: AbortSignal.timeout(8000) }
+    )
+  } catch {
+    // CallMeBot non raggiungibile: pazienza, resta la notifica push
+  }
+}
+
 async function sendPushNotification(supabase: AdminClient, title: string, body: string) {
   const { data: subs } = await supabase.from('push_subscriptions').select('subscription')
   if (!subs || subs.length === 0) return
@@ -400,7 +417,18 @@ export async function POST(req: NextRequest) {
     ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}`
     : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}`
 
-  await sendPushNotification(supabase, pushTitle, pushBody)
+  const totale = bookingsToInsert.reduce((s, b) => s + b.total_amount, 0)
+  const waText =
+    `🏠 Nuova richiesta dal sito Casa Ania\n` +
+    `${firstName} ${lastName}, ${numGuests} ${Number(numGuests) === 1 ? 'persona' : 'persone'}\n` +
+    `${checkIn} → ${checkOut} · ${roomDesc} · ${totale} €\n` +
+    `Tel: ${phone}\n` +
+    `Chiama il cliente e poi conferma nel gestionale.`
+
+  await Promise.all([
+    sendPushNotification(supabase, pushTitle, pushBody),
+    sendWhatsAppAlert(waText),
+  ])
 
   return NextResponse.json({ ok: true, solution, multiRoom })
 }
