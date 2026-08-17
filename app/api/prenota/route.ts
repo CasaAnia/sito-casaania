@@ -457,9 +457,12 @@ export async function POST(req: NextRequest) {
     ? `\n🛏 ${maxBedsUsed === 1 ? '1 letto aggiuntivo in uso' : `${maxBedsUsed} letti aggiuntivi in uso`}`
     : ''
   // L'ospite ha confermato che questa è una seconda richiesta voluta:
-  // Ania lo deve sapere, per non scambiarla per un doppione da cestinare
+  // Ania lo deve sapere, coi dati dell'altra richiesta sott'occhio,
+  // per non scambiarla per un doppione da cestinare
   const doubleNote = recentPending
-    ? `\n⚠️ Seconda richiesta dallo stesso numero in ${RECENT_PENDING_HOURS} ore (l'ospite ha confermato: soggiorno in più)`
+    ? `\n⚠️ Ha un'altra richiesta in attesa: ${recentPending
+        .map(s => `${s.roomName} ${s.checkIn}→${s.checkOut}`)
+        .join(', ')} (ha confermato: è un soggiorno in più)`
     : ''
   const pushBody = multiRoom
     ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}${doubleNote}`
