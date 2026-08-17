@@ -220,6 +220,13 @@ export default function PrenotaClient() {
   const selectedRoom = roomOptions.find(r => r.id === form.preferredRoomId)
   const nights = countNights(form.checkIn, form.checkOut)
 
+  // Doppione con date diverse: l'ospite non sta rimandando la stessa
+  // richiesta, sta provando a cambiare il soggiorno. Il messaggio deve
+  // dirlo chiaramente invece di un generico "già ricevuta".
+  const dupCheckIn = solution.reduce((a, s) => (a === '' || s.checkIn < a ? s.checkIn : a), '')
+  const dupCheckOut = solution.reduce((a, s) => (s.checkOut > a ? s.checkOut : a), '')
+  const dupSameDates = dupCheckIn === form.checkIn && dupCheckOut === form.checkOut
+
   const requestSummary = `${form.numGuests} ${Number(form.numGuests) === 1 ? 'persona' : 'persone'}, dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}`
 
   return (
@@ -470,9 +477,13 @@ export default function PrenotaClient() {
           <div className="text-center">
             {duplicate ? (
               <>
-                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Richiesta già ricevuta</h2>
+                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">
+                  {dupSameDates ? 'Richiesta già ricevuta' : 'Vuoi cambiare le date?'}
+                </h2>
                 <p className="text-[#3a3a35] text-base mb-6">
-                  È già arrivata sul telefono di Ania: a breve ti risponderà direttamente lei su WhatsApp.
+                  {dupSameDates
+                    ? 'È già arrivata sul telefono di Ania: a breve ti risponderà direttamente lei su WhatsApp.'
+                    : 'Abbiamo già ricevuto la tua richiesta ed è in elaborazione. Se ora preferisci fare un cambio di date, comunicalo ad Ania usando il bottone qui sotto.'}
                 </p>
               </>
             ) : (
@@ -488,14 +499,24 @@ export default function PrenotaClient() {
             {duplicate ? (
               /* Richiesta precedente ancora in lavorazione: si mostra SOLO
                  quella, senza mescolarla coi dati appena digitati (che
-                 potrebbero chiedere un'altra camera e confondere) */
+                 potrebbero chiedere un'altra camera e confondere). Se però
+                 le date nuove sono diverse, si mostra il confronto
+                 prima → dopo, come fa Airbnb con le richieste di modifica */
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-                <p className="font-semibold text-[#3a3a35] mb-3">In lavorazione</p>
+                <p className="font-semibold text-[#3a3a35] mb-3">{dupSameDates ? 'In lavorazione' : 'La richiesta precedente'}</p>
                 {solution.map((seg, i) => (
                   <p key={i} className="text-sm text-[#3a3a35] mb-1">
                     <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
                   </p>
                 ))}
+                {!dupSameDates && (
+                  <div className="border-t border-gray-100 mt-3 pt-3">
+                    <p className="font-semibold text-[#1f3d2f] mb-1">La nuova richiesta</p>
+                    <p className="text-sm text-[#1f3d2f]">
+                      <strong>{formatDate(form.checkIn)} → {formatDate(form.checkOut)}</strong>
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
@@ -522,17 +543,19 @@ export default function PrenotaClient() {
             </div>
             )}
 
-            {duplicate && (
+            {duplicate && dupSameDates && (
               <p className="text-sm text-[#3a3a35] mb-4">
                 Vuoi cambiare date o camera? Scrivilo ad Ania con il bottone qui sotto: farà la modifica in un attimo.
               </p>
             )}
             <a href={duplicate
-              ? waLink('Ciao Ania! Ti ho già inviato una richiesta dal sito, ma vorrei cambiare qualcosa.')
+              ? (dupSameDates
+                  ? waLink('Ciao Ania! Ti ho già inviato una richiesta dal sito, ma vorrei cambiare qualcosa.')
+                  : waLink(`Ciao Ania! Ti ho mandato una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, ma vorrei cambiare le date: dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}.`))
               : waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito: ${form.firstName} ${form.lastName}, ${requestSummary}.`)}
               target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
-              {duplicate ? 'Scrivi ad Ania su WhatsApp' : '💬 Scrivi su WhatsApp'}
+              {duplicate ? (dupSameDates ? 'Scrivi ad Ania su WhatsApp' : 'Invia il cambio date ad Ania') : '💬 Scrivi su WhatsApp'}
             </a>
             <Link href="/" className="inline-block text-sm text-[#6f6a5e] underline py-2">Torna alla home</Link>
           </div>
