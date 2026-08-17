@@ -209,6 +209,13 @@ export default function PrenotaClient() {
     return `${day}/${m}/${y}`
   }
 
+  // "2026-08-21" → "21 ago": nel riepilogo l'anno è rumore
+  function formatDateShort(d: string) {
+    const months = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic']
+    const [, m, day] = d.split('-')
+    return `${Number(day)} ${months[Number(m) - 1]}`
+  }
+
   const roomOptions = getRoomOptions(Number(form.numGuests))
   const selectedRoom = roomOptions.find(r => r.id === form.preferredRoomId)
   const nights = countNights(form.checkIn, form.checkOut)
@@ -334,10 +341,21 @@ export default function PrenotaClient() {
 
               {/* Totale del soggiorno: il conto lo fa il sito, non l'ospite */}
               {selectedRoom && nights > 0 && (
-                <p className="text-center text-sm text-[#3a3a35]">
-                  {nights} {nights === 1 ? 'notte' : 'notti'} × €{selectedRoom.totalPerNight} ={' '}
-                  <strong className="text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</strong>
-                </p>
+                <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
+                  <p className="font-display font-semibold text-[#1f3d2f] mb-3">Il tuo soggiorno</p>
+                  <div className="flex justify-between text-sm text-[#6f6a5e] mb-1.5">
+                    <span>{selectedRoom.name}</span>
+                    <span>€{selectedRoom.totalPerNight} / notte</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-[#6f6a5e] mb-3">
+                    <span>{nights} {nights === 1 ? 'notte' : 'notti'} · {formatDateShort(form.checkIn)} → {formatDateShort(form.checkOut)}</span>
+                    <span>{nights} × €{selectedRoom.totalPerNight}</span>
+                  </div>
+                  <div className="flex justify-between items-baseline border-t border-gray-100 pt-3">
+                    <span className="text-sm font-semibold text-[#3a3a35]">Totale</span>
+                    <span className="font-display text-2xl font-semibold text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</span>
+                  </div>
+                </div>
               )}
 
               <button type="submit" disabled={loading}
