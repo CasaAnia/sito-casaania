@@ -494,11 +494,16 @@ export default function PrenotaClient() {
                   </div>
                 </>
               ) : (
-                <p className="text-[#3a3a35] text-base mb-4">
-                  Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
-                  Al momento è rimasta libera solo la camera <strong>{shortName(proposal[0]?.roomName)}</strong>
-                  {p && <>, a €{p.totalPerNight} a notte</>}.
-                </p>
+                <>
+                  <p className="text-[#3a3a35] text-base mb-4">
+                    Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
+                    Questa è l&apos;unica disponibilità possibile:
+                  </p>
+                  <div className="w-full text-left px-4 py-3 min-h-[44px] rounded-xl border-2 text-sm bg-green-50 border-green-600 font-semibold text-green-800 mb-5">
+                    <span className="font-medium">{proposal[0]?.roomName}</span>
+                    {p && <span className="text-[#6f6a5e] ml-2 text-xs">€{p.totalPerNight}/notte</span>}
+                  </div>
+                </>
               )}
               {!proposalMultiRoom && (() => {
                 const chosenId = confirmRoomId || proposal[0]?.roomId
