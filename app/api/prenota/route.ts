@@ -210,6 +210,42 @@ async function findExistingRequest(
   }
 }
 
+// Richiesta recente (48h) ancora in attesa dallo stesso numero, con date che
+// NON si toccano: quasi sempre è un ospite che ha sbagliato le date la prima
+// volta e sta riprovando. Prima di creare una seconda prenotazione gli si
+// chiede se è un soggiorno in più o un cambio. Le richieste già confermate
+// da Ania non contano: chi ha prenotato e vuole un altro soggiorno è benvenuto.
+const RECENT_PENDING_HOURS = 48
+
+async function findRecentPending(
+  supabase: AdminClient,
+  phoneDigits: string
+): Promise<Segment[] | null> {
+  try {
+    const cutoff = new Date(Date.now() - RECENT_PENDING_HOURS * 3600 * 1000).toISOString()
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('room_id, check_in, check_out, guests!inner(phone)')
+      .eq('status', 'in_attesa')
+      .gte('created_at', cutoff)
+    if (error || !data) return null
+    const mine = data.filter(b => {
+      const guest = Array.isArray(b.guests) ? b.guests[0] : b.guests
+      const p = String((guest as { phone?: string } | null)?.phone || '').replace(/\D/g, '')
+      return p.length > 0 && p === phoneDigits
+    })
+    if (mine.length === 0) return null
+    return mine.map(b => ({
+      roomId: b.room_id,
+      roomName: ROOMS.find(r => r.id === b.room_id)?.name || 'Camera',
+      checkIn: b.check_in,
+      checkOut: b.check_out,
+    }))
+  } catch {
+    return null
+  }
+}
+
 // Avviso WhatsApp ad Ania via CallMeBot (gratuito, per avvisi personali).
 // Se le variabili non sono configurate o il servizio non risponde, si va
 // avanti senza: la prenotazione è già salvata e c'è comunque la push.
@@ -286,6 +322,13 @@ export async function POST(req: NextRequest) {
   const existing = await findExistingRequest(supabase, phoneDigits, checkIn, checkOut)
   if (existing) {
     return NextResponse.json({ ok: true, duplicate: true, solution: existing, multiRoom: existing.length > 1 })
+  }
+
+  // Richiesta recente in attesa con date diverse: si chiede all'ospite cosa
+  // intende, e si va avanti solo col suo "è un altro soggiorno" esplicito
+  const recentPending = await findRecentPending(supabase, phoneDigits)
+  if (recentPending && body.secondStayOk !== true) {
+    return NextResponse.json({ ok: true, needsIntent: true, recentPending })
   }
 
   let occupiedByDate: Map<string, Set<string>>
@@ -413,9 +456,14 @@ export async function POST(req: NextRequest) {
   const bedsNote = maxBedsUsed > 0
     ? `\n🛏 ${maxBedsUsed === 1 ? '1 letto aggiuntivo in uso' : `${maxBedsUsed} letti aggiuntivi in uso`}`
     : ''
+  // L'ospite ha confermato che questa è una seconda richiesta voluta:
+  // Ania lo deve sapere, per non scambiarla per un doppione da cestinare
+  const doubleNote = recentPending
+    ? `\n⚠️ Seconda richiesta dallo stesso numero in ${RECENT_PENDING_HOURS} ore (l'ospite ha confermato: soggiorno in più)`
+    : ''
   const pushBody = multiRoom
-    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}`
-    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}`
+    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}${doubleNote}`
+    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}${doubleNote}`
 
   const totale = bookingsToInsert.reduce((s, b) => s + b.total_amount, 0)
   const waText =
@@ -423,7 +471,7 @@ export async function POST(req: NextRequest) {
     `${firstName} ${lastName}, ${numGuests} ${Number(numGuests) === 1 ? 'persona' : 'persone'}\n` +
     `${checkIn} → ${checkOut} · ${roomDesc} · ${totale} €\n` +
     `Tel: ${phone}\n` +
-    `Chiama il cliente e poi conferma nel gestionale.`
+    `Chiama il cliente e poi conferma nel gestionale.${doubleNote}`
 
   await Promise.all([
     sendPushNotification(supabase, pushTitle, pushBody),

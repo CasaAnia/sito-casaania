@@ -61,7 +61,7 @@ function countNights(checkIn: string, checkOut: string): number {
 }
 
 type Segment = { roomId: string; roomName: string; checkIn: string; checkOut: string }
-type Step = 'form' | 'confirm' | 'done' | 'error'
+type Step = 'form' | 'secondStay' | 'confirm' | 'done' | 'error'
 
 const inputClass =
   'w-full min-w-0 border border-gray-200 rounded-xl px-3 py-2.5 text-base min-h-[44px] bg-white'
@@ -111,6 +111,10 @@ export default function PrenotaClient() {
       : []
   )
   const [confirmRoomId, setConfirmRoomId] = useState(demoConfirm ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : '')
+  // Richiesta recente in attesa con date diverse: prima di crearne una
+  // seconda si chiede all'ospite se è un soggiorno in più o un cambio date
+  const [recentPending, setRecentPending] = useState<Segment[]>([])
+  const [allowSecondStay, setAllowSecondStay] = useState(false)
   const [loading, setLoading] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   // 'full' = davvero nessuna disponibilità (409); 'tech' = qualsiasi altro
@@ -156,12 +160,22 @@ export default function PrenotaClient() {
   // PRIMA di inviare: niente più camere assegnate a sorpresa nel riepilogo.
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
+    setAllowSecondStay(false)
+    await submitRequest(false)
+  }
+
+  async function submitRequest(secondStayOk: boolean) {
     setLoading(true)
     setErrorMsg('')
     try {
-      const check = await callApi({ checkOnly: true })
+      const check = await callApi({ checkOnly: true, secondStayOk })
       if (!check.res.ok) { showError(check.res, check.data); return }
       if (check.data.duplicate) { showDone(check.data); return }
+      if (check.data.needsIntent) {
+        setRecentPending(check.data.recentPending)
+        setStep('secondStay')
+        return
+      }
 
       const sol: Segment[] = check.data.solution
       const needsConfirm =
@@ -176,7 +190,7 @@ export default function PrenotaClient() {
       }
 
       // Fase 2 diretta: la camera è quella chiesta (o nessuna preferenza)
-      const book = await callApi({})
+      const book = await callApi({ secondStayOk })
       if (!book.res.ok) { showError(book.res, book.data) } else { showDone(book.data) }
     } catch {
       setErrorMsg('Errore di connessione. Riprova.')
@@ -193,6 +207,7 @@ export default function PrenotaClient() {
     try {
       const book = await callApi({
         preferredRoomId: confirmRoomId || (proposal.length === 1 ? proposal[0].roomId : form.preferredRoomId),
+        secondStayOk: allowSecondStay,
       })
       if (!book.res.ok) { showError(book.res, book.data) } else { showDone(book.data) }
     } catch {
@@ -396,6 +411,42 @@ export default function PrenotaClient() {
             </div>
           </>
         )}
+
+        {step === 'secondStay' && (() => {
+          const recentIn = recentPending.reduce((a, s) => (a === '' || s.checkIn < a ? s.checkIn : a), '')
+          const recentOut = recentPending.reduce((a, s) => (s.checkOut > a ? s.checkOut : a), '')
+          return (
+          <div className="text-center">
+            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Abbiamo già una tua richiesta</h2>
+            <p className="text-[#3a3a35] text-base mb-6">
+              Abbiamo già una tua richiesta per il <strong>{formatDateShort(recentIn)} → {formatDateShort(recentOut)}</strong>. Vuoi <strong>aggiungere un altro soggiorno</strong>, o <strong>sostituire le date</strong> di quella di prima?
+            </p>
+            <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
+              <p className="font-semibold text-[#3a3a35] mb-3">La richiesta precedente</p>
+              {recentPending.map((seg, i) => (
+                <p key={i} className="text-sm text-[#3a3a35] mb-1">
+                  <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                </p>
+              ))}
+              <div className="border-t border-gray-100 mt-3 pt-3">
+                <p className="font-semibold text-[#1f3d2f] mb-1">La nuova richiesta</p>
+                <p className="text-sm text-[#1f3d2f]">
+                  {selectedRoom && <><strong>{selectedRoom.name}</strong>: </>}
+                  <strong>{formatDate(form.checkIn)} → {formatDate(form.checkOut)}</strong>
+                </p>
+              </div>
+            </div>
+            <button onClick={() => { setAllowSecondStay(true); submitRequest(true) }} disabled={loading}
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3 disabled:opacity-60">
+              {loading ? 'Invio...' : 'Aggiungi un altro soggiorno'}
+            </button>
+            <button onClick={() => { setSolution(recentPending); setDuplicate(true); setStep('done') }} disabled={loading}
+              className="block w-full border-2 border-gray-300 text-[#3a3a35] font-semibold py-3.5 rounded-2xl text-sm bg-white">
+              Sostituisci le date di quella di prima
+            </button>
+          </div>
+          )
+        })()}
 
         {step === 'confirm' && (() => {
           // "Matrimoniale Allegra" → "Allegra": nella conversazione si dice
