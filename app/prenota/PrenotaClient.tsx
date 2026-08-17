@@ -431,7 +431,7 @@ export default function PrenotaClient() {
               <div className="border-t border-gray-100 mt-3 pt-3">
                 <p className="font-semibold text-[#1f3d2f] mb-1">La nuova richiesta</p>
                 <p className="text-sm text-[#1f3d2f]">
-                  {selectedRoom && <><strong>{selectedRoom.name}</strong>: </>}
+                  <strong>{selectedRoom ? selectedRoom.name : 'Nessuna preferenza'}</strong>: {' '}
                   <strong>{formatDate(form.checkIn)} → {formatDate(form.checkOut)}</strong>
                 </p>
               </div>
@@ -564,6 +564,7 @@ export default function PrenotaClient() {
                   <div className="border-t border-gray-100 mt-3 pt-3">
                     <p className="font-semibold text-[#1f3d2f] mb-1">La nuova richiesta</p>
                     <p className="text-sm text-[#1f3d2f]">
+                      <strong>{selectedRoom ? selectedRoom.name : 'Nessuna preferenza'}</strong>: {' '}
                       <strong>{formatDate(form.checkIn)} → {formatDate(form.checkOut)}</strong>
                     </p>
                   </div>
