@@ -70,15 +70,16 @@ export default function PrenotaClient() {
   const searchParams = useSearchParams()
   const preselectedRoomId = searchParams.get('room') || ''
 
-  // Anteprima locale della schermata di conferma (?demo=confirm): solo in
-  // sviluppo, il build di produzione la elimina.
-  const demoConfirm =
-    process.env.NODE_ENV === 'development' && searchParams.get('demo') === 'confirm'
+  // Anteprime locali delle schermate (?demo=confirm | done): solo in
+  // sviluppo, il build di produzione le elimina.
+  const demoParam = process.env.NODE_ENV === 'development' ? searchParams.get('demo') : null
+  const demoConfirm = demoParam === 'confirm'
+  const demoDone = demoParam === 'done'
 
   const [form, setForm] = useState({
-    firstName: '',
-    lastName: '',
-    phone: '',
+    firstName: demoDone ? 'Mario' : '',
+    lastName: demoDone ? 'Rossi' : '',
+    phone: demoDone ? '333 123 4567' : '',
     numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
@@ -89,8 +90,12 @@ export default function PrenotaClient() {
     // ogni cliente in un "bot" (successo davvero al primo test di Ania).
     hp_check: '',
   })
-  const [step, setStep] = useState<Step>(demoConfirm ? 'confirm' : 'form')
-  const [solution, setSolution] = useState<Segment[]>([])
+  const [step, setStep] = useState<Step>(demoConfirm ? 'confirm' : demoDone ? 'done' : 'form')
+  const [solution, setSolution] = useState<Segment[]>(
+    demoDone
+      ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
+      : []
+  )
   const [multiRoom, setMultiRoom] = useState(false)
   const [duplicate, setDuplicate] = useState(false)
   // Sistemazione proposta dalla verifica, in attesa del "sì" dell'ospite
@@ -253,7 +258,7 @@ export default function PrenotaClient() {
             <Logo compactOnMobile />
           </Link>
           <a href={waLink('Ciao Ania! Vorrei chiedere la disponibilità per un soggiorno a Casa Ania.')} target="_blank" rel="noopener noreferrer"
-            className="justify-self-end text-green-700 text-sm font-semibold whitespace-nowrap py-2">💬 WhatsApp</a>
+            className="justify-self-end text-green-700 text-sm font-semibold whitespace-nowrap py-2">WhatsApp</a>
         </div>
       </header>
 
@@ -406,7 +411,7 @@ export default function PrenotaClient() {
               </p>
               <a href={waLink('Ciao Ania! Vorrei informazioni sulla navetta per Casa Ania.')} target="_blank" rel="noopener noreferrer"
                 className="inline-block border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-bold px-6 py-2.5 rounded-full text-sm">
-                💬 Chiedi della navetta
+                Chiedi della navetta
               </a>
             </div>
           </>
@@ -466,7 +471,7 @@ export default function PrenotaClient() {
                   <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 text-left mb-4">
                     {proposal.map((seg, i) => (
                       <p key={i} className="text-sm text-[#3a3a35] mb-1">
-                        🛏 <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                        <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
                       </p>
                     ))}
                   </div>
@@ -544,9 +549,15 @@ export default function PrenotaClient() {
               </>
             ) : (
               <>
-                <div className="text-6xl mb-4">✅</div>
-                <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-2">Richiesta inviata!</h2>
-                <p className="text-[#6f6a5e] text-sm mb-6">
+                {/* Spunta disegnata nei colori Casa Ania, come le icone della
+                    home: mai emoji (cambiano aspetto da telefono a telefono) */}
+                <div className="mx-auto mt-2 mb-5 w-20 h-20 rounded-full flex items-center justify-center" style={{ backgroundColor: '#e7f0ea' }}>
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2d6a4f" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M20 6 9 17l-5-5" />
+                  </svg>
+                </div>
+                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-3 text-balance">Richiesta inviata!</h2>
+                <p className="text-[#3a3a35] text-base mb-6">
                   Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.
                 </p>
               </>
@@ -578,24 +589,24 @@ export default function PrenotaClient() {
             ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
               <p className="font-semibold text-[#3a3a35] mb-3">Riepilogo</p>
-              <p className="text-sm text-[#3a3a35] mb-1">👤 {form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
-              <p className="text-sm text-[#3a3a35] mb-3">📅 Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
+              <p className="text-sm text-[#3a3a35] mb-1">{form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
+              <p className="text-sm text-[#3a3a35] mb-3">Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
               {multiRoom ? (
                 <>
                   <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 mb-3">
-                    <p className="text-amber-800 text-sm font-semibold mb-1">⚠️ Soggiorno con cambio camera</p>
+                    <p className="text-amber-800 text-sm font-semibold mb-1">Soggiorno con cambio camera</p>
                     <p className="text-amber-700 text-xs">
                       Per le date richieste il soggiorno è diviso in più camere. Per chiarimenti chiama direttamente la proprietaria.
                     </p>
                   </div>
                   {solution.map((seg, i) => (
                     <div key={i} className="text-sm text-[#3a3a35] mb-1">
-                      🛏 <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                      <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
                     </div>
                   ))}
                 </>
               ) : (
-                <p className="text-sm text-[#3a3a35]">🛏 <strong>{solution[0]?.roomName}</strong></p>
+                <p className="text-sm text-[#3a3a35]"><strong>{solution[0]?.roomName}</strong></p>
               )}
             </div>
             )}
@@ -612,7 +623,7 @@ export default function PrenotaClient() {
               : waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito: ${form.firstName} ${form.lastName}, ${requestSummary}.`)}
               target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
-              {duplicate ? (dupSameDates ? 'Scrivi ad Ania su WhatsApp' : 'Invia il cambio date ad Ania') : '💬 Scrivi su WhatsApp'}
+              {duplicate ? (dupSameDates ? 'Scrivi ad Ania su WhatsApp' : 'Invia il cambio date ad Ania') : 'Scrivi su WhatsApp'}
             </a>
             <Link href="/" className="inline-block text-sm text-[#6f6a5e] underline py-2">Torna alla home</Link>
           </div>
@@ -620,9 +631,8 @@ export default function PrenotaClient() {
 
         {step === 'error' && errorKind === 'full' && (
           <div className="text-center">
-            <div className="text-6xl mb-4">😔</div>
-            <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-2">Nessuna disponibilità</h2>
-            <p className="text-[#6f6a5e] text-sm mb-6">Tutte le camere sono esaurite per queste date.</p>
+            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Nessuna disponibilità</h2>
+            <p className="text-[#3a3a35] text-base mb-6">Tutte le camere sono esaurite per queste date.</p>
             <button onClick={() => setStep('form')}
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
               ← Modifica le date
@@ -637,10 +647,9 @@ export default function PrenotaClient() {
 
         {step === 'error' && errorKind === 'tech' && (
           <div className="text-center">
-            <div className="text-6xl mb-4">😕</div>
-            <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-2">Qualcosa non ha funzionato</h2>
-            <p className="text-[#6f6a5e] text-sm mb-2">La tua richiesta non è stata inviata.</p>
-            {errorMsg && <p className="text-[#3a3a35] text-sm mb-6">{errorMsg}</p>}
+            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Qualcosa non ha funzionato</h2>
+            <p className="text-[#3a3a35] text-base mb-2">La tua richiesta non è stata inviata.</p>
+            {errorMsg && <p className="text-[#3a3a35] text-base mb-6">{errorMsg}</p>}
             <button onClick={() => setStep('form')}
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
               ← Riprova
