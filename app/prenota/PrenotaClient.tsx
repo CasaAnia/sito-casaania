@@ -4,8 +4,18 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Logo from '../components/Logo'
+import Image from 'next/image'
 import { MessageCircle } from 'lucide-react'
 import { ROOMS, roomPricing } from '@/lib/rooms'
+
+// Foto di copertina delle camere: nella proposta alternativa la camera si
+// presenta con la sua foto, non solo col nome
+const ROOM_FOTO: Record<string, string> = {
+  'fed43a69-5e19-4cf9-b1b3-64affa46f9b1': '/camere/singola/foto1.jpg',
+  'bfe8414c-97de-4aae-96c0-c6b0225d1a05': '/camere/allegra/foto1.jpg',
+  '6a8870ce-be2b-41d9-971e-5c833a85eb4a': '/camere/ambra/foto1.jpg',
+  '19ae4611-c0a4-42ae-8530-210f9a948e9e': '/camere/lena/foto1b.jpg',
+}
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -75,6 +85,8 @@ export default function PrenotaClient() {
   // sviluppo, il build di produzione le elimina.
   const demoParam = process.env.NODE_ENV === 'development' ? searchParams.get('demo') : null
   const demoConfirm = demoParam === 'confirm'
+  // Variante con una sola camera libera (Amelia chiesta, resta solo Allegra)
+  const demoConfirmUno = demoParam === 'confirm1'
   const demoDone = demoParam === 'done'
   const demoEsaurito = demoParam === 'esaurito'
   const demoErrore = demoParam === 'errore'
@@ -86,7 +98,7 @@ export default function PrenotaClient() {
     numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
-    preferredRoomId: demoConfirm ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : preselectedRoomId,
+    preferredRoomId: demoConfirm ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : demoConfirmUno ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : preselectedRoomId,
     // Honeypot: resta vuoto per gli umani. Il nome del campo NON deve
     // somigliare a niente di autocompilabile (website/url/azienda...):
     // l'autofill di Chrome riempie anche i campi nascosti e trasformerebbe
@@ -94,7 +106,7 @@ export default function PrenotaClient() {
     hp_check: '',
   })
   const [step, setStep] = useState<Step>(
-    demoConfirm ? 'confirm' : demoDone ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
+    demoConfirm || demoConfirmUno ? 'confirm' : demoDone ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
   )
   const [solution, setSolution] = useState<Segment[]>(
     demoDone
@@ -107,7 +119,9 @@ export default function PrenotaClient() {
   const [proposal, setProposal] = useState<Segment[]>(
     demoConfirm
       ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
-      : []
+      : demoConfirmUno
+        ? [{ roomId: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05', roomName: 'Matrimoniale Allegra', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
+        : []
   )
   const [proposalMultiRoom, setProposalMultiRoom] = useState(false)
   // Tutte le camere libere per le date chieste: se sono più di una il
@@ -118,9 +132,13 @@ export default function PrenotaClient() {
           { id: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', name: 'Singola Amelia' },
           { id: '19ae4611-c0a4-42ae-8530-210f9a948e9e', name: 'Tripla Lena' },
         ]
-      : []
+      : demoConfirmUno
+        ? [{ id: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05', name: 'Matrimoniale Allegra' }]
+        : []
   )
-  const [confirmRoomId, setConfirmRoomId] = useState(demoConfirm ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : '')
+  const [confirmRoomId, setConfirmRoomId] = useState(
+    demoConfirm ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : demoConfirmUno ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : ''
+  )
   // Richiesta recente in attesa con date diverse: prima di crearne una
   // seconda si chiede all'ospite se è un soggiorno in più o un cambio date
   const [recentPending, setRecentPending] = useState<Segment[]>([])
@@ -479,7 +497,22 @@ export default function PrenotaClient() {
           const p = proposal.length === 1 ? roomPricing(proposal[0].roomId, Number(form.numGuests)) : null
           return (
             <div className="text-center">
-              <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Abbiamo controllato la disponibilità</h2>
+              {!proposalMultiRoom && proposalFreeRooms.length <= 1 && preferred ? (
+                <>
+                  {/* Gerarchia ribaltata: la brutta notizia è una riga sottile,
+                      la rassicurazione È il titolo */}
+                  <p className="text-[#6f6a5e] text-base mt-4 mb-3">
+                    La camera {preferred} non è disponibile per le date che hai scelto.
+                  </p>
+                  <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-6 text-balance">
+                    Non preoccuparti:<br />ci abbiamo pensato noi
+                  </h2>
+                </>
+              ) : (
+                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">
+                  {preferred ? 'La camera che hai scelto non è disponibile' : 'Abbiamo controllato la disponibilità'}
+                </h2>
+              )}
               {proposalMultiRoom ? (
                 <>
                   <p className="text-[#3a3a35] text-base mb-4">
@@ -517,28 +550,44 @@ export default function PrenotaClient() {
                   </div>
                 </>
               ) : (
-                <>
-                  <p className="text-[#3a3a35] text-base mb-4">
-                    Per le date che hai scelto la camera <strong>{preferred}</strong> non è più disponibile.<br />
-                    Questa è l&apos;unica disponibilità possibile:
-                  </p>
-                  <div className="w-full text-left px-4 py-3 min-h-[44px] rounded-xl border-2 text-sm bg-green-50 border-green-600 font-semibold text-green-800 mb-5">
-                    <span className="font-medium">{proposal[0]?.roomName}</span>
-                    {p && <span className="text-[#6f6a5e] ml-2 text-xs">€{p.totalPerNight}/notte</span>}
+                /* La camera alternativa si presenta come una card con la SUA
+                   foto: niente convince più di vedere il letto che ti aspetta */
+                <div className="bg-white rounded-2xl shadow-md overflow-hidden mb-6 text-left">
+                  {ROOM_FOTO[proposal[0]?.roomId || ''] && (
+                    <div className="relative h-44">
+                      <Image src={ROOM_FOTO[proposal[0].roomId]} alt={proposal[0].roomName} fill
+                        sizes="(min-width: 640px) 640px, 100vw" className="object-cover" />
+                    </div>
+                  )}
+                  <div className="px-4 py-4">
+                    <p className="font-display text-xl font-semibold text-[#1f3d2f]">{proposal[0]?.roomName}</p>
+                    {p && (
+                      <p className="text-[#3a3a35] text-base mt-0.5">
+                        €{p.totalPerNight} a notte{nights > 1 && <> · {nights} notti = <strong>€{p.totalPerNight * nights}</strong></>}
+                      </p>
+                    )}
+                    <p className="flex items-center gap-1.5 text-green-700 text-sm font-semibold mt-2">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                      Libera per le date che hai scelto
+                    </p>
                   </div>
-                </>
+                </div>
               )}
-              {!proposalMultiRoom && (() => {
+              {/* Totale grande solo quando c'è la scelta tra più camere: nel
+                  caso a camera unica il prezzo vive nel riquadro verde */}
+              {!proposalMultiRoom && proposalFreeRooms.length > 1 && (() => {
                 const chosenId = confirmRoomId || proposal[0]?.roomId
                 const cp = chosenId ? roomPricing(chosenId, Number(form.numGuests)) : null
                 return cp && nights > 0 ? (
                   <p className="font-display text-3xl font-semibold text-[#1f3d2f] mb-6">
-                    {nights} {nights === 1 ? 'notte' : 'notti'} = €{cp.totalPerNight * nights}
+                    {nights === 1 ? `€${cp.totalPerNight} a notte` : `${nights} notti = €${cp.totalPerNight * nights}`}
                   </p>
                 ) : null
               })()}
               <p className="text-[#3a3a35] text-base font-semibold mb-4">
-                Vuoi inviare la richiesta per la camera {proposalFreeRooms.length > 1 ? 'scelta' : 'proposta'}, o preferisci cambiare le date?
+                {proposalFreeRooms.length > 1
+                  ? 'Vuoi inviare la richiesta per la camera scelta, o preferisci cambiare le date?'
+                  : 'Vuoi procedere con questa soluzione o preferisci modificare le date del soggiorno?'}
               </p>
               <button onClick={handleConfirm} disabled={loading}
                 className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60 mb-3">
