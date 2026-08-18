@@ -660,7 +660,7 @@ export default function PrenotaClient() {
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base mb-4">
               Prova con altre date
             </button>
-            <a href={waLink(`Ciao Ania! Sul sito è tutto pieno ${formatPeriodo(form.checkIn, form.checkOut)}. Se si libera una camera puoi avvisarmi? Sono ${form.firstName} ${form.lastName}.`)}
+            <a href={waLink(`Ciao Ania! Sul sito è tutto pieno ${formatPeriodo(form.checkIn, form.checkOut)}. Se si libera una camera puoi avvisarmi? Mi chiamo ${form.firstName} ${form.lastName}. Grazie`)}
               target="_blank" rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-1.5 text-sm text-green-700 font-semibold underline py-2">
               <MessageCircle size={17} strokeWidth={2} aria-hidden="true" /> Scrivi ad Ania su WhatsApp
