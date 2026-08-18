@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Logo from '../components/Logo'
+import { MessageCircle } from 'lucide-react'
 import { ROOMS, roomPricing } from '@/lib/rooms'
 
 const PHONE = '3427004354'
@@ -648,21 +649,21 @@ export default function PrenotaClient() {
 
         {step === 'error' && errorKind === 'full' && (
           <div className="text-center">
-            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Per queste date siamo al completo</h2>
-            <p className="text-[#3a3a35] text-base mb-3">
-              Ci dispiace: le nostre quattro camere sono già tutte occupate {formatPeriodo(form.checkIn, form.checkOut)}.
+            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-7 text-balance">Per queste date siamo al completo</h2>
+            <p className="text-[#3a3a35] text-base mb-4">
+              Ci dispiace, le nostre quattro camere sono già tutte occupate {formatPeriodo(form.checkIn, form.checkOut)}.
             </p>
-            <p className="text-[#3a3a35] text-base mb-6">
-              Lascia il tuo nome ad Ania su WhatsApp: se qualcuno rinuncia, ti chiama lei.
+            <p className="text-[#3a3a35] text-base mb-9">
+              Lascia il tuo nome ad Ania su WhatsApp. Se qualcuno rinuncia, ti chiama lei.
             </p>
             <button onClick={() => setStep('form')}
-              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base mb-3">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base mb-4">
               Prova con altre date
             </button>
             <a href={waLink(`Ciao Ania! Sul sito è tutto pieno ${formatPeriodo(form.checkIn, form.checkOut)}. Se si libera una camera puoi avvisarmi? Sono ${form.firstName} ${form.lastName}.`)}
               target="_blank" rel="noopener noreferrer"
-              className="inline-block text-sm text-green-700 font-semibold underline py-2">
-              Lascia il tuo nome ad Ania su WhatsApp
+              className="inline-flex items-center justify-center gap-1.5 text-sm text-green-700 font-semibold underline py-2">
+              <MessageCircle size={17} strokeWidth={2} aria-hidden="true" /> Scrivi ad Ania su WhatsApp
             </a>
           </div>
         )}
