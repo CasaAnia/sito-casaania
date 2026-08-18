@@ -75,6 +75,8 @@ export default function PrenotaClient() {
   const demoParam = process.env.NODE_ENV === 'development' ? searchParams.get('demo') : null
   const demoConfirm = demoParam === 'confirm'
   const demoDone = demoParam === 'done'
+  const demoEsaurito = demoParam === 'esaurito'
+  const demoErrore = demoParam === 'errore'
 
   const [form, setForm] = useState({
     firstName: demoDone ? 'Mario' : '',
@@ -90,7 +92,9 @@ export default function PrenotaClient() {
     // ogni cliente in un "bot" (successo davvero al primo test di Ania).
     hp_check: '',
   })
-  const [step, setStep] = useState<Step>(demoConfirm ? 'confirm' : demoDone ? 'done' : 'form')
+  const [step, setStep] = useState<Step>(
+    demoConfirm ? 'confirm' : demoDone ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
+  )
   const [solution, setSolution] = useState<Segment[]>(
     demoDone
       ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
@@ -121,11 +125,11 @@ export default function PrenotaClient() {
   const [recentPending, setRecentPending] = useState<Segment[]>([])
   const [allowSecondStay, setAllowSecondStay] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
+  const [errorMsg, setErrorMsg] = useState(demoErrore ? 'Errore di connessione. Riprova.' : '')
   // 'full' = davvero nessuna disponibilità (409); 'tech' = qualsiasi altro
   // problema. Prima ogni errore diventava "tutto esaurito": una bugia che
   // mandava i clienti su Booking.
-  const [errorKind, setErrorKind] = useState<'full' | 'tech'>('tech')
+  const [errorKind, setErrorKind] = useState<'full' | 'tech'>(demoEsaurito ? 'full' : 'tech')
 
   function set(field: string, value: string) {
     setForm(f => ({ ...f, [field]: value }))
