@@ -233,6 +233,19 @@ export default function PrenotaClient() {
     return `${day}/${m}/${y}`
   }
 
+  // "dal 13 al 16 agosto" (o "dal 30 agosto al 2 settembre"): le date vere
+  // del cliente, scritte come le direbbe una persona
+  function formatPeriodo(checkIn: string, checkOut: string) {
+    const MESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+    const [y1, m1, d1] = checkIn.split('-').map(Number)
+    const [y2, m2, d2] = checkOut.split('-').map(Number)
+    const annoCorrente = new Date().getFullYear()
+    const anno1 = y1 !== annoCorrente ? ` ${y1}` : ''
+    const anno2 = y2 !== annoCorrente ? ` ${y2}` : ''
+    if (m1 === m2 && y1 === y2) return `dal ${d1} al ${d2} ${MESI[m1 - 1]}${anno1}`
+    return `dal ${d1} ${MESI[m1 - 1]}${anno1} al ${d2} ${MESI[m2 - 1]}${anno2}`
+  }
+
   // "2026-08-21" → "21 ago": nel riepilogo l'anno è rumore
   function formatDateShort(d: string) {
     const months = ['gen', 'feb', 'mar', 'apr', 'mag', 'giu', 'lug', 'ago', 'set', 'ott', 'nov', 'dic']
@@ -635,16 +648,21 @@ export default function PrenotaClient() {
 
         {step === 'error' && errorKind === 'full' && (
           <div className="text-center">
-            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Nessuna disponibilità</h2>
-            <p className="text-[#3a3a35] text-base mb-6">Tutte le camere sono esaurite per queste date.</p>
+            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Per queste date siamo al completo</h2>
+            <p className="text-[#3a3a35] text-base mb-3">
+              Ci dispiace: le nostre quattro camere sono già tutte occupate {formatPeriodo(form.checkIn, form.checkOut)}.
+            </p>
+            <p className="text-[#3a3a35] text-base mb-6">
+              Lascia il tuo nome ad Ania su WhatsApp: se qualcuno rinuncia, ti chiama lei.
+            </p>
             <button onClick={() => setStep('form')}
-              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
-              ← Modifica le date
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base mb-3">
+              Prova con altre date
             </button>
-            <a href={waLink(`Ciao Ania! Sul sito non c'è disponibilità per ${requestSummary}: c'è qualche possibilità?`)}
+            <a href={waLink(`Ciao Ania! Sul sito è tutto pieno ${formatPeriodo(form.checkIn, form.checkOut)}. Se si libera una camera puoi avvisarmi? Sono ${form.firstName} ${form.lastName}.`)}
               target="_blank" rel="noopener noreferrer"
               className="inline-block text-sm text-green-700 font-semibold underline py-2">
-              Scrivici comunque: a volte troviamo una soluzione
+              Lascia il tuo nome ad Ania su WhatsApp
             </a>
           </div>
         )}
