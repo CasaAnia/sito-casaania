@@ -649,12 +649,12 @@ export default function PrenotaClient() {
 
         {step === 'error' && errorKind === 'full' && (
           <div className="text-center">
-            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-7 text-balance">Per queste date siamo al completo</h2>
+            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-7 text-balance">Ci dispiace, per queste date siamo al completo</h2>
             <p className="text-[#3a3a35] text-base mb-4">
-              Ci dispiace, le nostre quattro camere sono già tutte occupate {formatPeriodo(form.checkIn, form.checkOut)}.
+              Le nostre quattro camere sono già tutte occupate {formatPeriodo(form.checkIn, form.checkOut)}.
             </p>
             <p className="text-[#3a3a35] text-base mb-9">
-              Lascia il tuo nome ad Ania su WhatsApp. Se qualcuno rinuncia, ti chiama lei.
+              Se vuoi, puoi lasciare il tuo nome e numero di telefono ad Ania su WhatsApp. Se dovesse liberarsi una camera, sarà felice di contattarti.
             </p>
             <button onClick={() => setStep('form')}
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base mb-4">
