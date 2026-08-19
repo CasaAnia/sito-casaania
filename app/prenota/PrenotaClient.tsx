@@ -465,7 +465,7 @@ export default function PrenotaClient() {
                 {loading ? 'Verifica disponibilità...' : 'Invia la richiesta di prenotazione'}
               </button>
 
-              <p className="text-center text-sm text-[#6f6a5e]">
+              <p className="text-center text-base text-[#6f6a5e]">
                 Ti risponderemo <strong className="text-[#1f3d2f]">su WhatsApp o per telefono entro pochi minuti</strong> per confermare la disponibilità.
               </p>
             </form>
