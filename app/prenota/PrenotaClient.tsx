@@ -330,7 +330,7 @@ export default function PrenotaClient() {
         </div>
       </header>
 
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto px-4 pt-4 pb-8">
 
         {step === 'form' && (
           <>
