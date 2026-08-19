@@ -101,6 +101,8 @@ export default function PrenotaClient() {
   const demoDoppione = demoParam === 'doppione'
   // Richiesta doppia con date sovrapposte ma diverse
   const demoDoppione2 = demoParam === 'doppione2'
+  // Richiesta doppia: stesse date ma camera diversa
+  const demoDoppione3 = demoParam === 'doppione3'
   const demoShift = (days: number) => {
     const d = new Date()
     d.setDate(d.getDate() + days)
@@ -116,7 +118,7 @@ export default function PrenotaClient() {
     numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
-    preferredRoomId: demoConfirm || demoDoppione2 ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : demoConfirmUno ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : preselectedRoomId,
+    preferredRoomId: demoConfirm || demoDoppione2 || demoDoppione3 ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : demoConfirmUno ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : preselectedRoomId,
     // Honeypot: resta vuoto per gli umani. Il nome del campo NON deve
     // somigliare a niente di autocompilabile (website/url/azienda...):
     // l'autofill di Chrome riempie anche i campi nascosti e trasformerebbe
@@ -124,7 +126,7 @@ export default function PrenotaClient() {
     hp_check: '',
   })
   const [step, setStep] = useState<Step>(
-    demoConfirm || demoConfirmUno ? 'confirm' : demoDone || demoDoppione || demoDoppione2 ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
+    demoConfirm || demoConfirmUno ? 'confirm' : demoDone || demoDoppione || demoDoppione2 || demoDoppione3 ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
   )
   const [solution, setSolution] = useState<Segment[]>(
     demoDone
@@ -133,10 +135,12 @@ export default function PrenotaClient() {
         ? [{ roomId: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05', roomName: 'Matrimoniale Allegra', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
         : demoDoppione2
           ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: demoShift(2) }]
-          : []
+          : demoDoppione3
+            ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
+            : []
   )
   const [multiRoom, setMultiRoom] = useState(false)
-  const [duplicate, setDuplicate] = useState(demoDoppione || demoDoppione2)
+  const [duplicate, setDuplicate] = useState(demoDoppione || demoDoppione2 || demoDoppione3)
   // Sistemazione proposta dalla verifica, in attesa del "sì" dell'ospite
   const [proposal, setProposal] = useState<Segment[]>(
     demoConfirm
@@ -304,6 +308,11 @@ export default function PrenotaClient() {
   const dupCheckIn = solution.reduce((a, s) => (a === '' || s.checkIn < a ? s.checkIn : a), '')
   const dupCheckOut = solution.reduce((a, s) => (s.checkOut > a ? s.checkOut : a), '')
   const dupSameDates = dupCheckIn === form.checkIn && dupCheckOut === form.checkOut
+  // Stessa camera già richiesta (o nessuna preferenza): insieme alle stesse
+  // date è un semplice reinvio. Se invece l'ospite continua a chiedere
+  // un'altra camera, va mostrata anche quella (voluto da Ania, ago 2026)
+  const dupSameRoom = !selectedRoom || solution.some(seg => seg.roomId === selectedRoom.id)
+  const dupIdentical = dupSameDates && dupSameRoom
 
   const requestSummary = `${form.numGuests} ${Number(form.numGuests) === 1 ? 'persona' : 'persone'}, dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}`
 
@@ -696,7 +705,7 @@ export default function PrenotaClient() {
                  digitata, sotto quella precedente, così l'ospite ha subito
                  il quadro di tutte e due (voluto da Ania, ago 2026) */
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-                {!dupSameDates && (
+                {!dupIdentical && (
                   <>
                     <p className="font-bold text-[#3a3a35] mb-3">La tua nuova richiesta</p>
                     <p className="text-sm text-[#3a3a35] mb-1">
@@ -706,7 +715,7 @@ export default function PrenotaClient() {
                     <div className="border-t border-gray-100 mt-3 pt-3" />
                   </>
                 )}
-                <p className="font-bold text-[#3a3a35] mb-3">{dupSameDates ? 'In lavorazione' : 'La richiesta precedente'}</p>
+                <p className="font-bold text-[#3a3a35] mb-3">{dupIdentical ? 'In lavorazione' : 'La richiesta precedente'}</p>
                 {solution.map((seg, i) => (
                   <p key={i} className="text-sm text-[#3a3a35] mb-1">
                     <strong>{seg.roomName}</strong><br />
@@ -745,7 +754,7 @@ export default function PrenotaClient() {
               </p>
             )}
             <a href={duplicate
-              ? (dupSameDates
+              ? (dupIdentical
                   ? waLink('Ciao Ania! Ti ho già inviato una richiesta dal sito, ma vorrei cambiare qualcosa.')
                   : waLink(`Ciao Ania! Ho già una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, e ora vorrei ${selectedRoom ? selectedRoom.name : 'una camera'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste?`))
               : waLink(`Ciao Ania! Ho appena inviato una richiesta tramite il sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}. Rimango in attesa di una tua gentile conferma. Grazie!`)}
