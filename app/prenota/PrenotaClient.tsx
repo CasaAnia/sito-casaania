@@ -97,6 +97,15 @@ export default function PrenotaClient() {
   // Variante con una sola camera libera (Amelia chiesta, resta solo Allegra)
   const demoConfirmUno = demoParam === 'confirm1'
   const demoDone = demoParam === 'done'
+  // Richiesta doppia con stesse date ("Richiesta ricevuta!")
+  const demoDoppione = demoParam === 'doppione'
+  // Richiesta doppia con date sovrapposte ma diverse
+  const demoDoppione2 = demoParam === 'doppione2'
+  const demoShift = (days: number) => {
+    const d = new Date()
+    d.setDate(d.getDate() + days)
+    return d.toISOString().slice(0, 10)
+  }
   const demoEsaurito = demoParam === 'esaurito'
   const demoErrore = demoParam === 'errore'
 
@@ -107,7 +116,7 @@ export default function PrenotaClient() {
     numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
-    preferredRoomId: demoConfirm ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : demoConfirmUno ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : preselectedRoomId,
+    preferredRoomId: demoConfirm || demoDoppione2 ? 'bfe8414c-97de-4aae-96c0-c6b0225d1a05' : demoConfirmUno ? 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1' : preselectedRoomId,
     // Honeypot: resta vuoto per gli umani. Il nome del campo NON deve
     // somigliare a niente di autocompilabile (website/url/azienda...):
     // l'autofill di Chrome riempie anche i campi nascosti e trasformerebbe
@@ -115,15 +124,19 @@ export default function PrenotaClient() {
     hp_check: '',
   })
   const [step, setStep] = useState<Step>(
-    demoConfirm || demoConfirmUno ? 'confirm' : demoDone ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
+    demoConfirm || demoConfirmUno ? 'confirm' : demoDone || demoDoppione || demoDoppione2 ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
   )
   const [solution, setSolution] = useState<Segment[]>(
     demoDone
       ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
-      : []
+      : demoDoppione
+        ? [{ roomId: 'bfe8414c-97de-4aae-96c0-c6b0225d1a05', roomName: 'Matrimoniale Allegra', checkIn: getTodayStr(), checkOut: getTomorrowStr() }]
+        : demoDoppione2
+          ? [{ roomId: 'fed43a69-5e19-4cf9-b1b3-64affa46f9b1', roomName: 'Singola Amelia', checkIn: getTodayStr(), checkOut: demoShift(2) }]
+          : []
   )
   const [multiRoom, setMultiRoom] = useState(false)
-  const [duplicate, setDuplicate] = useState(false)
+  const [duplicate, setDuplicate] = useState(demoDoppione || demoDoppione2)
   // Sistemazione proposta dalla verifica, in attesa del "sì" dell'ospite
   const [proposal, setProposal] = useState<Segment[]>(
     demoConfirm
@@ -654,13 +667,11 @@ export default function PrenotaClient() {
           <div className="text-center">
             {duplicate ? (
               <>
-                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">
-                  {dupSameDates ? 'Richiesta già ricevuta' : 'Vuoi cambiare le date?'}
+                <h2 className="font-display text-3xl font-bold text-[#1f3d2f] mt-4 mb-6 text-balance">
+                  Richiesta ricevuta!
                 </h2>
                 <p className="text-[#3a3a35] text-base mb-6">
-                  {dupSameDates
-                    ? 'È già arrivata sul telefono di Ania: a breve ti risponderà direttamente lei su WhatsApp.'
-                    : 'Abbiamo già ricevuto la tua richiesta ed è in elaborazione. Se ora preferisci fare un cambio di date, comunicalo ad Ania usando il bottone qui sotto.'}
+                  È già arrivata sul telefono di Ania. <strong className="text-black">A breve ti risponderà direttamente su WhatsApp</strong> per confermare la richiesta.
                 </p>
               </>
             ) : (
@@ -680,27 +691,28 @@ export default function PrenotaClient() {
             )}
 
             {duplicate ? (
-              /* Richiesta precedente ancora in lavorazione: si mostra SOLO
-                 quella, senza mescolarla coi dati appena digitati (che
-                 potrebbero chiedere un'altra camera e confondere). Se però
-                 le date nuove sono diverse, si mostra il confronto
-                 prima → dopo, come fa Airbnb con le richieste di modifica */
+              /* Stesse date: si mostra solo la richiesta in lavorazione.
+                 Date sovrapposte ma diverse: prima la richiesta appena
+                 digitata, sotto quella precedente, così l'ospite ha subito
+                 il quadro di tutte e due (voluto da Ania, ago 2026) */
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-                <p className="font-semibold text-[#3a3a35] mb-3">{dupSameDates ? 'In lavorazione' : 'La richiesta precedente'}</p>
+                {!dupSameDates && (
+                  <>
+                    <p className="font-bold text-[#3a3a35] mb-3">La tua nuova richiesta</p>
+                    <p className="text-sm text-[#3a3a35] mb-1">
+                      <strong>{selectedRoom ? selectedRoom.name : 'Nessuna preferenza'}</strong><br />
+                      {formatDate(form.checkIn)} → {formatDate(form.checkOut)}
+                    </p>
+                    <div className="border-t border-gray-100 mt-3 pt-3" />
+                  </>
+                )}
+                <p className="font-bold text-[#3a3a35] mb-3">{dupSameDates ? 'In lavorazione' : 'La richiesta precedente'}</p>
                 {solution.map((seg, i) => (
                   <p key={i} className="text-sm text-[#3a3a35] mb-1">
-                    <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
+                    <strong>{seg.roomName}</strong><br />
+                    {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
                   </p>
                 ))}
-                {!dupSameDates && (
-                  <div className="border-t border-gray-100 mt-3 pt-3">
-                    <p className="font-semibold text-[#1f3d2f] mb-1">La nuova richiesta</p>
-                    <p className="text-sm text-[#1f3d2f]">
-                      <strong>{selectedRoom ? selectedRoom.name : 'Nessuna preferenza'}</strong>: {' '}
-                      <strong>{formatDate(form.checkIn)} → {formatDate(form.checkOut)}</strong>
-                    </p>
-                  </div>
-                )}
               </div>
             ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
@@ -727,21 +739,21 @@ export default function PrenotaClient() {
             </div>
             )}
 
-            {duplicate && dupSameDates && (
+            {duplicate && (
               <p className="text-sm text-[#3a3a35] mb-4">
-                Vuoi cambiare date o camera? Scrivilo ad Ania con il bottone qui sotto: farà la modifica in un attimo.
+                Vuoi cambiare le date o la camera? <strong className="text-black">Scrivilo ad Ania su WhatsApp</strong> usando il pulsante qui sotto: ti aiuterà a modificare la richiesta in un attimo.
               </p>
             )}
             <a href={duplicate
               ? (dupSameDates
                   ? waLink('Ciao Ania! Ti ho già inviato una richiesta dal sito, ma vorrei cambiare qualcosa.')
-                  : waLink(`Ciao Ania! Ti ho mandato una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, ma vorrei cambiare le date: dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}.`))
+                  : waLink(`Ciao Ania! Ho già una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, e ora vorrei ${selectedRoom ? selectedRoom.name : 'una camera'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste?`))
               : waLink(`Ciao Ania! Ho appena inviato una richiesta tramite il sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}. Rimango in attesa di una tua gentile conferma. Grazie!`)}
               target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
-              {duplicate ? (dupSameDates ? 'Scrivi ad Ania su WhatsApp' : 'Invia il cambio date ad Ania') : 'Scrivi su WhatsApp'}
+              {duplicate ? 'Scrivi ad Ania su WhatsApp' : 'Scrivi su WhatsApp'}
             </a>
-            <Link href="/" className="inline-block text-sm text-[#6f6a5e] underline py-2">Torna alla home</Link>
+            <Link href="/" className="inline-block text-sm font-bold text-[#23231e] underline py-2">Torna alla home</Link>
           </div>
         )}
 
