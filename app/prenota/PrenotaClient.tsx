@@ -335,7 +335,7 @@ export default function PrenotaClient() {
         {step === 'form' && (
           <>
             <h1 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-1">Prenota la tua camera</h1>
-            <p className="text-[#6f6a5e] text-sm mb-6">Compila la richiesta: <strong className="text-[#1f3d2f]">Ania ti risponderà su WhatsApp o per telefono in pochi minuti.</strong></p>
+            <p className="text-[#6f6a5e] text-base mb-6">Compila la richiesta: <strong className="text-[#1f3d2f]">Ania ti risponderà su WhatsApp o per telefono in pochi minuti.</strong></p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -351,7 +351,7 @@ export default function PrenotaClient() {
                 <p className="font-bold text-[#1f3d2f] mb-3">Date del soggiorno</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div className="min-w-0">
-                    <label htmlFor="check-in" className="text-xs text-[#6f6a5e] mb-1 block">Check-in</label>
+                    <label htmlFor="check-in" className="text-sm text-[#6f6a5e] mb-1 block">Check-in</label>
                     <input id="check-in" type="date" value={form.checkIn} min={getTodayStr()}
                       onChange={e => {
                         set('checkIn', e.target.value)
@@ -364,7 +364,7 @@ export default function PrenotaClient() {
                       className={inputClass} required />
                   </div>
                   <div className="min-w-0">
-                    <label htmlFor="check-out" className="text-xs text-[#6f6a5e] mb-1 block">Check-out</label>
+                    <label htmlFor="check-out" className="text-sm text-[#6f6a5e] mb-1 block">Check-out</label>
                     <input id="check-out" type="date" value={form.checkOut} min={form.checkIn}
                       onChange={e => set('checkOut', e.target.value)}
                       className={inputClass} required />
@@ -412,27 +412,27 @@ export default function PrenotaClient() {
                 <div className="space-y-3">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label htmlFor="first-name" className="text-xs text-[#6f6a5e] mb-1 block">Nome</label>
+                      <label htmlFor="first-name" className="text-sm text-[#6f6a5e] mb-1 block">Nome</label>
                       <input id="first-name" type="text" value={form.firstName} onChange={e => set('firstName', e.target.value)}
                         placeholder="Mario" required autoComplete="given-name"
                         className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="last-name" className="text-xs text-[#6f6a5e] mb-1 block">Cognome</label>
+                      <label htmlFor="last-name" className="text-sm text-[#6f6a5e] mb-1 block">Cognome</label>
                       <input id="last-name" type="text" value={form.lastName} onChange={e => set('lastName', e.target.value)}
                         placeholder="Rossi" required autoComplete="family-name"
                         className={inputClass} />
                     </div>
                   </div>
                   <div>
-                    <label htmlFor="phone" className="text-xs text-[#6f6a5e] mb-1 block">Numero di telefono</label>
+                    <label htmlFor="phone" className="text-sm text-[#6f6a5e] mb-1 block">Numero di telefono</label>
                     <input id="phone" type="tel" value={form.phone} onChange={e => set('phone', e.target.value)}
                       placeholder="333 123 4567" required autoComplete="tel" inputMode="tel"
                       pattern="[0-9+ \(\)\-]{8,20}" title="Inserisci un numero di telefono valido (almeno 8 cifre)"
                       className={inputClass} />
                   </div>
                   <div>
-                    <label htmlFor="notes" className="text-xs text-[#6f6a5e] mb-1 block">Note per Ania (facoltative)</label>
+                    <label htmlFor="notes" className="text-sm text-[#6f6a5e] mb-1 block">Note per Ania (facoltative)</label>
                     <textarea id="notes" value={form.notes} onChange={e => set('notes', e.target.value)}
                       placeholder="Scrivi qui se c'è qualcosa che Ania deve sapere: ad esempio se sei già stato da noi o chi ti ha consigliato Casa Ania"
                       rows={3} maxLength={500}
