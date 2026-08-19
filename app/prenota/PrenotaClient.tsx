@@ -480,13 +480,22 @@ export default function PrenotaClient() {
             </p>
 
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-4 text-center">
-              <p className="font-display font-semibold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
-              <p className="text-sm text-[#3a3a35] mb-3">
-                Arrivi in aereo o in treno? Veniamo a prenderti. Con i nostri autisti di fiducia organizziamo il trasferimento da Malpensa, Linate, Orio al Serio, dalle stazioni di Milano Centrale e Rogoredo e dai terminal bus di San Donato e Lampugnano. Scrivici su WhatsApp con data, orario e punto di arrivo: ti diciamo subito il prezzo. Meglio qualche giorno prima, così ti garantiamo il posto.
+              <p className="font-display font-bold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
+              <p className="text-sm text-[#3a3a35] mb-2">
+                Arrivi in aereo o in treno? <strong className="text-[#1f3d2f]">Pensiamo noi al tuo trasferimento.</strong>
               </p>
-              <a href={waLink('Ciao Ania! Vorrei informazioni sulla navetta per Casa Ania.')} target="_blank" rel="noopener noreferrer"
+              <p className="text-sm text-[#3a3a35] mb-2">
+                Organizziamo il servizio con <strong className="text-[#1f3d2f]">autisti di fiducia</strong> da Malpensa, Linate e Orio al Serio, dalle stazioni di Milano Centrale e Rogoredo e dai terminal bus di San Donato e Lampugnano.
+              </p>
+              <p className="text-sm text-[#3a3a35] mb-2">
+                Scrivici su WhatsApp indicando <strong className="text-[#1f3d2f]">data, orario e punto di arrivo</strong>: ti comunicheremo subito il prezzo.
+              </p>
+              <p className="text-sm text-[#3a3a35] mb-3">
+                <strong className="text-[#1f3d2f]">Ti consigliamo di prenotare il trasferimento con qualche giorno di anticipo</strong>, così possiamo garantirti la disponibilità.
+              </p>
+              <a href={waLink('💬 Ciao Ania! Vorrei avere informazioni sul servizio di trasferimento per Casa Ania.')} target="_blank" rel="noopener noreferrer"
                 className="inline-block border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-bold px-6 py-2.5 rounded-full text-sm">
-                Chiedi della navetta
+                Chiedi informazioni sul trasferimento
               </a>
             </div>
           </>
