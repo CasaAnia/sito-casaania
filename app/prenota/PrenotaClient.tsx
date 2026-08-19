@@ -461,16 +461,16 @@ export default function PrenotaClient() {
               )}
 
               <button type="submit" disabled={loading}
-                className="w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
+                className="w-full !mt-8 bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
                 {loading ? 'Verifica disponibilità...' : 'Invia la richiesta di prenotazione'}
               </button>
 
-              <p className="text-center text-base text-[#6f6a5e]">
+              <p className="text-center text-base !mt-6 text-[#6f6a5e]">
                 Ti risponderemo <strong className="text-[#1f3d2f]">su WhatsApp o per telefono entro pochi minuti</strong> per confermare la disponibilità.
               </p>
             </form>
 
-            <div className="text-center mt-8">
+            <div className="text-center mt-10">
               <p className="text-base text-[#6f6a5e] mb-3">Preferisci scriverci direttamente?</p>
               <a href={waLink(`Ciao Ania! Vorrei chiedere la disponibilità per ${requestSummary}.`)}
                 target="_blank" rel="noopener noreferrer"
@@ -480,7 +480,7 @@ export default function PrenotaClient() {
               </a>
             </div>
 
-            <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-4 text-center">
+            <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-10 text-center">
               <p className="font-display font-bold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
               <p className="text-sm text-[#3a3a35] mb-2">
                 Arrivi in aereo o in treno? <strong className="text-[#1f3d2f]">Pensiamo noi al tuo trasferimento.</strong>
