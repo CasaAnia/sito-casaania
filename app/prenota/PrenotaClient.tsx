@@ -470,14 +470,15 @@ export default function PrenotaClient() {
               </p>
             </form>
 
-            <p className="text-center text-sm text-[#6f6a5e] mt-8">
-              Preferisci scriverci direttamente?{' '}
+            <div className="text-center mt-8">
+              <p className="text-base text-[#6f6a5e] mb-3">Preferisci scriverci direttamente?</p>
               <a href={waLink(`Ciao Ania! Vorrei chiedere la disponibilità per ${requestSummary}.`)}
                 target="_blank" rel="noopener noreferrer"
-                className="text-green-700 font-semibold underline inline-block py-2">
-                Siamo su WhatsApp
+                className="inline-flex items-center justify-center gap-2 border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-bold px-6 py-2.5 rounded-full text-sm">
+                <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-current" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.3-.5s0-.4 0-.5-.5-1.3-.7-1.8-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 14.5 14.5 0 0 0 1.4.5 3.4 3.4 0 0 0 1.6.1 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
+                Scrivici su WhatsApp
               </a>
-            </p>
+            </div>
 
             <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100 mt-4 text-center">
               <p className="font-display font-bold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
