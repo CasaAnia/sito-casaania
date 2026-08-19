@@ -400,7 +400,7 @@ export default function PrenotaClient() {
                       onClick={() => set('preferredRoomId', room.id)}
                       className={`w-full text-left px-4 py-3 min-h-[44px] rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
                       <span className="font-bold text-[#1f3d2f]">{room.name}</span>
-                      <span className="text-[#6f6a5e] ml-2 text-xs">{room.priceLabel} / notte</span>
+                      <span className="text-[#6f6a5e] ml-2">{room.priceLabel} / notte</span>
                     </button>
                   ))}
                 </div>
