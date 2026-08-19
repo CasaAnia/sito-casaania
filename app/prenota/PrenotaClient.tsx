@@ -115,6 +115,7 @@ export default function PrenotaClient() {
     firstName: demoDone ? 'Mario' : '',
     lastName: demoDone ? 'Rossi' : '',
     phone: demoDone ? '333 123 4567' : '',
+    notes: '',
     numGuests: '1',
     checkIn: getTodayStr(),
     checkOut: getTomorrowStr(),
@@ -429,6 +430,13 @@ export default function PrenotaClient() {
                       placeholder="333 123 4567" required autoComplete="tel" inputMode="tel"
                       pattern="[0-9+ \(\)\-]{8,20}" title="Inserisci un numero di telefono valido (almeno 8 cifre)"
                       className={inputClass} />
+                  </div>
+                  <div>
+                    <label htmlFor="notes" className="text-xs text-[#6f6a5e] mb-1 block">Note per Ania (facoltative)</label>
+                    <textarea id="notes" value={form.notes} onChange={e => set('notes', e.target.value)}
+                      placeholder="Scrivi qui se c'è qualcosa che Ania deve sapere: ad esempio se sei già stato da noi o chi ti ha consigliato Casa Ania"
+                      rows={3} maxLength={500}
+                      className={inputClass + ' resize-none'} />
                   </div>
                 </div>
               </div>

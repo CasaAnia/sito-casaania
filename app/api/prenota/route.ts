@@ -283,7 +283,9 @@ export async function POST(req: NextRequest) {
   if (!body || typeof body !== 'object') {
     return NextResponse.json({ error: 'Dati mancanti' }, { status: 400 })
   }
-  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, hp_check, checkOnly } = body
+  const { firstName, lastName, phone, numGuests, checkIn, checkOut, preferredRoomId, hp_check, checkOnly, notes } = body
+  // Nota facoltativa dell'ospite: mai fidarsi della lunghezza dal client
+  const guestNotes = typeof notes === 'string' ? notes.trim().slice(0, 500) : ''
 
   // Honeypot: il campo "hp_check" è invisibile agli umani. Se è pieno è un
   // bot: rispondiamo ok senza salvare nulla. Il vecchio campo "website" NON
@@ -434,6 +436,7 @@ export async function POST(req: NextRequest) {
       extra_bed_total: extraPerNight * segNights,
       bonifico: false,
       pagato: false,
+      notes: guestNotes || null,
     }
   })
 
@@ -464,9 +467,10 @@ export async function POST(req: NextRequest) {
         .map(s => `${s.roomName} ${s.checkIn}→${s.checkOut}`)
         .join(', ')} (ha confermato: è un soggiorno in più)`
     : ''
+  const notesLine = guestNotes ? `\n📝 “${guestNotes}”` : ''
   const pushBody = multiRoom
-    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}${doubleNote}`
-    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}${doubleNote}`
+    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}${doubleNote}${notesLine}`
+    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}${doubleNote}${notesLine}`
 
   const totale = bookingsToInsert.reduce((s, b) => s + b.total_amount, 0)
   const waText =
@@ -474,7 +478,7 @@ export async function POST(req: NextRequest) {
     `${firstName} ${lastName}, ${numGuests} ${Number(numGuests) === 1 ? 'persona' : 'persone'}\n` +
     `${checkIn} → ${checkOut} · ${roomDesc} · ${totale} €\n` +
     `Tel: ${phone}\n` +
-    `Chiama il cliente e poi conferma nel gestionale.${doubleNote}`
+    `Chiama il cliente e poi conferma nel gestionale.${doubleNote}${notesLine}`
 
   await Promise.all([
     sendPushNotification(supabase, pushTitle, pushBody),
