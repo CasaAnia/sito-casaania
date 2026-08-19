@@ -50,7 +50,7 @@ function getRoomOptions(numGuests: number): RoomOption[] {
       name: r.name,
       totalPerNight: p.totalPerNight,
       priceLabel: p.extraBed
-        ? `€${p.basePerNight} + €${p.extraPerNight} letto aggiuntivo`
+        ? `€${p.basePerNight} + €${p.extraPerNight} per letto aggiuntivo`
         : `€${p.totalPerNight}`,
     }
   })
@@ -335,7 +335,7 @@ export default function PrenotaClient() {
         {step === 'form' && (
           <>
             <h1 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-1">Prenota la tua camera</h1>
-            <p className="text-[#6f6a5e] text-sm mb-6">Compila il modulo — ti rispondiamo in pochi minuti</p>
+            <p className="text-[#6f6a5e] text-sm mb-6">Compila la richiesta: <strong className="text-[#1f3d2f]">Ania ti risponderà su WhatsApp o per telefono in pochi minuti.</strong></p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
 
@@ -348,7 +348,7 @@ export default function PrenotaClient() {
 
               {/* DATE */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                <p className="font-semibold text-[#3a3a35] mb-3">Date del soggiorno</p>
+                <p className="font-bold text-[#1f3d2f] mb-3">Date del soggiorno</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div className="min-w-0">
                     <label htmlFor="check-in" className="text-xs text-[#6f6a5e] mb-1 block">Check-in</label>
@@ -374,7 +374,7 @@ export default function PrenotaClient() {
 
               {/* OSPITI */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                <p className="font-semibold text-[#3a3a35] mb-3">Numero di persone</p>
+                <p className="font-bold text-[#1f3d2f] mb-3">Numero di persone</p>
                 <div className="grid grid-cols-4 gap-2">
                   {['1', '2', '3', '4'].map(n => (
                     <button key={n} type="button"
@@ -388,7 +388,7 @@ export default function PrenotaClient() {
 
               {/* CAMERA */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                <p className="font-semibold text-[#3a3a35] mb-3">Camera preferita</p>
+                <p className="font-bold text-[#1f3d2f] mb-3">Camera preferita</p>
                 <div className="space-y-2">
                   <button type="button"
                     onClick={() => set('preferredRoomId', '')}
@@ -399,8 +399,8 @@ export default function PrenotaClient() {
                     <button key={room.id} type="button"
                       onClick={() => set('preferredRoomId', room.id)}
                       className={`w-full text-left px-4 py-3 min-h-[44px] rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
-                      <span className="font-medium">{room.name}</span>
-                      <span className="text-[#6f6a5e] ml-2 text-xs">{room.priceLabel}/notte</span>
+                      <span className="font-bold text-[#1f3d2f]">{room.name}</span>
+                      <span className="text-[#6f6a5e] ml-2 text-xs">{room.priceLabel} / notte</span>
                     </button>
                   ))}
                 </div>
@@ -408,7 +408,7 @@ export default function PrenotaClient() {
 
               {/* DATI */}
               <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-100">
-                <p className="font-semibold text-[#3a3a35] mb-3">I tuoi dati</p>
+                <p className="font-bold text-[#1f3d2f] mb-3">I tuoi dati</p>
                 <div className="space-y-3">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -454,19 +454,19 @@ export default function PrenotaClient() {
                     <span>{nights} × €{selectedRoom.totalPerNight}</span>
                   </div>
                   <div className="flex justify-between items-baseline border-t border-gray-100 pt-3">
-                    <span className="text-sm font-semibold text-[#3a3a35]">Totale</span>
-                    <span className="font-display text-2xl font-semibold text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</span>
+                    <span className="text-sm font-bold text-[#1f3d2f]">Totale</span>
+                    <span className="font-display text-2xl font-bold text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</span>
                   </div>
                 </div>
               )}
 
               <button type="submit" disabled={loading}
                 className="w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
-                {loading ? 'Verifica disponibilità...' : 'Invia richiesta di prenotazione'}
+                {loading ? 'Verifica disponibilità...' : 'Invia la richiesta di prenotazione'}
               </button>
 
               <p className="text-center text-xs text-[#6f6a5e]">
-                Ti rispondiamo su WhatsApp o per telefono entro pochi minuti
+                Ti risponderemo <strong className="text-[#1f3d2f]">su WhatsApp o per telefono entro pochi minuti</strong> per confermare la disponibilità.
               </p>
             </form>
 
@@ -502,7 +502,7 @@ export default function PrenotaClient() {
               Abbiamo già una tua richiesta per il <strong>{formatDateShort(recentIn)} → {formatDateShort(recentOut)}</strong>. Vuoi <strong>aggiungere un altro soggiorno</strong>, o <strong>sostituire le date</strong> di quella di prima?
             </p>
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-              <p className="font-semibold text-[#3a3a35] mb-3">La richiesta precedente</p>
+              <p className="font-bold text-[#1f3d2f] mb-3">La richiesta precedente</p>
               {recentPending.map((seg, i) => (
                 <p key={i} className="text-sm text-[#3a3a35] mb-1">
                   <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
@@ -671,7 +671,7 @@ export default function PrenotaClient() {
                     <p className="font-extrabold text-[0.68rem] tracking-[0.11em] uppercase text-[#8a8f86] mb-3">Il tuo soggiorno</p>
                     <p className="flex justify-between text-[0.97rem] text-[#4a5248] mb-2">
                       <span>Camera {chosenShort}</span>
-                      <span>€{cp.totalPerNight}/notte</span>
+                      <span>€{cp.totalPerNight} / notte</span>
                     </p>
                     <p className="flex justify-between text-[0.97rem] text-[#4a5248] mb-2">
                       <span>€{cp.totalPerNight} × {nights} {nights === 1 ? 'notte' : 'notti'}</span>
@@ -792,7 +792,7 @@ export default function PrenotaClient() {
               </div>
             ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-              <p className="font-semibold text-[#3a3a35] mb-3">Riepilogo</p>
+              <p className="font-bold text-[#1f3d2f] mb-3">Riepilogo</p>
               <p className="text-sm text-[#3a3a35] mb-1">{form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
               <p className="text-sm text-[#3a3a35] mb-3">Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
               {multiRoom ? (
