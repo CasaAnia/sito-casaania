@@ -493,7 +493,7 @@ export default function PrenotaClient() {
               <p className="text-sm text-[#3a3a35] mb-3">
                 <strong className="text-[#1f3d2f]">Ti consigliamo di prenotare il trasferimento con qualche giorno di anticipo</strong>, così possiamo garantirti la disponibilità.
               </p>
-              <a href={waLink('💬 Ciao Ania! Vorrei avere informazioni sul servizio di trasferimento per Casa Ania.')} target="_blank" rel="noopener noreferrer"
+              <a href={waLink('💬 Ciao Ania! Vorrei informazioni sul trasferimento per Casa Ania.')} target="_blank" rel="noopener noreferrer"
                 className="inline-block border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-bold px-6 py-2.5 rounded-full text-sm">
                 Chiedi informazioni sul trasferimento
               </a>
