@@ -814,7 +814,7 @@ export default function PrenotaClient() {
             )}
             <a href={duplicate
               ? (dupIdentical
-                  ? waLink(`Ciao Ania! Sono ${form.firstName} ${form.lastName}, ti ho già inviato una richiesta dal sito ${solution.length === 1 ? `per la camera ${solution[0].roomName}` : 'per il mio soggiorno'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}, ma vorrei modificare le date o la camera.`)
+                  ? waLink(`Ciao Ania! Mi chiamo ${form.firstName} ${form.lastName}, ti ho già inviato una richiesta dal sito ${solution.length === 1 ? `per la camera ${solution[0].roomName}` : 'per il mio soggiorno'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}, ma vorrei modificare le date o la camera.`)
                   : waLink(`Ciao Ania! Ho già una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, e ora vorrei ${selectedRoom ? selectedRoom.name : 'una camera'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste?`))
               : waLink(`Ciao Ania! Ho appena inviato una richiesta tramite il sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}. Rimango in attesa di una tua gentile conferma. Grazie!`)}
               target="_blank" rel="noopener noreferrer"
