@@ -110,6 +110,9 @@ const faqs = [
 ]
 
 export const metadata = {
+  title: 'Casa Ania – Affittacamere a 140 m da Humanitas Rozzano',
+  description:
+    "Casa Ania è un affittacamere a 140 metri dall'Ospedale Humanitas di Rozzano. Camere accoglienti, parcheggio gratuito e servizio transfer su richiesta.",
   alternates: { canonical: '/' },
 }
 
