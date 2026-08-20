@@ -89,6 +89,11 @@ const lodgingJsonLd = {
     postalCode: "20072",
     addressCountry: "IT",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 45.374534,
+    longitude: 9.168671,
+  },
   checkinTime: "15:00",
   checkoutTime: "10:00",
   amenityFeature: [
