@@ -53,6 +53,14 @@ body {
   transform: none;
 }
 
+/* Slider recensioni: lo scorrimento c'è, la barra no (i puntini fanno da guida) */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* Zoom lento "Ken Burns" per le foto del carosello: sembrano vive anche da ferme */
 /* Su iOS i campi data hanno una larghezza intrinseca che sfonda il
    contenitore (visto sul form di /prenota): azzerare l'aspetto nativo

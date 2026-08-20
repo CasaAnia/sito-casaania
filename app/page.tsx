@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import Logo from './components/Logo'
 import Reveal from './components/Reveal'
+import RecensioniSlider from './components/RecensioniSlider'
 import BannerCarosello from './components/BannerCarosello'
 import ParallaxController from './components/ParallaxController'
 import { MapPin, Phone, MessageCircle, Footprints, Car, Plane, TrainFront, TrainFrontTunnel, Bus } from 'lucide-react'
@@ -171,33 +172,31 @@ export default function Home() {
       <BannerCarosello />
 
       {/* RECENSIONI */}
-      <section className="py-8 px-4">
+      <section className="py-12 md:py-14 px-5">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-8">
-            <p className="text-[#1f3d2f] mb-3">
-              <span style={{ color: '#2d6a4f' }}>★★★★★</span> <strong>5,0 su Google</strong>
+          <div className="text-center mb-7 md:mb-9">
+            <p className="text-[15px] md:text-base font-medium text-[#1f3d2f] mb-3">
+              <span style={{ color: '#2d6a4f' }}>★★★★★</span> <span className="font-semibold">5,0 su Google</span>
             </p>
+            <h2 className="font-display font-semibold text-[29px] md:text-[38px] leading-[1.15]" style={{ color: '#1f3d2f' }}>
+              Le parole dei nostri ospiti
+            </h2>
+          </div>
+          <Reveal>
+            <RecensioniSlider testimonials={testimonials} />
+          </Reveal>
+          <div className="text-center mt-7">
             <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
-              style={{ textUnderlineOffset: '6px' }} className="inline-block text-[#3a3a35] text-lg font-semibold uppercase tracking-wider underline">
-              Recensioni raccolte su Google
+              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-full border text-sm font-semibold uppercase tracking-wide bg-transparent hover:bg-green-50 transition active:scale-[0.97]"
+              style={{ borderColor: '#2d6a4f', color: '#2d6a4f' }}>
+              Leggi tutte le recensioni su Google
             </a>
+            <p className="text-sm mt-3">
+              <Link href="/recensioni" className="inline-block underline py-2" style={{ color: '#6f6a5e', textUnderlineOffset: '4px' }}>
+                Recensioni anche su TripAdvisor →
+              </Link>
+            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {testimonials.map((t, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <div className="bg-white rounded-2xl p-5 shadow-sm h-full">
-                  <p style={{color: '#2d6a4f'}} className="text-base tracking-[0.15em] mb-2">{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</p>
-                  <p className="text-[#3a3a35] text-[15px] italic leading-relaxed mb-3">"{t.text}"</p>
-                  <p className="text-sm font-semibold text-[#1f3d2f]">— {t.name}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <p className="text-center text-sm mt-4">
-            <Link href="/recensioni" className="inline-block underline font-semibold py-2.5" style={{ color: '#2d6a4f' }}>
-              Leggi altre recensioni →
-            </Link>
-          </p>
 
           <div className="text-center mt-10">
             <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
