@@ -42,8 +42,11 @@ export default function BannerCarosello() {
           style={{ opacity: idx === i ? 1 : 0, transition: 'opacity 900ms ease-in-out' }}
         />
       ))}
-      {/* Scurimento leggero per far leggere il testo sulla foto (un po' più marcato su mobile) */}
-      <div className="absolute inset-0 bg-black/45 md:bg-black/35" aria-hidden="true" />
+      {/* Gradiente leggero: più scuro solo dietro al testo (a sinistra), foto quasi naturale altrove */}
+      <div
+        className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.28)_55%,rgba(0,0,0,0.10)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.32)_35%,rgba(0,0,0,0.08)_70%,rgba(0,0,0,0.02)_100%)]"
+        aria-hidden="true"
+      />
       <div className="relative z-10 w-full hero-in">
         <div className="px-6 py-10 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
           <h1
