@@ -172,7 +172,7 @@ export default function Home() {
       <BannerCarosello />
 
       {/* RECENSIONI */}
-      <section className="py-12 md:py-14 px-5">
+      <section className="pt-12 md:pt-14 pb-2 px-5">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-7 md:mb-9">
             <p className="text-[15px] md:text-base font-medium text-[#1f3d2f] mb-3">
@@ -197,35 +197,15 @@ export default function Home() {
               </Link>
             </p>
           </div>
-
-          <div className="text-center mt-10">
-            <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
-            <p className="text-ink text-sm max-w-md mx-auto mb-4">
-              Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
-            </p>
-            <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
-              style={{ backgroundColor: '#2d6a4f' }}
-              className="inline-block hover:opacity-90 transition-opacity text-white font-semibold px-6 py-2.5 rounded-full text-sm">
-              Lascia una recensione su Google
-            </a>
-            <div className="hidden md:flex flex-col items-center mt-4">
-              <Image src="/qr-recensioni.png" alt="QR code per recensione Google" width={110} height={110} />
-              <p className="text-[#6f6a5e] text-xs mt-1">oppure inquadra col telefono</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* DIVISORE */}
-      <section className="py-12 px-4">
-        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
-          Non un albergo. Una casa.
-        </p>
-      </section>
-
       {/* CAMERE */}
-      <section className="pt-6 pb-8">
+      <section className="pt-12 md:pt-14 pb-8">
         <div className="max-w-4xl mx-auto">
+          <h2 className="font-display italic font-medium text-center px-5 mx-auto max-w-md md:max-w-xl mb-7 md:mb-8 text-[30px] md:text-[36px] leading-[1.15]" style={{ color: '#2d6a4f' }}>
+            Non un albergo. Una casa.
+          </h2>
           <Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
@@ -454,6 +434,25 @@ export default function Home() {
             </a>
           </div>
           <p className="text-xs mt-6" style={{ color: '#e0ddd0' }}>Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+        </div>
+      </section>
+
+      {/* SEI GIÀ STATO NOSTRO OSPITE? */}
+      <section className="py-12 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
+          <p className="text-ink text-sm max-w-md mx-auto mb-4">
+            Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
+          </p>
+          <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
+            style={{ backgroundColor: '#2d6a4f' }}
+            className="inline-block hover:opacity-90 transition-opacity text-white font-semibold px-6 py-2.5 rounded-full text-sm">
+            Lascia una recensione su Google
+          </a>
+          <div className="hidden md:flex flex-col items-center mt-4">
+            <Image src="/qr-recensioni.png" alt="QR code per recensione Google" width={110} height={110} />
+            <p className="text-[#6f6a5e] text-xs mt-1">oppure inquadra col telefono</p>
+          </div>
         </div>
       </section>
 
