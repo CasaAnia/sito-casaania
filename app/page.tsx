@@ -157,8 +157,8 @@ export default function Home() {
 
       {/* HEADER */}
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
-        <div className="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Logo />
+        <div className="max-w-4xl mx-auto px-5 sm:px-4 py-4 flex items-center justify-between">
+          <Logo header />
           <Link href="/prenota"
             style={{fontSize: '0.75rem', letterSpacing: '0.05em'}}
             className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-4 py-3 rounded-full uppercase whitespace-nowrap">
