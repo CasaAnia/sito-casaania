@@ -74,8 +74,13 @@ export default function CameraAmbra() {
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Descrizione</h2>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
-            Ambra è una camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.
-            Letto matrimoniale con biancheria sempre impeccabile, lenzuola morbide e un buon profumo di pulito, per sentirsi a casa fin dal primo momento.
+            Ambra è una camera matrimoniale luminosa e tranquilla, caratterizzata da toni caldi e da un'atmosfera raccolta e accogliente.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
+            Ha un bagno privato direttamente in camera e può ospitare comodamente una o due persone; all'occorrenza è possibile aggiungere un terzo letto.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed text-lg">
+            Il letto matrimoniale è preparato con biancheria fresca e curata, lenzuola morbide e tutto ciò che serve per ritrovare, anche lontano da casa, un ambiente ordinato, confortevole e piacevole in cui rientrare.
           </p>
         </div>
 

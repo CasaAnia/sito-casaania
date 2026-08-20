@@ -75,16 +75,16 @@ export default function CameraSingola() {
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Descrizione</h2>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
-            Amelia è la camera più piccola di Casa Ania — compatta, raccolta, ma curatissima in ogni dettaglio.
-            Letto singolo con lenzuola candide, bagno in camera, in un ambiente semplice ma ben curato, con quella sensazione di ordine e pulizia che si nota fin da subito.
+            Amelia è la camera più piccola e raccolta di Casa Ania, pensata soprattutto per chi viaggia da solo e cerca un ambiente tranquillo, semplice e curato.
           </p>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
-            Amelia e Lena condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
-            dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
-            Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
+            Ha un letto singolo e bagno privato direttamente in camera, con tutto ciò che serve per un soggiorno comodo e indipendente. All'occorrenza è possibile aggiungere un secondo letto: lo spazio diventa più intimo, ma rimane accogliente e funzionale.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
+            Amelia condivide con Lena il balcone con vista sulla clinica Humanitas, dove è possibile uscire per prendere un po' d'aria durante la giornata.
           </p>
           <p className="text-[#3a3a35] leading-relaxed text-lg">
-            Si può aggiungere un secondo letto — la camera è intima, ma accogliente come tutto il resto della casa.
+            Piccola nelle dimensioni, ma preparata con la stessa attenzione delle altre camere: biancheria fresca, ordine, pulizia e quella cura dei dettagli che caratterizza Casa Ania.
           </p>
         </div>
 

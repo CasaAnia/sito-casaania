@@ -83,16 +83,16 @@ export default function CameraLena() {
         <div className="border-t border-gray-200 pt-8 mb-8">
           <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Descrizione</h2>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
-            Lena è la camera più grande di Casa Ania — spaziosa, luminosa, con tutto lo spazio che serve anche quando si è in più persone.
-            Letto matrimoniale con lenzuola curate nei minimi dettagli, morbide e profumate di fresco, e tutto il calore di una casa che accoglie.
+            Lena è la camera più spaziosa di Casa Ania, luminosa e confortevole, ideale anche per chi soggiorna in tre o quattro persone.
           </p>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
-            Ha un bagno privato esterno — a un metro dalla stanza, chiuso a chiave, riservato esclusivamente a chi soggiorna in Lena.
+            Il bagno è privato e ad uso esclusivo degli ospiti di Lena. Si trova all'esterno della camera, a circa un metro dalla porta, ed è chiuso a chiave: non viene condiviso con nessun altro ospite.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
+            Il letto matrimoniale è preparato con biancheria fresca e curata e, quando serve, è possibile aggiungere altri posti letto fino a ospitare quattro persone.
           </p>
           <p className="text-[#3a3a35] leading-relaxed text-lg">
-            Lena e Amelia condividono un balcone con vista sulla clinica Humanitas: uno spazio piccolo ma speciale,
-            dove spesso nascono chiacchiere spontanee tra ospiti. Chi arriva da solo trova, senza cercarlo, un po' di compagnia.
-            Capita di scambiare qualche parola con chi soggiorna nella camera accanto — momenti semplici, ma che rendono il soggiorno un po' più umano.
+            Lena condivide con Amelia un balcone con vista sulla clinica Humanitas: un piccolo spazio dove prendere un po' d'aria e dove, qualche volta, nasce spontaneamente una chiacchiera con chi soggiorna nella camera accanto. Un dettaglio semplice che rende l'atmosfera di Casa Ania ancora più familiare.
           </p>
         </div>
 
