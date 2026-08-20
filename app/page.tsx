@@ -10,6 +10,8 @@ import { MapPin, Phone, MessageCircle, Footprints, Car, Plane, TrainFront, Train
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
+// Stesso meccanismo dei messaggi precompilati di PrenotaClient: WA_LINK + ?text= + encodeURIComponent
+const WA_CHECKIN_LINK = `${WA_LINK}?text=${encodeURIComponent('Ciao Ania! Ho una prenotazione a Casa Ania e penso di arrivare dopo le 20:00. Possiamo organizzarci per il check-in? Grazie!')}`
 const TEL_LINK = `tel:+39${PHONE}`
 
 const rooms = [
@@ -275,18 +277,22 @@ export default function Home() {
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
           <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</h2>
-          <p className="text-left text-[#3a3a35] leading-relaxed mb-4">
-            Il check-in ufficiale è dalle 15:00 alle 20:00.
+          <p className="text-left text-[#3a3a35] text-[18px] font-semibold leading-[1.4] mb-3.5">
+            Check-in dalle 15:00 alle 20:00
           </p>
-          <p className="text-left text-[#3a3a35] leading-relaxed mb-4">
-            Qualora la camera fosse pronta in anticipo (cosa che accade spesso già nelle prime ore del mattino), ti invieremo un messaggio per informarti che potrai accedere alla struttura anche prima dell'orario previsto.
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-7">
+            Se la camera è pronta prima, ti avvisiamo noi: quando possibile puoi entrare anche in anticipo, <strong className="font-semibold">senza costi aggiuntivi</strong>.
           </p>
-          <p className="text-left text-[#3a3a35] leading-relaxed mb-4">
-            Se desideri lasciare i bagagli prima del check-in, ti chiediamo semplicemente di avvisarci il giorno precedente, così da organizzare al meglio la tua accoglienza.
+          <p className="text-left text-green-700 text-[17px] font-semibold leading-[1.4] mb-2.5">
+            Pensi di arrivare dopo le 20:00?
           </p>
-          <p className="text-left text-[#3a3a35] leading-relaxed">
-            Se invece prevedi di arrivare dopo le 20:00, è sufficiente comunicarcelo il giorno prima e faremo il possibile per rendere il tuo arrivo semplice e agevole.
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-5">
+            Nessun problema: avvisaci in anticipo e organizzeremo con te la modalità di accesso.
           </p>
+          <a href={WA_CHECKIN_LINK} target="_blank" rel="noopener noreferrer"
+            className="group inline-block py-2 text-left text-green-700 text-[15px] font-semibold">
+            Arrivi dopo le 20:00? Scrivi ad Ania su <span className="whitespace-nowrap">WhatsApp <span className="inline-block motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span></span>
+          </a>
         </div>
       </section>
 
