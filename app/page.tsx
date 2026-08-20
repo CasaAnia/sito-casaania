@@ -5,6 +5,7 @@ import Reveal from './components/Reveal'
 import RecensioniSlider from './components/RecensioniSlider'
 import BannerCarosello from './components/BannerCarosello'
 import ParallaxController from './components/ParallaxController'
+import WhatsAppFab from './components/WhatsAppFab'
 import { MapPin, Phone, MessageCircle, Footprints, Car, Plane, TrainFront, TrainFrontTunnel, Bus } from 'lucide-react'
 
 const PHONE = '3427004354'
@@ -14,7 +15,7 @@ const TEL_LINK = `tel:+39${PHONE}`
 const rooms = [
   {
     name: 'Ambra',
-    desc: 'Camera matrimoniale luminosa dai toni caldi, tranquilla e confortevole.',
+    desc: 'Camera matrimoniale luminosa e raccolta, dai toni caldi, pensata per un soggiorno tranquillo e confortevole.',
     prices: [
       { label: '1–2 persone', amount: 80 },
       { label: '3 persone (letto aggiuntivo)', amount: 90 },
@@ -36,7 +37,7 @@ const rooms = [
   },
   {
     name: 'Lena',
-    desc: 'La nostra camera più spaziosa con bagno privato esterno. Adatta anche a famiglie numerose con fino a 4 ospiti.',
+    desc: 'La nostra camera più spaziosa, con bagno privato esterno. Ideale anche per famiglie o piccoli gruppi, fino a 4 ospiti.',
     prices: [
       { label: '1–2 persone', amount: 80 },
       { label: '3 persone', amount: 90 },
@@ -49,7 +50,7 @@ const rooms = [
   },
   {
     name: 'Amelia',
-    desc: 'Camera accogliente con letto singolo. Ideale per soggiorni brevi, con possibilità di aggiungere un letto supplementare.',
+    desc: 'Camera singola accogliente e funzionale, ideale per chi viaggia da solo, con possibilità di aggiungere un secondo letto.',
     prices: [
       { label: '1 persona', amount: 70 },
       { label: '2 persone (letto aggiuntivo)', amount: 75 },
@@ -223,7 +224,7 @@ export default function Home() {
             </p>
           </div>
           <Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-8 md:gap-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-8 md:gap-y-0">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
                 <Link href={room.href} className="group relative block h-80 overflow-hidden bg-gray-100">
@@ -473,10 +474,7 @@ export default function Home() {
       </section>
 
       {/* WHATSAPP FLOTTANTE */}
-      <a href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="Scrivici su WhatsApp"
-        className="md:hidden fixed bottom-5 right-5 z-50 bg-green-700 hover:bg-green-800 transition-colors text-white rounded-full w-14 h-14 flex items-center justify-center shadow-lg wa-pulse">
-        <MessageCircle size={26} strokeWidth={2} aria-hidden="true" />
-      </a>
+      <WhatsAppFab href={WA_LINK} />
 
     </main>
   )
