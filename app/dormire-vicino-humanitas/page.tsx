@@ -166,7 +166,11 @@ export default function DormireVicinoHumanitas() {
             </li>
             <li className="flex gap-3">
               <Bus size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" />
-              <span><strong>Con i mezzi pubblici:</strong> l&apos;autobus 230 parte dal capolinea della metropolitana M2 Abbiategrasso e arriva in Via Manzoni, davanti all&apos;ospedale. Fermano lì anche le linee 220 e 328.</span>
+              <span><strong>In autobus:</strong> le autostazioni di San Donato e Lampugnano sono collegate a Casa Ania con il nostro servizio navetta su richiesta.</span>
+            </li>
+            <li className="flex gap-3">
+              <Bus size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" />
+              <span><strong>Con i mezzi pubblici:</strong> l&apos;autobus 230 parte dal capolinea della metropolitana M2 Abbiategrasso e arriva in Via Manzoni, davanti all&apos;ospedale. Fermano lì anche le linee 220 e 328. Il tram 15 arriva in centro a Rozzano, ma richiede circa 20 minuti a piedi.</span>
             </li>
           </ul>
         </section>

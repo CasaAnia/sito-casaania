@@ -6,7 +6,7 @@ import RecensioniSlider from './components/RecensioniSlider'
 import BannerCarosello from './components/BannerCarosello'
 import ParallaxController from './components/ParallaxController'
 import WhatsAppFab from './components/WhatsAppFab'
-import { MapPin, Phone, MessageCircle, Footprints, Car, Plane, TrainFront, TrainFrontTunnel, Bus } from 'lucide-react'
+import { MapPin, Phone, MessageCircle, Footprints } from 'lucide-react'
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -350,68 +350,39 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DOVE SIAMO */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-8 underline">Dove siamo</h2>
-          <div className="md:flex md:gap-8 md:items-center">
-            <div className="md:flex-1 mb-6 md:mb-0 text-left">
-              <p className="font-semibold text-[#1f3d2f] mb-1 flex items-center gap-1.5"><MapPin size={17} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> Via Liguria 26</p>
-              <p className="text-[#3a3a35] mb-4">Fizzonasco, Pieve Emanuele (MI) 20072</p>
-              <ul className="text-[#3a3a35] leading-relaxed space-y-2">
-                <li>140 metri dall'ospedale Humanitas (palazzina 8)</li>
-                <li>Zona tranquilla e residenziale</li>
-                <li>Due piazzole di sosta gratuite a circa 150 metri da Casa Ania, poco prima di arrivare, su entrambi i lati della strada</li>
-                <li>In alternativa, il parcheggio di Humanitas (a pagamento), custodito 24 ore su 24</li>
-              </ul>
-              <a href="https://maps.google.com/?q=Via+Liguria+26+Pieve+Emanuele+Milano" target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-2 py-2 text-sm text-green-700 font-semibold underline">
-                Apri in Google Maps →
-              </a>
-              <br />
-              <a href="#come-arrivare"
-                className="inline-block py-2 text-sm text-green-700 font-semibold underline">
-                Come arrivare a Humanitas: tutte le indicazioni →
-              </a>
-            </div>
-            <div className="md:flex-1 rounded-xl overflow-hidden h-48">
-              <iframe
-                src="https://www.google.com/maps?q=Via+Liguria+26+Pieve+Emanuele+Milano&output=embed"
-                className="w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Mappa Casa Ania Rozzano"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* COME ARRIVARE */}
-      <section id="come-arrivare" className="py-12 px-4">
-        <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-8 underline">Come arrivare</h2>
-          <p className="text-left text-[#3a3a35] leading-relaxed mb-6">
-            Casa Ania è a soli 140 metri dalla palazzina 8 di Humanitas: due minuti a piedi, senza bisogno di auto, taxi o mezzi pubblici.
+      {/* A DUE PASSI DA HUMANITAS */}
+      <section id="dove-siamo" className="py-12 px-4">
+        <div className="max-w-2xl mx-auto text-center">
+          <h2 className="font-display font-semibold text-[28px] md:text-[36px] leading-[1.15] mb-4" style={{ color: '#2d6a4f' }}>
+            A due passi da Humanitas.
+          </h2>
+          <p className="text-[#3a3a35] leading-relaxed max-w-md mx-auto mb-5">
+            Casa Ania si trova a soli <span className="font-semibold text-[#1f3d2f]">140 metri</span> dalla palazzina 8 di Humanitas.
+            In circa <span className="font-semibold text-[#1f3d2f]">2 minuti a piedi</span>{' '}raggiungi l&apos;ingresso, senza bisogno di auto, taxi o mezzi pubblici.
           </p>
-          <ul className="text-left text-[#3a3a35] leading-relaxed space-y-4">
-            <li className="flex gap-3"><Footprints size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>A piedi (2 minuti):</strong> l&apos;ingresso più vicino è quello della palazzina 8. Molti ospiti tornano in camera durante gli orari di chiusura delle visite.</span></li>
-            <li className="flex gap-3"><Car size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In auto:</strong> dalla Tangenziale Ovest (A50) uscita Rozzano–Quinto de&apos; Stagni, oppure dalla A7 Milano–Genova uscita Assago/Milanofiori, poi indicazioni per Humanitas/Via Manzoni. Parcheggio: due piazzole gratuite a 150 metri, oppure il parcheggio Humanitas a pagamento, custodito 24 ore su 24.</span></li>
-            <li className="flex gap-3"><Plane size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In aereo:</strong> Viaggiare per una visita medica è già abbastanza faticoso. Al trasferimento pensiamo noi: i nostri autisti di fiducia ti aspettano a Malpensa, Linate, Orio al Serio o alla stazione, e ti portano direttamente da noi. Scrivici su WhatsApp con data e orario di arrivo e ti confermiamo subito prezzo e posto. Meglio con qualche giorno di anticipo.</span></li>
-            <li className="flex gap-3"><TrainFront size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In treno:</strong> Milano Rogoredo è la stazione più comoda, collegata a Milano Centrale in pochi minuti (metropolitana M3). Da lì puoi richiedere la nostra navetta o proseguire in taxi (15–20 minuti).</span></li>
-            <li className="flex gap-3"><Bus size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>In autobus:</strong> le autostazioni di San Donato e Lampugnano sono collegate a Casa Ania con il nostro servizio navetta su richiesta.</span></li>
-            <li className="flex gap-3"><TrainFrontTunnel size={20} strokeWidth={1.6} className="text-green-700 shrink-0 mt-1" aria-hidden="true" /><span><strong>Con i mezzi pubblici:</strong> bus 230 da M2 Abbiategrasso fino a Via Manzoni (Ospedale); fermano anche le linee 220 e 328. Il tram 15 arriva in centro, ma richiede circa 20 minuti a piedi.</span></li>
-          </ul>
-          <div className="text-center mt-6">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-6 py-3 rounded-full text-sm">
-              <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Richiedi la navetta su WhatsApp
-            </a>
+          <div className="flex items-center justify-center gap-6 mb-6 text-sm font-semibold text-[#1f3d2f]">
+            <span className="flex items-center gap-1.5"><MapPin size={16} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> 140 metri</span>
+            <span className="flex items-center gap-1.5"><Footprints size={16} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> 2 minuti a piedi</span>
           </div>
-          <p className="text-center mt-6">
+          <div className="rounded-xl overflow-hidden h-52 md:h-72">
+            <iframe
+              src="https://www.google.com/maps?q=Via+Liguria+26+Pieve+Emanuele+Milano&output=embed"
+              className="w-full h-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Mappa Casa Ania Rozzano"
+            />
+          </div>
+          <a href="https://maps.google.com/?q=Via+Liguria+26+Pieve+Emanuele+Milano" target="_blank" rel="noopener noreferrer"
+            style={{ textUnderlineOffset: '4px' }}
+            className="inline-block mt-4 text-sm text-green-700 font-semibold underline">
+            Apri in Google Maps →
+          </a>
+          <p className="text-sm text-[#3a3a35] mt-3">Parcheggio gratuito a circa 150 metri.</p>
+          <p className="mt-2">
             <Link href="/dormire-vicino-humanitas" style={{ textUnderlineOffset: '4px' }}
               className="text-sm text-green-700 font-semibold underline">
-              Dormire vicino a Humanitas: la guida per chi arriva da fuori →
+              Come arrivare a Casa Ania →
             </Link>
           </p>
         </div>
