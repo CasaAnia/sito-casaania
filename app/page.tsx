@@ -250,19 +250,19 @@ export default function Home() {
       </section>
 
       {/* CHECK-IN FLESSIBILE */}
-      <section className="py-12 px-4">
+      <section className="pt-8 pb-4 md:py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-6 underline">Check-in flessibile</h2>
-          <p className="text-left text-[#3a3a35] text-[18px] font-semibold leading-[1.4] mb-3.5">
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Check-in flessibile</h2>
+          <p className="text-left text-[#3a3a35] text-[18px] font-semibold leading-[1.4] mb-2">
             Check-in dalle 15:00 alle 20:00
           </p>
-          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-7">
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
             Se la camera è pronta prima, ti avvisiamo noi: quando possibile puoi entrare anche in anticipo, <strong className="font-semibold">senza costi aggiuntivi</strong>.
           </p>
-          <p className="text-left text-green-700 text-[17px] font-semibold leading-[1.4] mb-2.5">
+          <p className="text-left text-green-700 text-[17px] font-semibold leading-[1.4] mb-2">
             Pensi di arrivare dopo le 20:00?
           </p>
-          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-5">
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-3">
             Nessun problema: avvisaci in anticipo e organizzeremo con te la modalità di accesso.
           </p>
           <a href={WA_CHECKIN_LINK} target="_blank" rel="noopener noreferrer"
@@ -273,9 +273,9 @@ export default function Home() {
       </section>
 
       {/* SERVIZIO NAVETTA */}
-      <section className="py-12 px-4">
+      <section className="py-4 md:py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-6 underline">Servizio navetta</h2>
+          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Servizio navetta</h2>
           <p className="text-left text-[#3a3a35] leading-relaxed">
             Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
@@ -284,9 +284,9 @@ export default function Home() {
       </section>
 
       {/* ACCESSIBILITÀ */}
-      <section id="accessibilita" className="py-12 px-4">
+      <section id="accessibilita" className="pt-4 pb-8 md:py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{ textUnderlineOffset: '6px', color: '#2d6a4f' }} className="font-display font-normal text-center text-lg uppercase tracking-wider mb-6 underline">Accessibilità</h2>
+          <h2 style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Accessibilità</h2>
           <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
             Casa Ania dispone di <strong className="font-semibold">rampa di accesso</strong> e <strong className="font-semibold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-semibold">ad eccezione del bagno privato della camera Amelia</strong>.
           </p>
