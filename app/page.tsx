@@ -235,7 +235,7 @@ export default function Home() {
                     </div>
                   )}
                 </Link>
-                <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
+                <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-0 md:pt-4' : 'pt-5 md:pt-9'}`}>
                   <div className="flex items-start justify-between mb-3 md:mb-8">
                     <h3 className="font-display text-[28px] md:text-xl font-semibold leading-[1.15] tracking-wide transition-colors group-hover/desc:text-green-700" style={{ color: '#2d6a4f' }}>{room.name}</h3>
                     {room.badge && (
@@ -253,7 +253,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="mx-4 mt-5 pb-2 flex flex-col gap-2 md:flex-row-reverse md:items-center md:justify-between md:gap-3">
-                  <Link href={`/prenota?room=${room.roomId}`} className="inline-flex items-center justify-center h-[52px] md:h-auto rounded-md bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] md:text-sm tracking-wide md:px-5 md:py-3 whitespace-nowrap">
+                  <Link href={`/prenota?room=${room.roomId}`} className="inline-flex items-center justify-center w-[88%] self-center md:w-auto md:self-auto h-[52px] md:h-auto rounded-md bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] md:text-sm tracking-wide md:px-5 md:py-3 whitespace-nowrap">
                     VERIFICA DISPONIBILITÀ
                   </Link>
                   <Link href={room.href} className="group self-center md:self-auto text-[15px] text-green-700 font-medium py-2 inline-flex items-center gap-1">
