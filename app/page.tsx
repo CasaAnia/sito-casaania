@@ -6,7 +6,7 @@ import RecensioniSlider from './components/RecensioniSlider'
 import BannerCarosello from './components/BannerCarosello'
 import ParallaxController from './components/ParallaxController'
 import WhatsAppFab from './components/WhatsAppFab'
-import { MapPin, Phone, MessageCircle, Footprints } from 'lucide-react'
+import { MapPin, MessageCircle, Footprints } from 'lucide-react'
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -363,44 +363,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DIVISORE */}
+      {/* CHIUSURA: A 140 PASSI DA CHI AMI */}
       <section className="py-12 px-4">
-        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
-          A 140 passi da chi ami.
-        </p>
-      </section>
-
-      {/* CONTATTI / PRENOTAZIONE */}
-      <section style={{ backgroundColor: '#2d6a4f' }} className="py-14 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-display font-semibold text-2xl mb-2" style={{ color: '#f5efe4' }}>Prenota il tuo soggiorno</h2>
-          <p className="text-sm mb-8" style={{ color: '#c9d6cc' }}>Contattaci direttamente — ti risponde Ania.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-sm mx-auto">
-            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-              className="flex-1 font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition active:scale-[0.97]"
-              style={{ backgroundColor: '#f5efe4', color: '#1f3d2f' }}>
-              <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> WhatsApp
+        <div className="max-w-2xl mx-auto text-center">
+          <p className="font-display italic mb-3" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+            A 140 passi da chi ami.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed max-w-md mx-auto mb-6">
+            Quattro camere, una casa tranquilla e Humanitas a due minuti a piedi.
+          </p>
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
+            <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Scrivici su WhatsApp
+          </a>
+          <p className="text-sm text-[#6f6a5e] mt-4">
+            Oppure chiamaci al{' '}
+            <a href={TEL_LINK} style={{ textUnderlineOffset: '4px' }} className="text-green-700 font-semibold underline whitespace-nowrap">
+              342 700 4354
             </a>
-            <a href={TEL_LINK}
-              className="flex-1 border font-bold py-4 rounded-2xl text-sm flex items-center justify-center gap-2 transition active:scale-[0.97]"
-              style={{ borderColor: '#c9d6cc', color: '#f5efe4' }}>
-              <Phone size={18} strokeWidth={2} aria-hidden="true" /> Chiama
-            </a>
-          </div>
-          <p className="text-xs mt-6" style={{ color: '#e0ddd0' }}>Check-in: 15:00–20:00 · Check-out: entro le 10:00</p>
+          </p>
         </div>
       </section>
 
       {/* SEI GIÀ STATO NOSTRO OSPITE? */}
-      <section className="py-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
-          <p className="text-ink text-sm max-w-md mx-auto mb-4">
-            Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
+      <section className="pb-10 px-4">
+        <div className="max-w-2xl mx-auto text-center border-t border-gray-200 pt-8">
+          <p className="font-display text-lg font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
+          <p className="text-sm text-[#6f6a5e] max-w-md mx-auto mb-4">
+            La tua recensione può essere utile a chi sta cercando un posto vicino a Humanitas.
           </p>
           <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
-            style={{ backgroundColor: '#2d6a4f' }}
-            className="inline-block hover:opacity-90 transition-opacity text-white font-semibold px-6 py-2.5 rounded-full text-sm">
+            style={{ borderColor: '#2d6a4f', color: '#2d6a4f', textUnderlineOffset: '4px' }}
+            className="inline-block border hover:bg-green-50 transition px-6 py-2.5 rounded-full text-sm font-semibold">
             Lascia una recensione su Google
           </a>
           <div className="hidden md:flex flex-col items-center mt-4">
