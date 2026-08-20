@@ -15,7 +15,6 @@ const pages: { path: string; priority: number; changeFrequency: MetadataRoute.Si
   { path: '/camere/singola', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/prenota', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/recensioni', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/info', priority: 0.6, changeFrequency: 'monthly' },
   { path: '/privacy', priority: 0.2, changeFrequency: 'yearly' },
   { path: '/cookie', priority: 0.2, changeFrequency: 'yearly' },
 ]
