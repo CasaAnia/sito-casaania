@@ -283,40 +283,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACCESSIBILITÀ */}
-      <section id="accessibilita" className="pt-4 pb-8 md:py-12 px-4">
-        <div className="max-w-2xl mx-auto">
-          <h2 style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Accessibilità</h2>
-          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
-            Casa Ania dispone di <strong className="font-semibold">rampa di accesso</strong> e <strong className="font-semibold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-semibold">ad eccezione del bagno privato della camera Amelia</strong>.
-          </p>
-          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-5">
-            Se hai esigenze specifiche di mobilità, scrivici prima del soggiorno: ti aiutiamo a scegliere la camera più adatta.
-          </p>
-          <Link href="/dormire-vicino-humanitas#accessibilita" style={{ textUnderlineOffset: '4px' }}
-            className="group inline-block text-sm text-green-700 font-semibold underline">
-            Scopri tutti i dettagli sull&apos;accessibilità <span className="inline-block motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
-          </Link>
-        </div>
-      </section>
-
-      {/* DIVISORE */}
-      <section className="py-12 px-4">
-        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
-          L&apos;ospedale a 2 minuti. Al resto pensiamo noi.
-        </p>
-      </section>
-
-      {/* CTA INTERMEDIA */}
-      <section className="pb-12 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
-            <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Scrivici su WhatsApp
-          </a>
-        </div>
-      </section>
-
       {/* A DUE PASSI DA HUMANITAS */}
       <section id="dove-siamo" className="py-12 px-4">
         <div className="max-w-2xl mx-auto text-center">
@@ -352,6 +318,40 @@ export default function Home() {
               Come arrivare a Casa Ania →
             </Link>
           </p>
+        </div>
+      </section>
+
+      {/* ACCESSIBILITÀ */}
+      <section id="accessibilita" className="pt-4 pb-8 md:py-12 px-4">
+        <div className="max-w-2xl mx-auto">
+          <h2 style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Accessibilità</h2>
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
+            Casa Ania dispone di <strong className="font-semibold">rampa di accesso</strong> e <strong className="font-semibold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-semibold">ad eccezione del bagno privato della camera Amelia</strong>.
+          </p>
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-5">
+            Se hai esigenze specifiche di mobilità, scrivici prima del soggiorno: ti aiutiamo a scegliere la camera più adatta.
+          </p>
+          <Link href="/dormire-vicino-humanitas#accessibilita" style={{ textUnderlineOffset: '4px' }}
+            className="group inline-block text-sm text-green-700 font-semibold underline">
+            Scopri tutti i dettagli sull&apos;accessibilità <span className="inline-block motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* DIVISORE */}
+      <section className="py-12 px-4">
+        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
+          L&apos;ospedale a 2 minuti. Al resto pensiamo noi.
+        </p>
+      </section>
+
+      {/* CTA INTERMEDIA */}
+      <section className="pb-12 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
+            <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Scrivici su WhatsApp
+          </a>
         </div>
       </section>
 
