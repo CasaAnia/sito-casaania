@@ -206,6 +206,14 @@ export default function Home() {
           <h2 className="font-display italic font-medium text-center px-5 mx-auto max-w-md md:max-w-xl mb-7 md:mb-8 text-[28px] md:text-[36px] leading-[1.15]" style={{ color: '#2d6a4f' }}>
             Non un albergo. Una casa.
           </h2>
+          <div className="px-7 sm:px-8 mx-auto max-w-[700px] mb-10 md:mb-12">
+            <p className="text-[17px] font-normal leading-[1.6] text-left text-[#3a3a35] mb-5">
+              Qui trovi la tranquillità di un ambiente curato, la libertà di sentirti a tuo agio e soprattutto una persona su cui poter contare.
+            </p>
+            <p className="text-[17px] font-medium leading-[1.6] text-left text-[#3a3a35]">
+              Perché quando sei lontano da casa per stare vicino a chi ami, anche le piccole attenzioni fanno la differenza.
+            </p>
+          </div>
           <Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
             {rooms.map((room, i) => (
