@@ -157,9 +157,9 @@ export default function Recensioni() {
       {/* TITOLO */}
       <section className="pt-10 pb-4 px-4 text-center">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-4xl font-semibold mb-3 leading-tight tracking-wide">
+          <h1 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-4xl font-semibold mb-3 leading-tight tracking-wide">
             Cosa dicono di noi
-          </h2>
+          </h1>
           <p className="text-[#3a3a35]">
             <span style={{ color: '#2d6a4f' }}>★★★★★</span> <strong>5,0 su Google</strong>
           </p>
