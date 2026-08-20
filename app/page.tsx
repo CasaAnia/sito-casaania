@@ -338,15 +338,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DIVISORE */}
-      <section className="py-12 px-4">
-        <p className="font-display italic text-center" style={{ fontSize: '22px', color: '#2d6a4f' }}>
-          L&apos;ospedale a 2 minuti. Al resto pensiamo noi.
-        </p>
-      </section>
-
       {/* CTA INTERMEDIA */}
-      <section className="pb-12 px-4">
+      <section className="pt-8 pb-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
