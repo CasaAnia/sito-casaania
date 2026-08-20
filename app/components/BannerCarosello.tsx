@@ -51,8 +51,7 @@ export default function BannerCarosello() {
         <div className="relative z-10 w-full hero-in">
           <div className="px-7 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
             <h1
-              className="font-display font-bold text-white text-[29px] leading-[1.15] md:text-[48px] md:leading-[1.1] max-w-[700px]"
-              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 2px 16px rgba(0,0,0,0.45)' }}>
+              className="font-display font-semibold md:font-bold text-white text-[35px] leading-[1.1] tracking-[-0.2px] md:tracking-normal md:text-[48px] md:leading-[1.1] max-w-[700px] [text-shadow:0_2px_8px_rgba(0,0,0,0.20)] md:[text-shadow:0_1px_3px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.45)]">
               Casa Ania, a soli 140 metri da Humanitas
             </h1>
             <div className="hidden md:block">
@@ -83,10 +82,10 @@ export default function BannerCarosello() {
       </section>
       {/* Su mobile il resto del testo sta sotto la foto, così la camera resta luminosa */}
       <div className="md:hidden px-7 pt-5 pb-1 hero-in" style={{ backgroundColor: '#f9f6f1' }}>
-        <p className="text-[#3a3a35] text-[17px] leading-normal">
+        <p className="text-[#3a3a35] text-[18px] font-normal leading-[1.55]">
           Una casa accogliente e tranquilla dove sentirti vicino a chi ami, proprio quando ne hai più bisogno.
         </p>
-        <p className="flex items-center gap-2 text-[#1f3d2f] font-semibold text-[15px] mt-[14px]">
+        <p className="flex items-center gap-2 text-[#1f3d2f] font-semibold text-[15px] mt-[26px]">
           <MapPin size={18} strokeWidth={2.25} aria-hidden="true" />
           Circa 2 minuti a piedi da Humanitas
         </p>
