@@ -111,8 +111,8 @@ export default function DormireVicinoHumanitas() {
         <section className="mb-10">
           <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-3">Quanto costa dormire in zona</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
-            Intorno all&apos;ospedale una camera doppia costa in genere fra i 90 e i 120 euro a notte, e negli
-            alberghi della zona si superano abitualmente i 100. Da noi:
+            I prezzi degli alloggi vicino a Humanitas cambiano in base al periodo e alla struttura. Da Casa Ania
+            i prezzi sono semplici e chiari:
           </p>
           <ul className="text-[#3a3a35] leading-relaxed space-y-1 mb-3">
             <li>• camera singola: <strong>70 €</strong> a notte</li>
@@ -228,8 +228,8 @@ export default function DormireVicinoHumanitas() {
         <section className="border-t border-gray-200 pt-8 text-center">
           <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-2">Casa Ania</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-5">
-            Quattro camere a 140 metri da Humanitas, in una casa di famiglia. Se hai una data, scrivici: ti diciamo
-            subito se siamo liberi, senza impegno.
+            Casa Ania è un affittacamere con quattro camere a 140 metri da Humanitas, in una casa di famiglia. Se
+            hai una data, scrivici: ti diciamo subito se siamo liberi, senza impegno.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center mb-6">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
@@ -241,9 +241,17 @@ export default function DormireVicinoHumanitas() {
               {PHONE_DISPLAY}
             </a>
           </div>
-          <p className="text-sm text-[#6f6a5e]">
-            <Link href="/" className="text-green-700 font-semibold underline">Guarda le camere</Link>
+          <p className="text-sm text-[#6f6a5e] mb-2">
+            Scopri le camere:{' '}
+            <Link href="/camere/ambra" className="text-green-700 font-semibold underline">Ambra</Link>
             {' · '}
+            <Link href="/camere/allegra" className="text-green-700 font-semibold underline">Allegra</Link>
+            {' · '}
+            <Link href="/camere/lena" className="text-green-700 font-semibold underline">Lena</Link>
+            {' · '}
+            <Link href="/camere/singola" className="text-green-700 font-semibold underline">Amelia</Link>
+          </p>
+          <p className="text-sm text-[#6f6a5e]">
             <Link href="/recensioni" className="text-green-700 font-semibold underline">Leggi le recensioni</Link>
           </p>
         </section>
