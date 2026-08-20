@@ -178,7 +178,7 @@ export default function Home() {
             <p className="text-[15px] md:text-base font-medium text-[#1f3d2f] mb-3">
               <span style={{ color: '#2d6a4f' }}>★★★★★</span> <span className="font-semibold">5,0 su Google</span>
             </p>
-            <h2 className="font-display font-semibold text-[29px] md:text-[38px] leading-[1.15]" style={{ color: '#1f3d2f' }}>
+            <h2 className="font-display font-semibold text-[26px] md:text-[38px] leading-[1.12] md:leading-[1.15]" style={{ color: '#1f3d2f' }}>
               Le parole dei nostri ospiti
             </h2>
           </div>
@@ -201,9 +201,9 @@ export default function Home() {
       </section>
 
       {/* CAMERE */}
-      <section className="pt-12 md:pt-14 pb-8">
+      <section className="pt-10 md:pt-14 pb-8">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-display italic font-medium text-center px-5 mx-auto max-w-md md:max-w-xl mb-7 md:mb-8 text-[30px] md:text-[36px] leading-[1.15]" style={{ color: '#2d6a4f' }}>
+          <h2 className="font-display italic font-medium text-center px-5 mx-auto max-w-md md:max-w-xl mb-7 md:mb-8 text-[28px] md:text-[36px] leading-[1.15]" style={{ color: '#2d6a4f' }}>
             Non un albergo. Una casa.
           </h2>
           <Reveal>
