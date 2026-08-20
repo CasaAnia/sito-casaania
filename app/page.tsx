@@ -214,8 +214,16 @@ export default function Home() {
               Perché quando sei lontano da casa per stare vicino a chi ami, anche le piccole attenzioni fanno la differenza.
             </p>
           </div>
+          <div className="px-7 mb-9 md:mb-10">
+            <h2 className="font-display font-semibold text-center text-[31px] md:text-[38px] leading-[1.15] mb-3" style={{ color: '#1f3d2f' }}>
+              Le nostre camere
+            </h2>
+            <p className="text-center text-[16px] font-normal leading-[1.5] text-[#3a3a35] max-w-md md:max-w-xl mx-auto">
+              Quattro camere, ognuna diversa. Scegli quella più adatta al tuo soggiorno.
+            </p>
+          </div>
           <Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-x-8 md:gap-y-0">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
                 <Link href={room.href} className="group relative block h-80 overflow-hidden bg-gray-100">
@@ -228,8 +236,8 @@ export default function Home() {
                   )}
                 </Link>
                 <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-4' : 'pt-9'}`}>
-                  <div className="flex items-start justify-between mb-8">
-                    <h3 className="font-display text-xl font-semibold text-[#3a3a35] tracking-wide transition-colors group-hover/desc:text-green-700">{room.name}</h3>
+                  <div className="flex items-start justify-between mb-3 md:mb-8">
+                    <h3 className="font-display text-[28px] md:text-xl font-semibold leading-[1.15] tracking-wide transition-colors group-hover/desc:text-green-700" style={{ color: '#2d6a4f' }}>{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
@@ -244,12 +252,12 @@ export default function Home() {
                     </div>
                   ))}
                 </div>
-                <div className="mx-4 mt-5 pb-2 flex items-center justify-between gap-3">
-                  <Link href={room.href} className="group text-base text-green-700 font-semibold py-2.5 inline-flex items-center gap-1">
-                    Scopri di più <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
+                <div className="mx-4 mt-5 pb-2 flex flex-col gap-2 md:flex-row-reverse md:items-center md:justify-between md:gap-3">
+                  <Link href={`/prenota?room=${room.roomId}`} className="inline-flex items-center justify-center h-[52px] md:h-auto rounded-md bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] md:text-sm tracking-wide md:px-5 md:py-3 whitespace-nowrap">
+                    VERIFICA DISPONIBILITÀ
                   </Link>
-                  <Link href={`/prenota?room=${room.roomId}`} className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-5 py-3 rounded-full text-sm uppercase whitespace-nowrap">
-                    Prenota ora
+                  <Link href={room.href} className="group self-center md:self-auto text-[15px] text-green-700 font-medium py-2 inline-flex items-center gap-1">
+                    Scopri la camera <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
                   </Link>
                 </div>
               </div>
