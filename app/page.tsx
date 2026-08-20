@@ -109,33 +109,6 @@ const faqs = [
   },
 ]
 
-const accessItems = [
-  {
-    label: 'Ingresso del palazzo',
-    text: "I gradini all'ingresso si superano con una rampa mobile. Non è motorizzata: serve una persona che spinga la carrozzina. Comunicaci l'orario di arrivo e troverai qualcuno ad accoglierti alla rampa.",
-    iconColor: '#2d6a4f',
-    icon: <><path d="M4 20h16" /><path d="M4 20v-4h4v-4h4v-4h4V4h4" /></>,
-  },
-  {
-    label: 'Ascensore',
-    text: "L'appartamento è al quarto piano ed è servito dall'ascensore.",
-    iconColor: '#2d6a4f',
-    icon: <><rect x="4" y="3" width="16" height="18" rx="1.5" /><path d="M12 3v18" /><path d="M8 10l-1.5 2L8 14" transform="rotate(90 7.5 12)" /><path d="M16 14l1.5-2L16 10" transform="rotate(90 16.5 12)" /></>,
-  },
-  {
-    label: "All'interno",
-    text: 'La carrozzina si muove liberamente nel corridoio, negli spazi comuni e nelle camere.',
-    iconColor: '#2d6a4f',
-    icon: <><circle cx="12" cy="12" r="3" /><path d="M12 5V2M12 22v-3M5 12H2M22 12h-3" /><path d="M10.5 3.5L12 2l1.5 1.5M10.5 20.5L12 22l1.5-1.5M3.5 10.5L2 12l1.5 1.5M20.5 10.5L22 12l-1.5 1.5" /></>,
-  },
-  {
-    label: 'Unica limitazione',
-    text: 'La camera singola è la più piccola della casa e il suo bagno privato non è raggiungibile in carrozzina. Per un soggiorno in carrozzina consigliamo le altre camere.',
-    iconColor: '#C58A67',
-    icon: <><circle cx="12" cy="12" r="9" /><path d="M12 8v5" /><circle cx="12" cy="16.5" r="0.5" fill="#C58A67" /></>,
-  },
-]
-
 export const metadata = {
   alternates: { canonical: '/' },
 }
@@ -296,32 +269,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACCESSIBILITÀ */}
-      <section id="accessibilita" className="py-12 px-4" style={{ backgroundColor: '#FBF9F4' }}>
-        <div className="max-w-2xl mx-auto">
-          <h2 style={{ textUnderlineOffset: '6px', color: '#1f3d2f' }} className="font-display font-normal text-center text-lg uppercase tracking-wider mb-6 underline">Accessibilità</h2>
-          <p className="text-left leading-relaxed mb-6" style={{ color: '#2d6a4f' }}>
-            Ogni esigenza è diversa. Per questo ti descriviamo la casa nel dettaglio, e sei tu a giudicare se è adatta.
-          </p>
-          <dl className="space-y-5">
-            {accessItems.map((item) => (
-              <div key={item.label} className="flex gap-3">
-                <svg className="shrink-0 mt-0.5" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={item.iconColor} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  {item.icon}
-                </svg>
-                <div className="text-left leading-relaxed" style={{ color: '#1f3d2f' }}>
-                  <dt className="font-bold inline">{item.label}</dt>
-                  <dd className="inline"> — {item.text}</dd>
-                </div>
-              </div>
-            ))}
-          </dl>
-          <p className="text-left leading-relaxed mt-6" style={{ color: '#1f3d2f' }}>
-            Ti servono le misure esatte di porte, ascensore o bagno? <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-green-700 font-semibold underline">Scrivici</a> o <a href={TEL_LINK} className="text-green-700 font-semibold underline">chiamaci</a>: te le forniamo volentieri.
-          </p>
-        </div>
-      </section>
-
       {/* SERVIZIO NAVETTA */}
       <section className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
@@ -330,6 +277,23 @@ export default function Home() {
             Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
           </p>
+        </div>
+      </section>
+
+      {/* ACCESSIBILITÀ */}
+      <section id="accessibilita" className="py-12 px-4">
+        <div className="max-w-2xl mx-auto">
+          <h2 style={{ textUnderlineOffset: '6px', color: '#2d6a4f' }} className="font-display font-normal text-center text-lg uppercase tracking-wider mb-6 underline">Accessibilità</h2>
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
+            Casa Ania dispone di <strong className="font-semibold">rampa di accesso</strong> e <strong className="font-semibold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-semibold">ad eccezione del bagno privato della camera Amelia</strong>.
+          </p>
+          <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-5">
+            Se hai esigenze specifiche di mobilità, scrivici prima del soggiorno: ti aiutiamo a scegliere la camera più adatta.
+          </p>
+          <Link href="/dormire-vicino-humanitas#accessibilita" style={{ textUnderlineOffset: '4px' }}
+            className="group inline-block text-sm text-green-700 font-semibold underline">
+            Scopri tutti i dettagli sull&apos;accessibilità <span className="inline-block motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1 group-active:translate-x-1">→</span>
+          </Link>
         </div>
       </section>
 

@@ -201,15 +201,15 @@ export default function DormireVicinoHumanitas() {
           </ul>
         </section>
 
-        <section className="mb-10">
+        <section id="accessibilita" className="mb-10 scroll-mt-24">
           <h2 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-3">Se c&apos;è una carrozzina</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             I gradini all&apos;ingresso del palazzo si superano con una rampa mobile: non è motorizzata, quindi serve
             qualcuno che spinga: se ci dici l&apos;orario di arrivo, troverai una persona ad aspettarti alla rampa.
             L&apos;appartamento è al quarto piano ed è servito dall&apos;ascensore, e all&apos;interno la carrozzina
-            si muove liberamente nel corridoio e nelle camere. L&apos;unica eccezione è la camera singola: è la più
-            piccola e il suo bagno non è raggiungibile in carrozzina, quindi in quel caso conviene orientarsi sulle
-            altre.
+            si muove liberamente nel corridoio e nelle camere. L&apos;unica limitazione riguarda la camera Amelia:
+            la camera è accessibile, ma il suo bagno privato non è raggiungibile in carrozzina. In questo caso
+            consigliamo di scegliere una delle altre camere.
           </p>
         </section>
 
