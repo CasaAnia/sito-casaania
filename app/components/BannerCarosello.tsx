@@ -45,14 +45,14 @@ export default function BannerCarosello() {
         ))}
         {/* Su mobile sfumatura solo in basso dietro al titolo; su desktop gradiente laterale dietro al testo */}
         <div
-          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_45%,rgba(0,0,0,0.55)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.32)_35%,rgba(0,0,0,0.08)_70%,rgba(0,0,0,0.02)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0)_55%,rgba(0,0,0,0.18)_80%,rgba(0,0,0,0.38)_100%)] md:bg-[linear-gradient(90deg,rgba(0,0,0,0.45)_0%,rgba(0,0,0,0.32)_35%,rgba(0,0,0,0.08)_70%,rgba(0,0,0,0.02)_100%)]"
           aria-hidden="true"
         />
         <div className="relative z-10 w-full hero-in">
           <div className="px-6 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
             <h1
               className="font-display font-bold text-white text-[32px] leading-[1.15] md:text-[48px] md:leading-[1.1] max-w-[700px]"
-              style={{ textShadow: '0 2px 14px rgba(0,0,0,0.4)' }}>
+              style={{ textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 2px 16px rgba(0,0,0,0.45)' }}>
               Casa Ania, a soli 140 metri da Humanitas
             </h1>
             <div className="hidden md:block">
