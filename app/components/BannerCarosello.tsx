@@ -49,9 +49,9 @@ export default function BannerCarosello() {
           aria-hidden="true"
         />
         <div className="relative z-10 w-full hero-in">
-          <div className="px-6 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
+          <div className="px-7 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
             <h1
-              className="font-display font-bold text-white text-[32px] leading-[1.15] md:text-[48px] md:leading-[1.1] max-w-[700px]"
+              className="font-display font-bold text-white text-[29px] leading-[1.15] md:text-[48px] md:leading-[1.1] max-w-[700px]"
               style={{ textShadow: '0 1px 3px rgba(0,0,0,0.45), 0 2px 16px rgba(0,0,0,0.45)' }}>
               Casa Ania, a soli 140 metri da Humanitas
             </h1>
@@ -82,7 +82,7 @@ export default function BannerCarosello() {
         )}
       </section>
       {/* Su mobile il resto del testo sta sotto la foto, così la camera resta luminosa */}
-      <div className="md:hidden px-6 pt-5 pb-1 hero-in" style={{ backgroundColor: '#f9f6f1' }}>
+      <div className="md:hidden px-7 pt-5 pb-1 hero-in" style={{ backgroundColor: '#f9f6f1' }}>
         <p className="text-[#3a3a35] text-[17px] leading-normal">
           Una casa accogliente e tranquilla dove sentirti vicino a chi ami, proprio quando ne hai più bisogno.
         </p>
