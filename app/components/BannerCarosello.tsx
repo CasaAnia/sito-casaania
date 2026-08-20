@@ -51,7 +51,7 @@ export default function BannerCarosello() {
         <div className="relative z-10 w-full hero-in">
           <div className="px-7 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
             <h1
-              className="font-display font-semibold md:font-bold text-white text-[35px] leading-[1.1] tracking-[-0.2px] md:tracking-normal md:text-[48px] md:leading-[1.1] max-w-[700px] [text-shadow:0_2px_8px_rgba(0,0,0,0.20)] md:[text-shadow:0_1px_3px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.45)]">
+              className="font-display font-semibold md:font-bold text-white text-[32px] leading-[1.1] tracking-[-0.2px] md:tracking-normal md:text-[48px] md:leading-[1.1] max-w-[700px] [text-shadow:0_2px_8px_rgba(0,0,0,0.20)] md:[text-shadow:0_1px_3px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.45)]">
               Casa Ania, a soli 140 metri da Humanitas
             </h1>
             <div className="hidden md:block">
