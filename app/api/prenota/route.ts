@@ -378,9 +378,11 @@ export async function POST(req: NextRequest) {
   // cliente che ha già soggiornato NON va reinserito: si riusa la sua scheda,
   // altrimenti l'insert fallisce e il cliente di ritorno non può prenotare
   // (successo davvero: "Errore creazione ospite" al test di Ania).
-  // La scheda esistente non viene rinominata: se il nome nel form è diverso,
-  // fa fede comunque la notifica push, che riporta il nome digitato.
+  // La scheda esistente non viene rinominata: il nome digitato nel form viene
+  // salvato sulla prenotazione (bookings.guest_name), che nel gestionale vince
+  // sul nome della scheda per QUELLA prenotazione.
   const phoneTrimmed = String(phone).trim()
+  const nomeForm = `${String(firstName).trim()} ${String(lastName).trim()}`.replace(/\s+/g, ' ')
   let guestId: string | null = null
 
   const { data: existingGuest } = await supabase
@@ -394,7 +396,7 @@ export async function POST(req: NextRequest) {
   } else {
     const { data: newGuest, error: guestErr } = await supabase
       .from('guests')
-      .insert({ full_name: `${String(firstName).trim()} ${String(lastName).trim()}`, phone: phoneTrimmed })
+      .insert({ full_name: nomeForm, phone: phoneTrimmed })
       .select('id')
       .single()
     if (newGuest) {
@@ -424,6 +426,9 @@ export async function POST(req: NextRequest) {
     // gratis e invisibile al cliente), extra_bed_total solo quelli fatturati.
     return {
       guest_id: guestId,
+      // Nome di QUESTA prenotazione, come digitato nel form: nel gestionale
+      // vince sul nome della scheda cliente riusata per telefono
+      guest_name: nomeForm,
       room_id: seg.roomId,
       check_in: seg.checkIn,
       check_out: seg.checkOut,
@@ -440,7 +445,13 @@ export async function POST(req: NextRequest) {
     }
   })
 
-  const { error: bookErr } = await supabase.from('bookings').insert(bookingsToInsert)
+  let { error: bookErr } = await supabase.from('bookings').insert(bookingsToInsert)
+  if (bookErr) {
+    // Colonna guest_name non ancora migrata sul DB: si salva senza, come prima.
+    // Meglio una prenotazione col solo nome della scheda che una persa.
+    const senzaNome = bookingsToInsert.map(({ guest_name: _gn, ...rest }) => rest)
+    ;({ error: bookErr } = await supabase.from('bookings').insert(senzaNome))
+  }
   if (bookErr) {
     return NextResponse.json({ error: 'Errore salvataggio prenotazione' }, { status: 500 })
   }
