@@ -324,6 +324,12 @@ export default function PrenotaClient() {
   // un'altra camera, va mostrata anche quella (voluto da Ania, ago 2026)
   const dupSameRoom = !selectedRoom || solution.some(seg => seg.roomId === selectedRoom.id)
   const dupIdentical = dupSameDates && dupSameRoom
+  // Nel WhatsApp del doppione vanno SEMPRE tutte e due le richieste complete
+  // (camera + date di ciascuna): con sovrapposizione parziale le date sono
+  // diverse e "per queste date" sarebbe sbagliato (voluto da Ania, ago 2026)
+  const dupPrevSummary = solution
+    .map(seg => `la ${seg.roomName}, dal ${formatDate(seg.checkIn)} al ${formatDate(seg.checkOut)}`)
+    .join(' e ')
 
   const requestSummary = `${form.numGuests} ${Number(form.numGuests) === 1 ? 'persona' : 'persone'}, dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}`
 
@@ -837,13 +843,14 @@ export default function PrenotaClient() {
 
             {duplicate && (
               <p className="text-sm text-[#3a3a35] mb-4">
-                Vuoi cambiare le date o la camera? <strong className="text-black">Scrivilo ad Ania su WhatsApp</strong> usando il pulsante qui sotto: ti aiuterà a modificare la richiesta in un attimo.
+                <strong className="text-black">Hai già inviato una richiesta con date che coincidono o si sovrappongono a queste.</strong><br />
+                Se vuoi cambiare camera, modificare le date oppure chiarire quale richiesta tenere, <strong className="text-black">scrivi ad Ania su WhatsApp</strong> usando il pulsante qui sotto. Ti aiuterà a sistemare tutto.
               </p>
             )}
             <a href={duplicate
               ? (dupIdentical
-                  ? waLink(`Ciao Ania! Mi chiamo ${form.firstName} ${form.lastName}, ti ho già inviato una richiesta dal sito ${solution.length === 1 ? `per la camera ${solution[0].roomName}` : 'per il mio soggiorno'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}, ma vorrei modificare le date o la camera.`)
-                  : waLink(`Ciao Ania! Ho già una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, e ora vorrei ${selectedRoom ? selectedRoom.name : 'una camera'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste?`))
+                  ? waLink(`Ciao Ania! Ho appena inviato nuovamente la mia richiesta per ${dupPrevSummary}. Vedo che ne avevo già inviata una uguale. Puoi considerare valida una sola richiesta. Grazie!`)
+                  : waLink(`Ciao Ania! Ho già una richiesta per ${dupPrevSummary}, e ora ho inviato una nuova richiesta per ${selectedRoom ? `la ${selectedRoom.name}` : 'una camera'}, dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste? Grazie!`))
               : waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}${!multiRoom && solution[0]?.roomName ? `, per la ${solution[0].roomName}` : ''}. Rimango in attesa della tua conferma. Grazie!`)}
               target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
