@@ -15,13 +15,13 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     locale: 'it_IT',
     type: 'website',
-    images: [{ url: '/og-logo.jpg', width: 1200, height: 630 }],
+    images: [{ url: '/og-info.jpg', width: 1200, height: 630 }],
   },
   twitter: {
     card: 'summary_large_image',
     title: TITLE,
     description: DESCRIPTION,
-    images: ['/og-logo.jpg'],
+    images: ['/og-info.jpg'],
   },
 }
 
