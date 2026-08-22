@@ -35,6 +35,16 @@ function waLink(text: string) {
   return `${WA_LINK}?text=${encodeURIComponent(text)}`
 }
 
+// Solo resa visiva: "3427004354" → "342 700 4354". Il numero resta quello
+// digitato dall'ospite; se non è un cellulare a 10 cifre si mostra com'è.
+function formatPhoneDisplay(phone: string) {
+  const digits = phone.replace(/\D/g, '')
+  const local = digits.length === 12 && digits.startsWith('39') ? digits.slice(2) : digits
+  if (local.length !== 10) return phone
+  const prefix = local === digits ? '' : '+39 '
+  return `${prefix}${local.slice(0, 3)} ${local.slice(3, 6)} ${local.slice(6)}`
+}
+
 type RoomOption = {
   id: string
   name: string
@@ -771,7 +781,7 @@ export default function PrenotaClient() {
                 </div>
                 <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-3 text-balance">Richiesta inviata!</h2>
                 <p className="text-[#3a3a35] text-base mb-6">
-                  Ti contatteremo su WhatsApp al numero <strong>{form.phone}</strong> entro pochi minuti.
+                  Ania ti contatterà su WhatsApp al numero <strong>{formatPhoneDisplay(form.phone)}</strong> entro pochi minuti.
                 </p>
               </>
             )}
@@ -834,7 +844,7 @@ export default function PrenotaClient() {
               ? (dupIdentical
                   ? waLink(`Ciao Ania! Mi chiamo ${form.firstName} ${form.lastName}, ti ho già inviato una richiesta dal sito ${solution.length === 1 ? `per la camera ${solution[0].roomName}` : 'per il mio soggiorno'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}, ma vorrei modificare le date o la camera.`)
                   : waLink(`Ciao Ania! Ho già una richiesta per ${formatDate(dupCheckIn)} → ${formatDate(dupCheckOut)}, e ora vorrei ${selectedRoom ? selectedRoom.name : 'una camera'} dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste?`))
-              : waLink(`Ciao Ania! Ho appena inviato una richiesta tramite il sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}. Rimango in attesa di una tua gentile conferma. Grazie!`)}
+              : waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}${!multiRoom && solution[0]?.roomName ? `, per la ${solution[0].roomName}` : ''}. Rimango in attesa della tua conferma. Grazie!`)}
               target="_blank" rel="noopener noreferrer"
               className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
               {duplicate ? 'Scrivi ad Ania su WhatsApp' : 'Scrivi su WhatsApp'}
