@@ -67,17 +67,24 @@ export default function Info() {
 
         <section className="mb-8">
           <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Check-in e check-out</h2>
+          <p className="text-[#3a3a35] leading-relaxed mb-3">
+            Il check-in è dalle 15:00 alle 20:00 ed è flessibile. Se hai bisogno di arrivare prima o dopo,
+            scrivimi su WhatsApp il giorno precedente e ci organizziamo insieme.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed mb-3">
+            Il giorno prima del tuo arrivo, comunicami anche l&apos;orario indicativo in cui pensi di arrivare,
+            così posso organizzarmi al meglio per accoglierti.
+          </p>
           <p className="text-[#3a3a35] leading-relaxed">
-            Il check-in è dalle 15:00 alle 20:00 ed è flessibile: se arrivi prima o dopo questi orari, scrivici
-            su WhatsApp il giorno precedente e troviamo sempre una soluzione. Il check-out è entro le 10:00.
+            Il check-out è entro le 10:00.
           </p>
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Contattaci</h2>
+          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Hai bisogno di qualcosa?</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-4">
-            Per qualsiasi necessità durante il soggiorno — bagagli, navetta, richieste particolari — siamo
-            raggiungibili su WhatsApp o per telefono.
+            Per qualsiasi necessità durante il soggiorno — bagagli, navetta o richieste particolari — puoi
+            scrivermi su WhatsApp o chiamarmi.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
