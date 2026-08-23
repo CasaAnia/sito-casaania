@@ -69,7 +69,7 @@ export default function Info() {
           <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Check-in e check-out</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Il check-in è dalle 15:00 alle 20:00 ed è flessibile. Se hai bisogno di arrivare prima o dopo,
-            scrivimi su WhatsApp il giorno precedente e ci organizziamo insieme.
+            scrivimi su WhatsApp e ci organizziamo insieme.
           </p>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Il giorno prima del tuo arrivo, comunicami anche l&apos;orario indicativo in cui pensi di arrivare,
