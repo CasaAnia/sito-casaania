@@ -52,7 +52,9 @@ export default function BannerCarosello() {
           <div className="px-7 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
             <h1
               className="font-semibold text-white text-[30px] leading-[1.15] tracking-[-0.02em] md:text-[44px] md:leading-[1.12] max-w-[700px] [text-shadow:0_2px_8px_rgba(0,0,0,0.20)] md:[text-shadow:0_1px_3px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.45)]">
-              Casa Ania, a soli 140 metri da Humanitas
+              {/* Lo spazio unificatore tiene "da Humanitas" sulla stessa riga:
+                  su mobile spezza in "A soli 140 metri / da Humanitas" */}
+              A soli 140 metri da&nbsp;Humanitas
             </h1>
             <div className="hidden md:block">
               <p
