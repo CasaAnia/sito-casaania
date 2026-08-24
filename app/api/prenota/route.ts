@@ -263,6 +263,68 @@ async function sendWhatsAppAlert(text: string) {
   }
 }
 
+// Avviso sonoro Pushover sul telefono di Ania (app "CasAnia" su pushover.net).
+// Suona forte e insistente anche a telefono bloccato: è il canale per il solo
+// evento urgente "nuova richiesta dal sito". Se le variabili mancano o il
+// servizio non risponde, si va avanti: la prenotazione è già salvata.
+async function sendPushoverAlert(message: string, url: string) {
+  const token = process.env.PUSHOVER_TOKEN
+  const user = process.env.PUSHOVER_USER
+  if (!token || !user) return
+  try {
+    const form = new URLSearchParams({
+      token,
+      user,
+      title: '🏡 Nuova prenotazione Casa Ania',
+      message,
+      priority: '1',
+      sound: 'persistent',
+      url,
+      url_title: 'Apri nel gestionale',
+    })
+    await fetch('https://api.pushover.net/1/messages.json', {
+      method: 'POST',
+      body: form,
+      signal: AbortSignal.timeout(8000),
+    })
+  } catch {
+    // Pushover non raggiungibile: resta comunque la notifica push
+  }
+}
+
+// Anti-doppioni: l'avviso Pushover parte una sola volta per prenotazione.
+// Si "reclama" l'invio marcando pushover_notified_at solo dove è ancora NULL:
+// se nessuna riga viene marcata, qualcun altro ha già avvisato e si tace.
+// Finché la colonna non esiste su Supabase (migrazione a mano) l'update
+// fallisce: in quel caso si invia lo stesso, perché questo è comunque
+// l'unico punto del codice che manda l'avviso, e solo alla creazione.
+async function claimPushoverAlert(supabase: AdminClient, ids: string[]): Promise<boolean> {
+  if (ids.length === 0) return true
+  try {
+    const { data, error } = await supabase
+      .from('bookings')
+      .update({ pushover_notified_at: new Date().toISOString() })
+      .in('id', ids)
+      .is('pushover_notified_at', null)
+      .select('id')
+    if (error) return true
+    return (data?.length ?? 0) > 0
+  } catch {
+    return true
+  }
+}
+
+// Date della notifica come le direbbe Ania: "7 → 11 settembre",
+// oppure "28 settembre → 2 ottobre" a cavallo di due mesi.
+const MESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno',
+  'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre']
+function formatRangeIt(checkIn: string, checkOut: string): string {
+  const [, mIn, dIn] = checkIn.split('-').map(Number)
+  const [, mOut, dOut] = checkOut.split('-').map(Number)
+  if (mIn === mOut) return `${dIn} → ${dOut} ${MESI[mIn - 1]}`
+  return `${dIn} ${MESI[mIn - 1]} → ${dOut} ${MESI[mOut - 1]}`
+}
+
 async function sendPushNotification(supabase: AdminClient, title: string, body: string) {
   const { data: subs } = await supabase.from('push_subscriptions').select('subscription')
   if (!subs || subs.length === 0) return
@@ -445,12 +507,14 @@ export async function POST(req: NextRequest) {
     }
   })
 
-  let { error: bookErr } = await supabase.from('bookings').insert(bookingsToInsert)
+  let { data: insertedRows, error: bookErr } = await supabase
+    .from('bookings').insert(bookingsToInsert).select('id')
   if (bookErr) {
     // Colonna guest_name non ancora migrata sul DB: si salva senza, come prima.
     // Meglio una prenotazione col solo nome della scheda che una persa.
     const senzaNome = bookingsToInsert.map(({ guest_name: _gn, ...rest }) => rest)
-    ;({ error: bookErr } = await supabase.from('bookings').insert(senzaNome))
+    ;({ data: insertedRows, error: bookErr } = await supabase
+      .from('bookings').insert(senzaNome).select('id'))
   }
   if (bookErr) {
     return NextResponse.json({ error: 'Errore salvataggio prenotazione' }, { status: 500 })
@@ -491,9 +555,23 @@ export async function POST(req: NextRequest) {
     `Tel: ${phone}\n` +
     `Chiama il cliente e poi conferma nel gestionale.${doubleNote}${notesLine}`
 
+  // Avviso sonoro Pushover: testo essenziale (nome, camera, date, ospiti),
+  // toccandolo si apre la prenotazione nel gestionale. Parte solo qui, alla
+  // creazione, e una sola volta grazie a claimPushoverAlert.
+  const insertedIds = (insertedRows ?? []).map(r => r.id)
+  const gestionale = 'https://gestionale-bnb-tau.vercel.app'
+  const pushoverUrl = insertedIds[0] ? `${gestionale}/prenotazioni/${insertedIds[0]}` : gestionale
+  const pushoverMsg =
+    `${firstName} ${lastName}\n` +
+    `${roomDesc}\n` +
+    `${formatRangeIt(checkIn, checkOut)}\n` +
+    `${numGuests} ${Number(numGuests) === 1 ? 'ospite' : 'ospiti'}`
+
+  const canAlert = await claimPushoverAlert(supabase, insertedIds)
   await Promise.all([
     sendPushNotification(supabase, pushTitle, pushBody),
     sendWhatsAppAlert(waText),
+    canAlert ? sendPushoverAlert(pushoverMsg, pushoverUrl) : Promise.resolve(),
   ])
 
   return NextResponse.json({ ok: true, solution, multiRoom })
