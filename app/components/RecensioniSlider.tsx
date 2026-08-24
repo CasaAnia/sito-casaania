@@ -59,17 +59,17 @@ export default function RecensioniSlider({ testimonials }: { testimonials: Testi
       <div
         ref={trackRef}
         onScroll={onScroll}
-        className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-none"
+        className="flex gap-4 md:gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-none"
         style={{ WebkitOverflowScrolling: 'touch' }}>
         {testimonials.map((t, i) => (
           <figure
             key={i}
-            className="snap-start shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-white rounded-2xl p-7 border border-black/[0.04] flex flex-col"
+            className="snap-start shrink-0 w-full md:w-[calc((100%-3.5rem)/3)] bg-white rounded-2xl p-7 md:p-8 border border-black/[0.04] flex flex-col"
             style={{ boxShadow: '0 1px 3px rgba(31,61,47,0.04)' }}>
-            <p style={{ color: '#2d6a4f', fontSize: '17px' }} className="tracking-[0.15em] mb-4" aria-label={`${t.rating} stelle su 5`}>
+            <p style={{ color: '#2d6a4f' }} className="text-[17px] md:text-[18px] tracking-[0.15em] mb-4" aria-label={`${t.rating} stelle su 5`}>
               {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
             </p>
-            <blockquote className="text-[#3a3a35] text-[16px] leading-[1.65] mb-5">
+            <blockquote className="text-[#3a3a35] text-[16px] md:text-[17px] leading-[1.65] mb-5">
               "{t.text}"
             </blockquote>
             <figcaption className="text-[14px] font-semibold mt-auto" style={{ color: '#1f3d2f' }}>

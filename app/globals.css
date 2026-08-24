@@ -79,6 +79,16 @@ input[type='date'] {
 }
 .kenburns { animation: kenburns 9s ease-in-out infinite alternate; }
 
+/* Su desktop il banner è una fascia bassa: lo zoom pieno (+10%) mangiava
+   l'inquadratura scelta con object-position. Qui resta solo un +3,5%. */
+@keyframes kenburnsDesktop {
+  from { transform: scale(1); }
+  to   { transform: scale(1.035); }
+}
+@media (min-width: 768px) {
+  .kenburns { animation-name: kenburnsDesktop; }
+}
+
 /* Parallax leggero sulle foto camere: l'immagine (più alta del riquadro) scorre
    un filo più lenta della pagina, dando profondità. Il JS aggiorna translateY. */
 .parallax-wrap { height: 128%; transform: translateY(-45px); will-change: transform; }

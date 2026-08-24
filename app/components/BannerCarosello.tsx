@@ -7,30 +7,55 @@ import { MapPin } from 'lucide-react'
 
 // Foto del carosello (una per camera + il terrazzo con vista Humanitas).
 // Facile da cambiare: basta modificare questa lista.
+// `pos`: inquadratura desktop per singola foto (solo da md in su, il mobile
+// resta col crop di default). Il contenitore largo e basso mostra solo una
+// fascia orizzontale della foto: la percentuale Y sceglie quale fascia.
+// `soloMobile`: la foto resta nel giro solo sotto i 768px (le voci con questo
+// flag devono stare in fondo alla lista, il giro desktop si ferma prima).
 const fotos = [
-  { src: '/camere/ambra/foto1.jpg', alt: 'Camera Ambra di Casa Ania' },
-  { src: '/camere/lena/lena-banner.jpg', alt: 'Camera Lena di Casa Ania' },
-  { src: '/camere/allegra/foto1.jpg', alt: 'Camera Allegra di Casa Ania' },
-  { src: '/camere/singola/amelia-banner.jpg', alt: 'Camera Amelia di Casa Ania' },
-  { src: '/camere/spazi-comuni/balcone-5.jpg', alt: 'Balcone con vista su Humanitas' },
-  { src: '/camere/spazi-comuni/foto2.jpg', alt: 'Angolo caffè con macchina Nespresso' },
+  { src: '/camere/ambra/foto1.jpg', alt: 'Camera Ambra di Casa Ania', pos: 'md:object-[50%_58%]' },
+  { src: '/camere/lena/lena-banner.jpg', alt: 'Camera Lena di Casa Ania', pos: 'md:object-[50%_30%]' },
+  { src: '/camere/allegra/foto1.jpg', alt: 'Camera Allegra di Casa Ania', pos: '' },
+  { src: '/camere/singola/amelia-banner.jpg', alt: 'Camera Amelia di Casa Ania', pos: '' },
+  { src: '/camere/spazi-comuni/balcone-5.jpg', alt: 'Balcone con vista su Humanitas', pos: 'md:object-[50%_40%]' },
+  // Dettaglio ravvicinato che a tutta larghezza regge poco: esclusa dal
+  // desktop, resta nel giro mobile. Candidata a futura sostituzione.
+  { src: '/camere/spazi-comuni/foto2.jpg', alt: 'Angolo caffè con macchina Nespresso', pos: '', soloMobile: true },
 ]
+
+const fotosDesktop = fotos.filter((f) => !f.soloMobile).length
 
 export default function BannerCarosello() {
   const [i, setI] = useState(0)
   const [reduce, setReduce] = useState(false)
+  const [desktop, setDesktop] = useState(false)
+
+  useEffect(() => {
+    const d = window.matchMedia('(min-width: 768px)')
+    setDesktop(d.matches)
+    const onChange = () => setDesktop(d.matches)
+    d.addEventListener('change', onChange)
+    return () => d.removeEventListener('change', onChange)
+  }, [])
+
+  const count = desktop ? fotosDesktop : fotos.length
 
   useEffect(() => {
     const m = window.matchMedia('(prefers-reduced-motion: reduce)')
     setReduce(m.matches)
     if (m.matches) return
-    const t = setInterval(() => setI((x) => (x + 1) % fotos.length), 4500)
+    const t = setInterval(() => setI((x) => (x + 1) % count), 4500)
     return () => clearInterval(t)
-  }, [])
+  }, [count])
+
+  // Se si passa a desktop mentre è visibile una foto solo-mobile
+  useEffect(() => {
+    if (i >= count) setI(0)
+  }, [count, i])
 
   return (
     <>
-      <section className="relative h-[340px] md:h-[26rem] overflow-hidden bg-gray-100 flex items-end md:items-center">
+      <section className="relative h-[340px] md:h-[30rem] overflow-hidden bg-gray-100 flex items-end md:items-center">
         {fotos.map((f, idx) => (
           <Image
             key={idx}
@@ -39,7 +64,7 @@ export default function BannerCarosello() {
             fill
             sizes="100vw"
             preload={idx === 0}
-            className={`object-cover ${reduce ? '' : 'kenburns'}`}
+            className={`object-cover ${f.pos} ${reduce ? '' : 'kenburns'}`}
             style={{ opacity: idx === i ? 1 : 0, transition: 'opacity 900ms ease-in-out' }}
           />
         ))}

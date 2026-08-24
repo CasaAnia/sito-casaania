@@ -152,7 +152,7 @@ export default function Home() {
 
       {/* RECENSIONI */}
       <section className="pt-14 md:pt-16 pb-2 px-5">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl md:max-w-5xl mx-auto">
           <div className="text-center mb-9 md:mb-11">
             <p className="text-[15px] md:text-base font-medium text-[#1f3d2f] mb-3">
               <span style={{ color: '#2d6a4f' }}>★★★★★</span> <span className="font-semibold">5,0 su Google</span>
