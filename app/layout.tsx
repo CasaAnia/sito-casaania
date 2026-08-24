@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces, Nunito_Sans } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces, Nunito_Sans, Manrope } from "next/font/google";
 import ConditionalFooter from "./components/ConditionalFooter";
 import Conteggio from "./components/Conteggio";
 import "./globals.css";
@@ -18,6 +18,14 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   weight: ["400", "600"],
   style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  // Titoli mai oltre il 600 (morbido, non "aziendale"); il 700 serve solo agli
+  // strong del corpo testo, che senza questo file diventerebbero grassetti finti.
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -114,7 +122,7 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${nunitoSans.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${nunitoSans.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

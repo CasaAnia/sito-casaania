@@ -12,6 +12,10 @@
   --font-mono: var(--font-geist-mono);
   --font-display: var(--font-fraunces);
   --font-body: var(--font-nunito);
+  /* Manrope: font principale della homepage (classe font-home). Il nome del
+     token è diverso da --font-manrope per non andare in cortocircuito con la
+     variabile omonima creata da next/font. */
+  --font-home: var(--font-manrope);
   --color-green-50: #f0f9f5;
   --color-green-100: #d1f0e4;
   --color-green-700: #2d6a4f;

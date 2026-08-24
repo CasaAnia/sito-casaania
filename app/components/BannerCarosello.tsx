@@ -51,7 +51,7 @@ export default function BannerCarosello() {
         <div className="relative z-10 w-full hero-in">
           <div className="px-7 pb-8 md:py-0 md:pl-[8%] md:pr-8 md:max-w-[50%]">
             <h1
-              className="font-display font-semibold md:font-bold text-white text-[32px] leading-[1.1] tracking-[-0.2px] md:tracking-normal md:text-[48px] md:leading-[1.1] max-w-[700px] [text-shadow:0_2px_8px_rgba(0,0,0,0.20)] md:[text-shadow:0_1px_3px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.45)]">
+              className="font-semibold text-white text-[30px] leading-[1.15] tracking-[-0.02em] md:text-[44px] md:leading-[1.12] max-w-[700px] [text-shadow:0_2px_8px_rgba(0,0,0,0.20)] md:[text-shadow:0_1px_3px_rgba(0,0,0,0.45),0_2px_16px_rgba(0,0,0,0.45)]">
               Casa Ania, a soli 140 metri da Humanitas
             </h1>
             <div className="hidden md:block">
@@ -63,11 +63,11 @@ export default function BannerCarosello() {
               <p
                 className="flex items-center gap-2 text-white font-semibold text-base mt-[18px]"
                 style={{ textShadow: '0 1px 8px rgba(0,0,0,0.4)' }}>
-                <MapPin size={18} strokeWidth={2.25} aria-hidden="true" />
+                <MapPin size={18} strokeWidth={2} aria-hidden="true" />
                 Circa 2 minuti a piedi da Humanitas
               </p>
               <Link href="/prenota"
-                className="inline-flex items-center justify-center h-[52px] px-8 rounded-md bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-base tracking-wide mt-6">
+                className="inline-flex items-center justify-center h-[52px] px-8 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-base tracking-wide mt-6">
                 VERIFICA DISPONIBILITÀ
               </Link>
             </div>
@@ -86,11 +86,11 @@ export default function BannerCarosello() {
           Una casa accogliente e tranquilla dove sentirti vicino a chi ami, proprio quando ne hai più bisogno.
         </p>
         <p className="flex items-center gap-2 text-[#1f3d2f] font-semibold text-[15px] mt-[26px]">
-          <MapPin size={18} strokeWidth={2.25} aria-hidden="true" />
+          <MapPin size={18} strokeWidth={2} aria-hidden="true" />
           Circa 2 minuti a piedi da Humanitas
         </p>
         <Link href="/prenota"
-          className="inline-flex items-center justify-center h-[52px] px-8 rounded-md bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] tracking-wide mt-[18px]">
+          className="inline-flex items-center justify-center h-[52px] px-8 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] tracking-wide mt-[18px]">
           VERIFICA DISPONIBILITÀ
         </Link>
       </div>

@@ -128,7 +128,7 @@ const faqJsonLd = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen text-[#3a3a35]" style={{backgroundColor: '#f9f6f1'}}>
+    <main className="font-home min-h-screen text-[#3a3a35]" style={{backgroundColor: '#f9f6f1'}}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
@@ -151,13 +151,13 @@ export default function Home() {
       <BannerCarosello />
 
       {/* RECENSIONI */}
-      <section className="pt-12 md:pt-14 pb-2 px-5">
+      <section className="pt-14 md:pt-16 pb-2 px-5">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-7 md:mb-9">
+          <div className="text-center mb-9 md:mb-11">
             <p className="text-[15px] md:text-base font-medium text-[#1f3d2f] mb-3">
               <span style={{ color: '#2d6a4f' }}>★★★★★</span> <span className="font-semibold">5,0 su Google</span>
             </p>
-            <h2 className="font-display font-semibold text-[26px] md:text-[38px] leading-[1.12] md:leading-[1.15]" style={{ color: '#1f3d2f' }}>
+            <h2 className="font-medium text-[24px] md:text-[34px] leading-[1.2] tracking-[-0.01em]" style={{ color: '#2b2a25' }}>
               Le parole dei nostri ospiti
             </h2>
           </div>
@@ -193,8 +193,8 @@ export default function Home() {
               Perché quando sei lontano da casa per stare vicino a chi ami, anche le piccole attenzioni fanno la differenza.
             </p>
           </div>
-          <div className="px-7 mb-9 md:mb-10">
-            <h2 className="font-display font-semibold text-center text-[31px] md:text-[38px] leading-[1.15] mb-3" style={{ color: '#1f3d2f' }}>
+          <div className="px-7 mb-10 md:mb-12">
+            <h2 className="font-medium text-center text-[26px] md:text-[34px] leading-[1.2] tracking-[-0.01em] mb-3" style={{ color: '#2b2a25' }}>
               Le nostre camere
             </h2>
             <p className="text-center text-[16px] font-normal leading-[1.5] text-[#3a3a35] max-w-md md:max-w-xl mx-auto">
@@ -205,7 +205,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-8 md:gap-y-0">
             {rooms.map((room, i) => (
               <div key={i} className="overflow-hidden flex flex-col h-full md:grid md:grid-rows-subgrid md:row-span-4 md:pb-8">
-                <Link href={room.href} className="group relative block h-80 overflow-hidden bg-gray-100">
+                <Link href={room.href} className="group relative block h-80 overflow-hidden bg-gray-100 rounded-2xl mx-4 md:mx-0">
                   {room.name === 'Lena' ? (
                     <Image src={room.img} alt={room.name} fill sizes="(min-width: 768px) 448px, 100vw" className="object-contain motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105 motion-safe:group-active:scale-105" />
                   ) : (
@@ -215,13 +215,13 @@ export default function Home() {
                   )}
                 </Link>
                 <Link href={room.href} className={`group/desc block px-4 ${room.name === 'Lena' ? 'pt-0 md:pt-4' : 'pt-5 md:pt-9'}`}>
-                  <div className="flex items-start justify-between mb-3 md:mb-8">
-                    <h3 className="font-display text-[28px] md:text-xl font-semibold leading-[1.15] tracking-wide transition-colors group-hover/desc:text-green-700" style={{ color: '#2d6a4f' }}>{room.name}</h3>
+                  <div className="flex items-start justify-between mb-3 md:mb-6">
+                    <h3 className="text-[22px] md:text-xl font-semibold leading-[1.2] tracking-[-0.01em] transition-colors group-hover/desc:text-green-700" style={{ color: '#2d6a4f' }}>{room.name}</h3>
                     {room.badge && (
                       <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold ml-2 shrink-0">{room.badge}</span>
                     )}
                   </div>
-                  <p className="text-base text-[#3a3a35] mb-3">{room.desc}</p>
+                  <p className="text-base leading-[1.6] text-[#3a3a35] mb-4">{room.desc}</p>
                 </Link>
                 <div className="mx-4 border-t border-gray-100 pt-3 grid grid-cols-2 gap-3">
                   {room.prices.map((p, j) => (
@@ -232,7 +232,7 @@ export default function Home() {
                   ))}
                 </div>
                 <div className="mx-4 mt-5 pb-2 flex flex-col gap-2 md:flex-row-reverse md:items-center md:justify-between md:gap-3">
-                  <Link href={`/prenota?room=${room.roomId}`} className="inline-flex items-center justify-center w-[88%] self-center md:w-auto md:self-auto h-[52px] md:h-auto rounded-md bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] md:text-sm tracking-wide md:px-5 md:py-3 whitespace-nowrap">
+                  <Link href={`/prenota?room=${room.roomId}`} className="inline-flex items-center justify-center w-[88%] self-center md:w-auto md:self-auto h-[52px] md:h-auto rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] md:text-sm tracking-wide md:px-5 md:py-3 whitespace-nowrap">
                     VERIFICA DISPONIBILITÀ
                   </Link>
                   <Link href={room.href} className="group self-center md:self-auto text-[15px] text-green-700 font-medium py-2 inline-flex items-center gap-1">
@@ -252,7 +252,7 @@ export default function Home() {
       {/* CHECK-IN FLESSIBILE */}
       <section className="pt-8 pb-4 md:py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Check-in flessibile</h2>
+          <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-5" style={{ color: '#2d6a4f' }}>Check-in flessibile</h2>
           <p className="text-left text-[#3a3a35] text-[18px] font-semibold leading-[1.4] mb-2">
             Check-in dalle 15:00 alle 20:00
           </p>
@@ -275,7 +275,7 @@ export default function Home() {
       {/* SERVIZIO NAVETTA */}
       <section className="py-4 md:py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Servizio navetta</h2>
+          <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-5" style={{ color: '#2d6a4f' }}>Servizio navetta</h2>
           <p className="text-left text-[#3a3a35] leading-relaxed">
             Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
             Autisti di fiducia, prezzo in base alla tratta. Scrivici su WhatsApp con data e orario: rispondiamo subito.
@@ -286,7 +286,7 @@ export default function Home() {
       {/* A DUE PASSI DA HUMANITAS */}
       <section id="dove-siamo" className="py-12 px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-display font-semibold text-[28px] md:text-[36px] leading-[1.15] mb-4" style={{ color: '#2d6a4f' }}>
+          <h2 className="font-medium text-[24px] md:text-[32px] leading-[1.2] tracking-[-0.01em] mb-4" style={{ color: '#2b2a25' }}>
             A due passi da Humanitas.
           </h2>
           <p className="text-[#3a3a35] leading-relaxed max-w-md mx-auto mb-5">
@@ -294,8 +294,8 @@ export default function Home() {
             In circa <span className="font-bold text-[#1f3d2f]">2 minuti a piedi</span>{' '}raggiungi l&apos;ingresso, senza bisogno di auto, taxi o mezzi pubblici.
           </p>
           <div className="flex items-center justify-center gap-6 mb-6 text-sm font-semibold text-[#1f3d2f]">
-            <span className="flex items-center gap-1.5"><MapPin size={16} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> 140 metri</span>
-            <span className="flex items-center gap-1.5"><Footprints size={16} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> 2 minuti a piedi</span>
+            <span className="flex items-center gap-1.5"><MapPin size={16} strokeWidth={2} className="text-green-700 shrink-0" aria-hidden="true" /> 140 metri</span>
+            <span className="flex items-center gap-1.5"><Footprints size={16} strokeWidth={2} className="text-green-700 shrink-0" aria-hidden="true" /> 2 minuti a piedi</span>
           </div>
           <div className="rounded-xl overflow-hidden h-52 md:h-72">
             <iframe
@@ -324,7 +324,7 @@ export default function Home() {
       {/* ACCESSIBILITÀ */}
       <section id="accessibilita" className="pt-4 pb-8 md:py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Accessibilità</h2>
+          <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-5" style={{ color: '#2d6a4f' }}>Accessibilità</h2>
           <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
             Casa Ania dispone di <strong className="font-bold">rampa di accesso</strong> e <strong className="font-bold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-bold">ad eccezione del bagno privato della camera Amelia</strong>.
           </p>
@@ -342,7 +342,7 @@ export default function Home() {
       <section className="pt-8 pb-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-8 py-3 rounded-full text-sm">
             <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Scrivici su WhatsApp
           </a>
         </div>
@@ -351,11 +351,11 @@ export default function Home() {
       {/* FAQ */}
       <section id="faq" className="py-12 px-4">
         <div className="max-w-2xl mx-auto">
-          <h2 style={{textUnderlineOffset: '6px'}} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-8 underline">Domande frequenti</h2>
+          <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-8" style={{ color: '#2d6a4f' }}>Domande frequenti</h2>
           <div className="text-left space-y-5">
             {faqs.map(({ q, a }) => (
               <div key={q}>
-                <h3 className="font-display font-semibold text-[#1f3d2f] mb-1">{q}</h3>
+                <h3 className="font-semibold text-[#2b2a25] mb-1.5">{q}</h3>
                 <p className="text-[#3a3a35] leading-relaxed">{a}</p>
               </div>
             ))}
@@ -373,7 +373,7 @@ export default function Home() {
             Quattro camere, una casa tranquilla e Humanitas a due minuti a piedi.
           </p>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-bold px-8 py-3 rounded-full text-sm">
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-8 py-3 rounded-full text-sm">
             <MessageCircle size={18} strokeWidth={2} aria-hidden="true" /> Scrivici su WhatsApp
           </a>
           <p className="text-sm text-[#6f6a5e] mt-4">
@@ -388,7 +388,7 @@ export default function Home() {
       {/* SEI GIÀ STATO NOSTRO OSPITE? */}
       <section className="pb-10 px-4">
         <div className="max-w-2xl mx-auto text-center border-t border-gray-200 pt-8">
-          <p className="font-display text-lg font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
+          <p className="text-lg font-semibold text-[#2b2a25] mb-2">Sei già stato nostro ospite?</p>
           <p className="text-sm text-[#6f6a5e] max-w-md mx-auto mb-4">
             La tua recensione può essere utile a chi sta cercando un posto vicino a Humanitas.
           </p>

@@ -64,12 +64,12 @@ export default function RecensioniSlider({ testimonials }: { testimonials: Testi
         {testimonials.map((t, i) => (
           <figure
             key={i}
-            className="snap-start shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-white rounded-2xl p-6 border border-black/5 flex flex-col"
-            style={{ boxShadow: '0 1px 3px rgba(31,61,47,0.05)' }}>
-            <p style={{ color: '#2d6a4f', fontSize: '18px' }} className="tracking-[0.15em] mb-3" aria-label={`${t.rating} stelle su 5`}>
+            className="snap-start shrink-0 w-full md:w-[calc((100%-3rem)/3)] bg-white rounded-2xl p-7 border border-black/[0.04] flex flex-col"
+            style={{ boxShadow: '0 1px 3px rgba(31,61,47,0.04)' }}>
+            <p style={{ color: '#2d6a4f', fontSize: '17px' }} className="tracking-[0.15em] mb-4" aria-label={`${t.rating} stelle su 5`}>
               {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
             </p>
-            <blockquote className="text-[#3a3a35] text-[16px] italic leading-[1.6] mb-4">
+            <blockquote className="text-[#3a3a35] text-[16px] leading-[1.65] mb-5">
               "{t.text}"
             </blockquote>
             <figcaption className="text-[14px] font-semibold mt-auto" style={{ color: '#1f3d2f' }}>
@@ -81,7 +81,7 @@ export default function RecensioniSlider({ testimonials }: { testimonials: Testi
 
       {/* Puntini: visibili solo quando c'è davvero altro da scorrere */}
       {positions > 1 && (
-        <div className="flex justify-center gap-1 mt-4">
+        <div className="flex justify-center gap-1 mt-5">
           {Array.from({ length: positions }, (_, i) => (
             <button
               key={i}
