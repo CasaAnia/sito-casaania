@@ -128,7 +128,7 @@ const faqJsonLd = {
 
 export default function Home() {
   return (
-    <main className="font-home min-h-screen text-[#3a3a35]" style={{backgroundColor: '#f9f6f1'}}>
+    <main className="min-h-screen text-[#3a3a35]" style={{backgroundColor: '#f9f6f1'}}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

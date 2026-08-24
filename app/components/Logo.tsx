@@ -18,11 +18,11 @@ export default function Logo({
     <div className={compactOnMobile ? 'text-center' : undefined}>
       <div className="inline-block">
         <Title
-          className={header ? 'font-display text-[27px] leading-[27px] sm:text-[22px] sm:leading-[22px]' : 'font-display'}
+          className={header ? 'font-display text-[28px] leading-[28px] sm:text-[23px] sm:leading-[23px]' : 'font-display'}
           style={
             header
-              ? { fontWeight: 600, color: titleColor, whiteSpace: 'nowrap' }
-              : { fontSize: '22px', fontWeight: 600, lineHeight: '22px', color: titleColor, whiteSpace: 'nowrap' }
+              ? { fontWeight: 500, color: titleColor, whiteSpace: 'nowrap' }
+              : { fontSize: '22px', fontWeight: 500, lineHeight: '22px', color: titleColor, whiteSpace: 'nowrap' }
           }
         >
           Casa Ania
@@ -39,13 +39,13 @@ export default function Logo({
       <p
         className={
           header
-            ? 'text-[9px] font-medium tracking-[1.5px] leading-[1.2] text-[#777777] sm:text-[11px] sm:font-normal sm:tracking-[2px] sm:leading-[12px] sm:text-[#6f6a5e]'
+            ? 'text-[9px] font-medium tracking-[0.18em] leading-[1.2] text-[#777777] sm:text-[10.5px] sm:tracking-[0.22em] sm:leading-[12px] sm:text-[#6f6a5e]'
             : detailsClassName
         }
         style={
           header
             ? { whiteSpace: 'nowrap' }
-            : { fontSize: '11px', letterSpacing: '2px', lineHeight: '12px', color: taglineColor, whiteSpace: 'nowrap' }
+            : { fontSize: '10.5px', fontWeight: 500, letterSpacing: '0.22em', lineHeight: '12px', color: taglineColor, whiteSpace: 'nowrap' }
         }
       >
         AFFITTACAMERE · ROZZANO

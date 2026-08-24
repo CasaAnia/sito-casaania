@@ -38,7 +38,7 @@ export default function CameraLena() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
 
-        <h1 className="font-display text-3xl font-semibold text-[#3a3a35] mb-2 tracking-wide">Lena</h1>
+        <h1 className="text-3xl font-semibold text-[#3a3a35] mb-2 tracking-[-0.01em]">Lena</h1>
         <div className="flex gap-2 mb-3">
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🚿 Bagno esterno</span>
           <span className="text-xs bg-green-50 text-green-700 px-3 py-1 rounded-full">🌿 Balcone condiviso</span>
@@ -81,7 +81,7 @@ export default function CameraLena() {
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Descrizione</h2>
+          <h2 className="text-xl font-semibold mb-3 text-[#3a3a35]">Descrizione</h2>
           <p className="text-[#3a3a35] leading-relaxed text-lg mb-3">
             Lena è la camera più spaziosa di Casa Ania, luminosa e confortevole, ideale anche per chi soggiorna in tre o quattro persone.
           </p>
@@ -97,7 +97,7 @@ export default function CameraLena() {
         </div>
 
         <div className="border-t border-gray-200 pt-8 mb-8">
-          <h2 className="font-display text-xl font-semibold mb-3 text-[#3a3a35] tracking-wide">Ogni soggiorno include</h2>
+          <h2 className="text-xl font-semibold mb-3 text-[#3a3a35]">Ogni soggiorno include</h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[#3a3a35] text-lg">
             {[
               '✓ Bagno privato esterno (esclusivo)',

@@ -26,11 +26,11 @@ export default function Cookie() {
       </header>
 
       <div className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-2">Cookie Policy</h1>
+        <h1 className="text-3xl font-semibold text-[#1f3d2f] mb-2">Cookie Policy</h1>
         <p className="text-[#6f6a5e] text-sm mb-8">Ultimo aggiornamento: agosto 2026</p>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Cosa sono i cookie</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Cosa sono i cookie</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             I cookie sono piccoli file di testo che i siti visitati inviano al dispositivo dell&apos;utente, dove
             vengono memorizzati per poi essere ritrasmessi agli stessi siti in visite successive.
@@ -38,7 +38,7 @@ export default function Cookie() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Cookie utilizzati da questo sito</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Cookie utilizzati da questo sito</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             Questo sito <strong>non utilizza cookie di profilazione</strong>, cookie statistici o di analisi
             (analytics) né cookie pubblicitari di terze parti. Non sono presenti strumenti di tracciamento come
@@ -48,7 +48,7 @@ export default function Cookie() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Conteggio anonimo delle visite</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Conteggio anonimo delle visite</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             Per capire quante persone consultano il sito e quali pagine sono più utili, il sito registra un
             conteggio del tutto anonimo su un proprio archivio. Di ogni evento vengono salvati soltanto tre dati:
@@ -63,7 +63,7 @@ export default function Cookie() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Cookie di terze parti — Google Maps</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Cookie di terze parti — Google Maps</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             Nella sezione &quot;Dove siamo&quot; della homepage è incorporata una mappa di Google Maps tramite
             iframe, per mostrare la posizione della struttura. Il caricamento della mappa può comportare
@@ -77,7 +77,7 @@ export default function Cookie() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Come gestire i cookie</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Come gestire i cookie</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             È possibile gestire o eliminare i cookie in qualsiasi momento tramite le impostazioni del proprio
             browser. Disabilitare i cookie di terze parti potrebbe impedire la corretta visualizzazione della
@@ -86,7 +86,7 @@ export default function Cookie() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Titolare del trattamento</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Titolare del trattamento</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             <strong>Sawicka Anna Janina</strong>, Via Liguria 26, Fizzonasco di Pieve Emanuele (MI) 20072.
             Contatto: <a href="tel:+393427004354" className="text-green-700 font-semibold underline">342 700 4354</a>.

@@ -38,7 +38,7 @@ export default function Info() {
           <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">
             ← Home
           </Link>
-          <p className="justify-self-center font-display text-xl font-semibold text-[#1f3d2f]">
+          <p className="justify-self-center text-xl font-semibold text-[#1f3d2f]">
             Benvenuti
           </p>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
@@ -49,13 +49,13 @@ export default function Info() {
       </header>
 
       <div className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-2">Informazioni per il tuo soggiorno</h1>
+        <h1 className="text-3xl font-semibold text-[#1f3d2f] mb-2">Informazioni per il tuo soggiorno</h1>
         <p className="text-[#6f6a5e] text-sm mb-10">
           Tutto quello che ti serve sapere, in una pagina sola.
         </p>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Come arrivare</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Come arrivare</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Siamo a soli 140 metri dalla palazzina 8 di Humanitas: indicazioni per auto, treno, aereo,
             autobus e mezzi pubblici, oltre alle info sul parcheggio.
@@ -66,7 +66,7 @@ export default function Info() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Check-in e check-out</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Check-in e check-out</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Il check-in è dalle <strong className="font-bold">15:00 alle 20:00</strong> ed è flessibile. Se hai bisogno di arrivare prima o dopo,
             <strong className="font-bold"> scrivimi su WhatsApp</strong> e ci organizziamo insieme.
@@ -81,7 +81,7 @@ export default function Info() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Hai bisogno di qualcosa?</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Hai bisogno di qualcosa?</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-4">
             Per qualsiasi necessità durante il soggiorno — bagagli, navetta o richieste particolari — puoi
             scrivermi su WhatsApp o chiamarmi.

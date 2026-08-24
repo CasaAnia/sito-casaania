@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Fraunces, Nunito_Sans, Manrope } from "next/font/google";
+import { Geist, Geist_Mono, Fraunces, Manrope } from "next/font/google";
 import ConditionalFooter from "./components/ConditionalFooter";
 import Conteggio from "./components/Conteggio";
 import "./globals.css";
@@ -26,14 +26,6 @@ const manrope = Manrope({
   // Titoli mai oltre il 600 (morbido, non "aziendale"); il 700 serve solo agli
   // strong del corpo testo, che senza questo file diventerebbero grassetti finti.
   weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-});
-
-const nunitoSans = Nunito_Sans({
-  variable: "--font-nunito",
-  // Il 700 è il grassetto vero del corpo testo ("pochi grassetti, ma veri"):
-  // senza questo file i font-bold ricadevano silenziosamente sul 600.
-  weight: ["400", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -122,7 +114,7 @@ export default function RootLayout({
   return (
     <html
       lang="it"
-      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${nunitoSans.variable} ${manrope.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} ${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

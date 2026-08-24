@@ -129,7 +129,7 @@ function ReviewCard({ name, rating, text }: { name: string; rating: number; text
         {'★'.repeat(rating)}
         {'☆'.repeat(5 - rating)}
       </p>
-      <p className="text-[#3a3a35] text-sm italic leading-relaxed mb-2">"{text}"</p>
+      <p className="text-[#3a3a35] text-sm leading-relaxed mb-2">"{text}"</p>
       <p className="text-xs font-semibold text-[#1f3d2f]">{name}</p>
     </div>
   )
@@ -157,7 +157,7 @@ export default function Recensioni() {
       {/* TITOLO */}
       <section className="pt-10 pb-4 px-4 text-center">
         <div className="max-w-2xl mx-auto">
-          <h1 style={{ color: '#1f3d2f' }} className="font-display text-3xl md:text-4xl font-semibold mb-3 leading-tight tracking-wide">
+          <h1 style={{ color: '#1f3d2f' }} className="text-3xl md:text-4xl font-semibold mb-3 leading-tight tracking-[-0.01em]">
             Cosa dicono di noi
           </h1>
           <p className="text-[#3a3a35]">
@@ -169,7 +169,7 @@ export default function Recensioni() {
       {/* RECENSIONI GOOGLE */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg font-semibold uppercase tracking-wider mb-8 underline">
+          <p className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-8" style={{ color: '#2d6a4f' }}>
             Recensioni raccolte su Google
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -193,7 +193,7 @@ export default function Recensioni() {
       {/* RECENSIONI TRIPADVISOR */}
       <section className="py-8 px-4">
         <div className="max-w-4xl mx-auto">
-          <p style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg font-semibold uppercase tracking-wider mb-8 underline">
+          <p className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-8" style={{ color: '#2d6a4f' }}>
             Recensioni raccolte su TripAdvisor
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -207,7 +207,7 @@ export default function Recensioni() {
       {/* CTA LASCIA RECENSIONE */}
       <section className="py-10 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="font-display text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
+          <p className="text-xl font-semibold text-[#3a3a35] mb-2">Sei già stato nostro ospite?</p>
           <p className="text-[#3a3a35] text-sm max-w-md mx-auto mb-4">
             Se ti sei trovato bene, racconta la tua esperienza su Google: aiuterai altre famiglie a trovare un posto accogliente a due passi dall'ospedale.
           </p>

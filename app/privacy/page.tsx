@@ -26,11 +26,11 @@ export default function Privacy() {
       </header>
 
       <div className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-2">Privacy Policy</h1>
+        <h1 className="text-3xl font-semibold text-[#1f3d2f] mb-2">Privacy Policy</h1>
         <p className="text-[#6f6a5e] text-sm mb-8">Ultimo aggiornamento: agosto 2026</p>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Titolare del trattamento</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Titolare del trattamento</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             Il Titolare del trattamento dei dati raccolti tramite questo sito è <strong>Sawicka Anna Janina</strong>,
             con sede in Via Liguria 26, Fizzonasco di Pieve Emanuele (MI) 20072. Per qualsiasi richiesta relativa
@@ -40,7 +40,7 @@ export default function Privacy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Dati raccolti</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Dati raccolti</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Attraverso il modulo di prenotazione presente sul sito raccogliamo i seguenti dati: nome e cognome,
             numero di telefono, numero di ospiti, date di check-in e check-out ed eventuale camera preferita.
@@ -60,7 +60,7 @@ export default function Privacy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Finalità e base giuridica del trattamento</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Finalità e base giuridica del trattamento</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">I dati vengono trattati per:</p>
           <ul className="text-[#3a3a35] leading-relaxed space-y-2 list-disc pl-5 mb-3">
             <li>gestire la richiesta di prenotazione e verificare la disponibilità delle camere;</li>
@@ -74,7 +74,7 @@ export default function Privacy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Modalità del trattamento e conservazione</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Modalità del trattamento e conservazione</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             I dati sono trattati con strumenti informatici e conservati sulla piattaforma cloud Supabase, che
             agisce in qualità di responsabile del trattamento per conto del Titolare, con misure di sicurezza
@@ -85,7 +85,7 @@ export default function Privacy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Servizi di terze parti</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Servizi di terze parti</h2>
           <p className="text-[#3a3a35] leading-relaxed mb-3">
             Il sito utilizza i seguenti servizi di terze parti:
           </p>
@@ -109,7 +109,7 @@ export default function Privacy() {
         </section>
 
         <section className="mb-8">
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Diritti dell&apos;interessato</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Diritti dell&apos;interessato</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             In qualsiasi momento è possibile esercitare i diritti previsti dagli artt. 15-22 del GDPR: accesso,
             rettifica, cancellazione, limitazione del trattamento, opposizione e portabilità dei dati, scrivendo
@@ -119,7 +119,7 @@ export default function Privacy() {
         </section>
 
         <section>
-          <h2 className="font-display text-xl font-semibold text-[#1f3d2f] mb-2">Aggiornamenti</h2>
+          <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Aggiornamenti</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             La presente informativa può essere aggiornata nel tempo; la versione in vigore è sempre quella
             pubblicata su questa pagina.

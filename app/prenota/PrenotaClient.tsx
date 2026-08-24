@@ -337,7 +337,7 @@ export default function PrenotaClient() {
     <main className="min-h-screen text-[#3a3a35]" style={{ backgroundColor: '#f9f6f1' }}>
       <header className="bg-white border-b border-gray-100 sticky top-0 z-50">
         <div className="max-w-2xl mx-auto px-4 py-4 grid grid-cols-[auto_1fr_auto] items-center gap-2">
-          <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap py-2">← Indietro</Link>
+          <Link href="/" className="justify-self-start text-green-800 font-semibold hover:text-green-600 transition-colors whitespace-nowrap py-2">← Indietro</Link>
           <Link href="/" className="justify-self-center">
             <Logo compactOnMobile />
           </Link>
@@ -350,7 +350,7 @@ export default function PrenotaClient() {
 
         {step === 'form' && (
           <>
-            <h1 className="font-display text-2xl font-semibold text-[#1f3d2f] mb-1">Prenota la tua camera</h1>
+            <h1 className="text-2xl font-semibold text-[#1f3d2f] mb-1">Prenota la tua camera</h1>
             <p className="text-[#6f6a5e] text-base mb-6">Compila la richiesta: <strong className="text-[#1f3d2f]">Ania ti risponderà su WhatsApp o per telefono in pochi minuti.</strong></p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
@@ -364,7 +364,7 @@ export default function PrenotaClient() {
 
               {/* DATE */}
               <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100">
-                <p className="font-bold text-[#1f3d2f] mb-2">Date del soggiorno</p>
+                <p className="font-semibold text-[#1f3d2f] mb-2">Date del soggiorno</p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <div className="min-w-0">
                     <label htmlFor="check-in" className="text-sm text-[#6f6a5e] mb-1 block">Check-in</label>
@@ -390,7 +390,7 @@ export default function PrenotaClient() {
 
               {/* OSPITI */}
               <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100">
-                <p className="font-bold text-[#1f3d2f] mb-2">Numero di persone</p>
+                <p className="font-semibold text-[#1f3d2f] mb-2">Numero di persone</p>
                 <div className="grid grid-cols-4 gap-2">
                   {['1', '2', '3', '4'].map(n => (
                     <button key={n} type="button"
@@ -404,7 +404,7 @@ export default function PrenotaClient() {
 
               {/* CAMERA */}
               <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100">
-                <p className="font-bold text-[#1f3d2f] mb-2">Camera preferita</p>
+                <p className="font-semibold text-[#1f3d2f] mb-2">Camera preferita</p>
                 <div className="space-y-1.5">
                   <button type="button"
                     onClick={() => set('preferredRoomId', '')}
@@ -415,7 +415,7 @@ export default function PrenotaClient() {
                     <button key={room.id} type="button"
                       onClick={() => set('preferredRoomId', room.id)}
                       className={`w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
-                      <span className="font-bold text-[#1f3d2f]">{room.name}</span>
+                      <span className="font-semibold text-[#1f3d2f]">{room.name}</span>
                       <span className="text-[#6f6a5e] ml-2">{room.priceLabel} / notte</span>
                     </button>
                   ))}
@@ -424,7 +424,7 @@ export default function PrenotaClient() {
 
               {/* DATI */}
               <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100">
-                <p className="font-bold text-[#1f3d2f] mb-2">I tuoi dati</p>
+                <p className="font-semibold text-[#1f3d2f] mb-2">I tuoi dati</p>
                 <div className="space-y-3">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
@@ -460,7 +460,7 @@ export default function PrenotaClient() {
               {/* Totale del soggiorno: il conto lo fa il sito, non l'ospite */}
               {selectedRoom && nights > 0 && (
                 <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100">
-                  <p className="font-display font-semibold text-[#1f3d2f] mb-2">Il tuo soggiorno</p>
+                  <p className="font-semibold text-[#1f3d2f] mb-2">Il tuo soggiorno</p>
                   <div className="flex justify-between text-sm text-[#6f6a5e] mb-1.5">
                     <span>{selectedRoom.name}</span>
                     <span>€{selectedRoom.totalPerNight} / notte</span>
@@ -470,14 +470,14 @@ export default function PrenotaClient() {
                     <span>{nights} × €{selectedRoom.totalPerNight}</span>
                   </div>
                   <div className="flex justify-between items-baseline border-t border-gray-100 pt-3">
-                    <span className="text-sm font-bold text-[#1f3d2f]">Totale</span>
-                    <span className="font-display text-2xl font-bold text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</span>
+                    <span className="text-sm font-semibold text-[#1f3d2f]">Totale</span>
+                    <span className="text-2xl font-semibold text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</span>
                   </div>
                 </div>
               )}
 
               <button type="submit" disabled={loading}
-                className="w-full !mt-6 bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60">
+                className="w-full !mt-6 bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-base disabled:opacity-60">
                 {loading ? 'Verifica disponibilità...' : 'Invia la richiesta di prenotazione'}
               </button>
 
@@ -490,14 +490,14 @@ export default function PrenotaClient() {
               <p className="text-base text-[#6f6a5e] mb-2">Preferisci scriverci direttamente?</p>
               <a href={waLink(`Ciao Ania! Vorrei chiedere la disponibilità per ${requestSummary}.`)}
                 target="_blank" rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-bold px-6 py-2.5 rounded-full text-sm">
+                className="inline-flex items-center justify-center gap-2 border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-semibold px-6 py-2.5 rounded-full text-sm">
                 <svg viewBox="0 0 24 24" className="w-[18px] h-[18px] fill-current" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8.9-.3.2-.5 0a6.5 6.5 0 0 1-1.9-1.2 7.2 7.2 0 0 1-1.3-1.7c-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.3-.5s0-.4 0-.5-.5-1.3-.7-1.8-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.1 11.1 0 0 0 4.3 3.8 14.5 14.5 0 0 0 1.4.5 3.4 3.4 0 0 0 1.6.1 2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>
                 Scrivici su WhatsApp
               </a>
             </div>
 
             <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100 mt-8 text-center">
-              <p className="font-display font-bold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
+              <p className="font-semibold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
               <p className="text-sm text-[#3a3a35] mb-1.5">
                 Arrivi in aereo o in treno? <strong className="text-[#1f3d2f]">Pensiamo noi al tuo trasferimento.</strong>
               </p>
@@ -511,7 +511,7 @@ export default function PrenotaClient() {
                 <strong className="text-[#1f3d2f]">Ti consigliamo di prenotare il trasferimento con qualche giorno di anticipo</strong>, così possiamo garantirti la disponibilità.
               </p>
               <a href={waLink('💬 Ciao Ania! Vorrei informazioni sul trasferimento per Casa Ania.')} target="_blank" rel="noopener noreferrer"
-                className="inline-block mt-1 border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-bold px-6 py-2.5 rounded-full text-sm">
+                className="inline-block mt-1 border-2 border-green-700 text-green-700 hover:bg-green-50 transition-colors font-semibold px-6 py-2.5 rounded-full text-sm">
                 Chiedi informazioni sul trasferimento
               </a>
             </div>
@@ -523,12 +523,12 @@ export default function PrenotaClient() {
           const recentOut = recentPending.reduce((a, s) => (s.checkOut > a ? s.checkOut : a), '')
           return (
           <div className="text-center">
-            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Abbiamo già una tua richiesta</h2>
+            <h2 className="text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">Abbiamo già una tua richiesta</h2>
             <p className="text-[#3a3a35] text-base mb-6">
               Abbiamo già una tua richiesta per il <strong>{formatDateShort(recentIn)} → {formatDateShort(recentOut)}</strong>. Vuoi <strong>aggiungere un altro soggiorno</strong>, o <strong>sostituire le date</strong> di quella di prima?
             </p>
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-              <p className="font-bold text-[#1f3d2f] mb-3">La richiesta precedente</p>
+              <p className="font-semibold text-[#1f3d2f] mb-3">La richiesta precedente</p>
               {recentPending.map((seg, i) => (
                 <p key={i} className="text-sm text-[#3a3a35] mb-1">
                   <strong>{seg.roomName}</strong>: {formatDate(seg.checkIn)} → {formatDate(seg.checkOut)}
@@ -543,7 +543,7 @@ export default function PrenotaClient() {
               </div>
             </div>
             <button onClick={() => { setAllowSecondStay(true); submitRequest(true) }} disabled={loading}
-              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3 disabled:opacity-60">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-sm mb-3 disabled:opacity-60">
               {loading ? 'Invio...' : 'Aggiungi un altro soggiorno'}
             </button>
             <button onClick={() => { setSolution(recentPending); setDuplicate(true); setStep('done') }} disabled={loading}
@@ -573,7 +573,7 @@ export default function PrenotaClient() {
                   <span className="inline-block bg-[#eaf2ed] text-[#2d6a4f] font-extrabold text-[0.72rem] tracking-[0.12em] uppercase px-3.5 py-[7px] rounded-full">
                     Disponibilità verificata
                   </span>
-                  <h2 id="titolo-alternativa" className="font-display font-semibold text-[#1f3d2f] text-[clamp(2.05rem,6vw,2.5rem)] leading-[1.15] mt-[18px] mb-3.5">
+                  <h2 id="titolo-alternativa" className="font-semibold text-[#1f3d2f] text-[clamp(2.05rem,6vw,2.5rem)] leading-[1.15] mt-[18px] mb-3.5">
                     Abbiamo trovato un&rsquo;alternativa per&nbsp;te
                   </h2>
                   <p className="text-[#4a5248] text-base leading-[1.65] max-w-[34rem] mx-auto">
@@ -592,7 +592,7 @@ export default function PrenotaClient() {
                     )}
                     <div>
                       <p className="font-extrabold text-[0.68rem] tracking-[0.11em] uppercase text-[#2d6a4f]">Disponibile</p>
-                      <h3 id="nome-camera" className="font-display font-semibold text-[1.3rem] sm:text-[1.45rem] text-[#1f3d2f] mt-1 mb-0.5">{alt?.roomName}</h3>
+                      <h3 id="nome-camera" className="font-semibold text-[1.3rem] sm:text-[1.45rem] text-[#1f3d2f] mt-1 mb-0.5">{alt?.roomName}</h3>
                       {ROOM_DETTAGLI[alt?.roomId || ''] && (
                         <p className="text-[0.92rem] text-[#4a5248]">{ROOM_DETTAGLI[alt.roomId]}</p>
                       )}
@@ -607,7 +607,7 @@ export default function PrenotaClient() {
                       </p>
                       <p className="flex justify-between items-baseline border-t border-[#e9e4d8] pt-3 mt-1">
                         <strong className="text-[#1f3d2f]">Totale</strong>
-                        <strong className="font-display text-[1.25rem] text-[#1f3d2f]">€{totale}</strong>
+                        <strong className="text-[1.25rem] text-[#1f3d2f]">€{totale}</strong>
                       </p>
                     </div>
                   )}
@@ -620,11 +620,11 @@ export default function PrenotaClient() {
 
                 <div className="sm:max-w-[480px] sm:mx-auto">
                   <button onClick={handleConfirm} disabled={loading}
-                    className="block w-full text-center rounded-full py-[17px] px-6 bg-[#2d6a4f] hover:bg-[#275e46] transition-colors text-white font-bold text-[1.05rem] shadow-[0_10px_24px_rgba(45,106,79,0.28)] disabled:opacity-60">
+                    className="block w-full text-center rounded-full py-[17px] px-6 bg-[#2d6a4f] hover:bg-[#275e46] transition-colors text-white font-semibold text-[1.05rem] shadow-[0_10px_24px_rgba(45,106,79,0.28)] disabled:opacity-60">
                     {loading ? 'Invio...' : `Invia la richiesta per la camera ${altShort}`}
                   </button>
                   <button onClick={() => setStep('form')} disabled={loading}
-                    className="block w-full text-center rounded-full py-[17px] px-6 bg-white hover:bg-[#fbf9f4] transition-colors text-[#1f3d2f] font-bold text-[1.05rem] border-[1.5px] border-[#e9e4d8] shadow-[0_2px_8px_rgba(31,61,47,0.05)] mt-3">
+                    className="block w-full text-center rounded-full py-[17px] px-6 bg-white hover:bg-[#fbf9f4] transition-colors text-[#1f3d2f] font-semibold text-[1.05rem] border-[1.5px] border-[#e9e4d8] shadow-[0_2px_8px_rgba(31,61,47,0.05)] mt-3">
                     ← Cambia le date del soggiorno
                   </button>
                   <p className="text-center text-[0.85rem] text-[#8a8f86] mt-[18px]">
@@ -650,7 +650,7 @@ export default function PrenotaClient() {
                   <span className="inline-block bg-[#eaf2ed] text-[#2d6a4f] font-extrabold text-[0.72rem] tracking-[0.12em] uppercase px-3.5 py-[7px] rounded-full">
                     Disponibilità verificata
                   </span>
-                  <h2 id="titolo-alternative" className="font-display font-semibold text-[#1f3d2f] text-[clamp(2.05rem,6vw,2.5rem)] leading-[1.15] mt-[18px] mb-3.5">
+                  <h2 id="titolo-alternative" className="font-semibold text-[#1f3d2f] text-[clamp(2.05rem,6vw,2.5rem)] leading-[1.15] mt-[18px] mb-3.5">
                     Abbiamo trovato {quante}{' '}alternative per&nbsp;te
                   </h2>
                   <p className="text-[#4a5248] text-base leading-[1.65] max-w-[34rem] mx-auto">
@@ -675,11 +675,11 @@ export default function PrenotaClient() {
                             className="w-[88px] h-[88px] sm:w-[104px] sm:h-[104px] object-cover rounded-[14px] flex-none" />
                         )}
                         <span className="block min-w-0 flex-1">
-                          <span className="block font-display font-semibold text-[1.15rem] sm:text-[1.3rem] text-[#1f3d2f]">{room.name}</span>
+                          <span className="block font-semibold text-[1.15rem] sm:text-[1.3rem] text-[#1f3d2f]">{room.name}</span>
                           {ROOM_DETTAGLI[room.id] && (
                             <span className="block text-[0.85rem] text-[#4a5248] mt-0.5">{ROOM_DETTAGLI[room.id]}</span>
                           )}
-                          <span className="block text-[0.97rem] text-[#1f3d2f] font-bold mt-1">€{rp.totalPerNight} <span className="font-normal text-[#8a8f86]">a notte</span></span>
+                          <span className="block text-[0.97rem] text-[#1f3d2f] font-semibold mt-1">€{rp.totalPerNight} <span className="font-normal text-[#8a8f86]">a notte</span></span>
                         </span>
                         <span aria-hidden="true"
                           className={`flex-none w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200 ${selected ? 'bg-[#2d6a4f]' : 'border-[1.5px] border-[#e9e4d8]'}`}>
@@ -705,7 +705,7 @@ export default function PrenotaClient() {
                     </p>
                     <p className="flex justify-between items-baseline border-t border-[#e9e4d8] pt-3 mt-1">
                       <strong className="text-[#1f3d2f]">Totale</strong>
-                      <strong className="font-display text-[1.25rem] text-[#1f3d2f]">€{cp.totalPerNight * nights}</strong>
+                      <strong className="text-[1.25rem] text-[#1f3d2f]">€{cp.totalPerNight * nights}</strong>
                     </p>
                   </div>
                 )}
@@ -717,11 +717,11 @@ export default function PrenotaClient() {
 
                 <div className="sm:max-w-[480px] sm:mx-auto">
                   <button onClick={handleConfirm} disabled={loading}
-                    className="block w-full text-center rounded-full py-[17px] px-6 bg-[#2d6a4f] hover:bg-[#275e46] transition-[background-color,transform] duration-200 active:scale-[0.98] text-white font-bold text-[1.05rem] shadow-[0_10px_24px_rgba(45,106,79,0.28)] disabled:opacity-60">
+                    className="block w-full text-center rounded-full py-[17px] px-6 bg-[#2d6a4f] hover:bg-[#275e46] transition-[background-color,transform] duration-200 active:scale-[0.98] text-white font-semibold text-[1.05rem] shadow-[0_10px_24px_rgba(45,106,79,0.28)] disabled:opacity-60">
                     {loading ? 'Invio...' : `Invia la richiesta per la camera ${chosenShort}`}
                   </button>
                   <button onClick={() => setStep('form')} disabled={loading}
-                    className="block w-full text-center rounded-full py-[17px] px-6 bg-white hover:bg-[#fbf9f4] transition-[background-color,transform] duration-200 active:scale-[0.98] text-[#1f3d2f] font-bold text-[1.05rem] border-[1.5px] border-[#e9e4d8] shadow-[0_2px_8px_rgba(31,61,47,0.05)] mt-3">
+                    className="block w-full text-center rounded-full py-[17px] px-6 bg-white hover:bg-[#fbf9f4] transition-[background-color,transform] duration-200 active:scale-[0.98] text-[#1f3d2f] font-semibold text-[1.05rem] border-[1.5px] border-[#e9e4d8] shadow-[0_2px_8px_rgba(31,61,47,0.05)] mt-3">
                     ← Cambia le date del soggiorno
                   </button>
                   <p className="text-center text-[0.85rem] text-[#8a8f86] mt-[18px]">
@@ -735,7 +735,7 @@ export default function PrenotaClient() {
           // Cambio camera a metà soggiorno
           return (
             <div className="text-center">
-              <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">
+              <h2 className="text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">
                 {preferred ? 'La camera che hai scelto non è disponibile' : 'Abbiamo controllato la disponibilità'}
               </h2>
               <p className="text-[#3a3a35] text-base mb-4">
@@ -754,7 +754,7 @@ export default function PrenotaClient() {
                 Vuoi procedere con questa soluzione o preferisci modificare le date del soggiorno?
               </p>
               <button onClick={handleConfirm} disabled={loading}
-                className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base disabled:opacity-60 mb-3">
+                className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-base disabled:opacity-60 mb-3">
                 {loading ? 'Invio...' : 'Invia la richiesta'}
               </button>
               <button onClick={() => setStep('form')} disabled={loading}
@@ -769,7 +769,7 @@ export default function PrenotaClient() {
           <div className="text-center">
             {duplicate ? (
               <>
-                <h2 className="font-display text-3xl font-bold text-[#1f3d2f] mt-4 mb-6 text-balance">
+                <h2 className="text-3xl font-semibold text-[#1f3d2f] mt-4 mb-6 text-balance">
                   Richiesta ricevuta!
                 </h2>
                 <p className="text-[#3a3a35] text-base mb-6">
@@ -785,7 +785,7 @@ export default function PrenotaClient() {
                     <path d="M20 6 9 17l-5-5" />
                   </svg>
                 </div>
-                <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mb-3 text-balance">Richiesta inviata!</h2>
+                <h2 className="text-3xl font-semibold text-[#1f3d2f] mb-3 text-balance">Richiesta inviata!</h2>
                 <p className="text-[#3a3a35] text-base mb-6">
                   Ania ti contatterà su WhatsApp al numero <strong>{formatPhoneDisplay(form.phone)}</strong> entro pochi minuti.
                 </p>
@@ -800,7 +800,7 @@ export default function PrenotaClient() {
               <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
                 {!dupIdentical && (
                   <>
-                    <p className="font-bold text-[#3a3a35] mb-3">La tua nuova richiesta</p>
+                    <p className="font-semibold text-[#3a3a35] mb-3">La tua nuova richiesta</p>
                     <p className="text-sm text-[#3a3a35] mb-1">
                       <strong>{selectedRoom ? selectedRoom.name : 'Nessuna preferenza'}</strong><br />
                       {formatDate(form.checkIn)} → {formatDate(form.checkOut)}
@@ -808,7 +808,7 @@ export default function PrenotaClient() {
                     <div className="border-t border-gray-100 mt-3 pt-3" />
                   </>
                 )}
-                <p className="font-bold text-[#3a3a35] mb-3">{dupIdentical ? 'In lavorazione' : 'La richiesta precedente'}</p>
+                <p className="font-semibold text-[#3a3a35] mb-3">{dupIdentical ? 'In lavorazione' : 'La richiesta precedente'}</p>
                 {solution.map((seg, i) => (
                   <p key={i} className="text-sm text-[#3a3a35] mb-1">
                     <strong>{seg.roomName}</strong><br />
@@ -818,7 +818,7 @@ export default function PrenotaClient() {
               </div>
             ) : (
             <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-100 text-left mb-6">
-              <p className="font-bold text-[#1f3d2f] mb-3">Riepilogo</p>
+              <p className="font-semibold text-[#1f3d2f] mb-3">Riepilogo</p>
               <p className="text-sm text-[#3a3a35] mb-1">{form.firstName} {form.lastName} · {form.numGuests} {Number(form.numGuests) === 1 ? 'persona' : 'persone'}</p>
               <p className="text-sm text-[#3a3a35] mb-3">Dal {formatDate(form.checkIn)} al {formatDate(form.checkOut)}</p>
               {multiRoom ? (
@@ -853,16 +853,16 @@ export default function PrenotaClient() {
                   : waLink(`Ciao Ania! Ho già una richiesta per ${dupPrevSummary}, e ora ho inviato una nuova richiesta per ${selectedRoom ? `la ${selectedRoom.name}` : 'una camera'}, dal ${formatDate(form.checkIn)} al ${formatDate(form.checkOut)}. Mi aiuti a sistemare le due richieste? Grazie!`))
               : waLink(`Ciao Ania! Ho appena inviato una richiesta dal sito a nome di ${form.firstName} ${form.lastName}, per ${requestSummary}${!multiRoom && solution[0]?.roomName ? `, per la ${solution[0].roomName}` : ''}. Rimango in attesa della tua conferma. Grazie!`)}
               target="_blank" rel="noopener noreferrer"
-              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-sm mb-3">
               {duplicate ? 'Scrivi ad Ania su WhatsApp' : 'Scrivi su WhatsApp'}
             </a>
-            <Link href="/" className="inline-block text-sm font-bold text-[#23231e] underline py-2">Torna alla home</Link>
+            <Link href="/" className="inline-block text-sm font-semibold text-[#23231e] underline py-2">Torna alla home</Link>
           </div>
         )}
 
         {step === 'error' && errorKind === 'full' && (
           <div className="text-center">
-            <h2 className="font-display text-3xl font-bold text-[#1f3d2f] mt-4 mb-7 text-balance">Ci dispiace, per queste date siamo al completo</h2>
+            <h2 className="text-3xl font-semibold text-[#1f3d2f] mt-4 mb-7 text-balance">Ci dispiace, per queste date siamo al completo</h2>
             <p className="text-[#3a3a35] text-base mb-4">
               Dal <strong className="text-black">{formatPeriodo(form.checkIn, form.checkOut).replace(/^dal /, '')}</strong> tutte le nostre camere sono già occupate.
             </p>
@@ -873,7 +873,7 @@ export default function PrenotaClient() {
               Puoi lasciare ad Ania il tuo nome e numero di telefono su WhatsApp. <strong className="text-black">Se si dovesse liberare una camera, sarà felice di contattarti personalmente.</strong>
             </p>
             <button onClick={() => setStep('form')}
-              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-base mb-4">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-base mb-4">
               Prova con altre date
             </button>
             <a href={waLink(`Ciao Ania! Sul sito risulta tutto pieno ${formatPeriodo(form.checkIn, form.checkOut)}. Se dovesse liberarsi una camera, potresti avvisarmi? Mi chiamo ${form.firstName} ${form.lastName}. Grazie mille!`)}
@@ -886,11 +886,11 @@ export default function PrenotaClient() {
 
         {step === 'error' && errorKind === 'tech' && (
           <div className="text-center">
-            <h2 className="font-display text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Qualcosa non ha funzionato</h2>
+            <h2 className="text-3xl font-semibold text-[#1f3d2f] mt-4 mb-4 text-balance">Qualcosa non ha funzionato</h2>
             <p className="text-[#3a3a35] text-base mb-2">La tua richiesta non è stata inviata.</p>
             {errorMsg && <p className="text-[#3a3a35] text-base mb-6">{errorMsg}</p>}
             <button onClick={() => setStep('form')}
-              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-bold py-4 rounded-2xl text-sm mb-3">
+              className="block w-full bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-sm mb-3">
               ← Riprova
             </button>
             <a href={waLink(`Ciao Ania! Ho provato a prenotare dal sito ma c'è stato un problema tecnico. Vorrei ${requestSummary}.`)}

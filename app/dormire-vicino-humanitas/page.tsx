@@ -63,8 +63,8 @@ const faqJsonLd = {
   })),
 }
 
-const h2 = 'font-display text-2xl font-semibold text-[#1f3d2f] mb-3'
-const h3 = 'font-display text-lg font-semibold text-[#1f3d2f] mb-2 flex items-center gap-2'
+const h2 = 'text-2xl font-semibold text-[#1f3d2f] mb-3'
+const h3 = 'text-lg font-semibold text-[#1f3d2f] mb-2 flex items-center gap-2'
 const p = 'text-[#3a3a35] leading-relaxed'
 const iconProps = { size: 20, strokeWidth: 1.6, className: 'text-green-700 shrink-0', 'aria-hidden': true as const }
 
@@ -81,7 +81,7 @@ export default function DormireVicinoHumanitas() {
           <Link href="/" className="justify-self-start text-green-800 font-bold hover:text-green-600 transition-colors whitespace-nowrap">
             ← Home
           </Link>
-          <p className="justify-self-center font-display text-xl font-semibold text-[#1f3d2f]">Guida</p>
+          <p className="justify-self-center text-xl font-semibold text-[#1f3d2f]">Guida</p>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
             WhatsApp
@@ -90,7 +90,7 @@ export default function DormireVicinoHumanitas() {
       </header>
 
       <article className="max-w-2xl mx-auto px-4 py-10">
-        <h1 className="font-display text-3xl md:text-4xl font-semibold text-[#1f3d2f] mb-4 leading-tight">
+        <h1 className="text-3xl md:text-4xl font-semibold text-[#1f3d2f] mb-4 leading-tight">
           Dormire vicino a Humanitas Rozzano: una guida pratica per il tuo soggiorno
         </h1>
 
@@ -357,7 +357,7 @@ export default function DormireVicinoHumanitas() {
           <div className="space-y-5">
             {faqs.map(({ q, a }) => (
               <div key={q}>
-                <h3 className="font-display font-semibold text-[#1f3d2f] mb-1">{q}</h3>
+                <h3 className="font-semibold text-[#1f3d2f] mb-1">{q}</h3>
                 {a.map(par => (
                   <p key={par} className={`${p} mb-2 last:mb-0`}>{par}</p>
                 ))}
