@@ -147,7 +147,7 @@ export default function Home() {
           </Link>
         </div>
         {/* Header desktop: logo · navigazione leggera · WhatsApp */}
-        <div className="hidden md:flex max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 py-3 items-center justify-between gap-8">
+        <div className="hidden md:flex max-w-[clamp(1240px,92vw,1560px)] mx-auto px-8 py-3 items-center justify-between gap-8">
           <Link href="/" aria-label="Casa Ania — torna all'inizio">
             <Logo header />
           </Link>
@@ -170,7 +170,7 @@ export default function Home() {
       {/* HERO DESKTOP: composizione editoriale a due colonne — testo su crema
           a sinistra, fotografia reale a destra, benefit in coda alla hero. */}
       <section className="hidden md:block">
-        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 pt-14 pb-9 hero-in">
+        <div className="max-w-[clamp(1240px,92vw,1560px)] mx-auto px-8 pt-14 pb-9 hero-in">
           {/* Testo ~40% · fotografia ~60%: la foto è la presenza principale */}
           <div className="grid grid-cols-[2fr_3fr] gap-12 lg:gap-14 items-center">
             <div>
@@ -330,7 +330,7 @@ export default function Home() {
       {/* CAMERE DESKTOP: subito dopo hero e benefit — il visitatore vede
           subito cosa può prenotare. Griglia editoriale con le 4 camere reali. */}
       <section id="camere" className="hidden md:block">
-        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 pt-8 pb-12">
+        <div className="max-w-[clamp(1240px,92vw,1560px)] mx-auto px-8 pt-8 pb-12">
           <div className="mb-9">
             <h2 className="font-medium text-[30px] leading-[1.2] tracking-[-0.01em]" style={{ color: '#2b2a25' }}>
               Le nostre camere
@@ -411,7 +411,7 @@ export default function Home() {
           sito; sotto md restano le sezioni verticali originali. Arriva dopo
           camere e blocco emozionale: prima il visitatore vede cosa prenotare. */}
       <section className="hidden md:block bg-white">
-        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 py-14">
+        <div className="max-w-[clamp(1240px,92vw,1560px)] mx-auto px-8 py-14">
           <h2 className="text-center text-sm font-semibold uppercase tracking-[0.14em] mb-11" style={{ color: '#2d6a4f' }}>I nostri servizi</h2>
           <div className="grid grid-cols-5 gap-10">
             <div className="flex flex-col items-start gap-3">
@@ -472,7 +472,7 @@ export default function Home() {
 
       {/* RECENSIONI DESKTOP: orizzontale e ariosa, separatori sottili */}
       <section className="hidden md:block">
-        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 pt-12 pb-16">
+        <div className="max-w-[clamp(1240px,92vw,1560px)] mx-auto px-8 pt-12 pb-16">
           <div className="text-center mb-11">
             <p className="text-base font-medium text-[#1f3d2f] mb-3">
               <span style={{ color: '#2d6a4f' }}>★★★★★</span> <span className="font-semibold">5,0 su Google</span>
