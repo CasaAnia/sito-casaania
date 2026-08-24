@@ -1,13 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Nunito_Sans } from 'next/font/google'
 import { Car, Plane, TrainFront, Bus, MessageCircle } from 'lucide-react'
-
-// Il layout carica Nunito Sans solo nei pesi 400 e 600, e il 600 sugli <strong>
-// del corpo si distingue poco dal testo normale. Qui carichiamo anche il vero
-// peso 700, limitato a questa pagina, per rendere i grassetti davvero leggibili.
-const nunitoBold = Nunito_Sans({ weight: '700', subsets: ['latin'] })
-const grassetto = `${nunitoBold.className} font-bold`
 
 const PHONE = '3427004354'
 const PHONE_DISPLAY = '342 700 4354'
@@ -117,23 +110,23 @@ export default function DormireVicinoHumanitas() {
         <section className="mb-10">
           <h2 className={h2}>Dove si trova Humanitas</h2>
           <p className={`${p} mb-3`}>
-            Humanitas Research Hospital si trova in <strong className={grassetto}>Via Manzoni 56</strong>{' '}a
+            Humanitas Research Hospital si trova in <strong className="font-bold">Via Manzoni 56</strong>{' '}a
             Rozzano, a sud di Milano. L&apos;ospedale è grande e suddiviso in diversi building o palazzine:
             prima di partire è utile controllare sulla documentazione dell&apos;appuntamento o del ricovero a
             quale edificio devi presentarti.
           </p>
           <p className={`${p} mb-3`}>
-            Casa Ania si trova in <strong className={grassetto}>Via Liguria 26, Fizzonasco – Pieve
+            Casa Ania si trova in <strong className="font-bold">Via Liguria 26, Fizzonasco – Pieve
             Emanuele</strong>, proprio al confine con Rozzano.
           </p>
           <p className={`${p} mb-3`}>
             La cosa importante, però, è la distanza reale dall&apos;ospedale:
           </p>
           <p className={`${p} mb-3`}>
-            Casa Ania è a circa <strong className={grassetto}>140 metri dalla palazzina 8</strong> di Humanitas.
+            Casa Ania è a circa <strong className="font-bold">140 metri dalla palazzina 8</strong> di Humanitas.
           </p>
           <p className={p}>
-            Sono circa <strong className={grassetto}>due minuti a piedi</strong>{' '}e, una volta arrivato, non
+            Sono circa <strong className="font-bold">due minuti a piedi</strong>{' '}e, una volta arrivato, non
             hai bisogno dell&apos;auto o dei mezzi pubblici per andare e tornare dall&apos;ospedale.
           </p>
         </section>
@@ -161,10 +154,10 @@ export default function DormireVicinoHumanitas() {
             I prezzi sono chiari e dipendono dalla camera e dal numero di persone:
           </p>
           <ul className={`${p} space-y-1 mb-3`}>
-            <li>• Camera singola: <strong className={grassetto}>70 €</strong> a notte</li>
-            <li>• Camera matrimoniale: <strong className={grassetto}>80 €</strong> a notte</li>
-            <li>• 3 persone: <strong className={grassetto}>90 €</strong> a notte</li>
-            <li>• 4 persone: <strong className={grassetto}>100 €</strong> a notte</li>
+            <li>• Camera singola: <strong className="font-bold">70 €</strong> a notte</li>
+            <li>• Camera matrimoniale: <strong className="font-bold">80 €</strong> a notte</li>
+            <li>• 3 persone: <strong className="font-bold">90 €</strong> a notte</li>
+            <li>• 4 persone: <strong className="font-bold">100 €</strong> a notte</li>
           </ul>
           <p className={p}>
             La prenotazione avviene direttamente con Casa Ania, senza commissioni di portali esterni.
@@ -177,11 +170,11 @@ export default function DormireVicinoHumanitas() {
           <div className="mb-6">
             <h3 className={h3}><Car {...iconProps} /> In auto</h3>
             <p className={`${p} mb-3`}>
-              Humanitas si trova in <strong className={grassetto}>Via Manzoni 56, Rozzano</strong>.
+              Humanitas si trova in <strong className="font-bold">Via Manzoni 56, Rozzano</strong>.
             </p>
             <p className={`${p} mb-3`}>
               Dalle principali autostrade si raggiunge attraverso la Tangenziale Ovest; tra i percorsi di
-              accesso indicati da Humanitas c&apos;è l&apos;uscita <strong className={grassetto}>Quinto
+              accesso indicati da Humanitas c&apos;è l&apos;uscita <strong className="font-bold">Quinto
               de&apos; Stampi / Via dei Missaglia (7 bis)</strong>, seguendo poi le indicazioni per
               l&apos;ospedale.
             </p>
@@ -189,7 +182,7 @@ export default function DormireVicinoHumanitas() {
               Quando avrai confermato la prenotazione, potrai utilizzare direttamente l&apos;indirizzo di Casa Ania:
             </p>
             <p className={p}>
-              <strong className={grassetto}>Via Liguria 26, Fizzonasco – Pieve Emanuele (MI)</strong>.
+              <strong className="font-bold">Via Liguria 26, Fizzonasco – Pieve Emanuele (MI)</strong>.
             </p>
           </div>
 
@@ -199,16 +192,16 @@ export default function DormireVicinoHumanitas() {
               Uno dei collegamenti più semplici è:
             </p>
             <p className={`${p} mb-3`}>
-              <strong className={grassetto}>Metropolitana M2 → Abbiategrasso → autobus 230 → fermata Via
+              <strong className="font-bold">Metropolitana M2 → Abbiategrasso → autobus 230 → fermata Via
               Manzoni (Ospedale)</strong>.
             </p>
             <p className={`${p} mb-3`}>
               La linea 230 collega il capolinea della M2 di Piazza Abbiategrasso con Humanitas.
             </p>
             <p className={`${p} mb-3`}>
-              Dal centro di Milano è possibile utilizzare anche il <strong className={grassetto}>tram
+              Dal centro di Milano è possibile utilizzare anche il <strong className="font-bold">tram
               15</strong> fino a Rozzano; dalla zona Via Grandi/Via Buozzi restano circa{' '}
-              <strong className={grassetto}>15 minuti a piedi</strong>{' '}per raggiungere l&apos;ospedale.
+              <strong className="font-bold">15 minuti a piedi</strong>{' '}per raggiungere l&apos;ospedale.
             </p>
             <p className={p}>
               Per arrivare direttamente davanti all&apos;ospedale, quindi, la combinazione M2 + 230 è
@@ -219,8 +212,8 @@ export default function DormireVicinoHumanitas() {
           <div className="mb-6">
             <h3 className={h3}><TrainFront {...iconProps} /> Se arrivi in treno</h3>
             <p className={`${p} mb-3`}>
-              Se arrivi a <strong className={grassetto}>Milano Centrale</strong> o{' '}
-              <strong className={grassetto}>Milano Rogoredo</strong>, puoi proseguire verso Humanitas con i
+              Se arrivi a <strong className="font-bold">Milano Centrale</strong> o{' '}
+              <strong className="font-bold">Milano Rogoredo</strong>, puoi proseguire verso Humanitas con i
               mezzi pubblici, in taxi oppure chiedermi informazioni sul servizio transfer.
             </p>
             <p className={p}>
@@ -235,13 +228,13 @@ export default function DormireVicinoHumanitas() {
               Casa Ania può organizzare su richiesta il trasferimento da:
             </p>
             <p className={`${p} mb-3`}>
-              <strong className={grassetto}>Milano Linate, Milano Malpensa e Orio al Serio</strong>.
+              <strong className="font-bold">Milano Linate, Milano Malpensa e Orio al Serio</strong>.
             </p>
             <p className={`${p} mb-3`}>
               Per conoscere disponibilità e prezzo, scrivimi su WhatsApp indicando aeroporto, data e orario di arrivo.
             </p>
             <p className={p}>
-              Se puoi, contattami con <strong className={grassetto}>qualche giorno di anticipo</strong>: è
+              Se puoi, contattami con <strong className="font-bold">qualche giorno di anticipo</strong>: è
               più facile organizzare il servizio e garantirti la disponibilità dell&apos;autista.
             </p>
           </div>
@@ -249,8 +242,8 @@ export default function DormireVicinoHumanitas() {
           <div>
             <h3 className={h3}><Bus {...iconProps} /> Se arrivi in autobus</h3>
             <p className={p}>
-              Se il tuo viaggio termina ai terminal di <strong className={grassetto}>San Donato</strong> o{' '}
-              <strong className={grassetto}>Lampugnano</strong>, puoi chiedermi anche in questo caso
+              Se il tuo viaggio termina ai terminal di <strong className="font-bold">San Donato</strong> o{' '}
+              <strong className="font-bold">Lampugnano</strong>, puoi chiedermi anche in questo caso
               informazioni sul transfer fino a Casa Ania.
             </p>
           </div>
@@ -263,17 +256,17 @@ export default function DormireVicinoHumanitas() {
           </p>
           <p className={`${p} mb-3`}>
             Attualmente la tariffa giornaliera dei parcheggi ordinari è di{' '}
-            <strong className={grassetto}>8 €</strong>{' '}per l&apos;intera giornata. Il P3, destinato alla
+            <strong className="font-bold">8 €</strong>{' '}per l&apos;intera giornata. Il P3, destinato alla
             sosta breve, ha una tariffa giornaliera differente, pari a{' '}
-            <strong className={grassetto}>15 €</strong>.
+            <strong className="font-bold">15 €</strong>.
           </p>
           <p className={`${p} mb-3`}>
             Le tariffe possono cambiare nel tempo, quindi per gli aggiornamenti è sempre meglio consultare Humanitas.
           </p>
           <p className={`${p} mb-3`}>
             Se preferisci lasciare l&apos;auto gratuitamente, a circa{' '}
-            <strong className={grassetto}>150 metri</strong> da Casa Ania ci sono{' '}
-            <strong className={grassetto}>due aree di sosta pubblica gratuita</strong>, una su ciascun lato
+            <strong className="font-bold">150 metri</strong> da Casa Ania ci sono{' '}
+            <strong className="font-bold">due aree di sosta pubblica gratuita</strong>, una su ciascun lato
             della strada.
           </p>
           <p className={`${p} mb-3`}>
@@ -306,13 +299,13 @@ export default function DormireVicinoHumanitas() {
             Preferisco essere chiara anche su ciò che non c&apos;è:
           </p>
           <p className={`${p} mb-3`}>
-            <strong className={grassetto}>non c&apos;è una cucina</strong> a disposizione degli ospiti,{' '}
-            <strong className={grassetto}>non serviamo la colazione</strong> e{' '}
-            <strong className={grassetto}>non c&apos;è una lavatrice</strong> utilizzabile dagli ospiti.
+            <strong className="font-bold">non c&apos;è una cucina</strong> a disposizione degli ospiti,{' '}
+            <strong className="font-bold">non serviamo la colazione</strong> e{' '}
+            <strong className="font-bold">non c&apos;è una lavatrice</strong> utilizzabile dagli ospiti.
           </p>
           <p className={p}>
             Per soggiorni di più notti, lenzuola e asciugamani vengono cambiati{' '}
-            <strong className={grassetto}>ogni quattro notti</strong>, insieme alla pulizia completa della camera.
+            <strong className="font-bold">ogni quattro notti</strong>, insieme alla pulizia completa della camera.
           </p>
         </section>
 
@@ -320,13 +313,13 @@ export default function DormireVicinoHumanitas() {
           <h2 className={h2}>Se utilizzi una carrozzina</h2>
           <p className={`${p} mb-3`}>
             L&apos;ingresso del palazzo presenta alcuni gradini che possono essere superati utilizzando una{' '}
-            <strong className={grassetto}>rampa mobile</strong>.
+            <strong className="font-bold">rampa mobile</strong>.
           </p>
           <p className={`${p} mb-3`}>
             La rampa non è motorizzata e serve quindi una persona che aiuti a spingere la carrozzina.
           </p>
           <p className={`${p} mb-3`}>
-            Se mi comunichi l&apos;orario di arrivo <strong className={grassetto}>il giorno
+            Se mi comunichi l&apos;orario di arrivo <strong className="font-bold">il giorno
             precedente</strong>, posso organizzarmi per assisterti all&apos;ingresso.
           </p>
           <p className={`${p} mb-3`}>
@@ -335,7 +328,7 @@ export default function DormireVicinoHumanitas() {
           </p>
           <p className={`${p} mb-3`}>
             C&apos;è però un&apos;importante eccezione: la camera Amelia è accessibile, ma{' '}
-            <strong className={grassetto}>il suo bagno privato non è accessibile in carrozzina</strong>.
+            <strong className="font-bold">il suo bagno privato non è accessibile in carrozzina</strong>.
           </p>
           <p className={p}>
             Se hai esigenze particolari di mobilità, scrivimi prima di prenotare: posso aiutarti a capire quale
@@ -346,16 +339,16 @@ export default function DormireVicinoHumanitas() {
         <section className="mb-10">
           <h2 className={h2}>Check-in e check-out</h2>
           <p className={`${p} mb-3`}>
-            Il check-in è dalle <strong className={grassetto}>15:00 alle 20:00</strong> ed è flessibile. Se
+            Il check-in è dalle <strong className="font-bold">15:00 alle 20:00</strong> ed è flessibile. Se
             hai bisogno di arrivare prima o dopo,
-            <strong className={grassetto}> scrivimi su WhatsApp</strong> e ci organizziamo insieme.
+            <strong className="font-bold"> scrivimi su WhatsApp</strong> e ci organizziamo insieme.
           </p>
           <p className={`${p} mb-3`}>
-            <strong className={grassetto}>Il giorno prima del tuo arrivo</strong>, comunicami anche
+            <strong className="font-bold">Il giorno prima del tuo arrivo</strong>, comunicami anche
             l&apos;orario indicativo in cui pensi di arrivare, così posso organizzarmi al meglio per accoglierti.
           </p>
           <p className={p}>
-            Il check-out è entro le <strong className={grassetto}>10:00</strong>.
+            Il check-out è entro le <strong className="font-bold">10:00</strong>.
           </p>
         </section>
 

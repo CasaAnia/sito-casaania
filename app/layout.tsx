@@ -23,7 +23,9 @@ const fraunces = Fraunces({
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-nunito",
-  weight: ["400", "600"],
+  // Il 700 è il grassetto vero del corpo testo ("pochi grassetti, ma veri"):
+  // senza questo file i font-bold ricadevano silenziosamente sul 600.
+  weight: ["400", "600", "700"],
   subsets: ["latin"],
 });
 

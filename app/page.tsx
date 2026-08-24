@@ -257,7 +257,7 @@ export default function Home() {
             Check-in dalle 15:00 alle 20:00
           </p>
           <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
-            Se la camera è pronta prima, ti avvisiamo noi: quando possibile puoi entrare anche in anticipo, <strong className="font-semibold">senza costi aggiuntivi</strong>.
+            Se la camera è pronta prima, ti avvisiamo noi: quando possibile puoi entrare anche in anticipo, <strong className="font-bold">senza costi aggiuntivi</strong>.
           </p>
           <p className="text-left text-green-700 text-[17px] font-semibold leading-[1.4] mb-2">
             Pensi di arrivare dopo le 20:00?
@@ -290,8 +290,8 @@ export default function Home() {
             A due passi da Humanitas.
           </h2>
           <p className="text-[#3a3a35] leading-relaxed max-w-md mx-auto mb-5">
-            Casa Ania si trova a soli <span className="font-semibold text-[#1f3d2f]">140 metri</span> dalla palazzina 8 di Humanitas.
-            In circa <span className="font-semibold text-[#1f3d2f]">2 minuti a piedi</span>{' '}raggiungi l&apos;ingresso, senza bisogno di auto, taxi o mezzi pubblici.
+            Casa Ania si trova a soli <span className="font-bold text-[#1f3d2f]">140 metri</span> dalla palazzina 8 di Humanitas.
+            In circa <span className="font-bold text-[#1f3d2f]">2 minuti a piedi</span>{' '}raggiungi l&apos;ingresso, senza bisogno di auto, taxi o mezzi pubblici.
           </p>
           <div className="flex items-center justify-center gap-6 mb-6 text-sm font-semibold text-[#1f3d2f]">
             <span className="flex items-center gap-1.5"><MapPin size={16} strokeWidth={1.8} className="text-green-700 shrink-0" aria-hidden="true" /> 140 metri</span>
@@ -326,7 +326,7 @@ export default function Home() {
         <div className="max-w-2xl mx-auto">
           <h2 style={{ textUnderlineOffset: '6px' }} className="text-center text-[#3a3a35] text-lg uppercase tracking-wider mb-4 underline">Accessibilità</h2>
           <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
-            Casa Ania dispone di <strong className="font-semibold">rampa di accesso</strong> e <strong className="font-semibold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-semibold">ad eccezione del bagno privato della camera Amelia</strong>.
+            Casa Ania dispone di <strong className="font-bold">rampa di accesso</strong> e <strong className="font-bold">ascensore</strong>. La carrozzina può accedere alle camere e ai relativi bagni, <strong className="font-bold">ad eccezione del bagno privato della camera Amelia</strong>.
           </p>
           <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-5">
             Se hai esigenze specifiche di mobilità, scrivici prima del soggiorno: ti aiutiamo a scegliere la camera più adatta.
