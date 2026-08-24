@@ -246,23 +246,6 @@ async function findRecentPending(
   }
 }
 
-// Avviso WhatsApp ad Ania via CallMeBot (gratuito, per avvisi personali).
-// Se le variabili non sono configurate o il servizio non risponde, si va
-// avanti senza: la prenotazione è già salvata e c'è comunque la push.
-async function sendWhatsAppAlert(text: string) {
-  const phone = process.env.CALLMEBOT_PHONE
-  const apikey = process.env.CALLMEBOT_APIKEY
-  if (!phone || !apikey) return
-  try {
-    await fetch(
-      `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(phone)}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(apikey)}`,
-      { signal: AbortSignal.timeout(8000) }
-    )
-  } catch {
-    // CallMeBot non raggiungibile: pazienza, resta la notifica push
-  }
-}
-
 // Avviso sonoro Pushover sul telefono di Ania (app "CasAnia" su pushover.net).
 // Suona forte e insistente anche a telefono bloccato: è il canale per il solo
 // evento urgente "nuova richiesta dal sito". Se le variabili mancano o il
@@ -547,14 +530,6 @@ export async function POST(req: NextRequest) {
     ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}${doubleNote}${notesLine}`
     : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}${doubleNote}${notesLine}`
 
-  const totale = bookingsToInsert.reduce((s, b) => s + b.total_amount, 0)
-  const waText =
-    `🏠 Nuova richiesta dal sito Casa Ania\n` +
-    `${firstName} ${lastName}, ${numGuests} ${Number(numGuests) === 1 ? 'persona' : 'persone'}\n` +
-    `${checkIn} → ${checkOut} · ${roomDesc} · ${totale} €\n` +
-    `Tel: ${phone}\n` +
-    `Chiama il cliente e poi conferma nel gestionale.${doubleNote}${notesLine}`
-
   // Avviso sonoro Pushover: testo essenziale (nome, camera, date, ospiti),
   // toccandolo si apre la prenotazione nel gestionale. Parte solo qui, alla
   // creazione, e una sola volta grazie a claimPushoverAlert.
@@ -570,7 +545,6 @@ export async function POST(req: NextRequest) {
   const canAlert = await claimPushoverAlert(supabase, insertedIds)
   await Promise.all([
     sendPushNotification(supabase, pushTitle, pushBody),
-    sendWhatsAppAlert(waText),
     canAlert ? sendPushoverAlert(pushoverMsg, pushoverUrl) : Promise.resolve(),
   ])
 
