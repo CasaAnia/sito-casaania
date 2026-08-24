@@ -55,7 +55,9 @@ export default function BannerCarosello() {
 
   return (
     <>
-      <section className="relative h-[340px] md:h-[30rem] overflow-hidden bg-gray-100 flex items-end md:items-center">
+      {/* Da md in su la hero è la nuova composizione a due colonne in page.tsx:
+          il carosello resta solo su mobile, dove funziona bene così com'è. */}
+      <section className="md:hidden relative h-[340px] overflow-hidden bg-gray-100 flex items-end">
         {fotos.map((f, idx) => (
           <Image
             key={idx}

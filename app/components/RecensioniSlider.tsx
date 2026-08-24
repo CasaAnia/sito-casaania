@@ -15,7 +15,16 @@ type Testimonial = { name: string; rating: number; text: string }
  * I puntini indicano la posizione: si aggiornano leggendo scrollLeft
  * (via requestAnimationFrame) e un tocco sul puntino porta alla card.
  */
-export default function RecensioniSlider({ testimonials }: { testimonials: Testimonial[] }) {
+export default function RecensioniSlider({
+  testimonials,
+  variant = 'card',
+}: {
+  testimonials: Testimonial[]
+  // 'card' è l'aspetto storico (scatole bianche, usato su mobile);
+  // 'aria' è la versione desktop editoriale: niente scatole, solo
+  // separatori sottili, spazio bianco e tipografia.
+  variant?: 'card' | 'aria'
+}) {
   const trackRef = useRef<HTMLDivElement>(null)
   const [active, setActive] = useState(0)
   const [positions, setPositions] = useState(testimonials.length)
@@ -59,13 +68,19 @@ export default function RecensioniSlider({ testimonials }: { testimonials: Testi
       <div
         ref={trackRef}
         onScroll={onScroll}
-        className="flex gap-4 md:gap-7 overflow-x-auto snap-x snap-mandatory scrollbar-none"
+        className={`flex overflow-x-auto snap-x snap-mandatory scrollbar-none ${
+          variant === 'aria' ? 'gap-4 md:gap-10' : 'gap-4 md:gap-7'
+        }`}
         style={{ WebkitOverflowScrolling: 'touch' }}>
         {testimonials.map((t, i) => (
           <figure
             key={i}
-            className="snap-start shrink-0 w-full md:w-[calc((100%-3.5rem)/3)] bg-white rounded-2xl p-7 md:p-8 border border-black/[0.04] flex flex-col"
-            style={{ boxShadow: '0 1px 3px rgba(31,61,47,0.04)' }}>
+            className={
+              variant === 'aria'
+                ? 'snap-start shrink-0 w-full md:w-[calc((100%-5rem)/3)] flex flex-col py-2 md:border-l md:border-[#e7e2d6] md:pl-8 md:first:border-l-0 md:first:pl-0'
+                : 'snap-start shrink-0 w-full md:w-[calc((100%-3.5rem)/3)] bg-white rounded-2xl p-7 md:p-8 border border-black/[0.04] flex flex-col'
+            }
+            style={variant === 'aria' ? undefined : { boxShadow: '0 1px 3px rgba(31,61,47,0.04)' }}>
             <p style={{ color: '#2d6a4f' }} className="text-[17px] md:text-[18px] tracking-[0.15em] mb-4" aria-label={`${t.rating} stelle su 5`}>
               {'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}
             </p>

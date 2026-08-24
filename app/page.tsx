@@ -6,7 +6,7 @@ import RecensioniSlider from './components/RecensioniSlider'
 import BannerCarosello from './components/BannerCarosello'
 import ParallaxController from './components/ParallaxController'
 import WhatsAppFab from './components/WhatsAppFab'
-import { MapPin, MessageCircle, Footprints } from 'lucide-react'
+import { MapPin, MessageCircle, Footprints, Car, Bus, Accessibility, Clock } from 'lucide-react'
 
 const PHONE = '3427004354'
 const WA_LINK = `https://wa.me/39${PHONE}`
@@ -137,7 +137,8 @@ export default function Home() {
 
       {/* HEADER */}
       <header className="bg-white sticky top-0 z-50" style={{boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}>
-        <div className="max-w-4xl mx-auto px-5 sm:px-4 py-4 flex items-center justify-between">
+        {/* Header mobile: invariato */}
+        <div className="md:hidden max-w-4xl mx-auto px-5 sm:px-4 py-4 flex items-center justify-between">
           <Logo header />
           <Link href="/prenota"
             style={{fontSize: '0.75rem', letterSpacing: '0.05em'}}
@@ -145,13 +146,90 @@ export default function Home() {
             Prenota ora
           </Link>
         </div>
+        {/* Header desktop: logo · navigazione leggera · WhatsApp */}
+        <div className="hidden md:flex max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 py-3 items-center justify-between gap-8">
+          <Link href="/" aria-label="Casa Ania — torna all'inizio">
+            <Logo header />
+          </Link>
+          <nav aria-label="Navigazione principale" className="flex items-center gap-8 text-[15px] font-medium text-[#3a3a35]">
+            <a href="#camere" className="transition-colors duration-150 hover:text-green-700 py-2">Camere</a>
+            <Link href="/recensioni" className="transition-colors duration-150 hover:text-green-700 py-2">Recensioni</Link>
+            <a href="#dove-siamo" className="transition-colors duration-150 hover:text-green-700 py-2">Dove siamo</a>
+            <Link href="/info" className="transition-colors duration-150 hover:text-green-700 py-2">Info utili</Link>
+          </nav>
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-full text-sm whitespace-nowrap">
+            <MessageCircle size={17} strokeWidth={2} aria-hidden="true" /> Scrivi ad Ania
+          </a>
+        </div>
       </header>
 
-      {/* HERO (carosello foto + testo sovrapposto) */}
+      {/* HERO MOBILE (carosello foto + testo sovrapposto): invariato, solo sotto md */}
       <BannerCarosello />
 
-      {/* RECENSIONI */}
-      <section className="pt-14 md:pt-16 pb-2 px-5">
+      {/* HERO DESKTOP: composizione editoriale a due colonne — testo su crema
+          a sinistra, fotografia reale a destra, benefit in coda alla hero. */}
+      <section className="hidden md:block">
+        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 pt-14 pb-9 hero-in">
+          {/* Testo ~40% · fotografia ~60%: la foto è la presenza principale */}
+          <div className="grid grid-cols-[2fr_3fr] gap-12 lg:gap-14 items-center">
+            <div>
+              <p className="text-[13px] font-semibold uppercase tracking-[0.18em] mb-5" style={{ color: '#2d6a4f' }}>
+                A 140 metri da Humanitas
+              </p>
+              <h1 className="font-medium text-[42px] lg:text-[48px] leading-[1.12] tracking-[-0.02em]" style={{ color: '#2b2a25' }}>
+                Vicino a chi ami.
+                <span className="font-display italic block mt-2 text-[46px] lg:text-[53px] leading-[1.1]" style={{ color: '#2d6a4f', fontWeight: 500 }}>
+                  Come a casa.
+                </span>
+              </h1>
+              <p className="text-[18px] leading-[1.6] text-[#3a3a35] max-w-[46ch] mt-6">
+                Una casa accogliente e tranquilla dove sentirti vicino a chi ami, proprio quando ne hai più bisogno.
+              </p>
+              <div className="flex flex-wrap items-center gap-3 mt-8">
+                <Link href="/prenota"
+                  className="inline-flex items-center justify-center h-[50px] px-6 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] tracking-wide whitespace-nowrap">
+                  VERIFICA DISPONIBILITÀ
+                </Link>
+                <Link href="#camere"
+                  style={{ borderColor: '#2d6a4f', color: '#2d6a4f' }}
+                  className="inline-flex items-center justify-center h-[50px] px-5 rounded-lg border font-semibold text-[15px] hover:bg-green-50 transition active:scale-[0.97] whitespace-nowrap">
+                  Scopri le camere
+                </Link>
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100">
+              <Image
+                src="/camere/ambra/foto1.jpg"
+                alt="Camera Ambra di Casa Ania"
+                fill
+                sizes="(min-width: 768px) 800px, 100vw"
+                preload
+                className="object-cover"
+              />
+            </div>
+          </div>
+          {/* Benefit: parte della hero, niente card — icone verdi e testo */}
+          <div className="mt-12 pt-8 grid grid-cols-4 gap-6 border-t" style={{ borderColor: '#e7e2d6' }}>
+            {[
+              { Icon: MapPin, label: '140 metri da Humanitas' },
+              { Icon: Car, label: 'Parcheggio gratuito' },
+              { Icon: Bus, label: 'Navetta su richiesta' },
+              { Icon: Accessibility, label: 'Ascensore e accesso senza barriere' },
+            ].map(({ Icon, label }) => (
+              <div key={label} className="flex items-center gap-3">
+                <span className="w-10 h-10 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: '#e8f0ea' }}>
+                  <Icon size={19} strokeWidth={2} className="text-green-700" aria-hidden="true" />
+                </span>
+                <span className="text-[15px] font-semibold leading-snug" style={{ color: '#1f3d2f' }}>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* RECENSIONI (mobile: invariata; su desktop la sezione ariosa sta dopo le camere) */}
+      <section className="md:hidden pt-14 pb-2 px-5">
         <div className="max-w-4xl md:max-w-5xl mx-auto">
           <div className="text-center mb-9 md:mb-11">
             <p className="text-[15px] md:text-base font-medium text-[#1f3d2f] mb-3">
@@ -179,8 +257,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CAMERE */}
-      <section className="pt-10 md:pt-14 pb-8">
+      {/* CAMERE (mobile: invariata) */}
+      <section className="md:hidden pt-10 pb-8">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-display italic font-medium text-center px-5 mx-auto max-w-md md:max-w-xl mb-7 md:mb-8 text-[28px] md:text-[36px] leading-[1.15]" style={{ color: '#2d6a4f' }}>
             Non un albergo. Una casa.
@@ -249,8 +327,180 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CHECK-IN FLESSIBILE */}
-      <section className="pt-8 pb-4 md:py-12 px-4">
+      {/* CAMERE DESKTOP: subito dopo hero e benefit — il visitatore vede
+          subito cosa può prenotare. Griglia editoriale con le 4 camere reali. */}
+      <section id="camere" className="hidden md:block">
+        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 pt-8 pb-12">
+          <div className="mb-9">
+            <h2 className="font-medium text-[30px] leading-[1.2] tracking-[-0.01em]" style={{ color: '#2b2a25' }}>
+              Le nostre camere
+            </h2>
+            <p className="text-[16px] leading-[1.5] text-[#3a3a35] mt-2">
+              Quattro camere, ognuna diversa. Scegli quella più adatta al tuo soggiorno.
+            </p>
+          </div>
+          <Reveal>
+            <div className="grid grid-cols-4 gap-8">
+              {rooms.map((room) => (
+                <div key={room.name} className="flex flex-col">
+                  {/* 6/5 invece di 4/3: foto più alte e con più presenza,
+                      senza appesantire le card (le foto native sono 4/3) */}
+                  <Link href={room.href} className="group relative block aspect-[6/5] rounded-xl overflow-hidden bg-gray-100">
+                    <Image
+                      // La foto verticale di Amelia nel riquadro orizzontale
+                      // subirebbe un crop estremo: qui si usa la sua foto
+                      // orizzontale reale, già in uso nel carosello mobile.
+                      src={room.name === 'Amelia' ? '/camere/singola/amelia-banner.jpg' : room.img}
+                      alt={room.name}
+                      fill
+                      sizes="(min-width: 768px) 300px, 100vw"
+                      className="object-cover motion-safe:transition-transform motion-safe:duration-500 motion-safe:ease-out motion-safe:group-hover:scale-105"
+                    />
+                  </Link>
+                  <div className="flex items-start justify-between gap-2 mt-4 mb-2">
+                    <h3 className="text-[19px] font-semibold tracking-[-0.01em]" style={{ color: '#2d6a4f' }}>{room.name}</h3>
+                    {room.badge && (
+                      <span className="text-[11px] bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold shrink-0 mt-1">{room.badge}</span>
+                    )}
+                  </div>
+                  <p className="text-[14.5px] leading-[1.6] text-[#3a3a35]">{room.desc}</p>
+                  <div className="mt-auto pt-4">
+                    <div className="border-t pt-3 flex items-baseline justify-between" style={{ borderColor: '#e7e2d6' }}>
+                      <p className="text-[13px] text-clay">
+                        da <span className="text-[20px] font-semibold text-forest">€{room.prices[0].amount}</span> / notte
+                      </p>
+                      <Link href={room.href} className="group text-[14px] text-green-700 font-medium inline-flex items-center gap-1">
+                        Scopri la camera <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1">→</span>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+          <div className="text-center mt-12">
+            <Link href="/prenota"
+              className="inline-flex items-center justify-center h-[52px] px-8 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-base tracking-wide">
+              VERIFICA DISPONIBILITÀ
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BLOCCO EMOZIONALE (solo desktop): dopo le camere, prima dei servizi */}
+      <section className="hidden md:block">
+        <div className="max-w-[720px] mx-auto px-8 pt-6 pb-14">
+          <h2 className="font-display italic font-medium text-center text-[34px] leading-[1.15] mb-7" style={{ color: '#2d6a4f' }}>
+            Non un albergo. Una casa.
+          </h2>
+          <div className="max-w-[640px] mx-auto">
+            <p className="text-[17px] leading-[1.6] text-[#3a3a35] mb-4">
+              Qui trovi la tranquillità di un ambiente curato, la libertà di sentirti a tuo agio e soprattutto una persona su cui poter contare.
+            </p>
+            <p className="text-[17px] font-medium leading-[1.6] text-[#3a3a35]">
+              Perché quando sei lontano da casa per stare vicino a chi ami, anche le piccole attenzioni fanno la differenza.
+            </p>
+          </div>
+          <p className="font-display italic text-center mt-9" style={{ fontSize: '21px', color: '#2d6a4f' }}>
+            Quando desideri stare vicino a chi ami nei momenti difficili.
+          </p>
+        </div>
+      </section>
+
+      {/* SERVIZI (solo desktop): fascia orizzontale con i servizi reali del
+          sito; sotto md restano le sezioni verticali originali. Arriva dopo
+          camere e blocco emozionale: prima il visitatore vede cosa prenotare. */}
+      <section className="hidden md:block bg-white">
+        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 py-14">
+          <h2 className="text-center text-sm font-semibold uppercase tracking-[0.14em] mb-11" style={{ color: '#2d6a4f' }}>I nostri servizi</h2>
+          <div className="grid grid-cols-5 gap-10">
+            <div className="flex flex-col items-start gap-3">
+              <Clock size={22} strokeWidth={1.8} className="text-green-700" aria-hidden="true" />
+              <h3 className="text-[16px] font-semibold" style={{ color: '#1f3d2f' }}>Check-in flessibile</h3>
+              <p className="text-[14px] leading-[1.6] text-[#3a3a35]">
+                Check-in dalle 15:00 alle 20:00. Quando possibile puoi entrare anche in anticipo, senza costi aggiuntivi.
+              </p>
+              <a href={WA_CHECKIN_LINK} target="_blank" rel="noopener noreferrer"
+                className="group mt-auto text-[14px] font-semibold text-green-700 inline-flex items-center gap-1">
+                Arrivi dopo le 20:00? <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+            <div className="flex flex-col items-start gap-3">
+              <Bus size={22} strokeWidth={1.8} className="text-green-700" aria-hidden="true" />
+              <h3 className="text-[16px] font-semibold" style={{ color: '#1f3d2f' }}>Servizio navetta</h3>
+              <p className="text-[14px] leading-[1.6] text-[#3a3a35]">
+                Veniamo a prenderti noi — da tutti gli aeroporti di Milano, da Centrale, Rogoredo e dai terminal bus.
+              </p>
+            </div>
+            <div className="flex flex-col items-start gap-3">
+              <Accessibility size={22} strokeWidth={1.8} className="text-green-700" aria-hidden="true" />
+              <h3 className="text-[16px] font-semibold" style={{ color: '#1f3d2f' }}>Accessibilità</h3>
+              <p className="text-[14px] leading-[1.6] text-[#3a3a35]">
+                Casa Ania dispone di rampa di accesso e ascensore.
+              </p>
+              <Link href="/dormire-vicino-humanitas#accessibilita"
+                className="group mt-auto text-[14px] font-semibold text-green-700 inline-flex items-center gap-1">
+                Tutti i dettagli <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+            <div className="flex flex-col items-start gap-3">
+              <Footprints size={22} strokeWidth={1.8} className="text-green-700" aria-hidden="true" />
+              <h3 className="text-[16px] font-semibold" style={{ color: '#1f3d2f' }}>Due passi da Humanitas</h3>
+              <p className="text-[14px] leading-[1.6] text-[#3a3a35]">
+                A soli 140 metri dalla palazzina 8: raggiungi l&apos;ingresso in circa 2 minuti a piedi.
+              </p>
+              <a href="#dove-siamo"
+                className="group mt-auto text-[14px] font-semibold text-green-700 inline-flex items-center gap-1">
+                Dove siamo <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+            <div className="flex flex-col items-start gap-3">
+              <MessageCircle size={22} strokeWidth={1.8} className="text-green-700" aria-hidden="true" />
+              <h3 className="text-[16px] font-semibold" style={{ color: '#1f3d2f' }}>Assistenza WhatsApp</h3>
+              <p className="text-[14px] leading-[1.6] text-[#3a3a35]">
+                Scrivici su WhatsApp: rispondiamo subito. Oppure chiamaci al{' '}
+                <a href={TEL_LINK} className="font-semibold text-green-700 whitespace-nowrap">342 700 4354</a>.
+              </p>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+                className="group mt-auto text-[14px] font-semibold text-green-700 inline-flex items-center gap-1">
+                Scrivi ad Ania <span className="motion-safe:transition-transform motion-safe:duration-300 motion-safe:ease-out group-hover:translate-x-1">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* RECENSIONI DESKTOP: orizzontale e ariosa, separatori sottili */}
+      <section className="hidden md:block">
+        <div className="max-w-[1240px] 2xl:max-w-[1360px] mx-auto px-8 pt-12 pb-16">
+          <div className="text-center mb-11">
+            <p className="text-base font-medium text-[#1f3d2f] mb-3">
+              <span style={{ color: '#2d6a4f' }}>★★★★★</span> <span className="font-semibold">5,0 su Google</span>
+            </p>
+            <h2 className="font-medium text-[34px] leading-[1.2] tracking-[-0.01em]" style={{ color: '#2b2a25' }}>
+              Le parole dei nostri ospiti
+            </h2>
+          </div>
+          <Reveal>
+            <RecensioniSlider testimonials={testimonials} variant="aria" />
+          </Reveal>
+          <div className="text-center mt-9">
+            <a href="https://maps.google.com/?cid=12687762198889638693" target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center justify-center min-h-[48px] px-6 rounded-full border text-sm font-semibold uppercase tracking-wide bg-transparent hover:bg-green-50 transition active:scale-[0.97]"
+              style={{ borderColor: '#2d6a4f', color: '#2d6a4f' }}>
+              Leggi tutte le recensioni su Google
+            </a>
+            <p className="text-sm mt-3">
+              <Link href="/recensioni" className="inline-block underline py-2" style={{ color: '#6f6a5e', textUnderlineOffset: '4px' }}>
+                Recensioni anche su TripAdvisor →
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CHECK-IN FLESSIBILE (mobile: su desktop è nella fascia servizi) */}
+      <section className="md:hidden pt-8 pb-4 px-4">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-5" style={{ color: '#2d6a4f' }}>Check-in flessibile</h2>
           <p className="text-left text-[#3a3a35] text-[18px] font-semibold leading-[1.4] mb-2">
@@ -272,8 +522,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SERVIZIO NAVETTA */}
-      <section className="py-4 md:py-12 px-4">
+      {/* SERVIZIO NAVETTA (mobile: su desktop è nella fascia servizi) */}
+      <section className="md:hidden py-4 px-4">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-5" style={{ color: '#2d6a4f' }}>Servizio navetta</h2>
           <p className="text-left text-[#3a3a35] leading-relaxed">
@@ -321,8 +571,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ACCESSIBILITÀ */}
-      <section id="accessibilita" className="pt-4 pb-8 md:py-12 px-4">
+      {/* ACCESSIBILITÀ (mobile: su desktop è nella fascia servizi) */}
+      <section id="accessibilita" className="md:hidden pt-4 pb-8 px-4">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-center text-[13px] md:text-sm font-semibold uppercase tracking-[0.14em] mb-5" style={{ color: '#2d6a4f' }}>Accessibilità</h2>
           <p className="text-left text-[#3a3a35] text-[16px] leading-[1.55] mb-4">
