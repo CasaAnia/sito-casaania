@@ -97,7 +97,7 @@ export default function BannerCarosello() {
               </p>
               <Link href="/prenota"
                 className="inline-flex items-center justify-center h-[52px] px-8 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-base tracking-wide mt-6">
-                VERIFICA DISPONIBILITÀ
+                CHIEDI DISPONIBILITÀ
               </Link>
             </div>
           </div>
@@ -120,7 +120,7 @@ export default function BannerCarosello() {
         </p>
         <Link href="/prenota"
           className="inline-flex items-center justify-center h-[52px] px-8 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] tracking-wide mt-[18px]">
-          VERIFICA DISPONIBILITÀ
+          CHIEDI DISPONIBILITÀ
         </Link>
       </div>
     </>

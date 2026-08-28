@@ -188,7 +188,7 @@ export default function Home() {
               <div className="flex flex-wrap items-center gap-3 mt-8">
                 <Link href="/prenota"
                   className="inline-flex items-center justify-center h-[50px] px-6 rounded-lg bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white font-semibold text-[15px] tracking-wide whitespace-nowrap">
-                  VERIFICA DISPONIBILITÀ
+                  CHIEDI DISPONIBILITÀ
                 </Link>
                 <Link href="#camere"
                   style={{ borderColor: '#2d6a4f', color: '#2d6a4f' }}
