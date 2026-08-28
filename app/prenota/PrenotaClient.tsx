@@ -820,7 +820,10 @@ export default function PrenotaClient() {
                 </div>
                 <h2 className="text-3xl font-semibold text-[#1f3d2f] mb-3 text-balance">Richiesta inviata!</h2>
                 <p className="text-[#3a3a35] text-base mb-6">
-                  Ania ti contatterà su WhatsApp al numero <strong>{formatPhoneDisplay(form.phone)}</strong> entro pochi minuti.
+                  {/* A capo prima del numero solo su mobile; il numero non si
+                      spezza mai su due righe */}
+                  Ania ti contatterà su WhatsApp al numero <br className="sm:hidden" />
+                  <strong className="whitespace-nowrap">{formatPhoneDisplay(form.phone)}</strong> entro pochi minuti.
                 </p>
               </>
             )}
