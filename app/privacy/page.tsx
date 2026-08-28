@@ -53,9 +53,11 @@ export default function Privacy() {
           </p>
           <p className="text-[#3a3a35] leading-relaxed">
             Al di fuori del modulo di prenotazione, il sito registra un conteggio anonimo delle visite alle pagine
-            e dei clic sui pulsanti di contatto, limitato a tipo di evento, pagina e data. Non si tratta di dati
-            personali, poiché non contengono alcun elemento che permetta di identificare l&apos;utente: i dettagli
-            sono descritti nella <Link href="/cookie" className="text-green-700 font-semibold underline">Cookie Policy</Link>.
+            e delle principali interazioni: clic sui pulsanti di contatto, inizio del modulo, richiesta inviata ed
+            eventuale errore. Il conteggio è limitato a tipo di evento, pagina, data, provenienza e nome della
+            campagna pubblicitaria. Non si tratta di dati personali, poiché non contiene alcun identificativo o
+            elemento che permetta di riconoscere l&apos;utente: i dettagli sono descritti nella{' '}
+            <Link href="/cookie" className="text-green-700 font-semibold underline">Cookie Policy</Link>.
           </p>
         </section>
 

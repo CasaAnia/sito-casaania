@@ -51,14 +51,21 @@ export default function Cookie() {
           <h2 className="text-xl font-semibold text-[#1f3d2f] mb-2">Conteggio anonimo delle visite</h2>
           <p className="text-[#3a3a35] leading-relaxed">
             Per capire quante persone consultano il sito e quali pagine sono più utili, il sito registra un
-            conteggio del tutto anonimo su un proprio archivio. Di ogni evento vengono salvati soltanto tre dati:
-            il <strong>tipo</strong> (visita di una pagina, oppure clic sul pulsante WhatsApp o sul numero di
-            telefono), la <strong>pagina</strong> in cui è avvenuto, la <strong>data e ora</strong> e la
+            conteggio del tutto anonimo su un proprio archivio. Gli eventi conteggiati sono: visita di una pagina,
+            clic su WhatsApp o sul numero di telefono, inizio del modulo di richiesta, richiesta inviata ed
+            eventuale errore durante l&apos;invio. Di ogni evento vengono salvati soltanto il <strong>tipo</strong>,
+            la <strong>pagina</strong> in cui è avvenuto, la <strong>data e ora</strong> e la
             <strong> provenienza</strong>, cioè il nome del sito da cui si è arrivati (ad esempio google.com)
             o l&apos;etichetta della campagna pubblicitaria indicata nel link.
             Non vengono raccolti né conservati indirizzi IP, identificativi del dispositivo o qualsiasi altro dato
             che permetta di risalire a una persona, e non viene installato alcun cookie. I dati non sono condivisi
             con terze parti e non consentono in alcun modo di ricostruire il percorso di un singolo visitatore.
+          </p>
+          <p className="text-[#3a3a35] leading-relaxed mt-3">
+            Per non perdere la provenienza quando l&apos;utente passa dalla homepage al modulo, il sito conserva
+            temporaneamente nella sola scheda aperta il nome della fonte e della campagna. Non viene creato alcun
+            identificativo; questa informazione scompare alla chiusura della scheda e non consente di riconoscere
+            l&apos;utente in una visita successiva.
           </p>
         </section>
 
