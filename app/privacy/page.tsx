@@ -20,7 +20,7 @@ export default function Privacy() {
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase">
-            Prenota ora
+            WhatsApp
           </a>
         </div>
       </header>

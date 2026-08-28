@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Suspense } from 'react'
 import PrenotaClient from './PrenotaClient'
 
-const TITLE = 'Prenota una camera – Casa Ania, a 140 m da Humanitas Rozzano'
+const TITLE = 'Richiedi disponibilità – Casa Ania, a 140 m da Humanitas Rozzano'
 const DESCRIPTION =
-  "Verifica la disponibilità e prenota una delle quattro camere di Casa Ania, a 140 metri dall'ospedale Humanitas di Rozzano. Da 70 € a notte, risposta anche su WhatsApp."
+  "Richiedi la disponibilità di una delle quattro camere di Casa Ania, a 140 metri dall'ospedale Humanitas di Rozzano. Da 70 € a notte, risposta personale su WhatsApp o per telefono."
 
 export const metadata: Metadata = {
   title: TITLE,

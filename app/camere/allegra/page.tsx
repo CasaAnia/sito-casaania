@@ -31,7 +31,7 @@ export default function CameraAllegra() {
           </Link>
           <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
             className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-3 rounded-full tracking-widest uppercase whitespace-nowrap">
-            Prenota ora
+            WhatsApp
           </a>
         </div>
       </header>
@@ -68,7 +68,7 @@ export default function CameraAllegra() {
         <div className="text-center mb-8">
           <Link href="/prenota?room=bfe8414c-97de-4aae-96c0-c6b0225d1a05"
             className="inline-block bg-green-700 hover:bg-green-800 transition-colors text-white font-bold px-8 py-3 rounded-full text-sm uppercase">
-            Prenota ora
+            Chiedi disponibilità
           </Link>
         </div>
 

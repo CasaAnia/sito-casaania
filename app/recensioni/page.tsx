@@ -148,8 +148,9 @@ export default function Recensioni() {
             <Logo compactOnMobile />
           </Link>
           <Link href="/prenota"
-            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-xs font-semibold px-4 py-2 rounded-full tracking-widest uppercase whitespace-nowrap">
-            Prenota ora
+            className="justify-self-end bg-green-700 hover:bg-green-800 transition-colors text-white text-[10px] font-semibold px-3 py-2 rounded-full tracking-[0.03em] uppercase whitespace-nowrap">
+            <span className="hidden min-[390px]:inline">Richiedi disponibilità</span>
+            <span className="min-[390px]:hidden">Disponibilità</span>
           </Link>
         </div>
       </header>

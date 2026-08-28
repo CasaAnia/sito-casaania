@@ -358,7 +358,7 @@ export default function PrenotaClient() {
 
         {step === 'form' && (
           <>
-            <h1 className="text-2xl font-semibold text-[#1f3d2f] mb-1">Prenota la tua camera</h1>
+            <h1 className="text-2xl font-semibold text-[#1f3d2f] mb-1">Richiedi disponibilità</h1>
             <p className="text-[#6f6a5e] text-base mb-6">Compila la richiesta: <strong className="text-[#1f3d2f]">Ania ti risponderà su WhatsApp o per telefono in pochi minuti.</strong></p>
 
             <form onSubmit={handleSubmit} className="space-y-3">
