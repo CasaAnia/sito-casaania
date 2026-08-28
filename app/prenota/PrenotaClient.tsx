@@ -454,6 +454,7 @@ export default function PrenotaClient() {
                       placeholder="333 123 4567" required autoComplete="tel" inputMode="tel"
                       pattern="[0-9+ \(\)\-]{8,20}" title="Inserisci un numero di telefono valido (almeno 8 cifre)"
                       className={inputClass} />
+                    <p className="mt-1.5 text-xs text-[#8a857a]">Serve solo ad Ania per risponderti su WhatsApp o chiamarti.</p>
                   </div>
                   <div>
                     <label htmlFor="notes" className="text-sm text-[#6f6a5e] mb-1 block">Note per Ania (facoltative)</label>
@@ -484,9 +485,26 @@ export default function PrenotaClient() {
                 </div>
               )}
 
+              <div className="!mt-5 rounded-2xl border border-[#dce8dc] bg-[#f3f7f1] p-4 text-center">
+                <p className="text-sm leading-relaxed text-[#3a3a35]">
+                  La richiesta <strong className="text-[#1f3d2f]">non è vincolante</strong> e non richiede alcun
+                  pagamento. Prima di qualsiasi conferma, Ania ti contatterà personalmente per verificare insieme
+                  disponibilità e camera.
+                </p>
+                <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs font-semibold text-green-800">
+                  <span>✓ Nessuna carta richiesta</span>
+                  <span>✓ Nessun pagamento adesso</span>
+                  <span>✓ Risposta personale di Ania</span>
+                </div>
+                <p className="mt-3 text-[11px] text-[#8a857a]">
+                  I tuoi dati servono soltanto a gestire la richiesta.{' '}
+                  <Link href="/privacy" className="underline underline-offset-2">Privacy</Link>
+                </p>
+              </div>
+
               <button type="submit" disabled={loading}
                 className="w-full !mt-6 bg-green-700 hover:bg-green-800 transition-colors text-white font-semibold py-4 rounded-2xl text-base disabled:opacity-60">
-                {loading ? 'Verifica disponibilità...' : 'Invia la richiesta di prenotazione'}
+                {loading ? 'Verifica disponibilità...' : 'Chiedi disponibilità ad Ania'}
               </button>
 
               <p className="text-center text-base !mt-4 text-[#6f6a5e]">
