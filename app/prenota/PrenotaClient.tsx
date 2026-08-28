@@ -97,6 +97,12 @@ type Step = 'form' | 'secondStay' | 'confirm' | 'done' | 'error'
 const inputClass =
   'w-full min-w-0 border border-gray-200 rounded-xl px-3 py-2.5 text-base min-h-[44px] bg-white'
 
+// Campi di testo libero: avorio appena percettibile al posto del bianco pieno
+// (dentro le card bianche staccava troppo); al focus tornano bianchi col bordo
+// verde, così si vede subito dove si sta scrivendo
+const textInputClass =
+  'w-full min-w-0 border border-[#e0d9cb] rounded-xl px-3 py-2.5 text-base min-h-[44px] bg-[#faf7f0] transition-colors focus:outline-none focus:bg-white focus:border-green-700 focus:ring-2 focus:ring-green-700/15'
+
 export default function PrenotaClient() {
   const searchParams = useSearchParams()
   const preselectedRoomId = searchParams.get('room') || ''
@@ -439,13 +445,13 @@ export default function PrenotaClient() {
                       <label htmlFor="first-name" className="text-sm text-[#6f6a5e] mb-1 block">Nome</label>
                       <input id="first-name" type="text" value={form.firstName} onChange={e => set('firstName', e.target.value)}
                         placeholder="Mario" required autoComplete="given-name"
-                        className={inputClass} />
+                        className={textInputClass} />
                     </div>
                     <div>
                       <label htmlFor="last-name" className="text-sm text-[#6f6a5e] mb-1 block">Cognome</label>
                       <input id="last-name" type="text" value={form.lastName} onChange={e => set('lastName', e.target.value)}
                         placeholder="Rossi" required autoComplete="family-name"
-                        className={inputClass} />
+                        className={textInputClass} />
                     </div>
                   </div>
                   <div>
@@ -453,15 +459,16 @@ export default function PrenotaClient() {
                     <input id="phone" type="tel" value={form.phone} onChange={e => set('phone', e.target.value)}
                       placeholder="333 123 4567" required autoComplete="tel" inputMode="tel"
                       pattern="[0-9+ \(\)\-]{8,20}" title="Inserisci un numero di telefono valido (almeno 8 cifre)"
-                      className={inputClass} />
+                      className={textInputClass} />
                     <p className="mt-1.5 text-xs text-[#8a857a]">Serve solo ad Ania per risponderti su WhatsApp o chiamarti.</p>
                   </div>
                   <div>
-                    <label htmlFor="notes" className="text-sm text-[#6f6a5e] mb-1 block">Note per Ania (facoltative)</label>
+                    <label htmlFor="notes" className="text-sm text-[#6f6a5e] mb-1 block">Vuoi aggiungere qualcosa? (facoltativo)</label>
                     <textarea id="notes" value={form.notes} onChange={e => set('notes', e.target.value)}
-                      placeholder="Scrivi qui se c'è qualcosa che Ania deve sapere: ad esempio se sei già stato da noi o chi ti ha consigliato Casa Ania"
-                      rows={3} maxLength={500}
-                      className={inputClass + ' resize-none'} />
+                      placeholder="Scrivi qui…"
+                      rows={3} maxLength={500} aria-describedby="notes-hint"
+                      className={textInputClass + ' resize-none'} />
+                    <p id="notes-hint" className="mt-1.5 text-xs text-[#8a857a]">Per esempio: esigenze particolari oppure chi ti ha consigliato Casa Ania.</p>
                   </div>
                 </div>
               </div>
@@ -491,7 +498,7 @@ export default function PrenotaClient() {
                   pagamento. Prima di qualsiasi conferma, Ania ti contatterà personalmente per verificare insieme
                   disponibilità e camera.
                 </p>
-                <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-1.5 text-xs font-semibold text-green-800">
+                <div className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2 text-sm font-bold text-green-800">
                   <span>✓ Nessuna carta richiesta</span>
                   <span>✓ Nessun pagamento adesso</span>
                   <span>✓ Risposta personale di Ania</span>
