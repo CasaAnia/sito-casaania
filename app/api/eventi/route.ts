@@ -6,7 +6,14 @@ const supabase = createClient(
   (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? '').replace(/\s+/g, '')
 )
 
-const TIPI_AMMESSI = new Set(['visita', 'whatsapp', 'telefono'])
+const TIPI_AMMESSI = new Set([
+  'visita',
+  'whatsapp',
+  'telefono',
+  'modulo_iniziato',
+  'richiesta_inviata',
+  'richiesta_errore',
+])
 
 // Conteggio anonimo: si registrano solo il tipo di evento, la pagina e l'orario.
 // Nessun cookie, nessun indirizzo IP, nessun identificativo dell'utente.

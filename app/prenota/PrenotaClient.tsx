@@ -1,12 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import Logo from '../components/Logo'
 import Image from 'next/image'
 import { MessageCircle } from 'lucide-react'
 import { ROOMS, roomPricing } from '@/lib/rooms'
+import { sendSiteEvent } from '@/lib/siteEvents'
 
 // Foto di copertina delle camere: nella proposta alternativa la camera si
 // presenta con la sua foto, non solo col nome
@@ -186,8 +187,13 @@ export default function PrenotaClient() {
   // problema. Prima ogni errore diventava "tutto esaurito": una bugia che
   // mandava i clienti su Booking.
   const [errorKind, setErrorKind] = useState<'full' | 'tech'>(demoEsaurito ? 'full' : 'tech')
+  const formStarted = useRef(false)
 
   function set(field: string, value: string) {
+    if (!formStarted.current) {
+      formStarted.current = true
+      sendSiteEvent('modulo_iniziato', '/prenota')
+    }
     setForm(f => ({ ...f, [field]: value }))
   }
 
@@ -208,12 +214,14 @@ export default function PrenotaClient() {
   }
 
   function showError(res: Response, data: { error?: string }) {
+    sendSiteEvent('richiesta_errore', '/prenota')
     setErrorMsg(data.error || 'Errore durante la prenotazione')
     setErrorKind(res.status === 409 ? 'full' : 'tech')
     setStep('error')
   }
 
   function showDone(data: { solution: Segment[]; multiRoom: boolean; duplicate?: boolean }) {
+    if (!data.duplicate) sendSiteEvent('richiesta_inviata', '/prenota')
     setSolution(data.solution)
     setMultiRoom(data.multiRoom)
     setDuplicate(Boolean(data.duplicate))
