@@ -141,8 +141,8 @@ export default function Home() {
         <div className="md:hidden max-w-4xl mx-auto px-5 sm:px-4 py-4 flex items-center justify-between">
           <Logo header />
           <Link href="/prenota"
-            className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white text-[10px] font-semibold px-3 py-3 rounded-full uppercase tracking-[0.03em] whitespace-nowrap">
-            Richiedi disponibilità
+            className="bg-green-700 hover:bg-green-800 transition active:scale-[0.97] text-white text-[12px] font-semibold px-3 py-3 rounded-full uppercase tracking-[0.03em] whitespace-nowrap">
+            Chiedi disponibilità
           </Link>
         </div>
         {/* Header desktop: logo · navigazione leggera · WhatsApp */}
