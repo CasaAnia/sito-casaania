@@ -422,15 +422,15 @@ export default function PrenotaClient() {
                 <div className="space-y-1.5">
                   <button type="button"
                     onClick={() => set('preferredRoomId', '')}
-                    className={`w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === '' ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
+                    className={`w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl border-2 text-[15px] font-medium transition-colors ${form.preferredRoomId === '' ? 'border-green-600 bg-green-50 text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
                     Nessuna preferenza
                   </button>
                   {roomOptions.map(room => (
                     <button key={room.id} type="button"
                       onClick={() => set('preferredRoomId', room.id)}
-                      className={`w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 font-semibold text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
-                      <span className="font-semibold text-[#1f3d2f]">{room.name}</span>
-                      <span className="text-[#6f6a5e] ml-2">{room.priceLabel} / notte</span>
+                      className={`w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl border-2 text-sm transition-colors ${form.preferredRoomId === room.id ? 'border-green-600 bg-green-50 text-green-800' : 'border-gray-200 text-[#3a3a35]'}`}>
+                      <span className="text-[15px] font-medium text-[#1f3d2f]">{room.name}</span>
+                      <span className="text-sm font-normal text-[#6f6a5e] ml-2">{room.priceLabel} / notte</span>
                     </button>
                   ))}
                 </div>
@@ -460,7 +460,7 @@ export default function PrenotaClient() {
                       placeholder="333 123 4567" required autoComplete="tel" inputMode="tel"
                       pattern="[0-9+ \(\)\-]{8,20}" title="Inserisci un numero di telefono valido (almeno 8 cifre)"
                       className={textInputClass} />
-                    <p className="mt-1.5 text-xs text-[#8a857a]">Serve solo ad Ania per risponderti su WhatsApp o chiamarti.</p>
+                    <p className="mt-1.5 text-[13px] leading-5 text-[#8a857a]">Serve solo ad Ania per risponderti su WhatsApp o chiamarti.</p>
                   </div>
                   <div>
                     <label htmlFor="notes" className="text-sm text-[#6f6a5e] mb-1 block">Vuoi aggiungere qualcosa? (facoltativo)</label>
@@ -468,7 +468,7 @@ export default function PrenotaClient() {
                       placeholder="Scrivi qui…"
                       rows={3} maxLength={500} aria-describedby="notes-hint"
                       className={textInputClass + ' resize-none'} />
-                    <p id="notes-hint" className="mt-1.5 text-xs text-[#8a857a]">Per esempio: esigenze particolari oppure chi ti ha consigliato Casa Ania.</p>
+                    <p id="notes-hint" className="mt-1.5 text-[13px] leading-5 text-[#8a857a]">Per esempio: esigenze particolari oppure chi ti ha consigliato Casa Ania.</p>
                   </div>
                 </div>
               </div>
@@ -477,7 +477,7 @@ export default function PrenotaClient() {
               {selectedRoom && nights > 0 && (
                 <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100">
                   <p className="font-semibold text-[#1f3d2f] mb-2">Il tuo soggiorno</p>
-                  <div className="flex justify-between text-sm text-[#6f6a5e] mb-1.5">
+                  <div className="flex justify-between text-base font-semibold text-[#1f3d2f] mb-1.5">
                     <span>{selectedRoom.name}</span>
                     <span>€{selectedRoom.totalPerNight} / notte</span>
                   </div>
@@ -486,7 +486,7 @@ export default function PrenotaClient() {
                     <span>{nights} × €{selectedRoom.totalPerNight}</span>
                   </div>
                   <div className="flex justify-between items-baseline border-t border-gray-100 pt-3">
-                    <span className="text-sm font-semibold text-[#1f3d2f]">Totale</span>
+                    <span className="text-base font-semibold text-[#1f3d2f]">Totale</span>
                     <span className="text-2xl font-semibold text-[#1f3d2f]">€{nights * selectedRoom.totalPerNight}</span>
                   </div>
                 </div>
@@ -514,7 +514,7 @@ export default function PrenotaClient() {
                 {loading ? 'Verifica disponibilità...' : 'Chiedi disponibilità ad Ania'}
               </button>
 
-              <p className="text-center text-base !mt-4 text-[#6f6a5e]">
+              <p className="text-center text-sm leading-relaxed !mt-4 text-[#6f6a5e]">
                 Ti risponderemo <strong className="text-[#1f3d2f]">su WhatsApp o per telefono entro pochi minuti</strong> per confermare la disponibilità.
               </p>
             </form>
@@ -531,16 +531,16 @@ export default function PrenotaClient() {
 
             <div className="bg-white rounded-2xl p-3.5 shadow-sm border border-gray-100 mt-8 text-center">
               <p className="font-semibold text-[#1f3d2f] mb-2">Ti serve un passaggio?</p>
-              <p className="text-sm text-[#3a3a35] mb-1.5">
+              <p className="text-sm leading-relaxed text-[#3a3a35] mb-1.5">
                 Arrivi in aereo o in treno? <strong className="text-[#1f3d2f]">Pensiamo noi al tuo trasferimento.</strong>
               </p>
-              <p className="text-sm text-[#3a3a35] mb-1.5">
+              <p className="text-sm leading-relaxed text-[#3a3a35] mb-1.5">
                 Organizziamo il servizio con <strong className="text-[#1f3d2f]">autisti di fiducia</strong> da Malpensa, Linate e Orio al Serio, dalle stazioni di Milano Centrale e Rogoredo e dai terminal bus di San Donato e Lampugnano.
               </p>
-              <p className="text-sm text-[#3a3a35] mb-1.5">
+              <p className="text-sm leading-relaxed text-[#3a3a35] mb-1.5">
                 Scrivici su WhatsApp indicando <strong className="text-[#1f3d2f]">data, orario e punto di arrivo</strong>: ti comunicheremo subito il prezzo.
               </p>
-              <p className="text-sm text-[#3a3a35] mb-2">
+              <p className="text-sm leading-relaxed text-[#3a3a35] mb-2">
                 <strong className="text-[#1f3d2f]">Ti consigliamo di prenotare il trasferimento con qualche giorno di anticipo</strong>, così possiamo garantirti la disponibilità.
               </p>
               <a href={waLink('💬 Ciao Ania! Vorrei informazioni sul trasferimento per Casa Ania.')} target="_blank" rel="noopener noreferrer"
