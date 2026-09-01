@@ -45,7 +45,30 @@ function attribution(): Attribution {
   return current ?? { fonte: 'diretto', campagna: null }
 }
 
+const ESCLUDI_KEY = 'casa_ania_noconta'
+
+// I telefoni di casa non sono clienti. Aprendo una volta il sito con ?noconta=1
+// il browser viene segnato e da quel momento non manda più nessun evento
+// (?noconta=0 lo riattiva). Resta un segno locale sul telefono: nessun
+// identificativo viaggia verso il server.
+export function aggiornaEsclusione(): 'esclusa' | 'riattivata' | null {
+  const v = new URLSearchParams(window.location.search).get('noconta')
+  if (v === null) return null
+  try {
+    if (v === '0') { localStorage.removeItem(ESCLUDI_KEY); return 'riattivata' }
+    localStorage.setItem(ESCLUDI_KEY, '1')
+    return 'esclusa'
+  } catch {
+    return null
+  }
+}
+
+function esclusa() {
+  try { return localStorage.getItem(ESCLUDI_KEY) === '1' } catch { return false }
+}
+
 export function sendSiteEvent(tipo: SiteEventType, pagina: string) {
+  if (esclusa()) return
   const { fonte, campagna } = attribution()
   const body = JSON.stringify({ tipo, pagina, fonte, campagna })
 
