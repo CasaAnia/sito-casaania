@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import webpush from 'web-push'
 import { ROOMS, roomPricing } from '@/lib/rooms'
 import { createAdminClient } from '@/lib/supabaseAdmin'
+import { costruisciCorpo, inviaAlGestionale, GESTIONALE_URL_DEFAULT } from '@/lib/richiesteGestionale'
 
 if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
   webpush.setVapidDetails(
@@ -250,7 +251,7 @@ async function findRecentPending(
 // Suona forte e insistente anche a telefono bloccato: è il canale per il solo
 // evento urgente "nuova richiesta dal sito". Se le variabili mancano o il
 // servizio non risponde, si va avanti: la prenotazione è già salvata.
-async function sendPushoverAlert(message: string, url: string) {
+async function sendPushoverAlert(message: string, url: string, title = '🏡 Nuova prenotazione Casa Ania') {
   const token = process.env.PUSHOVER_TOKEN
   const user = process.env.PUSHOVER_USER
   if (!token || !user) return
@@ -258,7 +259,7 @@ async function sendPushoverAlert(message: string, url: string) {
     const form = new URLSearchParams({
       token,
       user,
-      title: '🏡 Nuova prenotazione Casa Ania',
+      title,
       message,
       priority: '1',
       sound: 'persistent',
@@ -419,134 +420,42 @@ export async function POST(req: NextRequest) {
     })
   }
 
-  // Ospite: guests.phone ha un vincolo UNIQUE (guests_phone_key), quindi un
-  // cliente che ha già soggiornato NON va reinserito: si riusa la sua scheda,
-  // altrimenti l'insert fallisce e il cliente di ritorno non può prenotare
-  // (successo davvero: "Errore creazione ospite" al test di Ania).
-  // La scheda esistente non viene rinominata: il nome digitato nel form viene
-  // salvato sulla prenotazione (bookings.guest_name), che nel gestionale vince
-  // sul nome della scheda per QUELLA prenotazione.
-  const phoneTrimmed = String(phone).trim()
-  const nomeForm = `${String(firstName).trim()} ${String(lastName).trim()}`.replace(/\s+/g, ' ')
-  let guestId: string | null = null
-
-  const { data: existingGuest } = await supabase
-    .from('guests')
-    .select('id')
-    .eq('phone', phoneTrimmed)
-    .maybeSingle()
-
-  if (existingGuest) {
-    guestId = existingGuest.id
-  } else {
-    const { data: newGuest, error: guestErr } = await supabase
-      .from('guests')
-      .insert({ full_name: nomeForm, phone: phoneTrimmed })
-      .select('id')
-      .single()
-    if (newGuest) {
-      guestId = newGuest.id
-    } else if (guestErr?.code === '23505') {
-      // due richieste simultanee con lo stesso numero: riprova la lettura
-      const { data: raced } = await supabase.from('guests').select('id').eq('phone', phoneTrimmed).maybeSingle()
-      guestId = raced?.id ?? null
-    }
-  }
-
-  if (!guestId) {
-    return NextResponse.json(
-      { error: 'Non riesco a salvare i tuoi dati. Riprova o scrivici su WhatsApp.' },
-      { status: 500 }
-    )
-  }
-
-  // Create booking(s) — prezzi calcolati dal server (lib/rooms.ts), letto
-  // aggiuntivo incluso: il client non decide mai gli importi.
-  const bookingsToInsert = solution.map(seg => {
-    const segNights = getDatesInRange(seg.checkIn, seg.checkOut).length
-    const pricing = roomPricing(seg.roomId, guests)
-    const basePerNight = pricing?.basePerNight ?? 0
-    const extraPerNight = pricing?.extraPerNight ?? 0
-    // extra_bed segue i letti FISICI in uso (es. Lena in 3: letto montato ma
-    // gratis e invisibile al cliente), extra_bed_total solo quelli fatturati.
-    return {
-      guest_id: guestId,
-      // Nome di QUESTA prenotazione, come digitato nel form: nel gestionale
-      // vince sul nome della scheda cliente riusata per telefono
-      guest_name: nomeForm,
-      room_id: seg.roomId,
-      check_in: seg.checkIn,
-      check_out: seg.checkOut,
-      num_guests: guests,
-      status: 'in_attesa',
-      source: 'sito_web',
-      price_per_night: basePerNight,
-      total_amount: (basePerNight + extraPerNight) * segNights,
-      extra_bed: (pricing?.bedsUsed ?? 0) > 0,
-      extra_bed_total: extraPerNight * segNights,
-      bonifico: false,
-      pagato: false,
-      notes: guestNotes || null,
-    }
+  // ── Invio al gestionale (pezzo 5B) ──────────────────────────────────────
+  // La richiesta non diventa più una prenotazione «in attesa» su Supabase:
+  // entra nella sezione Richieste del gestionale, che avvisa Ania (push +
+  // Pushover) e le fa preparare la proposta. Il cliente vede lo stesso
+  // messaggio di sempre.
+  const multiRoom = solution.length > 1
+  const preferita = ROOMS.find(r => r.id === preferredRoomId)
+  const corpo = costruisciCorpo({
+    firstName, lastName, phone, numGuests: guests, checkIn, checkOut, preferredRoomId, notes: guestNotes,
+    utmSource: body.utm_source, utmCampaign: body.utm_campaign,
+  })
+  const esito = await inviaAlGestionale(corpo, {
+    url: process.env.GESTIONALE_URL || GESTIONALE_URL_DEFAULT,
+    segreto: (process.env.RICHIESTE_WEB_SECRET ?? '').replace(/\s+/g, ''),
   })
 
-  let { data: insertedRows, error: bookErr } = await supabase
-    .from('bookings').insert(bookingsToInsert).select('id')
-  if (bookErr) {
-    // Colonna guest_name non ancora migrata sul DB: si salva senza, come prima.
-    // Meglio una prenotazione col solo nome della scheda che una persa.
-    const senzaNome = bookingsToInsert.map(({ guest_name: _gn, ...rest }) => rest)
-    ;({ data: insertedRows, error: bookErr } = await supabase
-      .from('bookings').insert(senzaNome).select('id'))
-  }
-  if (bookErr) {
-    return NextResponse.json({ error: 'Errore salvataggio prenotazione' }, { status: 500 })
+  if (esito.tipo === 'errore_cliente') {
+    console.warn(`prenota: ${new Date().toISOString()} rifiutata dal gestionale (400)`)
+    return NextResponse.json({ error: esito.messaggio }, { status: 400 })
   }
 
-  // Push notification
-  const multiRoom = solution.length > 1
-  const roomDesc = multiRoom
-    ? solution.map(s => `${s.roomName} (${s.checkIn}→${s.checkOut})`).join(', poi ')
-    : solution[0].roomName
-  const pushTitle = multiRoom
-    ? `🏠 Nuova prenotazione (cambio camera!)`
-    : `🏠 Nuova prenotazione dal sito`
-  // Ania ha solo 2 letti aggiuntivi in tutta la casa: la notifica le dice
-  // subito quanti ne blocca questa prenotazione (il cliente non lo vede mai).
-  const maxBedsUsed = Math.max(...solution.map(s => roomPricing(s.roomId, guests)?.bedsUsed ?? 0))
-  const bedsNote = maxBedsUsed > 0
-    ? `\n🛏 ${maxBedsUsed === 1 ? '1 letto aggiuntivo in uso' : `${maxBedsUsed} letti aggiuntivi in uso`}`
-    : ''
-  // L'ospite ha confermato che questa è una seconda richiesta voluta:
-  // Ania lo deve sapere, coi dati dell'altra richiesta sott'occhio,
-  // per non scambiarla per un doppione da cestinare
-  const doubleNote = recentPending
-    ? `\n⚠️ Ha un'altra richiesta in attesa: ${recentPending
-        .map(s => `${s.roomName} ${s.checkIn}→${s.checkOut}`)
-        .join(', ')} (ha confermato: è un soggiorno in più)`
-    : ''
-  const notesLine = guestNotes ? `\n📝 “${guestNotes}”` : ''
-  const pushBody = multiRoom
-    ? `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc}\n📞 ${phone} ⚠️ Contatta il cliente${bedsNote}${doubleNote}${notesLine}`
-    : `${firstName} ${lastName}, ${numGuests} pers. · ${checkIn}→${checkOut}\n${roomDesc} · 📞 ${phone}${bedsNote}${doubleNote}${notesLine}`
+  if (esito.tipo === 'ripiego') {
+    // Il gestionale non ha preso la richiesta (segreto, limite, guasto, rete):
+    // il cliente NON deve vedere un errore. Ania riceve i dati su Pushover e
+    // la inserisce a mano da Richieste → Nuova richiesta. Nel log solo il motivo.
+    console.error(`prenota: ${new Date().toISOString()} ripiego, gestionale non raggiunto (${esito.motivo})`)
+    const testo =
+      `${corpo.nome} ${corpo.cognome}\n` +
+      `${formatRangeIt(checkIn, checkOut)} · ${guests} ${guests === 1 ? 'ospite' : 'ospiti'}\n` +
+      `Camera: ${preferita ? preferita.name : 'qualsiasi'}\n` +
+      `📞 ${corpo.telefono}` +
+      (corpo.note ? `\n📝 ${corpo.note.slice(0, 120)}` : '')
+    await sendPushoverAlert(testo, `${(process.env.GESTIONALE_URL || GESTIONALE_URL_DEFAULT).replace(/\/$/, '')}/richieste/nuova`, '⚠️ Richiesta dal sito NON entrata nel gestionale')
+    return NextResponse.json({ ok: true, solution, multiRoom })
+  }
 
-  // Avviso sonoro Pushover: testo essenziale (nome, camera, date, ospiti),
-  // toccandolo si apre la prenotazione nel gestionale. Parte solo qui, alla
-  // creazione, e una sola volta grazie a claimPushoverAlert.
-  const insertedIds = (insertedRows ?? []).map(r => r.id)
-  const gestionale = 'https://gestionale-bnb-tau.vercel.app'
-  const pushoverUrl = insertedIds[0] ? `${gestionale}/prenotazioni/${insertedIds[0]}` : gestionale
-  const pushoverMsg =
-    `${firstName} ${lastName}\n` +
-    `${roomDesc}\n` +
-    `${formatRangeIt(checkIn, checkOut)}\n` +
-    `${numGuests} ${Number(numGuests) === 1 ? 'ospite' : 'ospiti'}`
-
-  const canAlert = await claimPushoverAlert(supabase, insertedIds)
-  await Promise.all([
-    sendPushNotification(supabase, pushTitle, pushBody),
-    canAlert ? sendPushoverAlert(pushoverMsg, pushoverUrl) : Promise.resolve(),
-  ])
-
-  return NextResponse.json({ ok: true, solution, multiRoom })
+  // Successo: nessun avviso da qui, lo manda già il gestionale (push + Pushover)
+  return NextResponse.json({ ok: true, solution, multiRoom, duplicate: esito.doppione })
 }
