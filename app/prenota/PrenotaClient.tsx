@@ -142,7 +142,19 @@ export default function PrenotaClient() {
     // l'autofill di Chrome riempie anche i campi nascosti e trasformerebbe
     // ogni cliente in un "bot" (successo davvero al primo test di Ania).
     hp_check: '',
+    // Origine della visita (utm_source / utm_campaign dell'URL), presa al
+    // caricamento e mandata al gestionale come «origine»; vuota = «diretto»
+    utm_source: '',
+    utm_campaign: '',
   })
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search)
+    const source = (p.get('utm_source') || '').slice(0, 40)
+    const campaign = (p.get('utm_campaign') || '').slice(0, 40)
+    if (!source && !campaign) return
+    const t = setTimeout(() => setForm(f => ({ ...f, utm_source: source, utm_campaign: campaign })), 0)
+    return () => clearTimeout(t)
+  }, [])
   const [step, setStep] = useState<Step>(
     demoConfirm || demoConfirmUno ? 'confirm' : demoDone || demoDoppione || demoDoppione2 || demoDoppione3 ? 'done' : demoEsaurito || demoErrore ? 'error' : 'form'
   )
@@ -372,6 +384,8 @@ export default function PrenotaClient() {
               {/* Honeypot anti-bot: invisibile e fuori dal tab order */}
               <div style={{ display: 'none' }} aria-hidden="true">
                 <label htmlFor="hp-check">Lascia vuoto</label>
+                <input type="hidden" name="utm_source" value={form.utm_source} readOnly />
+                <input type="hidden" name="utm_campaign" value={form.utm_campaign} readOnly />
                 <input id="hp-check" type="text" name="hp_check" tabIndex={-1} autoComplete="off"
                   value={form.hp_check} onChange={e => set('hp_check', e.target.value)} />
               </div>
