@@ -1,16 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
-import webpush from 'web-push'
-import { ROOMS, roomPricing } from '@/lib/rooms'
+import { ROOMS } from '@/lib/rooms'
 import { createAdminClient } from '@/lib/supabaseAdmin'
 import { costruisciCorpo, inviaAlGestionale, GESTIONALE_URL_DEFAULT } from '@/lib/richiesteGestionale'
-
-if (process.env.VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
-  webpush.setVapidDetails(
-    'mailto:amerigogranata@gmail.com',
-    process.env.VAPID_PUBLIC_KEY,
-    process.env.VAPID_PRIVATE_KEY
-  )
-}
 
 // Rate limit in memoria, per IP. Vive per la durata dell'istanza serverless:
 // non è una difesa assoluta, ma ferma i submit a raffica e i bot più rozzi.
@@ -176,16 +167,44 @@ function addDay(dateStr: string): string {
   return d.toISOString().slice(0, 10)
 }
 
-// Se lo stesso telefono ha già una richiesta attiva che si sovrappone alle
-// stesse date, non creare un doppione: il back button + reinvio è il caso
-// tipico. Se la query fallisce (es. relazione non disponibile) si prosegue
-// senza dedupe: meglio un doppione che una prenotazione persa.
+// Richieste APERTE del gestionale (tabella richieste, canale web) dello stesso
+// telefono: dal pezzo 5B le richieste del sito vivono lì, non più in bookings.
+type RichiestaAperta = { camera_id: string | null; arrivo: string; partenza: string; telefono: string | null; created_at: string }
+async function richiesteAperteDelTelefono(supabase: AdminClient, phoneDigits: string): Promise<RichiestaAperta[]> {
+  try {
+    const { data, error } = await supabase
+      .from('richieste')
+      .select('camera_id, arrivo, partenza, telefono, created_at')
+      .in('stato', ['in_attesa', 'proposta_inviata'])
+    if (error || !data) return []
+    return (data as RichiestaAperta[]).filter(r => {
+      const p = String(r.telefono || '').replace(/\D/g, '')
+      return p.length > 0 && p === phoneDigits
+    })
+  } catch {
+    return []
+  }
+}
+const segmentoDaRichiesta = (r: RichiestaAperta): Segment => ({
+  roomId: r.camera_id || '',
+  roomName: r.camera_id ? (ROOMS.find(x => x.id === r.camera_id)?.name || 'Camera') : 'Camera a scelta',
+  checkIn: r.arrivo,
+  checkOut: r.partenza,
+})
+
+// Se lo stesso telefono ha già una richiesta aperta (o una prenotazione
+// confermata) che si sovrappone alle stesse date, non creare un doppione: il
+// back button + reinvio è il caso tipico. Se la query fallisce si prosegue
+// senza dedupe: meglio un doppione che una richiesta persa.
 async function findExistingRequest(
   supabase: AdminClient,
   phoneDigits: string,
   checkIn: string,
   checkOut: string
 ): Promise<Segment[] | null> {
+  const aperte = (await richiesteAperteDelTelefono(supabase, phoneDigits))
+    .filter(r => r.arrivo < checkOut && r.partenza > checkIn)
+  if (aperte.length > 0) return aperte.map(segmentoDaRichiesta)
   try {
     const { data, error } = await supabase
       .from('bookings')
@@ -222,8 +241,10 @@ async function findRecentPending(
   supabase: AdminClient,
   phoneDigits: string
 ): Promise<Segment[] | null> {
+  const cutoff = new Date(Date.now() - RECENT_PENDING_HOURS * 3600 * 1000).toISOString()
+  const aperte = (await richiesteAperteDelTelefono(supabase, phoneDigits)).filter(r => r.created_at >= cutoff)
+  if (aperte.length > 0) return aperte.map(segmentoDaRichiesta)
   try {
-    const cutoff = new Date(Date.now() - RECENT_PENDING_HOURS * 3600 * 1000).toISOString()
     const { data, error } = await supabase
       .from('bookings')
       .select('room_id, check_in, check_out, guests!inner(phone)')
@@ -248,9 +269,9 @@ async function findRecentPending(
 }
 
 // Avviso sonoro Pushover sul telefono di Ania (app "CasAnia" su pushover.net).
-// Suona forte e insistente anche a telefono bloccato: è il canale per il solo
-// evento urgente "nuova richiesta dal sito". Se le variabili mancano o il
-// servizio non risponde, si va avanti: la prenotazione è già salvata.
+// Dal pezzo 5B lo manda il gestionale per le richieste entrate; qui resta
+// SOLO per il ripiego (richiesta non entrata nel gestionale). Se le variabili
+// mancano o il servizio non risponde, si va avanti.
 async function sendPushoverAlert(message: string, url: string, title = '🏡 Nuova prenotazione Casa Ania') {
   const token = process.env.PUSHOVER_TOKEN
   const user = process.env.PUSHOVER_USER
@@ -276,28 +297,6 @@ async function sendPushoverAlert(message: string, url: string, title = '🏡 Nuo
   }
 }
 
-// Anti-doppioni: l'avviso Pushover parte una sola volta per prenotazione.
-// Si "reclama" l'invio marcando pushover_notified_at solo dove è ancora NULL:
-// se nessuna riga viene marcata, qualcun altro ha già avvisato e si tace.
-// Finché la colonna non esiste su Supabase (migrazione a mano) l'update
-// fallisce: in quel caso si invia lo stesso, perché questo è comunque
-// l'unico punto del codice che manda l'avviso, e solo alla creazione.
-async function claimPushoverAlert(supabase: AdminClient, ids: string[]): Promise<boolean> {
-  if (ids.length === 0) return true
-  try {
-    const { data, error } = await supabase
-      .from('bookings')
-      .update({ pushover_notified_at: new Date().toISOString() })
-      .in('id', ids)
-      .is('pushover_notified_at', null)
-      .select('id')
-    if (error) return true
-    return (data?.length ?? 0) > 0
-  } catch {
-    return true
-  }
-}
-
 // Date della notifica come le direbbe Ania: "7 → 11 settembre",
 // oppure "28 settembre → 2 ottobre" a cavallo di due mesi.
 const MESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno',
@@ -307,21 +306,6 @@ function formatRangeIt(checkIn: string, checkOut: string): string {
   const [, mOut, dOut] = checkOut.split('-').map(Number)
   if (mIn === mOut) return `${dIn} → ${dOut} ${MESI[mIn - 1]}`
   return `${dIn} ${MESI[mIn - 1]} → ${dOut} ${MESI[mOut - 1]}`
-}
-
-async function sendPushNotification(supabase: AdminClient, title: string, body: string) {
-  const { data: subs } = await supabase.from('push_subscriptions').select('subscription')
-  if (!subs || subs.length === 0) return
-  for (const sub of subs) {
-    try {
-      await webpush.sendNotification(
-        JSON.parse(sub.subscription),
-        JSON.stringify({ title, body, url: '/prenotazioni' })
-      )
-    } catch {
-      // subscription scaduta
-    }
-  }
 }
 
 export async function POST(req: NextRequest) {
