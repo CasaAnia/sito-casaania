@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ROOMS } from '@/lib/rooms'
 import { createAdminClient } from '@/lib/supabaseAdmin'
 import { costruisciCorpo, inviaAlGestionale, GESTIONALE_URL_DEFAULT } from '@/lib/richiesteGestionale'
+import { avvisaRipiego } from '@/lib/ripiego'
+import { inviaEmailRipiego } from '@/lib/emailRipiego'
 
 // Rate limit in memoria, per IP. Vive per la durata dell'istanza serverless:
 // non è una difesa assoluta, ma ferma i submit a raffica e i bot più rozzi.
@@ -427,16 +429,21 @@ export async function POST(req: NextRequest) {
 
   if (esito.tipo === 'ripiego') {
     // Il gestionale non ha preso la richiesta (segreto, limite, guasto, rete):
-    // il cliente NON deve vedere un errore. Ania riceve i dati su Pushover e
-    // la inserisce a mano da Richieste → Nuova richiesta. Nel log solo il motivo.
-    console.error(`prenota: ${new Date().toISOString()} ripiego, gestionale non raggiunto (${esito.motivo})`)
-    const testo =
-      `${corpo.nome} ${corpo.cognome}\n` +
-      `${formatRangeIt(checkIn, checkOut)} · ${guests} ${guests === 1 ? 'ospite' : 'ospiti'}\n` +
-      `Camera: ${preferita ? preferita.name : 'qualsiasi'}\n` +
-      `📞 ${corpo.telefono}` +
-      (corpo.note ? `\n📝 ${corpo.note.slice(0, 120)}` : '')
-    await sendPushoverAlert(testo, `${(process.env.GESTIONALE_URL || GESTIONALE_URL_DEFAULT).replace(/\/$/, '')}/richieste/nuova`, '⚠️ Richiesta dal sito NON entrata nel gestionale')
+    // il cliente NON deve vedere un errore. Ania riceve i dati su Pushover E
+    // per email (due canali indipendenti) e la inserisce a mano da Richieste →
+    // Nuova richiesta. Nel log solo il motivo e l'esito dei due invii.
+    const base = (process.env.GESTIONALE_URL || GESTIONALE_URL_DEFAULT).replace(/\/$/, '')
+    const esitoAvvisi = await avvisaRipiego({
+      nome: corpo.nome, cognome: corpo.cognome, periodo: formatRangeIt(checkIn, checkOut), persone: guests,
+      camera: preferita ? preferita.name : 'qualsiasi', telefono: corpo.telefono, note: corpo.note || undefined,
+      motivo: esito.motivo, linkNuovaRichiesta: `${base}/richieste/nuova`,
+    }, {
+      pushover: (titolo, testo, url) => sendPushoverAlert(testo, url, titolo),
+      email: (oggetto, testo) => inviaEmailRipiego(oggetto, testo, {
+        apiKey: process.env.RESEND_API_KEY, a: process.env.EMAIL_RIPIEGO_A, da: process.env.EMAIL_RIPIEGO_DA,
+      }),
+    })
+    console.error(`prenota: ${new Date().toISOString()} ripiego, gestionale non raggiunto (${esito.motivo}) · pushover ${esitoAvvisi.pushover ? 'ok' : 'KO'} · email ${esitoAvvisi.email ? 'ok' : `KO (${esitoAvvisi.motivoEmail ?? ''})`}`)
     return NextResponse.json({ ok: true, solution, multiRoom })
   }
 
